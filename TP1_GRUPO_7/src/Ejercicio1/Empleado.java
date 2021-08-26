@@ -5,6 +5,21 @@ public class Empleado {
 	private int id;
 	private String nombre;
 	private int edad;
+	private static int contador = 1000;
+	
+	public Empleado(){
+		contador++;
+		this.setNombre("sin nombre");
+		this.setEdad(99);
+		this.setId(contador);
+	}
+	
+	public Empleado(String nombre, int edad){
+		contador++;
+		this.setNombre(nombre);
+		this.setEdad(edad);
+		this.setId(contador);
+	}
 
 	public int getId() {
 		return id;
