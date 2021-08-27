@@ -2,31 +2,27 @@ package Ejercicio1;
 
 public class Empleado {
 	
-	private int id;
+	private final int id;
 	private String nombre;
 	private int edad;
-	private static int contador = 1000;
+	private static int contador = 999;
 	
 	public Empleado(){
 		contador++;
 		this.setNombre("sin nombre");
 		this.setEdad(99);
-		this.setId(contador);
+		this.id = contador;
 	}
 	
 	public Empleado(String nombre, int edad){
 		contador++;
 		this.setNombre(nombre);
 		this.setEdad(edad);
-		this.setId(contador);
+		this.id = contador;
 	}
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNombre() {
@@ -44,4 +40,23 @@ public class Empleado {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
+	
+	//Metodos
+	
+	public static int devuelveProximoID()
+
+	{
+
+		return contador+1;
+
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado " + nombre + ", Edad: " + edad + ", Legajo: " + id;
+	}
+	
+	
+	
+	
 }
