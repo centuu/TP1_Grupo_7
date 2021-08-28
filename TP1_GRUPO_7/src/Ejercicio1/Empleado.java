@@ -42,21 +42,12 @@ public class Empleado {
 	}
 	
 	//Metodos
-	
-	public static int devuelveProximoID()
-
-	{
-
+	public static int devuelveProximoID() {
 		return contador+1;
-
 	}
 
 	@Override
 	public String toString() {
 		return "Empleado " + nombre + ", Edad: " + edad + ", Legajo: " + id;
 	}
-	
-	
-	
-	
 }

@@ -6,12 +6,12 @@ public class Principal {
 		Empleado empleado  = new Empleado();
 		empleado.setNombre("Jose");
 		empleado.setEdad(30);		
+		
 		//Prueba del Ejercicio 1
 		System.out.print("Ejercicio 1\n\n");
 		System.out.print(empleado.toString());
 		
 		//Muestra de 5 empleados
-		
 		Empleado empleado1 = new Empleado();
 		Empleado empleado2 = new Empleado();
 		Empleado empleado3 = new Empleado("Agustin",26);
@@ -26,7 +26,5 @@ public class Principal {
 		
 		//Prueba de funcion de proximo ID
 		System.out.print("\n\n"+"Proximo ID de empleado: "+Empleado.devuelveProximoID());
-		
 	}
-
 }
