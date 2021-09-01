@@ -4,6 +4,17 @@ public class Profesor extends Empleado {
 	private String cargo;
 	private int antiguedadDocente;
 	
+	Profesor (){
+		super();
+	}
+	
+	Profesor (String nombre, int edad,String cargo,int antiguedad){
+		super(nombre,edad);
+		this.cargo=cargo;
+		this.antiguedadDocente=antiguedad;
+	}
+	
+	
 	public String getCargo() {
 		return cargo;
 	}

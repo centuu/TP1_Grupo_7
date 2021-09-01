@@ -9,15 +9,15 @@ public class Empleado {
 	
 	public Empleado(){
 		contador++;
-		this.setNombre("sin nombre");
-		this.setEdad(99);
+		this.Nombre="sin nombre";
+		this.edad=99;
 		this.id = contador;
 	}
 	
 	public Empleado(String nombre, int edad){
 		contador++;
-		this.setNombre(nombre);
-		this.setEdad(edad);
+		this.nombre=nombre;
+		this.edad=edad;
 		this.id = contador;
 	}
 
