@@ -1,26 +1,26 @@
 package Ejercicio2;
 
-public class ProductoCongelado extends Producto {
-	
+public class ProductoCongelado extends Producto 
+{	
 	private int Temp;
 
 	public ProductoCongelado()
 	{
 		super();
-		this.Temp = 99;
+		this.setTemp(99);
 	}
 	
 	public ProductoCongelado(String lote,String Fecha,int temp)
 	{
 		super(lote,Fecha);
-		this.Temp = temp;
+		this.setTemp(temp);
 	}
 	
 	public int getTemp() {
 		return Temp;
 	}
 
-	public void setTemp(int temp) {
+	private void setTemp(int temp) {
 		Temp = temp;
 	}
 

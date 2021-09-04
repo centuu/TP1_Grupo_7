@@ -7,25 +7,28 @@ public class ProductoRefrigerado extends Producto {
 	public ProductoRefrigerado()
 	{
 		super();
-		this.CodSA = "00";
+		this.setCodSA("00");
 	}
 	
 	public ProductoRefrigerado(String lote,String Fecha,String Cod)
 	{
 		super(lote,Fecha);
-		this.CodSA = Cod;
+		this.setCodSA(Cod);
 	}
 
-	public String getCodSA() {
+	public String getCodSA() 
+	{
 		return CodSA;
 	}
 
-	public void setCodSA(String codSA) {
+	private void setCodSA(String codSA) 
+	{
 		CodSA = codSA;
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Producto Refrigerado -- Codigo Organismo Supervision Alimentaria =" + this.getCodSA() + ", Fecha de Vencimiento = " + this.getFecha() + ", Lote= " + this.getnLote();
 	}
 	

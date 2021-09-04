@@ -1,41 +1,47 @@
 package Ejercicio2;
 
-public class ProductoFresco extends Producto {
-
-	
+public class ProductoFresco extends Producto
+{	
 	private String FechaEnvasado;
-	private String Pais;
-	
+	private String Pais;	
 	
 	public ProductoFresco()
 	{
 		super();
-		this.FechaEnvasado = "01/01/2000";
-		this.Pais = "None";
+		this.setFechaEnvasado("01/01/2000");
+		this.setPais("None");
 	}
 	
 	public ProductoFresco(String lote, String Fecha, String FechaEnv, String Pais)
 	{
 		super(lote,Fecha);
-		this.FechaEnvasado = FechaEnv;
-		this.Pais = Pais;
+		this.setFechaEnvasado(FechaEnv);
+		this.setPais(Pais);
 	}
 	
-	public String getFechaEnvasado() {
+	public String getFechaEnvasado() 
+	{
 		return FechaEnvasado;
 	}
-	public void setFechaEnvasado(String fechaEnvasado) {
+	
+	private void setFechaEnvasado(String fechaEnvasado) 
+	{
 		FechaEnvasado = fechaEnvasado;
 	}
-	public String getPais() {
+	
+	public String getPais() 
+	{
 		return Pais;
 	}
-	public void setPais(String pais) {
+	
+	private void setPais(String pais) 
+	{
 		Pais = pais;
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Producto Fresco - Fecha de Envasado= " + this.getFechaEnvasado() + ", Pais= " + this.getPais() + ", Fecha de Vencimiento = " + this.getFecha() + ", Lote= " + this.getnLote();
 	}
 		
