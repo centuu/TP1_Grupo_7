@@ -1,9 +1,9 @@
 package Ejercicio1;
 
 public class Profesor extends Empleado {
+	
 	private String cargo;
 	private int antiguedadDocente;
-	
 	public int compareTo(Profesor p) {
 		if (this.getNombre() == p.getNombre() && this.getEdad() == p.getEdad() && this.getCargo() == p.getCargo() 
 			&& this.getAntiguedadDocente() == p.getAntiguedadDocente()) {  
