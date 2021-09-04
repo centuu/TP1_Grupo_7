@@ -9,15 +9,15 @@ public class Empleado {
 	
 	public Empleado(){
 		contador++;
-		this.Nombre="sin nombre";
-		this.edad=99;
+		this.setNombre("sin nombre");
+		this.setEdad(99);
 		this.id = contador;
 	}
 	
 	public Empleado(String nombre, int edad){
 		contador++;
-		this.nombre=nombre;
-		this.edad=edad;
+		this.setNombre(nombre);
+		this.setEdad(edad);
 		this.id = contador;
 	}
 
@@ -48,6 +48,6 @@ public class Empleado {
 
 	@Override
 	public String toString() {
-		return "Empleado " + nombre + ", Edad: " + edad + ", Legajo: " + id;
+		return "Empleado: " + nombre + ", Edad: " + edad + ", Legajo: " + id;
 	}
 }
