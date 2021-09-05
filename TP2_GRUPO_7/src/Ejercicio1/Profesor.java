@@ -1,12 +1,12 @@
 package Ejercicio1;
 import java.util.TreeSet;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Profesor extends Empleado 
 {	
 	private String cargo;
 	private int antiguedadDocente;
-	static private TreeSet<String> tsProfesores = new TreeSet<String>();
 	
 	Profesor() 
 	{
@@ -18,7 +18,6 @@ public class Profesor extends Empleado
 		super(nombre,edad);
 		this.setCargo(cargo);
 		this.setAntiguedadDocente(antiguedad);
-		tsProfesores.add(this.toString());
 	}
 	
 	public String getCargo() 
@@ -41,14 +40,20 @@ public class Profesor extends Empleado
 		this.antiguedadDocente = antiguedadDocente;
 	}
 	
-	public static void showAllProfesores()
+	public static void showAllProfesoresFromTreeSet(TreeSet<String> tsProfesores)
 	{
 	    Iterator<String> it = tsProfesores.iterator();
 
 		while (it.hasNext())
-		{
 	    	System.out.println(it.next());
-		}
+	}
+	
+	public static void showAllProfesoresFromArrayList(ArrayList<Profesor> ListaProfesores)
+	{
+	    Iterator<Profesor> it = ListaProfesores.iterator();
+
+		while (it.hasNext())
+	    	System.out.println(it.next().toString());
 	}
 	
 	public Boolean compareTo(Profesor p) 
