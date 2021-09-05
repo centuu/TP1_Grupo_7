@@ -1,19 +1,29 @@
 package Ejercicio1;
 
+import java.util.TreeSet;
+
 public class MainEjercicio1_b 
 {
 	public static void main(String[] args) 
 	{		
+		TreeSet<String> tsProfesores = new TreeSet<String>();
+		
 		Profesor profe1 = new Profesor("Angel", 35, "titular", 10);
+		tsProfesores.add(profe1.toString());
 	    Profesor profe2 = new Profesor("Maxi", 30, "titular", 8);
+	    tsProfesores.add(profe2.toString());
 	    Profesor profe3 = new Profesor("Lorena", 40, "suplente", 10);
+	    tsProfesores.add(profe3.toString());
 	    Profesor profe4 = new Profesor("Tamara", 28, "titular", 12);
+	    tsProfesores.add(profe4.toString());
 	    Profesor profe5 = new Profesor("Horacio", 45, "suplente", 5);
+	    tsProfesores.add(profe5.toString());
 	    Profesor profe6 = new Profesor("Horacio", 45, "suplente", 5);
-
+	    tsProfesores.add(profe6.toString());
+	    
 		System.out.println(" ");
 
-		Profesor.showAllProfesores();
+		Profesor.showAllProfesoresFromTreeSet(tsProfesores);
 
 		if (profe2.compareTo(profe1)) System.out.println("Es el mismo profesor (Profesor 2 = Profesor 1)");   
 	    if (profe3.compareTo(profe1)) System.out.println("Es el mismo profesor (Profesor 3 = Profesor 1)");
@@ -29,6 +39,6 @@ public class MainEjercicio1_b
 	    if (profe6.compareTo(profe2)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 2)");
 	    if (profe6.compareTo(profe3)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 3)");
 	    if (profe6.compareTo(profe4)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 4)");
-	    if (profe6.compareTo(profe5)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 5)");
+	    if (profe6.compareTo(profe5)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 5)");	
 	}
 }
