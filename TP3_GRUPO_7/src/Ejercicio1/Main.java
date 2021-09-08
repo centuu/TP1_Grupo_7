@@ -12,7 +12,6 @@ public class Main {
 			d.printStackTrace();
 		}
 		
-		Persona per=new Persona("hola","edu","123");
 		Archivo ar =new Archivo();
 		ar.leer_Archivo();
 		ar.Mostrar_Personas();
