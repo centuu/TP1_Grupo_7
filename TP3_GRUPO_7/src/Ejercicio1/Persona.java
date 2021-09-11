@@ -1,5 +1,4 @@
 package Ejercicio1;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -74,12 +73,15 @@ public class Persona
 		ArrayList<String> personas = Archivo.leer_Archivo("Personas.txt");
 		try
 		{
-			Persona persona = stringAPersona(personas.get(i));
-			if(Persona.verificarDniInvalido(persona.getDni())) 
+			for(int i = 0; i < personas.size(); i++)
+			{
+				Persona persona = stringAPersona(personas.get(i));
+				if(Persona.verificarDniInvalido(persona.getDni()) && !Personas.contains(persona)) 
 					Personas.add(persona);
-			else
+				else
 					continue;
-		}		
+			}						
+		}
 		catch (DniInvalido e)
 		{
 			e.getMessage();
