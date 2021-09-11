@@ -78,7 +78,11 @@ public class Persona
 			try
 			{
 				Persona persona = stringAPersona(personas.get(i));
+<<<<<<< Updated upstream
 				if(Persona.verificarDniInvalido(persona.getDni())) 
+=======
+				if(Persona.verificarDniInvalido(persona.getDni()) && !Personas.contains(persona)) 
+>>>>>>> Stashed changes
 						Personas.add(persona);
 				else
 						continue;
