@@ -1,28 +1,25 @@
 package Ejercicio2;
 
-public class Producto 
-{
+public class Producto {
+
 	private String nLote;
 	private String Fecha;
 
-	public Producto()
-	{		
+	public Producto(){
 		this.setnLote("0000");
-		this.setFecha("01/01/2000");	
+		this.setFecha("01/01/2000");
 	}
 	
-	public Producto(String lote, String Fecha)
-	{		
-		this.setnLote(lote);
-		this.setFecha(Fecha);	
+	public Producto(String lote, String Fecha){
+		this.nLote = lote;
+		this.Fecha = Fecha;
 	}
-	
 
 	public String getnLote() {
 		return nLote;
 	}
 
-	private void setnLote(String nLote) {
+	public void setnLote(String nLote) {
 		this.nLote = nLote;
 	}
 
@@ -30,7 +27,7 @@ public class Producto
 		return Fecha;
 	}
 
-	private void setFecha(String fecha) {
+	public void setFecha(String fecha) {
 		Fecha = fecha;
 	}
 
@@ -38,5 +35,4 @@ public class Producto
 	public String toString() {
 		return "Producto - Numero de Lote= " + nLote + ", Fecha de Vencimiento= " + Fecha;
 	}
-	
 }

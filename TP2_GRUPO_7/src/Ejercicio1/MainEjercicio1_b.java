@@ -21,24 +21,26 @@ public class MainEjercicio1_b
 	    Profesor profe6 = new Profesor("Horacio", 45, "suplente", 5);
 	    tsProfesores.add(profe6.toString());
 	    
-		System.out.println(" ");
-
 		Profesor.showAllProfesoresFromTreeSet(tsProfesores);
+		
+		if (profe2.equals(profe1)) System.out.println("Es el mismo profesor (Profesor 2 = Profesor 1)");
 
-		if (profe2.compareTo(profe1)) System.out.println("Es el mismo profesor (Profesor 2 = Profesor 1)");   
-	    if (profe3.compareTo(profe1)) System.out.println("Es el mismo profesor (Profesor 3 = Profesor 1)");
-	    if (profe3.compareTo(profe2)) System.out.println("Es el mismo profesor (Profesor 3 = Profesor 2)");  
-	    if (profe4.compareTo(profe1)) System.out.println("Es el mismo profesor (Profesor 4 = Profesor 1)");
-	    if (profe4.compareTo(profe2)) System.out.println("Es el mismo profesor (Profesor 4 = Profesor 2)");
-	    if (profe4.compareTo(profe3)) System.out.println("Es el mismo profesor (Profesor 4 = Profesor 3)");
-	    if (profe5.compareTo(profe1)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 1)");
-	    if (profe5.compareTo(profe2)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 2)");
-	    if (profe5.compareTo(profe3)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 3)");
-	    if (profe5.compareTo(profe4)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 4)");   
-	    if (profe6.compareTo(profe1)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 1)");
-	    if (profe6.compareTo(profe2)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 2)");
-	    if (profe6.compareTo(profe3)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 3)");
-	    if (profe6.compareTo(profe4)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 4)");
-	    if (profe6.compareTo(profe5)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 5)");	
+	    if (profe3.equals(profe1)) System.out.println("Es el mismo profesor (Profesor 3 = Profesor 1)");
+	    if (profe3.equals(profe2)) System.out.println("Es el mismo profesor (Profesor 3 = Profesor 2)");  
+	    
+	    if (profe4.equals(profe1)) System.out.println("Es el mismo profesor (Profesor 4 = Profesor 1)");
+	    if (profe4.equals(profe2)) System.out.println("Es el mismo profesor (Profesor 4 = Profesor 2)");
+	    if (profe4.equals(profe3)) System.out.println("Es el mismo profesor (Profesor 4 = Profesor 3)");
+	    
+	    if (profe5.equals(profe1)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 1)");
+	    if (profe5.equals(profe2)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 2)");
+	    if (profe5.equals(profe3)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 3)");
+	    if (profe5.equals(profe4)) System.out.println("Es el mismo profesor (Profesor 5 = Profesor 4)"); 
+	    
+	    if (profe6.equals(profe1)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 1)");
+	    if (profe6.equals(profe2)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 2)");
+	    if (profe6.equals(profe3)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 3)");
+	    if (profe6.equals(profe4)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 4)");
+	    if (profe6.equals(profe5)) System.out.println("Es el mismo profesor (Profesor 6 = Profesor 5)");	
 	}
 }
