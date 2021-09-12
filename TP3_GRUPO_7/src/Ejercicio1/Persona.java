@@ -72,9 +72,9 @@ public class Persona
 	public static void leerPersonasDesdeArchivo()
 	{
 		ArrayList<String> personas = Archivo.leer_Archivo("Personas.txt");
-		try
+		for(int i = 0; i < personas.size(); i++)
 		{
-			for(int i = 0; i < personas.size(); i++)
+			try
 			{
 				Persona persona = stringAPersona(personas.get(i));
 				if(Persona.verificarDniInvalido(persona.getDni()) && !Personas.contains(persona)) 
@@ -82,12 +82,12 @@ public class Persona
 				else
 					continue;
 			}						
+			catch (DniInvalido e)
+			{
+				e.getMessage();
+				e.printStackTrace();
+			}		
 		}
-		catch (DniInvalido e)
-		{
-			e.getMessage();
-			e.printStackTrace();
-		}			
 	}
 	
 	public static void mostrarPersonas()
