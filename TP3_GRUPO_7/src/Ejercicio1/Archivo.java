@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -117,4 +118,36 @@ public class Archivo {
 			System.out.println("No se encontro el archivo");
 		}
 	}
+	
+	//Pablo Torres
+	public void crearNuevoArchivoDePersonas(String newPath, boolean isNewFile, ArrayList<Persona> personas) {
+		Iterator<Persona> it = personas.iterator();
+		try {
+			if(isNewFile)
+			{
+				FileWriter entrada = new FileWriter(newPath, false);
+				BufferedWriter miBuffer = new BufferedWriter(entrada);
+				while(it.hasNext())
+				{
+					miBuffer.write(it.next().toString()+"\n");
+				}
+				miBuffer.close();
+				entrada.close();
+			}
+			else
+			{
+				FileWriter entrada = new FileWriter(newPath, false);
+				BufferedWriter miBuffer = new BufferedWriter(entrada);
+				while(it.hasNext())
+				{
+					miBuffer.write(it.next().toString()+"\n");
+				}
+				miBuffer.close();
+				entrada.close();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	//Pablo Torres
 }
