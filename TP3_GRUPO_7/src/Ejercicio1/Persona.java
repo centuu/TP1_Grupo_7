@@ -1,6 +1,7 @@
 package Ejercicio1;
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Persona 
@@ -92,6 +93,7 @@ public class Persona
 	
 	public static void mostrarPersonas()
 	{
+		Collections.sort(Personas,new ComparatorApellido());
 		Iterator<Persona> it = Personas.iterator();
 
 		while(it.hasNext())
