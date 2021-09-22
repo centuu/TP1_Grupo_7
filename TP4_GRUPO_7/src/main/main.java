@@ -3,11 +3,15 @@ package main;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import Ejercicio1.Contactos;
+
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
 public class main extends JFrame {
+	public main() {
+	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,7 +49,7 @@ public class main extends JFrame {
 		boton3.setBounds(130,110, 140,30);
 		boton3.addActionListener(new EventoBoton3());
 		
-		frame.setLayout(null);
+		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(boton);
 		frame.getContentPane().add(boton2);
 		frame.getContentPane().add(boton3);
@@ -58,6 +62,8 @@ class EventoBoton implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		System.out.println("Prueba Boton 1");
+		Contactos jer =new Contactos();
+		
 	}
 }
 
@@ -66,6 +72,7 @@ class EventoBoton2 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		System.out.println("Prueba Boton 2");
+		
 	}
 }
 
