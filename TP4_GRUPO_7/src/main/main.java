@@ -1,88 +1,68 @@
 package main;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import Ejercicio1.Contactos;
 import Ejercicio2.VentanaPromedio;
 
 import java.awt.event.*;
-import java.awt.*;
 import javax.swing.*;
 
-public class main extends JFrame {
-	public main() {
-	}
-
+public class main extends JFrame 
+{
 	private static final long serialVersionUID = 1L;
-
-	public static void main(String[] args) {
-		
-		JFrame frame = new JFrame();
-		
+	private static JFrame frame = new JFrame("Trabajo Practico N° 4");
+	private static JLabel lblGrupo = new JLabel("GRUPO NRO: 7");
+	private static JButton btnEjercicio1 = new JButton("Ejercicio 1");
+	private static JButton btnEjercicio2 = new JButton("Ejercicio 2");
+	private static JButton btnEjercicio3 = new JButton("Ejercicio 3");
+	
+	public static void main(String[] args)
+	{
 		frame.setSize(400,200);
 		frame.setLocation(350, 150);
-		//frame.setBounds(350, 350, 500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Trabajo Practico N° 4");
 		
-		JLabel l = new JLabel();
+		lblGrupo.setBounds(15, 15, 90, 15);
+
+		btnEjercicio1.setBounds(130,30, 140,30);
+		btnEjercicio1.addActionListener(new EventoBoton());
 		
-		// add text to label
-        l.setText("GRUPO NRO: 7");
-        l.setBounds(15, 15, 90, 15);
-        
-		frame.getContentPane().add(l);
-		//frame.show();
+		btnEjercicio2.setBounds(130,70, 140,30);
+		btnEjercicio2.addActionListener(new EventoBoton2());
 		
-		JButton boton = new JButton();
-		boton.setText("Ejercicio 1");
-		boton.setBounds(130,30, 140,30);
-		boton.addActionListener(new EventoBoton());
-		
-		JButton boton2 = new JButton();
-		boton2.setText("Ejercicio 2");
-		boton2.setBounds(130,70, 140,30);
-		boton2.addActionListener(new EventoBoton2());
-		
-		JButton boton3 = new JButton();
-		boton3.setText("Ejercicio 3");
-		boton3.setBounds(130,110, 140,30);
-		boton3.addActionListener(new EventoBoton3());
+		btnEjercicio3.setBounds(130,110, 140,30);
+		btnEjercicio3.addActionListener(new EventoBoton3());
 		
 		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(boton);
-		frame.getContentPane().add(boton2);
-		frame.getContentPane().add(boton3);
+		frame.getContentPane().add(btnEjercicio1);
+		frame.getContentPane().add(btnEjercicio2);
+		frame.getContentPane().add(btnEjercicio3);
+		frame.getContentPane().add(lblGrupo);
 		frame.setVisible(true);
 	}
 }
 
-class EventoBoton implements ActionListener {
-
+class EventoBoton implements ActionListener 
+{
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("Prueba Boton 1");
-		Contactos jer =new Contactos();
-		
+	public void actionPerformed(ActionEvent e) 
+	{
+		new Contactos();	
 	}
 }
 
-class EventoBoton2 implements ActionListener {
-
+class EventoBoton2 implements ActionListener 
+{
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("Prueba Boton 2");
-		VentanaPromedio vp = new VentanaPromedio();
-		vp.setVisible(true);
-		
+	public void actionPerformed(ActionEvent e) 
+	{	
+		new VentanaPromedio();
 	}
 }
 
-class EventoBoton3 implements ActionListener {
-
+class EventoBoton3 implements ActionListener
+{
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		System.out.println("Prueba Boton 3");
 	}
 }
