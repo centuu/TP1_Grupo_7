@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import Ejercicio1.Contactos;
+import Ejercicio2.VentanaPromedio;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -72,6 +73,8 @@ class EventoBoton2 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		System.out.println("Prueba Boton 2");
+		VentanaPromedio vp = new VentanaPromedio();
+		vp.setVisible(true);
 		
 	}
 }
