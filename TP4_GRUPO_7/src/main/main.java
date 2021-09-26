@@ -1,6 +1,6 @@
 package main;
 import Ejercicio1.Contactos;
-import Ejercicio2.VentanaPromedio;
+//import Ejercicio2.VentanaPromedio;
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -54,7 +54,7 @@ class EventoBoton2 implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{	
-		new VentanaPromedio();
+		//new VentanaPromedio();
 	}
 }
 
