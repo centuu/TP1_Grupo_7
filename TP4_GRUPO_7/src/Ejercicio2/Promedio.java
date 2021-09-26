@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class VentanaPromedio extends JFrame
+public class Promedio extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	private static JButton btnCalcular = new JButton("Calcular");
@@ -20,15 +20,15 @@ public class VentanaPromedio extends JFrame
 	private static JLabel lblNota3 = new JLabel("Nota 3");
 	private static JTextField txtNota3 = new JTextField();
 	private static JLabel lblTPS = new JLabel("TPS");
-	private static JComboBox<String> cbTPS = new JComboBox<String>();
 	private static JPanel paneResultados = new JPanel();
 	private static JLabel lblPromedio = new JLabel("Promedio");
 	private static JLabel lblCondicion = new JLabel("Condicion");
 	private static JTextField txtPromedio = new JTextField();
 	private static JTextField txtCondicion = new JTextField();
 	private static JLabel lblError = new JLabel("");
+	private static JComboBox<String> cbTPS = new JComboBox<String>(new String[] {"Aprobado", "Desaprobado"} );
 	
-	public VentanaPromedio() 
+	public Promedio() 
 	{
 		this.setBounds(100, 100, 458, 481);
 		this.setLocation(350, 150);
@@ -66,8 +66,6 @@ public class VentanaPromedio extends JFrame
 
 		cbTPS.setSelectedIndex(-1);
 		cbTPS.setBounds(141, 149, 118, 20);
-		cbTPS.addItem("Aprobado");
-		cbTPS.addItem("Desaprobado");
 		
 		paneNotas.add(lblNota1);
 		paneNotas.add(lblNota2);

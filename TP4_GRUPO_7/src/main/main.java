@@ -1,6 +1,6 @@
 package main;
 import Ejercicio1.Contactos;
-import Ejercicio2.VentanaPromedio;
+import Ejercicio2.Promedio;
 import Ejercicio3.SeleccionMultiple;
 
 import java.awt.event.*;
@@ -55,7 +55,7 @@ class EventoBoton2 implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{	
-		new VentanaPromedio();
+		new Promedio();
 	}
 }
 

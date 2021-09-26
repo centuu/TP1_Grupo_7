@@ -15,12 +15,11 @@ import javax.swing.border.EmptyBorder;
 public class Contactos extends JFrame  
 {
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private static JTextField txtNombre = new JTextField();
 	private static JTextField txtApellido = new JTextField();
 	private static JTextField txtTelefono = new JTextField();
 	private static JTextField txtFechaNacimiento = new JTextField();
-	private static JLabel lblResultado = new JLabel();
+	
 	private static JButton btnMostrar = new JButton("Mostrar");
 	
 	public Contactos()
@@ -39,12 +38,12 @@ public class Contactos extends JFrame
 		lbApellido.setBounds(85, 76, 46, 14);
 		this.getContentPane().add(lbApellido);
 		
-		JLabel lbFechanac = new JLabel("FechaNac");
-		lbFechanac.setBounds(85, 148, 46, 14);
+		JLabel lbFechanac = new JLabel("Fecha Nac.");
+		lbFechanac.setBounds(85, 148, 65, 14);
 		this.getContentPane().add(lbFechanac);
 		
 		JLabel lbTelefono = new JLabel("Telefono");
-		lbTelefono.setBounds(85, 112, 46, 14);
+		lbTelefono.setBounds(85, 112, 56, 14);
 		this.getContentPane().add(lbTelefono);
 		
 		JLabel lblResultado = new JLabel("Resultado: ");
@@ -141,5 +140,3 @@ class EventoMostar implements ActionListener
 	
 	
 }
-
-
