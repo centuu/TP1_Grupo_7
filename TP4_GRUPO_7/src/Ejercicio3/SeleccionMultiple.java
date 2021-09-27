@@ -2,16 +2,9 @@ package Ejercicio3;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 
@@ -73,6 +66,12 @@ public class SeleccionMultiple extends JFrame
 		
 		lblHoras.setBounds(22,300,250,20);
 		txtHoras.setBounds(240,300,175,20);
+		txtHoras.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				validaIngresoNumeros(e);
+			}
+		});
+
 		
 		this.getContentPane().add(lblHoras);
 		this.getContentPane().add(txtHoras);
@@ -86,6 +85,16 @@ public class SeleccionMultiple extends JFrame
 		this.getContentPane().add(btnAceptar);
 		
 		this.setVisible(true);	
+	}
+
+	protected void validaIngresoNumeros(KeyEvent e) {
+		// TODO Auto-generated method stub
+		char c = e.getKeyChar();
+		if (Character.isLetter(c)) {
+			getToolkit().beep();
+			e.consume();
+		JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
+		}
 	}
 }
 

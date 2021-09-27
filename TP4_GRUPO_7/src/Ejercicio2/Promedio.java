@@ -3,6 +3,9 @@ package Ejercicio2;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -63,6 +66,22 @@ public class Promedio extends JFrame
 		txtNota1.setColumns(10);
 		txtNota2.setColumns(10);
 		txtNota3.setColumns(10);
+		txtNota1.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				validaIngresoNumeros(e);
+			}
+		});
+
+		txtNota2.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				validaIngresoNumeros(e);
+			}
+		});
+		txtNota3.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				validaIngresoNumeros(e);
+			}
+		});
 
 		cbTPS.setSelectedIndex(-1);
 		cbTPS.setBounds(141, 149, 118, 20);
@@ -108,6 +127,17 @@ public class Promedio extends JFrame
 		this.setVisible(true);
 	}
 	
+	protected void validaIngresoNumeros(KeyEvent e) {
+		// TODO Auto-generated method stub
+		char c = e.getKeyChar();
+		if (Character.isLetter(c)) {
+			getToolkit().beep();
+			e.consume();
+		JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
+		}
+		
+	}
+
 	class EventoNuevo implements ActionListener 
 	{
 		@Override

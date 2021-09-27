@@ -3,10 +3,13 @@ package Ejercicio1;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -61,12 +64,15 @@ public class Contactos extends JFrame
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(161, 109, 86, 20);
 		this.getContentPane().add(txtTelefono);
-		
+	     txtTelefono.addKeyListener(new KeyAdapter() {
+				public void keyTyped(KeyEvent e) {
+					validaIngresoNumeros(e);
+				}
+			});
+	     
 		txtFechaNacimiento.setColumns(10);
 		txtFechaNacimiento.setBounds(161, 145, 86, 20);
 		this.getContentPane().add(txtFechaNacimiento);
-		
-
 		btnMostrar.setBounds(141, 225, 89, 23);
 		this.getContentPane().add(btnMostrar);
 		btnMostrar.addActionListener(new EventoMostar(txtNombre, txtApellido, txtTelefono, txtFechaNacimiento, lblResultado));
@@ -74,6 +80,16 @@ public class Contactos extends JFrame
 		((JPanel)this.getContentPane()).setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.getContentPane().setLayout(null);
 		this.setVisible(true);
+		
+}
+
+protected void validaIngresoNumeros(KeyEvent e) {
+	// TODO Auto-generated method stub
+	char c = e.getKeyChar();
+	if (Character.isLetter(c)) {
+		getToolkit().beep();
+		e.consume();
+	JOptionPane.showMessageDialog(rootPane, "Ingresar solo numeros");
 	}
 	
 }
@@ -137,6 +153,6 @@ class EventoMostar implements ActionListener
 			lblResultado.setText("Resultado: " +  txtNombre.getText() + "-" + txtApellido.getText() + "-" + txtTelefono.getText() + " " + txtNacimiento.getText());
 		}
 	}
-	
-	
+  }
 }
+	
