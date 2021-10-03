@@ -21,77 +21,77 @@ import java.awt.EventQueue;
 public class Principal extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
-	private static JFrame frame = new JFrame("Trabajo Practico N° 5 - Grupo N° 7");
-	private JPanel contentPane;
-	private static DefaultListModel<Peliculas> listModel;
+	private JPanel contentPane = new JPanel();
+	private static DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
 	
 	public static void main(String[] args) 
 	{	
-		EventQueue.invokeLater(new Runnable(){
-		public void run() {
-			try {
-				Principal frame = new Principal();
-				listModel = new DefaultListModel<Peliculas>();
-				frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
+		EventQueue.invokeLater(new Runnable()
+		{
+			public void run() {
+				try 
+				{
+					Principal frame = new Principal();
+					frame.setVisible(true);
+				} 
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+				}
 			}
-			
-		}
-		
-	  });
-
+		});
 	}
 	
 	public Principal() 
 	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("Trabajo Practico N° 5 - Grupo N° 7");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		JMenuBar barra = new JMenuBar();
-		setJMenuBar(barra);
 		
 		JMenu menu = new JMenu("Peliculas");
-		JMenuItem item1 = new JMenuItem("Agregar");
-		JMenuItem item2 = new JMenuItem("Listar");
 		
-		frame.setJMenuBar(barra);
+		JMenuItem item1 = new JMenuItem("Agregar");
+		item1.addActionListener(new EventoAgregar());
+		menu.add(item1);
+		
+		JMenuItem item2 = new JMenuItem("Listar");
+		item2.addActionListener(new EventoListar());
+		menu.add(item2);
+		
 		barra.add(menu);
 		
-		menu.add(item1);
-		menu.add(item2);
+		this.setJMenuBar(barra);
 		
-		item1.addActionListener(new ActionListener() 
+		this.setSize(600,400);
+		this.setLocation(350, 150);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		this.setContentPane(contentPane);
+		this.setVisible(true);
+	}
+	
+	class EventoAgregar implements ActionListener 
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) 
 		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				contentPane.removeAll();
-				PanelAgregarPeliculas panel = new PanelAgregarPeliculas();
-				panel.setDefaultListModel(listModel);
-				contentPane.add(panel);
-				contentPane.repaint();
-				contentPane.revalidate();
-				
-			}
-		});
-		menu.add(item1);
-		
-		item2.addActionListener(new ActionListener() 
+			contentPane.removeAll();
+			contentPane.add(new PanelAgregarPeliculas(listModel));
+			contentPane.revalidate();
+			contentPane.repaint();
+		}
+	}
+	
+	class EventoListar implements ActionListener 
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) 
 		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				contentPane.removeAll();
-				PanelListadoPeliculas panel = new PanelListadoPeliculas();
-				panel.setDefaultListModel(listModel);
-				contentPane.add(panel);
-				contentPane.repaint();
-				contentPane.revalidate();
-			}
-		});
-		menu.add(item2);
-		
-		frame.setSize(600,400);
-		frame.setLocation(350, 150);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.setVisible(true);
+			contentPane.removeAll();
+			contentPane.add(new PanelListadoPeliculas(listModel));
+			contentPane.revalidate();
+			contentPane.repaint();
+		}
 	}
 }

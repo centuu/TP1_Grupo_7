@@ -10,16 +10,19 @@ public class Categorias
 	{
 		contador++;
 		this.id = contador;
-		this.nombre = nombre;
+		this.setNombre(nombre);
 	}	
+	
 	public String getNombre() 
 	{
 		return nombre;
 	}
-	public void setNombre(String nombre) 
+	
+	private void setNombre(String nombre) 
 	{
 		this.nombre = nombre;
 	}
+	
 	public int getId() 
 	{
 		return id;
