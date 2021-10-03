@@ -13,6 +13,7 @@ public class Peliculas extends JFrame
 	private Categorias cat;
 	private String nombre;
 	private static int contador = 0;
+	private JTextField txtNombre;
 	
 	/*public Peliculas(Categorias cat, String nombre)
 	{
@@ -48,15 +49,8 @@ public class Peliculas extends JFrame
 	}
 	
 	public Peliculas(String opc) 
-	{	
-		switch (opc) {
-			case "Agregar":
-				AgregarPeliculas();
-				break;
-			case "Listar":
-				ListarPeliculas();
-				break;
-		}
+	{
+
 	}
 	
 	public void AgregarPeliculas()
