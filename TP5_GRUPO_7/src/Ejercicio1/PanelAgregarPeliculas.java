@@ -2,56 +2,99 @@ package Ejercicio1;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import javax.swing.JComboBox;
+import java.awt.Color;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class PanelAgregarPeliculas extends JPanel 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre = new JTextField();
-	private JLabel lblID = new JLabel("ID");
+	private JLabel lblNum = new JLabel("ID");
 	private JLabel lblNombre = new JLabel("Nombre");
 	private JLabel lblGenero = new JLabel("Genero");
-	private JLabel lblAutonumerico = new JLabel("New label");
+    private JLabel lblID = new JLabel("ID ");
 	private JButton btnAceptar = new JButton("Aceptar");
-	private JLabel lblError = new JLabel("New label");
-	private JComboBox<String> cbGenero = new JComboBox<String>();
+	private JComboBox<Categorias> cbGenero;
 	private DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
 	
 	public PanelAgregarPeliculas(DefaultListModel<Peliculas> listModelRecibido) 
-	{	
-		lblID.setBounds(78, 50, 46, 14);
+	{
+        setBackground(Color.white);
+		setLayout(null);
+		
+		lblNum.setBounds(238, 74, 11, 14);
+		lblNum.setText(String.valueOf(Peliculas.getContador()));
+		this.add(lblNum);		
+		
+		lblID.setBounds(146, 74, 46, 14);
 		this.add(lblID);
 		
-		lblNombre.setBounds(78, 100, 46, 14);
+		lblNombre.setBounds(146, 102, 48, 14);
 		this.add(lblNombre);
 		
-		lblGenero.setBounds(78, 150, 46, 14);
-		this.add(lblGenero);
-		
-		lblAutonumerico.setBounds(223, 50, 46, 14);
-		this.add(lblAutonumerico);
-		
-		txtNombre.setBounds(223, 97, 134, 20);
+		txtNombre.setBounds(204, 99, 86, 20);
 		this.add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		cbGenero.setBounds(223, 147, 134, 20);
-		this.add(cbGenero);
+		cbGenero = new JComboBox<Categorias>();
+		cbGenero.setBounds(204, 130, 86, 20);
+		Categorias aux = new Categorias("seleccione genero");
+		cbGenero.addItem(aux);
+		cbGenero.addItem(new Categorias("Terror"));
+		cbGenero.addItem(new Categorias("Accion"));
+		cbGenero.addItem(new Categorias("Suspenso"));
+		cbGenero.addItem(new Categorias("Romantica"));
 		
-		cbGenero.addItem("Seleccione un genero");
-		cbGenero.addItem("Terror");
-		cbGenero.addItem("Accion");
-		cbGenero.addItem("Suspenso");
-		cbGenero.addItem("Romantica");
+	    lblGenero.setBounds(146, 133, 48, 14);
+	    this.add(lblGenero);	
+		add(cbGenero);
 		
-		btnAceptar.setBounds(78, 188, 122, 23);
-		add(btnAceptar);
 		
-		lblError.setBounds(78, 246, 279, 14);
-		add(lblError);
+		btnAceptar.setBounds(193, 210, 86, 23);
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		
+
+				if (cbGenero.getSelectedIndex() != 0 && !txtNombre.getText().isEmpty()) {
+					Peliculas pelicula = new Peliculas();
+					pelicula.setNombre(txtNombre.getText());
+					pelicula.setCat( (Categorias)cbGenero.getSelectedItem() );
+					listModel.addElement(pelicula);
+					JOptionPane.showMessageDialog(null, "se agrego pelicula");
+					limpiarPanel();
+				}
+				else {
+					String msjError = new String();
+					if (cbGenero.getSelectedIndex() == 0) {
+						msjError = " Debe seleccionar un género";
+					}
+					if (txtNombre.getText().isEmpty()) {
+						msjError += "\n* Debe ingresar nombre de película.";
+					}
+					JOptionPane.showMessageDialog(null, msjError);
+				}
+				
+			}
+
+			private void limpiarPanel() {
+				txtNombre.setText("");
+				cbGenero.setSelectedIndex(0);
+				lblNum.setText(String.valueOf(Peliculas.getContador()));
+				
+			}
+			
+
+		});
+		add(btnAceptar);		
 		
 		this.setDefaultListModel(listModelRecibido);
 	}
@@ -60,5 +103,4 @@ public class PanelAgregarPeliculas extends JPanel
 	{
 		this.listModel = listModelRecibido;
 	}
-	
 }

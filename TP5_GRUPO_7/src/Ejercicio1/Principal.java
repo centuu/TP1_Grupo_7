@@ -6,17 +6,13 @@ import java.awt.EventQueue;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.ListModel;
 import javax.swing.border.EmptyBorder;
-
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 
 public class Principal extends JFrame 
 {
@@ -45,10 +41,13 @@ public class Principal extends JFrame
 	public Principal() 
 	{
 		this.setTitle("Trabajo Practico N° 5 - Grupo N° 7");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JMenuBar barra = new JMenuBar();
+				
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5,5,5,5));
+		contentPane.setLayout(new BorderLayout(0,0));
+		setContentPane(contentPane);
 		
+		JMenuBar barra = new JMenuBar();	
 		JMenu menu = new JMenu("Peliculas");
 		
 		JMenuItem item1 = new JMenuItem("Agregar");
@@ -80,6 +79,8 @@ public class Principal extends JFrame
 			contentPane.add(new PanelAgregarPeliculas(listModel));
 			contentPane.revalidate();
 			contentPane.repaint();
+			
+			
 		}
 	}
 	

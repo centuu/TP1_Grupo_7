@@ -1,9 +1,6 @@
 package Ejercicio1;
 
-import java.awt.event.*;
 import javax.swing.*;
-
-import java.awt.BorderLayout;
 
 public class Peliculas extends JFrame 
 {	
@@ -11,20 +8,16 @@ public class Peliculas extends JFrame
 	private int id;
 	private Categorias cat;
 	private String nombre;
-	private static int contador = 0;
-	private JTextField txtNombre;
+	private static int contador = 1;
 	
+	public Peliculas() {
+		this.id = contador++;
+	}
 	public Peliculas(Categorias cat, String nombre)
 	{
-		contador++;
-		this.id = contador;
+		this.id=contador++;
 		this.setCat(cat);
 		this.setNombre(nombre);
-	}
-	
-	public static int devuelveProximoID() 
-	{
-		return contador+1;
 	}
 	
 	public int getId() 
@@ -37,9 +30,16 @@ public class Peliculas extends JFrame
 		return cat;
 	}
 	
-	private void setCat(Categorias cat) 
+	public void setCat(Categorias cat) 
 	{
 		this.cat = cat;
+	}
+	public static int getContador() 
+	{
+		return contador;
+	}
+	public Categorias getCategoria() {
+		return cat;
 	}
 	
 	public String getNombre() 
@@ -47,7 +47,7 @@ public class Peliculas extends JFrame
 		return nombre;
 	}
 	
-	private void setNombre(String nombre) 
+	public void setNombre(String nombre) 
 	{
 		this.nombre = nombre;
 	}

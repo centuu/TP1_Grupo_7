@@ -2,14 +2,15 @@ package Ejercicio1;
 
 public class Categorias 
 {
-	private final int id;
 	private String nombre;
-	private static int contador = 0;
+
 	
+	public Categorias()
+	{
+	    
+	}	
 	public Categorias(String nombre)
 	{
-		contador++;
-		this.id = contador;
 		this.setNombre(nombre);
 	}	
 	
@@ -22,9 +23,11 @@ public class Categorias
 	{
 		this.nombre = nombre;
 	}
-	
-	public int getId() 
-	{
-		return id;
+
+	@Override
+	public String toString() {
+		return nombre ;
 	}
+	
+
 }
