@@ -2,7 +2,7 @@ package Ejercicio1;
 
 import javax.swing.*;
 
-public class Peliculas extends JFrame 
+public class Peliculas extends JFrame
 {	
 	private static final long serialVersionUID = 1L;
 	private int id;
@@ -51,4 +51,10 @@ public class Peliculas extends JFrame
 	{
 		this.nombre = nombre;
 	}
+	@Override
+	public String toString() {
+		return "Peliculas [nombre=" + nombre + "]";
+	}
+	
+	
 }

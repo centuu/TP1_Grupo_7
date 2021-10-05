@@ -76,6 +76,8 @@ public class Principal extends JFrame
 		public void actionPerformed(ActionEvent e) 
 		{
 			contentPane.removeAll();
+			PanelAgregarPeliculas panel = new PanelAgregarPeliculas();
+			panel.setDefaultListModel(listModel);
 			contentPane.add(new PanelAgregarPeliculas(listModel));
 			contentPane.revalidate();
 			contentPane.repaint();
@@ -90,7 +92,9 @@ public class Principal extends JFrame
 		public void actionPerformed(ActionEvent e) 
 		{
 			contentPane.removeAll();
-			contentPane.add(new PanelListadoPeliculas(listModel));
+			PanelListadoPeliculas panel = new PanelListadoPeliculas();
+			contentPane.add(panel);
+			panel.setDefaultListModel(listModel);
 			contentPane.revalidate();
 			contentPane.repaint();
 		}

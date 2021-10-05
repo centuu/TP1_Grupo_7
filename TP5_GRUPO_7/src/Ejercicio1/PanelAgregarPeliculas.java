@@ -27,7 +27,16 @@ public class PanelAgregarPeliculas extends JPanel
 	private JComboBox<Categorias> cbGenero;
 	private DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
 	
-	public PanelAgregarPeliculas(DefaultListModel<Peliculas> listModelRecibido) 
+	public PanelAgregarPeliculas(DefaultListModel<Peliculas> listModel2)
+	{
+		dibujarControles(listModel2);
+	}
+	public PanelAgregarPeliculas() {
+		// TODO Auto-generated constructor stub
+	}
+
+	//public void AgregarPeliculas(DefaultListModel<Peliculas> listModelRecibido)
+	public void dibujarControles(DefaultListModel<Peliculas> listModelRecibido)
 	{
         setBackground(Color.white);
 		setLayout(null);
@@ -98,7 +107,7 @@ public class PanelAgregarPeliculas extends JPanel
 		
 		this.setDefaultListModel(listModelRecibido);
 	}
-	
+
 	public void setDefaultListModel(DefaultListModel<Peliculas> listModelRecibido)
 	{
 		this.listModel = listModelRecibido;
