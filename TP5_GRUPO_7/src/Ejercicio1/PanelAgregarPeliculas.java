@@ -9,7 +9,8 @@ import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
+import java.util.TreeSet;
+
 import javax.swing.JButton;
 
 public class PanelAgregarPeliculas extends JPanel 
@@ -25,9 +26,11 @@ public class PanelAgregarPeliculas extends JPanel
     private JLabel lblID = new JLabel("ID ");
 	private JButton btnAceptar = new JButton("Aceptar");
 	private JComboBox<Categorias> cbGenero;
-	private DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
 	
-	public PanelAgregarPeliculas(DefaultListModel<Peliculas> listModel2)
+	//private DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
+	private TreeSet<String> tsModel = new TreeSet<String>();
+	
+	public PanelAgregarPeliculas(TreeSet<String> listModel2)
 	{
 		dibujarControles(listModel2);
 	}
@@ -36,7 +39,7 @@ public class PanelAgregarPeliculas extends JPanel
 	}
 
 	//public void AgregarPeliculas(DefaultListModel<Peliculas> listModelRecibido)
-	public void dibujarControles(DefaultListModel<Peliculas> listModelRecibido)
+	public void dibujarControles(TreeSet<String> listModelRecibido)
 	{
         setBackground(Color.white);
 		setLayout(null);
@@ -77,7 +80,9 @@ public class PanelAgregarPeliculas extends JPanel
 					Peliculas pelicula = new Peliculas();
 					pelicula.setNombre(txtNombre.getText());
 					pelicula.setCat( (Categorias)cbGenero.getSelectedItem() );
-					listModel.addElement(pelicula);
+					
+					tsModel.add(pelicula.toString());
+					
 					JOptionPane.showMessageDialog(null, "se agrego pelicula");
 					limpiarPanel();
 				}
@@ -108,8 +113,8 @@ public class PanelAgregarPeliculas extends JPanel
 		this.setDefaultListModel(listModelRecibido);
 	}
 
-	public void setDefaultListModel(DefaultListModel<Peliculas> listModelRecibido)
+	public void setDefaultListModel(TreeSet<String> listModelRecibido)
 	{
-		this.listModel = listModelRecibido;
+		this.tsModel = listModelRecibido;
 	}
 }

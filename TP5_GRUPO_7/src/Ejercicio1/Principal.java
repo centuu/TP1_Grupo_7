@@ -3,7 +3,6 @@ package Ejercicio1;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.util.TreeSet;
 import java.awt.event.ActionEvent;
 
 
@@ -18,7 +18,9 @@ public class Principal extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane = new JPanel();
-	private static DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
+	
+	//private static DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
+	private static TreeSet<String> tsModel = new TreeSet<String>();
 	
 	public static void main(String[] args) 
 	{	
@@ -77,8 +79,8 @@ public class Principal extends JFrame
 		{
 			contentPane.removeAll();
 			PanelAgregarPeliculas panel = new PanelAgregarPeliculas();
-			panel.setDefaultListModel(listModel);
-			contentPane.add(new PanelAgregarPeliculas(listModel));
+			panel.setDefaultListModel(tsModel);
+			contentPane.add(new PanelAgregarPeliculas(tsModel));
 			contentPane.revalidate();
 			contentPane.repaint();
 			
@@ -94,7 +96,9 @@ public class Principal extends JFrame
 			contentPane.removeAll();
 			PanelListadoPeliculas panel = new PanelListadoPeliculas();
 			contentPane.add(panel);
-			panel.setDefaultListModel(listModel);
+			
+			panel.setDefaultListModel(tsModel);
+			
 			contentPane.revalidate();
 			contentPane.repaint();
 		}
