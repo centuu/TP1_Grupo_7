@@ -63,7 +63,7 @@ public class VentanaPrincipal extends JFrame
 		{
 			contentPane.removeAll();
 			PanelAgregar panel = new PanelAgregar();
-			contentPane.add(new PanelAgregar());
+			contentPane.add(panel);
 			contentPane.revalidate();
 			contentPane.repaint();	
 		}
