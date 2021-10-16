@@ -12,7 +12,7 @@ public class Conexion {
 	{
 		try
 		{
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpersonas","root","root");
+			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpersonas","root","1234");
 			this.connection.setAutoCommit(false);
 		}
 		catch(Exception e)
@@ -47,6 +47,4 @@ public class Conexion {
 		}
 		instancia = null;
 	}
-
-
 }

@@ -1,4 +1,4 @@
-package daoImpl;
+	package daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,12 +8,13 @@ import java.util.ArrayList;
 
 import entidad.Persona;
 
-public class PersonaDaoIml{
+public class PersonaDaoIml
+{
 	private static final String insert = "INSERT INTO personas(dni, nombre, apellido) VALUES(?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE dni = ?";
 	private static final String list = "SELECT * FROM personas";
 
-	public boolean insert(Persona persona)
+	public boolean Insert(Persona persona)
 	{
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -33,9 +34,12 @@ public class PersonaDaoIml{
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
-			try {
+			try 
+			{
 				conexion.rollback();
-			} catch (SQLException e1) {
+			}
+			catch (SQLException e1) 
+			{
 				e1.printStackTrace();
 			}
 		}
@@ -43,8 +47,8 @@ public class PersonaDaoIml{
 		return registro;
 	}
 	
-    public boolean Delete(Persona persona) {
-    	
+    public boolean Delete(Persona persona) 
+    {	
     	PreparedStatement state;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean eliminar = false;
@@ -69,7 +73,7 @@ public class PersonaDaoIml{
     {
     	ArrayList<Persona> Personas= new ArrayList<Persona>();
     	PreparedStatement state;
-		Conexion conexion =Conexion.getConexion();
+		Conexion conexion = Conexion.getConexion();
 		try
 		{
 			state = conexion.getSQLConexion().prepareStatement(list);
@@ -89,6 +93,4 @@ public class PersonaDaoIml{
 		}
     	return Personas;
      }
-    
-	
 }

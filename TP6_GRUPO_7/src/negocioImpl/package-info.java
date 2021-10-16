@@ -5,4 +5,4 @@
  * @author Edwin salcedo
  *
  */
-package negosio;
+package negocioImpl;
