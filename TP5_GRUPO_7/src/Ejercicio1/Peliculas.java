@@ -53,7 +53,7 @@ public class Peliculas extends JFrame
 	}
 	@Override
 	public String toString() {
-		return "Peliculas [nombre=" + nombre + "]";
+		return nombre;
 	}
 	
 	

@@ -9,17 +9,21 @@ import javax.swing.JList;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 
 
 
 public class PanelListadoPeliculas extends JPanel 
 {
 	private static final long serialVersionUID = 1L;
-	private DefaultListModel<Peliculas> listModel;
+	//private DefaultListModel<Peliculas> listModel;
+	private TreeSet<String> tsModel;
 	private JScrollPane scrollPane;
-	private JList<Peliculas> jList;
+	private JList<String> jList;
 	private JLabel lblListado;
 
 
@@ -58,16 +62,23 @@ public class PanelListadoPeliculas extends JPanel
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
 		
-		jList = new JList<Peliculas>();
+		jList = new JList<String>();
 		jList.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		scrollPane.setViewportView(jList);
 		
 		
 	}
 	
-	public void setDefaultListModel(DefaultListModel<Peliculas> listModelRecibido)
+	public void setDefaultListModel(TreeSet<String> listModelRecibido)
 	{
-		this.listModel = listModelRecibido;
-		jList.setModel(this.listModel);
+		//this.tsModel = listModelRecibido;
+		DefaultListModel model = new DefaultListModel();
+		
+		Iterator<String> it = listModelRecibido.iterator();
+
+		while (it.hasNext())
+			model.addElement(it.next());
+		
+		jList.setModel(model);
 	}
 }

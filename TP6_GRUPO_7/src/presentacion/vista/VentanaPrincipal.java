@@ -1,7 +1,8 @@
-package Ejercicio1;
-
+package presentacion.vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,56 +10,39 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.util.TreeSet;
-import java.awt.event.ActionEvent;
 
-
-public class Principal extends JFrame 
+public class VentanaPrincipal extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane = new JPanel();
 	
-	//private static DefaultListModel<Peliculas> listModel = new DefaultListModel<Peliculas>();
-	private static TreeSet<String> tsModel = new TreeSet<String>();
-	
-	public static void main(String[] args) 
-	{	
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run() {
-				try 
-				{
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} 
-				catch (Exception e) 
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	public Principal() 
+	public VentanaPrincipal() 
 	{
-		this.setTitle("Trabajo Practico N° 5 - Grupo N° 7");
-				
+		this.setTitle("Trabajo Practico N° 6 - Grupo N° 7");
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		contentPane.setLayout(new BorderLayout(0,0));
 		setContentPane(contentPane);
 		
 		JMenuBar barra = new JMenuBar();	
-		JMenu menu = new JMenu("Peliculas");
+		JMenu menu = new JMenu("Persona");
 		
 		JMenuItem item1 = new JMenuItem("Agregar");
 		item1.addActionListener(new EventoAgregar());
 		menu.add(item1);
 		
-		JMenuItem item2 = new JMenuItem("Listar");
-		item2.addActionListener(new EventoListar());
+		JMenuItem item2 = new JMenuItem("Modificar");
+		item2.addActionListener(new EventoModificar());
 		menu.add(item2);
+
+		JMenuItem item3 = new JMenuItem("Eliminar");
+		item3.addActionListener(new EventoEliminar());
+		menu.add(item3);
+		
+		JMenuItem item4 = new JMenuItem("Listar");
+		item4.addActionListener(new EventoListar());
+		menu.add(item4);
 		
 		barra.add(menu);
 		
@@ -78,13 +62,10 @@ public class Principal extends JFrame
 		public void actionPerformed(ActionEvent e) 
 		{
 			contentPane.removeAll();
-			PanelAgregarPeliculas panel = new PanelAgregarPeliculas();
-			panel.setDefaultListModel(tsModel);
-			contentPane.add(new PanelAgregarPeliculas(tsModel));
+			PanelAgregar panel = new PanelAgregar();
+			contentPane.add(panel);
 			contentPane.revalidate();
-			contentPane.repaint();
-			
-			
+			contentPane.repaint();	
 		}
 	}
 	
@@ -94,11 +75,34 @@ public class Principal extends JFrame
 		public void actionPerformed(ActionEvent e) 
 		{
 			contentPane.removeAll();
-			PanelListadoPeliculas panel = new PanelListadoPeliculas();
+			PanelListar panel = new PanelListar();
 			contentPane.add(panel);
-			
-			panel.setDefaultListModel(tsModel);
-			
+			contentPane.revalidate();
+			contentPane.repaint();
+		}
+	}
+	
+	class EventoModificar implements ActionListener 
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			contentPane.removeAll();
+			PanelModificar panel = new PanelModificar();
+			contentPane.add(panel);
+			contentPane.revalidate();
+			contentPane.repaint();
+		}
+	}
+	
+	class EventoEliminar implements ActionListener 
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			contentPane.removeAll();
+			PanelEliminar panel = new PanelEliminar();
+			contentPane.add(panel);
 			contentPane.revalidate();
 			contentPane.repaint();
 		}
