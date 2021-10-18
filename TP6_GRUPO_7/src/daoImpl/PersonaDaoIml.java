@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import entidad.Persona;
 
@@ -25,25 +28,21 @@ public class PersonaDaoIml
 			statement.setString(1, persona.getDni());
 			statement.setString(2, persona.getNombre());
 			statement.setString(3, persona.getApellido());
+			
+			
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
 				registro = true;
 			}
 		} 
-		catch (SQLException e) 
+		catch (SQLException ex) 
 		{
-			e.printStackTrace();
-			try 
+			if (ex.getSQLState().startsWith("23"))
 			{
-				conexion.rollback();
-			}
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
+                JOptionPane.showMessageDialog(null, "DNI Duplicado");
 			}
 		}
-		
 		return registro;
 	}
 	
