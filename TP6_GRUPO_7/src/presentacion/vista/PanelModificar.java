@@ -8,6 +8,10 @@ import javax.swing.JTextField;
 
 public class PanelModificar extends JPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDNI;
