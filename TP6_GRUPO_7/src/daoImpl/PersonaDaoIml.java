@@ -22,7 +22,7 @@ public class PersonaDaoIml
 		try
 		{
 			statement = conexion.prepareStatement(insert);
-			statement.setInt(1, persona.getDni());
+			statement.setString(1, persona.getDni());
 			statement.setString(2, persona.getNombre());
 			statement.setString(3, persona.getApellido());
 			if(statement.executeUpdate() > 0)
@@ -55,7 +55,7 @@ public class PersonaDaoIml
 		try
 		{
 			state = conexion.prepareStatement(delete);
-			state.setString(1,Integer.toString(persona.getDni()));
+			state.setString(1,persona.getDni());
 			if(state.executeUpdate() > 0)
 			{
 				conexion.commit();
@@ -81,7 +81,7 @@ public class PersonaDaoIml
 			while (rs.next())
 			{
 				Persona nuevo= new Persona();
-				nuevo.setDni(rs.getInt("dni"));
+				nuevo.setDni(rs.getString("dni"));
 				nuevo.setNombre(rs.getString("nombre"));
 				nuevo.setApellido(rs.getString("apellido"));
 				Personas.add(nuevo);

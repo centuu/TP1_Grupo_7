@@ -8,6 +8,10 @@ import javax.swing.JScrollPane;
 
 public class PanelListar extends JPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable table;
 	public PanelListar() {
 		setLayout(null);

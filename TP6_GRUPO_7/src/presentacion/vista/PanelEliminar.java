@@ -1,13 +1,17 @@
 package presentacion.vista;
 
 import javax.swing.JPanel;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
 public class PanelEliminar extends JPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public PanelEliminar() {
 		setLayout(null);
 		
