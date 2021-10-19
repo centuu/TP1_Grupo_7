@@ -16,6 +16,7 @@ public class PersonaDaoIml
 	private static final String insert = "INSERT INTO personas(dni, nombre, apellido) VALUES(?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE dni = ?";
 	private static final String list = "SELECT * FROM personas";
+	private static final String edit = "UPDATE personas SET nombre = ?, apellido = ? WHERE dni = ?";
 
 	public boolean Insert(Persona persona)
 	{
@@ -46,7 +47,7 @@ public class PersonaDaoIml
 		return registro;
 	}
 	
-    public boolean Delete(Persona persona) 
+    public boolean Delete(String persona) 
     {	
     	PreparedStatement state;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -54,7 +55,7 @@ public class PersonaDaoIml
 		try
 		{
 			state = conexion.prepareStatement(delete);
-			state.setString(1,persona.getDni());
+			state.setString(1,persona);
 			if(state.executeUpdate() > 0)
 			{
 				conexion.commit();
@@ -92,4 +93,28 @@ public class PersonaDaoIml
 		}
     	return Personas;
      }
+    
+    public boolean Edit(String nombre,String apellido,String dni) 
+    {	
+    	PreparedStatement state;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean editar = false;
+		try
+		{
+			state = conexion.prepareStatement(edit);
+			state.setString(1,nombre);
+			state.setString(2,apellido);
+			state.setString(3,dni);
+			if(state.executeUpdate() > 0)
+			{
+				conexion.commit();
+				editar = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+    	return editar;
+    }
 }

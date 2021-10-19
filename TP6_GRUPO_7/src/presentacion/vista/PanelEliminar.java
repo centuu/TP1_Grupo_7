@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelEliminar extends JPanel
 {
@@ -34,6 +36,17 @@ public class PanelEliminar extends JPanel
 		add(lblEliminarUsuarios);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String  SelectedValue = jListArea.getSelectedValue();
+				String DNI = SelectedValue.substring(SelectedValue.length() - 8);
+				
+				PersonaDaoIml PersonaEliminar = new PersonaDaoIml();
+				PersonaEliminar.Delete(DNI);
+				LlenarJList();
+				
+			}
+		});
 		btnEliminar.setBounds(173, 262, 89, 23);
 		add(btnEliminar);
 		
