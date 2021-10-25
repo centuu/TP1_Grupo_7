@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="TP1_GRUPO_7/src"/>
+	<classpathentry kind="src" path="TP2_GRUPO_7/src"/>
+	<classpathentry kind="src" path="TP3_GRUPO_7/src"/>
+	<classpathentry kind="src" path="TP4_GRUPO_7/src"/>
+	<classpathentry kind="src" path="TP5_GRUPO_7/src"/>
+	<classpathentry kind="src" path="TP6_GRUPO_7/src"/>
+	<classpathentry kind="src" path="TP7_GRUPO_7/src"/>
+	<classpathentry kind="lib" path="TP6_GRUPO_7/mysql-connector-java-5.1.47-bin.jar"/>
+	<classpathentry kind="lib" path="TP6_GRUPO_7/mysql-connector-java-8.0.26.jar"/>
+	<classpathentry kind="output" path="TP1_GRUPO_7/bin"/>
+</classpath>

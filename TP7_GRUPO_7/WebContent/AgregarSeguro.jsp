@@ -3,7 +3,7 @@
 <%@ page import="daoImpl.SeguroImpl" %>
 <%@ page import="entidad.TipoSeguro" %>
 <%@ page import="daoImpl.TipoSeguroImpl" %>
-<%@page import = "java.util.ArrayList" %>
+<%@ page import = "java.util.ArrayList" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -25,6 +25,8 @@
 <br>
 <br>
 Id Seguro: 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;<label name="lblID"> </label>
+
 <br>
 Descripción: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;<input type="text" name="txtDesc"/>
 <br>

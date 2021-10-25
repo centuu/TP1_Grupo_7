@@ -48,6 +48,24 @@ public class SeguroImpl implements SeguroDao {
 		return result > 0;
 	}
 	
+	public String GetNextId(){
+		
+		try {
+			String id=null;
+			Connection conexion = Conexion.getConexion().getSQLConexion();
+			ResultSet rs;
+			rs = conexion.createStatement().executeQuery("SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'seguros'");
+			while(rs.next()){
+			id=rs.getString("idSeguro");
+			}
+			return id;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+	
 	
 
 	@Override

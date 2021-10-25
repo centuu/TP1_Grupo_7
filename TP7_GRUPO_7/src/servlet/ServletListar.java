@@ -15,30 +15,26 @@ import daoImpl.SeguroImpl;
 import entidad.Seguro;
 
 @WebServlet("/ServletSeguro")
-public class ServletSeguro extends HttpServlet {
+public class ServletListar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ServletSeguro() {
+    public ServletListar() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if (request.getParameter("btnAceptar")!=null)
+		if (request.getParameter("btnFiltrar")!=null)
 		   {
-			   Seguro ser= new Seguro();
-			   
-			   ser.setIdSeguro();
-			   ser.setDescripcion(request.getParameter("txtDesc"));
-			   ser.setCostoContratacion( Integer.parseInt(request.getParameter("txtCostCon")));
-			   ser.setCostoMaximo(Integer.parseInt( request.getParameter("txtCostMax")));
-			   ser.setTipo(Integer.parseInt( request.getParameter("tiposeguro")));
-			   SeguroDao dao=new  SeguroImpl();
-			   dao.insert(ser);
+		    //List <datos> listData = 
+		    //request.setAttribute("listData", listData);
+		    RequestDispatcher rd = getServletContext()
+		                               .getRequestDispatcher("/path/to/page.jsp");
+		    rd.forward(request, response);
 		   }
 		
-		RequestDispatcher rd=  request.getRequestDispatcher("/AgregarSeguro.jsp");
+		RequestDispatcher rd=  request.getRequestDispatcher("/ListarSeguros.jsp");
 		rd.forward(request,response);
    }
 

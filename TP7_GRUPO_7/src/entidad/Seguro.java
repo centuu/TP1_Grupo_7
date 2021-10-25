@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import daoImpl.SeguroImpl;
+
 public class Seguro 
 {	
 	private int idSeguro;
@@ -16,10 +18,11 @@ public class Seguro
 	{
 		
 	}
-	public Seguro(int tipo,String des,int contratacion,int maximo) 
+	public Seguro(int ID,int tipo,String des,int contratacion,int maximo) 
 	{
 		super();
-
+		
+		this.idSeguro = ID;
 		this.Tipo = tipo;
 		this.Descripcion = des;		
 		this.CostoContratacion = contratacion;
@@ -28,11 +31,13 @@ public class Seguro
 	}
 	
 	public int getIdSeguro() {
+		
 		return idSeguro;
 	}
 
-	public void setIdSeguro(int idSeguro) {
-		this.idSeguro = idSeguro;
+	public void setIdSeguro() {
+		SeguroImpl seguro = new SeguroImpl();
+		idSeguro = Integer.parseInt(seguro.GetNextId());
 	}
 
 	public String getDescripcion() {
