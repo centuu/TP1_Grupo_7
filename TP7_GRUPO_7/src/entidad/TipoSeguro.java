@@ -1,28 +1,39 @@
 package entidad;
 
-public class TipoSeguro {
+public class TipoSeguro 
+{
 	private short idtipo;
 	private String descripcion;
 	
-	
-	public TipoSeguro() {
+	public TipoSeguro() 
+	{
 		
 	}
-    public TipoSeguro(short id,String des) {
+	
+    public TipoSeguro(short id,String des) 
+    {
     	this.idtipo=id;
     	this.descripcion=des;
 		
 	}
-	public int getIdtipo() {
+    
+	public int getIdtipo() 
+	{
 		return idtipo;
 	}
-	public void setIdtipo(short idtipo) {
+	
+	public void setIdtipo(short idtipo) 
+	{
 		this.idtipo = idtipo;
 	}
-	public String getDescripcion() {
+	
+	public String getDescripcion() 
+	{
 		return descripcion;
 	}
-	public void setDescripcion(String descripcion) {
+	
+	public void setDescripcion(String descripcion) 
+	{
 		this.descripcion = descripcion;
 	} 
 }

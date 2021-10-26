@@ -1,6 +1,7 @@
 package dao;
 
-public interface UsuarioDao {
+public interface UsuarioDao 
+{
 	
 
 }

@@ -18,6 +18,7 @@ public class Seguro
 	{
 		
 	}
+	
 	public Seguro(int ID,int tipo,String des,int contratacion,int maximo) 
 	{
 		super();
@@ -27,55 +28,63 @@ public class Seguro
 		this.Descripcion = des;		
 		this.CostoContratacion = contratacion;
 		this.CostoMaximo = maximo;
-		
 	}
 	
-	public int getIdSeguro() {
-		
+	public int getIdSeguro() 
+	{
 		return idSeguro;
 	}
 
-	public void setIdSeguro() {
+	public void setIdSeguro() 
+	{
 		SeguroImpl seguro = new SeguroImpl();
 		idSeguro = Integer.parseInt(seguro.GetNextId());
 	}
 
-	public String getDescripcion() {
+	public String getDescripcion() 
+	{
 		return Descripcion;
 	}
 
-	public void setDescripcion(String descripcion) {
+	public void setDescripcion(String descripcion) 
+	{
 		Descripcion = descripcion;
 	}
 
-	public int getTipo() {
+	public int getTipo()
+	{
 		return Tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(int tipo)
+	{
 		Tipo = tipo;
 	}
 
-	public int getCostoContratacion() {
+	public int getCostoContratacion() 
+	{
 		return CostoContratacion;
 	}
 
-	public void setCostoContratacion(int costoContratacion) {
+	public void setCostoContratacion(int costoContratacion) 
+	{
 		CostoContratacion = costoContratacion;
 	}
 
-	public int getCostoMaximo() {
+	public int getCostoMaximo()
+	{
 		return CostoMaximo;
 	}
 
-	public void setCostoMaximo(int costoMaximo) {
+	public void setCostoMaximo(int costoMaximo) 
+	{
 		CostoMaximo = costoMaximo;
 	}
 
 	@Override
-	public String toString() {
-		return "id  =  " + idSeguro + ", Descripcion = " + Descripcion + ", Tipo= " + Tipo
-				+ ", CostoContratacion=" + CostoContratacion + ", CostoMaximo=" + CostoMaximo + "]";
+	public String toString()
+	{
+		return "id  =  " + idSeguro + ", Descripcion = " + Descripcion + ", Tipo= " + Tipo + ", CostoContratacion=" + CostoContratacion + ", CostoMaximo=" + CostoMaximo + "]";
 	}
 
 }

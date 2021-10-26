@@ -54,6 +54,4 @@ public class Usuario {
 	public String toString() {
 		return  "  Dni: "+dni+ ", Nombre: "+ nombre +", Apellido: "+ apellido;
 	}
-	
-
 }

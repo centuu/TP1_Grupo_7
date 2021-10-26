@@ -11,19 +11,20 @@ import javax.swing.JOptionPane;
 import dao.SeguroDao;
 import entidad.Seguro;
 
-public class SeguroImpl implements SeguroDao {
-	
+public class SeguroImpl implements SeguroDao 
+{
 	private static final String insert = "INSERT INTO Seguros(idTipo,descripcion,costoContratacion,costoAsegurado) VALUES(?,?,?,?)";
 	private static final String delete = "DELETE FROM Seguros WHERE idSeguro = ?";
 	private static final String list = "SELECT * FROM Seguros";
 	
 	@Override
-	public boolean insert(Seguro seguro) {
-		
+	public boolean insert(Seguro seguro) 
+	{
 		int result = -1;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		PreparedStatement ps;
-		try {
+		try 
+		{
 			ps = conexion.prepareStatement(insert);
 			ps.setInt(1,seguro.getTipo());
 			ps.setString(2,seguro.getDescripcion());
@@ -31,14 +32,20 @@ public class SeguroImpl implements SeguroDao {
 			ps.setInt(4,seguro.getCostoMaximo());
 			
 			result = ps.executeUpdate();
-			if (result > 0) {
+			if (result > 0) 
+			{
 				conexion.commit();
 			}
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
-			try {
+			try 
+			{
 				conexion.rollback();
-			} catch (SQLException ex) {
+			} 
+			catch (SQLException ex) 
+			{
 				ex.printStackTrace();
 				return false;
 			}
@@ -48,34 +55,37 @@ public class SeguroImpl implements SeguroDao {
 		return result > 0;
 	}
 	
-	public String GetNextId(){
-		
-		try {
-			String id=null;
+	public String GetNextId()
+	{
+		try 
+		{
+			String id= "";
 			Connection conexion = Conexion.getConexion().getSQLConexion();
 			ResultSet rs;
-			rs = conexion.createStatement().executeQuery("SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = 'seguros'");
-			while(rs.next()){
-			id=rs.getString("idSeguro");
+			rs = conexion.createStatement().executeQuery("SELECT COUNT(*) + 1 AS ID FROM segurosgroup.seguros");
+			while(rs.next())
+			{
+				id= rs.getString("ID");
 			}
 			return id;
-		} catch (SQLException ex) {
+		} 
+		catch (SQLException ex) 
+		{
 			ex.printStackTrace();
 			return null;
 		}
-		
 	}
-	
-	
 
 	@Override
-	public boolean delete(Seguro eliminar) {
+	public boolean delete(Seguro eliminar) 
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public ArrayList<Seguro> list() {
+	public ArrayList<Seguro> list() 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

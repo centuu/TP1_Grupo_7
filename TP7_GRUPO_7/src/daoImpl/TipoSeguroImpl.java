@@ -9,8 +9,8 @@ import dao.TipoSeguroDao;
 import entidad.TipoSeguro;
 
 
-public class TipoSeguroImpl implements TipoSeguroDao {
-	
+public class TipoSeguroImpl implements TipoSeguroDao 
+{
 	private static final String list = "select * from tipoSeguros";
 	@Override
 	
@@ -20,7 +20,7 @@ public class TipoSeguroImpl implements TipoSeguroDao {
 		PreparedStatement ps;
 		ArrayList<TipoSeguro> Lista = new ArrayList<TipoSeguro>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		
+
 		try
 		{
 			ps = conexion.prepareStatement(list);
@@ -37,12 +37,9 @@ public class TipoSeguroImpl implements TipoSeguroDao {
 		catch(SQLException e) 
 		{
 			e.printStackTrace();
-			;
 			return Lista;
 		}
 		
 		return Lista;
-
 	}
-
 }
