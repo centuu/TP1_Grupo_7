@@ -9,6 +9,6 @@ public interface SeguroDao
 {
 	public boolean insert(Seguro seguro);
 	public boolean delete(Seguro eliminar);
-	public ArrayList<Seguro>list();
+	public ArrayList<Seguro>listarxTipo(String tipo);
 
 }

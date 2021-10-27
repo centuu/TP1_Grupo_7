@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-
+import java.math.BigDecimal;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,8 +33,8 @@ public class ServletSeguro extends HttpServlet
 			   
 			   //ser.setIdSeguro();
 			   ser.setDescripcion(request.getParameter("txtDesc"));
-			   ser.setCostoContratacion( Integer.parseInt(request.getParameter("txtCostCon")));
-			   ser.setCostoMaximo(Integer.parseInt( request.getParameter("txtCostMax")));
+			   ser.setCostoContratacion(new BigDecimal(request.getParameter("txtCostCon")));
+			   ser.setcostoAsegurado(new BigDecimal( request.getParameter("txtCostMax")));
 			   ser.setTipo(Integer.parseInt( request.getParameter("tiposeguro")));
 			   SeguroDao dao=new  SeguroImpl();
 			   dao.insert(ser);

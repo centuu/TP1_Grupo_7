@@ -17,21 +17,57 @@
 <a href="Inicio.jsp">Inicio</a> <a href="AgregarSeguro.jsp">Agregar Seguro</a> <a href="ListarSeguros.jsp">Listar Seguros</a>
 <br>
 <br>
-<form action="ServletSeguro" method="Get">
+<form action="ServletListar" method="Get">
 <b>"Tipos de Seguros de la Base de Datos"</b>
 <br>
 <br>
-Búsqueda por Tipo de Seguros: <select name="tiposeguro">
+Búsqueda por Tipo de Seguros: 
+     <select name="tiposeguro">
         <%  
           TipoSeguroImpl imp= new TipoSeguroImpl();
          ArrayList<TipoSeguro> Tiposeguros = imp.list();
          if(Tiposeguros != null && !Tiposeguros.isEmpty())
 		  for(TipoSeguro seg  :Tiposeguros) 
 		  {
-	%>
-                <option value="<%=seg.getIdtipo()%>"><%=seg.getDescripcion()%></option>
-                <%  } %>
-       </select><input type="submit" value="Filtrar" name="btnFiltrar" style="height: 34px; ">
-        </form >
+     	%>  <option value="<%=seg.getIdtipo()%>"><%=seg.getDescripcion()%></option>
+       <%  } %>
+       </select>
+       <input type="submit" value="Filtrar" name="btnFiltrar" style="height: 34px; ">
+   </form >
+        
+        
+         <%   ArrayList<Seguro> listaseguros=null;
+         
+      if (request.getAttribute("listSeguros")!=null)
+        {
+            listaseguros=(ArrayList<Seguro>) request.getAttribute("listSeguros");           
+        } %>
+        
+        <table border="1">
+           <tr>
+              <th>ID</th>
+              <th>Descripcion</th>
+              <th>Tipo</th>
+              <th>Costo Contratacion</th>
+              <th>Costo Maximo</th>
+           </tr>
+           
+           <% 
+           if (listaseguros!=null){
+           for(Seguro seg : listaseguros) 
+                 
+		  	  {%>
+               <tr>
+                 <th><%=seg.getIdSeguro() %></th>
+                 <th><%=seg.getDescripcion() %></th>
+                 <th><%=seg.getTipo() %></th>
+                 <th><%=seg.getCostoContratacion() %></th>
+                 <th><%=seg.getcostoAsegurado() %></th>
+               </tr>
+             <%} 
+             }%>
+        </table>
+      
+      
 </body>
 </html>

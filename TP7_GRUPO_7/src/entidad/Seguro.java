@@ -10,24 +10,24 @@ public class Seguro
 {	
 	private int idSeguro;
 	private String Descripcion;
-	private int Tipo;
-	private int 	CostoContratacion;
-	private int CostoMaximo;
+	private int idTipo;
+	private BigDecimal	CostoContratacion;
+	private BigDecimal costoAsegurado;
 	
 	public Seguro()
 	{
 		
 	}
 	
-	public Seguro(int ID,int tipo,String des,int contratacion,int maximo) 
+	public Seguro(int ID,int tipo,String des,BigDecimal contratacion,BigDecimal maximo) 
 	{
 		super();
 		
 		this.idSeguro = ID;
-		this.Tipo = tipo;
+		this.idTipo = tipo;
 		this.Descripcion = des;		
 		this.CostoContratacion = contratacion;
-		this.CostoMaximo = maximo;
+		this.costoAsegurado = maximo;
 	}
 	
 	public int getIdSeguro() 
@@ -35,10 +35,11 @@ public class Seguro
 		return idSeguro;
 	}
 
-	public void setIdSeguro() 
+	public void setIdSeguro(int id) 
 	{
 		SeguroImpl seguro = new SeguroImpl();
-		idSeguro = Integer.parseInt(seguro.GetNextId());
+		//idSeguro = Integer.parseInt(seguro.GetNextId());
+		this.idSeguro=id;
 	}
 
 	public String getDescripcion() 
@@ -53,38 +54,38 @@ public class Seguro
 
 	public int getTipo()
 	{
-		return Tipo;
+		return idTipo;
 	}
 
 	public void setTipo(int tipo)
 	{
-		Tipo = tipo;
+		idTipo = tipo;
 	}
 
-	public int getCostoContratacion() 
+	public BigDecimal getCostoContratacion() 
 	{
 		return CostoContratacion;
 	}
 
-	public void setCostoContratacion(int costoContratacion) 
+	public void setCostoContratacion(BigDecimal costoContratacion) 
 	{
 		CostoContratacion = costoContratacion;
 	}
 
-	public int getCostoMaximo()
+	public BigDecimal getcostoAsegurado()
 	{
-		return CostoMaximo;
+		return costoAsegurado;
 	}
 
-	public void setCostoMaximo(int costoMaximo) 
+	public void setcostoAsegurado(BigDecimal costoMaximo) 
 	{
-		CostoMaximo = costoMaximo;
+		costoAsegurado = costoMaximo;
 	}
 
 	@Override
 	public String toString()
 	{
-		return "id  =  " + idSeguro + ", Descripcion = " + Descripcion + ", Tipo= " + Tipo + ", CostoContratacion=" + CostoContratacion + ", CostoMaximo=" + CostoMaximo + "]";
+		return "id  =  " + idSeguro + ", Descripcion = " + Descripcion + ", Tipo= " + idTipo + ", CostoContratacion=" + CostoContratacion + ", CostoMaximo=" + costoAsegurado + "]";
 	}
 
 }
