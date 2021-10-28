@@ -27,22 +27,72 @@ public class ServletSeguro extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		boolean isInvalid= false;
 		if (request.getParameter("btnAceptar")!=null)
 		{
 			   Seguro ser= new Seguro();
-			   
-			   //ser.setIdSeguro();
-			   ser.setDescripcion(request.getParameter("txtDesc"));
-			   ser.setCostoContratacion(new BigDecimal(request.getParameter("txtCostCon")));
-			   ser.setcostoAsegurado(new BigDecimal( request.getParameter("txtCostMax")));
-			   ser.setTipo(Integer.parseInt( request.getParameter("tiposeguro")));
+			   String descripcion = request.getParameter("txtDesc");
+			   String costoContratacion = request.getParameter("txtCostCon");
+			   String costoMaximo = request.getParameter("txtCostMax");
+			   String tipoSeguro = request.getParameter("tiposeguro");
+			    
+			   if(descripcion.isEmpty() || costoContratacion.isEmpty() || costoMaximo.isEmpty() || tipoSeguro.isEmpty())
+			   {
+				  isInvalid = true;			   
+			   }
+			   else
+			   {
+				   
+				   if(isNumeric(request.getParameter("txtCostCon")))
+				   {
+					   ser.setCostoContratacion(new BigDecimal(request.getParameter("txtCostCon")));			   
+				   }
+				   else 
+				   {
+					   isInvalid = true;
+				   }
+				   
+				   if(isNumeric(request.getParameter("txtCostCon")))
+				   {
+					   ser.setcostoAsegurado(new BigDecimal(request.getParameter("txtCostMax")));			   
+				   }
+				   else 
+				   {
+					   isInvalid = true;
+				   }
+				   ser.setDescripcion(request.getParameter("txtDesc"));
+				   ser.setTipo(Integer.parseInt( request.getParameter("tiposeguro")));
+			   }
 			   SeguroDao dao=new  SeguroImpl();
-			   dao.insert(ser);
+			   
+			   if(!isInvalid)
+			   {
+				   dao.insert(ser);				   
+			   }
 		}
 		
-		RequestDispatcher rd=  request.getRequestDispatcher("/AgregarSeguro.jsp");
-		rd.forward(request,response);
+		if(isInvalid == false)
+		{
+			System.out.println("flag false. No hubo problemas con validación de datos");
+			RequestDispatcher rd=request.getRequestDispatcher("/AgregarSeguro.jsp");
+			rd.forward(request,response);			
+		}
+		else
+		{
+			System.out.println("flag true. Hubo problemas con validación de datos");
+			RequestDispatcher rd=request.getRequestDispatcher("/Inicio.jsp");
+			rd.forward(request,response);
+		}
    }
+
+	private boolean isNumeric(String cadena) {
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
