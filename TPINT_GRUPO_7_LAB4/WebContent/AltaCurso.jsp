@@ -44,9 +44,7 @@
 		<div class="col-2"></div>
 		<div class="col-8">
 			<div class="container text-center my-5 "> 
-			<div class="row ">
-				<div class="col-lg-4"></div>
-				<div id="card" class="col-lg-4 border border-secondary rounded p-4">
+				<div id="card" class="col border border-secondary rounded p-4">
 					<div class="row mb-3">
 						<label for="btn-Profesor">Seleccione un profesor</label>
 						<div class="btn-group" id="btn-Profesor">
@@ -69,10 +67,36 @@
 						  </div>
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-5">
+							<label>Alumnos a seleccionar</label>
+							<select class="form-select" size="10" aria-label="size 3 select example">
+							  <option selected>Open this select menu</option>
+							  <option value="1">One</option>
+							  <option value="2">Two</option>
+							  <option value="3">Three</option>
+							</select>
+						</div>
+						<div class="col-2 align-items-center pt-5">
+							<button class="btn btn-warning mb-2">></button>
+							<br>
+							<button class="btn btn-warning"><</button>
+						</div>
+						<div class="col-5">
+							<label>Alumnos a seleccionados</label>
+							<select class="form-select" size="10" aria-label="size 3 select example">
+							  <option selected>Open this select menu</option>
+							  <option value="1">One</option>
+							  <option value="2">Two</option>
+							  <option value="3">Three</option>
+							</select>
+						</div>
+					</div>
+
+					
 					<button type="submit" class="btn btn-primary">Confirmar</button>
 				</div>
-				<div class="col-lg-4"></div>
-	 		</div>
 		</div>
 		</div>
 		<div class="col-2"></div>

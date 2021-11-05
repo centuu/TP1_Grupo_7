@@ -7,3 +7,13 @@ body
 {
 	background-color: white;
 }
+
+#btn-Profesor
+{
+	display: inline;
+}
+
+#btn-Materia
+{
+	display: inline;
+}
