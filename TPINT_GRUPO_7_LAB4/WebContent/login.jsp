@@ -28,6 +28,9 @@
 					<li class="nav-item">
 	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
 					</li>
+	        		<li class="nav-item">
+	          			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>
+					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">
 			 	    <li class="nav-item">
