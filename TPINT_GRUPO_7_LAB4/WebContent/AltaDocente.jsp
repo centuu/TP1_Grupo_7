@@ -20,7 +20,7 @@
 						<a class="nav-link mx-4" aria-current="page" href="login.jsp">Login</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link active" href="AltaAlumno.jsp">Alta alumno</a>
+	          			<a class="nav-link" href="AltaAlumno.jsp">Alta alumno</a>
 					</li>	
 					<li class="nav-item">
 	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
@@ -29,7 +29,7 @@
 	          			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>
 					</li>
 					<li class="nav-item">
-	          			<a class="nav-link" href="AltaDocente.jsp">Registro Docentes</a>
+	          			<a class="nav-link active" href="AltaDocente.jsp">Registro Docentes</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">
@@ -42,7 +42,7 @@
 	</nav>
 	
 	<main>  
-	 	<h1>Registro Alumnos </h1>           
+	 	<h1>Registro Docentes</h1>           
 		<form method="post">
 		 <div class="container text-center my-5 "> 
 		  <div class="row ">
@@ -73,7 +73,7 @@
 		           	<input type="text" class="form-control" >
 		        </div>
 		          <div class="row mb-3 text-center">
-		          	<label  class="from-group">Provincia</label>
+		          	<label  class="from-group">Localidad</label>
 		           	<input type="text" class="form-control" id="inputPassword3">
 		        </div>
 		         <div class="row mb-3 text-center">
