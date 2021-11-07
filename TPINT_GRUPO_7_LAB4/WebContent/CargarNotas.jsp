@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>TP Integrados </title>
+	<title>TP Integrador - Grupo N° 7</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="./resources/css/CargarNotas.css">
 </head>
@@ -17,10 +17,10 @@
 	    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 	        		<li class="nav-item">
-						<a class="nav-link mx-4" aria-current="page" href="login.jsp">Login</a>
-	        		</li>
-	        		<li class="nav-item">
-	          			<a class="nav-link" href="AltaAlumno.jsp">Alta alumno</a>
+	          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
+					</li>	
+					<li class="nav-item">
+	          			<a class="nav-link" href="BajaAlumno.jsp">Baja Alumnos</a>
 					</li>	
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
@@ -29,7 +29,10 @@
 	          			<a class="nav-link active" href="CargarNotas.jsp">Cargar notas</a>
 					</li>
 					<li class="nav-item">
-	          			<a class="nav-link" href="AltaDocente.jsp">Registro Docentes</a>
+	          			<a class="nav-link" href="AltaDocente.jsp">Alta Docentes</a>
+					</li>
+					<li class="nav-item">
+	          			<a class="nav-link" href="BajaDocente.jsp">Baja Docentes</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">

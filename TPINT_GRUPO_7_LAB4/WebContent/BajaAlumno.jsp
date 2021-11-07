@@ -17,10 +17,10 @@
 	    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 	        		<li class="nav-item">
-	          			<a class="nav-link active" href="AltaAlumno.jsp">Alta Alumnos</a>
-					</li>	
+	          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
+					</li>
 					<li class="nav-item">
-	          			<a class="nav-link" href="BajaAlumno.jsp">Baja Alumnos</a>
+	          			<a class="nav-link active" href="BajaAlumno.jsp">Baja Alumnos</a>
 					</li>	
 					<li class="nav-item">
 	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
@@ -45,7 +45,7 @@
 	</nav>
 	
 	<main>  
-	 	<h1>Registro Alumnos </h1>           
+	 	<h1>Baja Alumnos </h1>           
 		<form method="post">
 		 <div class="container text-center my-5 "> 
 		  <div class="row ">
@@ -53,7 +53,7 @@
 		     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
 		       	<div class="row mb-3">
 		         	<label class="from-group">Legajo</label>
-		           	<input type="text" class="form-control" >
+		           	<input type="text" class="form-control" > <label class="from-group">* Este campo es obligatorio.</label>
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">DNI</label>
@@ -92,7 +92,7 @@
 		           	<input type="text" class="form-control" id="inputPassword3">
 		        </div>
 		      	<div class="row mb-3 text-center">
-		       		<button type="submit" class="btn btn-primary">Registrar</button>
+		       		<button type="submit" class="btn btn-primary">Baja</button>
 		     	</div>
 				<div class="col-lg-4"></div>
 			</div>  
