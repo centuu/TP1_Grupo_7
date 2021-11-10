@@ -20,7 +20,7 @@
 	          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
 					</li>	
 					<li class="nav-item">
-	          			<a class="nav-link" href="BajaAlumno.jsp">Baja Alumnos</a>
+	          			<a class="nav-link" href="Alumnos.jsp">lista Alumnos</a>
 					</li>	
 					<li class="nav-item">
 	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
@@ -32,7 +32,7 @@
 	          			<a class="nav-link" href="AltaDocente.jsp">Alta Docentes</a>
 					</li>
 					<li class="nav-item">
-	          			<a class="nav-link active" href="BajaDocente.jsp">Baja Docentes</a>
+	          			<a class="nav-link" href="Docentes.jsp">lista Docentes</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">

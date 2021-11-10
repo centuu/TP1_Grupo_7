@@ -20,16 +20,26 @@
 	    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 	        		<li class="nav-item">
-						<a class="nav-link active mx-4" aria-current="page" href="#.jsp">Login</a>
-	        		</li>
+	          			<a class="nav-link" href="login.jsp">login</a>
+					</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="AltaAlumno.jsp">Alta alumno</a>
+	          			<a class="nav-link active" href="AltaAlumno.jsp">Alta Alumnos</a>
+					</li>	
+					
+					<li class="nav-item">
+	          			<a class="nav-link" href="Alumnos.jsp">lista Alumnos</a>
 					</li>	
 					<li class="nav-item">
 	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
 					</li>
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>
+					</li>
+					<li class="nav-item">
+	          			<a class="nav-link" href="AltaDocente.jsp">Alta Docentes</a>
+					</li>
+					<li class="nav-item">
+	          			<a class="nav-link" href="Docentes.jsp">lista Docentes</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">

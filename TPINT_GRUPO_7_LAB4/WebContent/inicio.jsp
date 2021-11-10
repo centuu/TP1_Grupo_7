@@ -20,16 +20,19 @@
 	          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
 					</li>	
 					<li class="nav-item">
-	          			<a class="nav-link" href="BajaAlumno.jsp">Baja Alumnos</a>
+	          			<a class="nav-link" href="Alumnos.jsp">lista Alumnos</a>
 					</li>	
 					<li class="nav-item">
 	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
 					</li>
 	        		<li class="nav-item">
+	          			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>
+					</li>
+					<li class="nav-item">
 	          			<a class="nav-link" href="AltaDocente.jsp">Alta Docentes</a>
 					</li>
 					<li class="nav-item">
-	          			<a class="nav-link" href="BajaDocente.jsp">Baja Docentes</a>
+	          			<a class="nav-link" href="Docentes.jsp">lista Docentes</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">
@@ -40,6 +43,10 @@
 			</div>
 		</div>
 	</nav>
+	
+	
+	
+	
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
