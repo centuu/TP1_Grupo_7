@@ -91,6 +91,10 @@
 		          	<label  class="from-group">Telefono</label>
 		           	<input type="text" class="form-control" id="inputPassword3">
 		        </div>
+    		     <div class="row mb-3 text-center">
+		          	<label  class="from-group">Contraseña</label>
+		           	<input type="text" class="form-control" id="inputPassword3">
+		        </div>
 		      	<div class="row mb-3 text-center">
 		       		<button type="submit" class="btn btn-primary">Registrar</button>
 		     	</div>

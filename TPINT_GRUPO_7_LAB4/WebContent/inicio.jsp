@@ -31,6 +31,9 @@
 					<li class="nav-item">
 	          			<a class="nav-link" href="BajaDocente.jsp">Baja Docentes</a>
 					</li>
+					<li class="nav-item">
+	          			<a class="nav-link" href="CargarNotas.jsp">Cargar Notas</a>
+					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">
 			 	    <li class="nav-item">
