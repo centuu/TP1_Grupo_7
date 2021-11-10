@@ -30,6 +30,9 @@
 					<li class="nav-item">
 	          			<a class="nav-link" href="ListarDocentes.jsp">Listar Docentes</a>
 					</li>
+					<li class="nav-item">
+	          			<a class="nav-link" href="ListarAlumnos.jsp">Listar Alumnos</a>
+					</li>
 				</ul>
 				<ul class="navbar-nav justify-content-end">
 			 	    <li class="nav-item">
