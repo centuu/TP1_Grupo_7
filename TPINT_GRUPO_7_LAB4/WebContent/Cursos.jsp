@@ -45,6 +45,14 @@
 			</div>
 		</div>
 	</nav>
+	  <nav class="navbar sticky-top bg-light">
+        <div class=" mx-auto">
+                <form class="d-flex">
+                   <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+               </form>
+         </div>
+      </nav>
 
  <div class="row p-4">
         <div class="col col-4">
@@ -97,7 +105,7 @@
                      </tr>
                       <tr>
                          <td>004</td>
-                         <td>Matematia 1</td>
+                         <td>Matematica 1</td>
                          <td> 2019</td>
                          <td><button type="submit" class="btn btn-info mx-0">info</button>
                        

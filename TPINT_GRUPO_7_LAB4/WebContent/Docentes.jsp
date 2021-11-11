@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="./resources/css/AltaAlumno.css">
 </head>
 <body>
-<<<<<<< HEAD:TPINT_GRUPO_7_LAB4/WebContent/Docentes.jsp
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 	    	<a class="navbar-brand" href="inicio.jsp">Home</a>
@@ -44,10 +44,18 @@
 			</div>
 		</div>
 	</nav>
+	  <nav class="navbar sticky-top bg-light">
+        <div class="align-items-lg-start ms-5">
+                <form class="d-flex">
+                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+               </form>
+         </div>
+      </nav>
 	
-=======
+
 	<jsp:include page="/partials/navbar.jsp" />	
->>>>>>> b811194c1481688e73c1dadbf6728d5bf4c730be:TPINT_GRUPO_7_LAB4/WebContent/BajaDocente.jsp
+
 	<main>  
 	 	<div class="row p-4">
         <div class="col col-4">
