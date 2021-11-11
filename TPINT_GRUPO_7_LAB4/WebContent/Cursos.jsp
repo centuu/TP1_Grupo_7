@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>TP Integrador - Grupo N° 7</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="stylesheet" href="./resources/css/AltaAlumno.css">
+
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 	    	<a class="navbar-brand" href="inicio.jsp">Home</a>
@@ -45,9 +45,8 @@
 			</div>
 		</div>
 	</nav>
-	
-	<main>  
-	 <div class="row p-4">
+
+ <div class="row p-4">
         <div class="col col-4">
             <div class=" text-center">
                     <img src="resources/img/user2.png" width="200"alt="" />    
@@ -60,68 +59,49 @@
                 <ul class="list-group">
                     <li class="list-group-item"> <a href="Docentes.jsp">Docentes</a> </li>
                     <li class="list-group-item"><a href="Alumnos.jsp">alumnos</a></li>
-                    <li class="list-group-item"> <a href="Cursos.jsp">cursos </a></li>
+                    <li class="list-group-item"> <a href="AltaCurso.jsp">cursos </a></li>
                 </ul>
             </div>
         </div>
         <div class="col col-8">
             <div class="container text-center fs-3" style="font-family:Algerian;">
-                 <p> Lista Alumnos</p>
+                 <p> Lista Curso</p>
               </div>
             <div class="col-12 modal-content me-5">
                 <table class="table table-hover table-striped">
                     <tr class="alert-primary">
-                        <th scope="col">Legajo</th>
+                        <th scope="col">codigo</th>
                         <th scope="col"> Nombre</th>
-                        <th scope="col">Apellido</th>
+                        <th scope="col">año</th>
                         <th scope="col"> </th>           
 
                     </tr>
                      <tr>
-                         <td>1234</td>
-                         <td>Agustin</td>
-                         <td> Carusillo</td>
+                         <td>001</td>
+                         <td>Programacion</td>
+                         <td> 2021</td>
                          <td><button type="submit" class="btn btn-info mx-0">info</button>
-                            <button type="submit" class="btn btn-success">editar</button>                         
-                            <button type="submit" class="btn btn-danger">eliminar</button></td>
                        
                      </tr>
                      <tr>
-                         <td>1235</td>
-                         <td>Edwin</td>
-                         <td> Salcedo</td>
+                         <td>002</td>
+                         <td>Metodologia de sistemas</td>
+                         <td> 2020</td>
                          <td><button type="submit" class="btn btn-info mx-0">info</button>
-                            <button type="submit" class="btn btn-success">editar</button>                         
-                            <button type="submit" class="btn btn-danger">eliminar</button></td>
-                       
                      </tr>
                       <tr>
-                         <td>1236</td>
-                         <td>Juan</td>
-                         <td> Cruz</td>
-                         <td><button type="submit" class="btn btn-info mx-0">info</button>
-                            <button type="submit" class="btn btn-success">editar</button>                         
-                            <button type="submit" class="btn btn-danger">eliminar</button></td>                    
+                         <td>003</td>
+                         <td>Lavoratorio 4</td>
+                         <td> 2021</td>
+                         <td><button type="submit" class="btn btn-info mx-0">info</button>               
                      </tr>
                       <tr>
-                         <td>1237</td>
-                         <td>Pablo </td>
-                         <td> Torres</td>
+                         <td>004</td>
+                         <td>Matematia 1</td>
+                         <td> 2019</td>
                          <td><button type="submit" class="btn btn-info mx-0">info</button>
-                            <button type="submit" class="btn btn-success">editar</button>                         
-                            <button type="submit" class="btn btn-danger">eliminar</button></td>
                        
                      </tr>
-                             <tr>
-                         <td>1238</td>
-                         <td>Tomas</td>
-                         <td> Scutti</td>
-                         <td><button type="submit" class="btn btn-info mx-0">info</button>
-                            <button type="submit" class="btn btn-success">editar</button>                         
-                            <button type="submit" class="btn btn-danger">eliminar</button></td>
-                       
-                     </tr>
-                     
 
                   </table>
                </div>
@@ -129,7 +109,5 @@
         </div>
     </div>
 	
-	</main> 
- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

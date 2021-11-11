@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="./resources/css/AltaAlumno.css">
 </head>
 <body>
+<<<<<<< HEAD:TPINT_GRUPO_7_LAB4/WebContent/Docentes.jsp
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 	    	<a class="navbar-brand" href="inicio.jsp">Home</a>
@@ -44,60 +45,92 @@
 		</div>
 	</nav>
 	
+=======
+	<jsp:include page="/partials/navbar.jsp" />	
+>>>>>>> b811194c1481688e73c1dadbf6728d5bf4c730be:TPINT_GRUPO_7_LAB4/WebContent/BajaDocente.jsp
 	<main>  
-	 	<h1>Baja Docentes</h1>           
-		<form method="post">
-		 <div class="container text-center my-5 "> 
-		  <div class="row ">
-		     <div class="col-lg-4"></div> 
-		     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
-		       	<div class="row mb-3">
-		         	<label class="from-group">Legajo</label>
-		           	<input type="text" class="form-control" >
-		           	<label class="from-group">* Este campo es obligatorio.</label>
-		        </div>
-		        <div class="row mb-3 text-center">
-		          	<label  class="from-group">DNI</label>
-		           	<input type="text" class="form-control" >
-		        </div>
-		        <div class="row mb-3 text-center">
-		         	<label  class="from-group">Nombre</label>
-		           	<input type="text" class="form-control">
-		        </div>
-		        <div class="row mb-3 text-center">
-		          	<label  class="from-group">Apellido</label>
-		           	<input type="text" class="form-control" >
-		        </div>
-		        <div class="row mb-3 text-center">
-		          	<label  class="from-group">Fecha Nacimiento</label>
-		           	<input type="text" class="form-control" >
-		        </div>
-		        <div class="row mb-3 text-center">
-		          	<label class="from-group">Direccion</label>
-		           	<input type="text" class="form-control" >
-		        </div>
-		          <div class="row mb-3 text-center">
-		          	<label  class="from-group">Localidad</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
-		        </div>
-		         <div class="row mb-3 text-center">
-		          	<label  class="from-group">Nacionalidad</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
-		        </div>
-		         <div class="row mb-3 text-center">
-		          	<label  class="from-group">Email</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
-		        </div>
-		         <div class="row mb-3 text-center">
-		          	<label  class="from-group">Telefono</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
-		        </div>
-		      	<div class="row mb-3 text-center">
-		       		<button type="submit" class="btn btn-primary">Baja</button>
-		     	</div>
-				<div class="col-lg-4"></div>
-			</div>  
-		</form>
+	 	<div class="row p-4">
+        <div class="col col-4">
+            <div class=" text-center">
+                    <img src="resources/img/user2.png" width="200"alt="" />    
+            </div>
+            <div class="bg-secondary mt-5">
+            
+                   <h1>Bienvenido Admin</h1> 
+            </div>
+           <div class="text-center">
+                <ul class="list-group">
+                    <li class="list-group-item"> <a href="Docentes.jsp">Docentes</a> </li>
+                    <li class="list-group-item"><a href="Alumnos.jsp">alumnos</a></li>
+                    <li class="list-group-item"> <a href="Cursos.jsp">cursos </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col col-8">
+            <div class="container text-center fs-3" style="font-family:Algerian;">
+                 <p> Lista Docentes</p>
+              </div>
+            <div class="col-12 modal-content me-5">
+                <table class="table table-hover table-striped">
+                    <tr class="alert-primary">
+                        <th scope="col">Legajo</th>
+                        <th scope="col"> Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col"> </th>           
+
+                    </tr>
+                     <tr>
+                         <td>1234</td>
+                         <td>Tamara </td>
+                         <td> Herrera</td>
+                         <td><button type="submit" class="btn btn-info mx-0">info</button>
+                            <button type="submit" class="btn btn-success">editar</button>                         
+                            <button type="submit" class="btn btn-danger">eliminar</button></td>
+                       
+                     </tr>
+                     <tr>
+                         <td>1235</td>
+                         <td>Carlos</td>
+                         <td>Rodriguez</td>
+                         <td><button type="submit" class="btn btn-info mx-0">info</button>
+                            <button type="submit" class="btn btn-success">editar</button>                         
+                            <button type="submit" class="btn btn-danger">eliminar</button></td>
+                       
+                     </tr>
+                      <tr>
+                         <td>1236</td>
+                         <td>Lorena</td>
+                         <td>Palermo</td>
+                         <td><button type="submit" class="btn btn-info mx-0">info</button>
+                            <button type="submit" class="btn btn-success">editar</button>                         
+                            <button type="submit" class="btn btn-danger">eliminar</button></td>                    
+                     </tr>
+                      <tr>
+                         <td>1237</td>
+                         <td>Angel </td>
+                         <td>Simon</td>
+                         <td><button type="submit" class="btn btn-info mx-0">info</button>
+                            <button type="submit" class="btn btn-success">editar</button>                         
+                            <button type="submit" class="btn btn-danger">eliminar</button></td>
+                       
+                     </tr>
+                             <tr>
+                         <td>1238</td>
+                         <td>Maxi</td>
+                         <td> Fernandez</td>
+                         <td><button type="submit" class="btn btn-info mx-0">info</button>
+                            <button type="submit" class="btn btn-success">editar</button>                         
+                            <button type="submit" class="btn btn-danger">eliminar</button></td>
+                       
+                     </tr>
+                     
+
+                  </table>
+               </div>
+
+        </div>
+    </div>
+	
 	</main> 
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

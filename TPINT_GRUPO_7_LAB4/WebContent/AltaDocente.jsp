@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="./resources/css/AltaAlumno.css">
 </head>
 <body>
+<<<<<<< HEAD
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 	    	<a class="navbar-brand" href="inicio.jsp">Home</a>
@@ -43,6 +44,9 @@
 			</div>
 		</div>
 	</nav>
+=======
+	<jsp:include page="/partials/navbar.jsp" />
+>>>>>>> b811194c1481688e73c1dadbf6728d5bf4c730be
 	
 	<main>  
 	 	<h1>Registro Docentes</h1>           
@@ -90,6 +94,10 @@
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Telefono</label>
 		           	<input type="text" class="form-control" id="inputPassword3">
+		        </div>
+    		     <div class="row mb-3 text-center">
+		          	<label  class="from-group">Contraseña</label>
+		           	<input type="password" class="form-control" id="inputPassword3">
 		        </div>
 		      	<div class="row mb-3 text-center">
 		       		<button type="submit" class="btn btn-primary">Registrar</button>

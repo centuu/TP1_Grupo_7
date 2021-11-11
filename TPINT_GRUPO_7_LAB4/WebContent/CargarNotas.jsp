@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="./resources/css/CargarNotas.css">
 </head>
 <body>
+<<<<<<< HEAD
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 	    	<a class="navbar-brand" href="inicio.jsp">Home</a>
@@ -43,6 +44,9 @@
 			</div>
 		</div>
 	</nav>
+=======
+	<jsp:include page="/partials/navbar.jsp" />
+>>>>>>> b811194c1481688e73c1dadbf6728d5bf4c730be
 	<div class="row" align="center">
 		<h3>Cargar notas</h3>
 	</div>
