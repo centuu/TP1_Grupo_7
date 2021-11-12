@@ -8,53 +8,14 @@
 	<link rel="stylesheet" href="./resources/css/AltaCurso.css">
 </head>
 <body>
-<<<<<<< HEAD
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-	    	<a class="navbar-brand" href="inicio.jsp">Home</a>
-	    	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      		<span class="navbar-toggler-icon"></span>
-	    	</button>
-	    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-	        		<li class="nav-item">
-	          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
-					</li>	
-					<li class="nav-item">
-	          			<a class="nav-link" href="Alumnos.jsp">lista Alumnos</a>
-					</li>	
-					<li class="nav-item">
-	          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
-					</li>
-	        		<li class="nav-item">
-	          			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>
-					</li>
-					<li class="nav-item">
-	          			<a class="nav-link" href="AltaDocente.jsp">Alta Docentes</a>
-					</li>
-					<li class="nav-item">
-	          			<a class="nav-link" href="Docentes.jsp">lista Docentes</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav justify-content-end">
-			 	    <li class="nav-item">
-			          <label class="nav-link"> Usuario</label>
-			        </li>	
-				</ul>
-			</div>
-		</div>
-	</nav>
-=======
 	<jsp:include page="/partials/navbar.jsp" />
->>>>>>> b811194c1481688e73c1dadbf6728d5bf4c730be
-	<div class="row" align="center">
-		<h3>Alta Curso</h3>
-	</div>
 	<div class="row">
 		<div class="col-2"></div>
 		<div class="col-8">
 			<div class="container text-center my-5 "> 
 				<div id="card" class="col border border-secondary rounded p-4">
+					<h1>Alta Curso</h1>
+					<br>
 					<div class="row mb-3">
 						<label for="btn-Profesor">Seleccione un profesor</label>
 						<div class="btn-group" id="btn-Profesor">
