@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
 	
-	<form method="post">
+	<form action="ServletLogin" method="post">
 		<div class="container text-center my-5 "> 
 			<div class="row ">
 				<div class="col-lg-4"></div>
@@ -20,11 +20,11 @@
 					<img src="resources/img/user.png" width="200" alt="" />    
 					<div class="row mb-3">
 						<label for="inputEmail3" class="from-group">Usuario</label>
-						<input type="email" class="form-control" id="inputEmail3">
+						<input type="text" class="form-control" id="inputEmail3" name="usuario">
 					</div>
 					<div class="row mb-3 text-center">
 						<label for="inputPassword3" class="from-group">Contraseña</label>
-						<input type="password" class="form-control" id="inputPassword3">
+						<input type="password" class="form-control" id="inputPassword3" name="password">
 					</div>
 					<button type="submit" class="btn btn-secondary">Ingresar</button>
 				</div>
