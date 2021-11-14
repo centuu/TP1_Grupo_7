@@ -3,13 +3,16 @@ package servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import dao.LoginDao;
+import dao.UsuarioDao;
+import entidad.Usuario;
 
 
 @WebServlet("/ServletLogin")
@@ -26,28 +29,40 @@ public class ServletLogin extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}*/
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		LoginDao dao = new LoginDao();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String usuario = request.getParameter("usuario");
 		String clave = request.getParameter("password");
 		
-			try {
-				if (dao.check(usuario, clave))
-				{
-					response.sendRedirect("AltaAlumno.jsp");
-				}
-				else
-				{
-					response.sendRedirect("login.jsp");
-				}
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
+		UsuarioDao userDao = new UsuarioDao();
+        
+        try {
+            Usuario user = userDao.checkLogin(usuario, clave);
+            String destPage = "login.jsp";
+             
+            if (user != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                destPage = "AltaAlumno.jsp";
+            } else {
+                String message = "Usuario o contraseña incorrecta.";
+                request.setAttribute("message", message);
+            }
+             
+            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+            dispatcher.forward(request, response);
+             
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new ServletException(ex);
+        }
 
 		
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

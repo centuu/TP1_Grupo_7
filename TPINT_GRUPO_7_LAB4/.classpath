@@ -13,6 +13,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/agusc/Desktop/UTN/2do Año/2do Cuatrimestre/LAB 4/Grupo 7/TP1_Grupo_7/TPINT_GRUPO_7_LAB4/mysql-connector-java-8.0.26.jar"/>
+	<classpathentry kind="lib" path="C:/Users/SOL/eclipse-workspace/TPINT_GRUPO_7_LAB4/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

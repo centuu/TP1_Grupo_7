@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
 	
-	<form action="ServletLogin" method="post">
+	<form action="ServletLogin" method="Get">
 		<div class="container text-center my-5 "> 
 			<div class="row ">
 				<div class="col-lg-4"></div>
@@ -25,6 +25,8 @@
 					<div class="row mb-3 text-center">
 						<label for="inputPassword3" class="from-group">Contraseña</label>
 						<input type="password" class="form-control" id="inputPassword3" name="password">
+						<br>${message}
+						<br>
 					</div>
 					<button type="submit" class="btn btn-secondary">Ingresar</button>
 				</div>
