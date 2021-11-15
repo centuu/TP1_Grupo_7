@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexion {
-	
-
+public class Conexion 
+{
 	public static Conexion instancia;
 	private Connection connection;
 	
@@ -14,8 +13,8 @@ public class Conexion {
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cursada?useSSL=false","root","root");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cursada","root","1234");
 			this.connection.setAutoCommit(false);
 		}
 		catch(Exception e)
@@ -50,5 +49,4 @@ public class Conexion {
 		}
 		instancia = null;
 	}
-
 }

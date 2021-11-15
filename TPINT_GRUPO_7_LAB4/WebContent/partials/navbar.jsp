@@ -6,9 +6,14 @@
 	    	</button>
 	    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-					<li class="nav-item">
-						<a class="nav-link mx-4" aria-current="page" href="login.jsp">Login</a>
-	        		</li>
+					<% if(session.getAttribute("user") == null)
+			 	    {%>
+						<li class="nav-item">
+							<a class="nav-link mx-4" aria-current="page" href="login.jsp">Login</a>
+		        		</li>
+			        <%}
+			        else
+			        {%>
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
 					</li>	
@@ -27,10 +32,19 @@
 					<li class="nav-item">
 	          			<a class="nav-link" href="Alumnos.jsp">Listar Alumnos</a>
 					</li>
+					<%} %>
 				</ul>
 				<ul class="navbar-nav justify-content-end">
 			 	    <li class="nav-item">
-			          <label class="nav-link"> Usuario</label>
+			 	    	<% if(session.getAttribute("user") != null)
+			 	    	{%>
+			          		<label class="nav-link" style="display: inline;"><%= session.getAttribute("name") %></label>
+			          		<a class="nav-link" href="ServletLogin" style="display: inline;">logout</a>
+			          	<%}
+			 	    	else 
+			 	    	{ %> 
+			          		<label class="nav-link">Invitado</label>
+			          <%} %>
 			        </li>	
 				</ul>
 			</div>
