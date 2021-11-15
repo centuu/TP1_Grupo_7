@@ -30,7 +30,7 @@ public class UsuarioDao
 	 
 	        if (result.next()) 
 	        {
-	            user = new Usuario(usuario, clave, result.getInt("rol"), result.getInt("nroLegajo"));
+	            user = new Usuario(usuario, clave, result.getInt("nroLegajo"), result.getInt("rol"));
 	        }
 	 
 	        return user;

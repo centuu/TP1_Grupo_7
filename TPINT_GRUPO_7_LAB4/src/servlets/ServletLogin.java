@@ -49,7 +49,7 @@ public class ServletLogin extends HttpServlet
                 session.setAttribute("user", user);
                 session.setAttribute("name", user.getUsuario());
                 session.setAttribute("rol", user.getRol());
-                destPage = "AltaAlumno.jsp";
+                destPage = "inicio.jsp";
             } 
             else
             {
