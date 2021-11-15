@@ -63,12 +63,10 @@
 							  <option value="3">Three</option>
 							</select>
 						</div>
-					</div>
-
-					
+					</div>					
 					<button type="submit" class="btn btn-primary">Confirmar</button>
 				</div>
-		</div>
+			</div>
 		</div>
 		<div class="col-2"></div>
 	</div>

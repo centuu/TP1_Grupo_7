@@ -16,67 +16,83 @@ public class Profesor
 		
 	}
 
-	public String getLegajo() {
+	public String getLegajo() 
+	{
 		return legajo;
 	}
 
-	public void setLegajo(String legajo) {
+	public void setLegajo(String legajo) 
+	{
 		this.legajo = legajo;
 	}
 
-	public int getDni() {
+	public int getDni() 
+	{
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(int dni) 
+	{
 		this.dni = dni;
 	}
 
-	public String getNombre() {
+	public String getNombre()
+	{
 		return Nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre) 
+	{
 		Nombre = nombre;
 	}
 
-	public String getApellido() {
+	public String getApellido() 
+	{
 		return Apellido;
 	}
 
-	public void setApellido(String apellido) {
+	public void setApellido(String apellido) 
+	{
 		Apellido = apellido;
 	}
 
-	public String getDireccion() {
+	public String getDireccion() 
+	{
 		return direccion;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(String direccion) 
+	{
 		this.direccion = direccion;
 	}
 
-	public Nacionalidad getNacionalidad() {
+	public Nacionalidad getNacionalidad() 
+	{
 		return nacionalidad;
 	}
 
-	public void setNacionalidad(Nacionalidad nacionalidad) {
+	public void setNacionalidad(Nacionalidad nacionalidad) 
+	{
 		this.nacionalidad = nacionalidad;
 	}
 
-	public String getMail() {
+	public String getMail() 
+	{
 		return mail;
 	}
 
-	public void setMail(String mail) {
+	public void setMail(String mail)
+	{
 		this.mail = mail;
 	}
 
-	public int getTelefono() {
+	public int getTelefono() 
+	{
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(int telefono) 
+	{
 		this.telefono = telefono;
 	}
 	

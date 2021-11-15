@@ -12,33 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import daoImpl.AlumnoImpl;
 import entidad.Alumno;
 
-/**
- * Servlet implementation class ServeletAlumno
- */
 @WebServlet("/ServletAlumno")
-public class ServletAlumno extends HttpServlet {
+public class ServletAlumno extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletAlumno() {
+    public ServletAlumno() 
+    {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		if(request.getParameter("btnregistrar") != null)
 		{  
 			Alumno alu=new Alumno();
@@ -58,7 +50,7 @@ public class ServletAlumno extends HttpServlet {
     		 RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
              dispatcher.forward(request, response);
 		}
+		
 		doGet(request, response);
 	}
-
 }

@@ -1,23 +1,22 @@
 package entidad;
 
-public class Usuario {
+public class Usuario 
+{
 	protected String usuario;
     protected String pass;
     protected int rol;
     protected int legajo;
     protected boolean isdmin;
     
-    
-	
-    
-    public Usuario() {
+    public Usuario() 
+    {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Usuario(String usuario, String pass, int legajo,int rol) {
-		
+	public Usuario(String usuario, String pass, int legajo,int rol) 
+	{
 		this.usuario = usuario;
 		this.pass = pass;
 		this.rol = rol;
@@ -30,56 +29,54 @@ public class Usuario {
 		this.legajo = legajo;
 	}
 
-
-	public String getUsuario() {
+	public String getUsuario() 
+	{
 		return usuario;
 	}
 
 
-	public void setUsuario(String usuario) {
+	public void setUsuario(String usuario)
+	{
 		this.usuario = usuario;
 	}
 
-
-	public String getPass() {
+	public String getPass() 
+	{
 		return pass;
 	}
 
-
-	public void setPass(String pass) {
+	public void setPass(String pass) 
+	{
 		this.pass = pass;
 	}
 
-
-	public int getRol() {
+	public int getRol() 
+	{
 		return rol;
 	}
 
-
-	public void setRol(int rol) {
+	public void setRol(int rol)
+	{
 		this.rol = rol;
 	}
 
-
-	public int getLegajo() {
+	public int getLegajo() 
+	{
 		return legajo;
 	}
 
-
-	public void setLegajo(int legajo) {
+	public void setLegajo(int legajo) 
+	{
 		this.legajo = legajo;
 	}
 
-
-	public boolean isIsdmin() {
+	public boolean isIsdmin()
+	{
 		return isdmin;
 	}
 
-
-	public void setIsdmin(boolean isdmin) {
+	public void setIsdmin(boolean isdmin) 
+	{
 		this.isdmin = isdmin;
 	}
-    
-    
-
 }

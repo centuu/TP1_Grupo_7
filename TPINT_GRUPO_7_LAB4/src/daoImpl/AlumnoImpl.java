@@ -9,19 +9,20 @@ import java.sql.ResultSet;
 import dao.AlumnoDao;
 import entidad.Alumno;
 
-public class AlumnoImpl implements AlumnoDao {
-	   private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,domicilio,provincia,idnacionalidad,email,telefono) VALUES(?,?,?,?,?,?,?,?)";
-       private static final String delete = "DELETE FROM Alumnos WHERE legajo = ?";
-	   private static final String list =   "SELECT * FROM Alumnos";
+public class AlumnoImpl implements AlumnoDao 
+{
+	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,domicilio,provincia,idnacionalidad,email,telefono) VALUES(?,?,?,?,?,?,?,?)";
+	private static final String delete = "DELETE FROM Alumnos WHERE legajo = ?";
+	private static final String list =   "SELECT * FROM Alumnos";
 		
-	public boolean insert(Alumno alum) {
+	public boolean insert(Alumno alum) 
+	{
 		int res=-1;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		PreparedStatement state;
 		try
 		{
 			state = conexion.prepareStatement(insert);
-			
 			state.setInt(1, alum.getDni());
 			state.setString(2,alum.getNombre());
 			state.setString(3,alum.getApellido());
@@ -36,8 +37,7 @@ public class AlumnoImpl implements AlumnoDao {
 			if (res>0)
 			{
 				conexion.commit();
-			}
-			
+			}	
 		}
 		catch(SQLException e) 
 		{
@@ -53,17 +53,17 @@ public class AlumnoImpl implements AlumnoDao {
 			}
 			return false;
 		}
-  
+		
 		return res>0 ;
 	}
 
 	@Override
-	public ArrayList<Alumno> list() {
+	public ArrayList<Alumno> list() 
+	{
 		PreparedStatement state;
 		ArrayList<Alumno> listaAlum= new ArrayList<Alumno>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
         ResultSet rs=null;
-       
         
         try
         {
@@ -89,20 +89,21 @@ public class AlumnoImpl implements AlumnoDao {
         {
         	return listaAlum;
         }
-
+        
 		return null;
 	}
 
 	@Override
-	public boolean update(int legajo) {
+	public boolean update(int legajo) 
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(int legajo) {
+	public boolean delete(int legajo) 
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

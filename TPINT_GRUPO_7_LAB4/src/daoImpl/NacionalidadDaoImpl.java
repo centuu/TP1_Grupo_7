@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import dao.NacionalidadDao;
 import entidad.Nacionalidad;
 
-public class NacionalidadDaoImpl implements NacionalidadDao  {
-
-	private static final String list =   "select *from Nacionalidad";
+public class NacionalidadDaoImpl implements NacionalidadDao  
+{
+	private static final String list =   "SELECT * FROM Nacionalidad";
 
 	@Override
-	public ArrayList<Nacionalidad> listaNacion() {
+	public ArrayList<Nacionalidad> listaNacion() 
+	{
 		PreparedStatement state;
-		ArrayList<Nacionalidad> lista= new ArrayList<Nacionalidad>();
+		ArrayList<Nacionalidad> lista = new ArrayList<Nacionalidad>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
         ResultSet rs=null;
         try
@@ -24,7 +25,7 @@ public class NacionalidadDaoImpl implements NacionalidadDao  {
         	rs = state.executeQuery();
         	while(rs.next())
         	{
-        		Nacionalidad nacion=new Nacionalidad();
+        		Nacionalidad nacion = new Nacionalidad();
         		nacion.setId(rs.getInt("idNacionalidad"));
         		nacion.setNombre(rs.getString("descripcion"));
         		lista.add(nacion);

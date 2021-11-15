@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsuarioDao;
+import daoImpl.UsuarioDaoImpl;
 import entidad.Usuario;
 
 
@@ -36,7 +37,7 @@ public class ServletLogin extends HttpServlet
 		String usuario = request.getParameter("usuario");
 		String clave = request.getParameter("password");
 		
-		UsuarioDao userDao = new UsuarioDao();
+		UsuarioDaoImpl userDao = new UsuarioDaoImpl();
         
         try 
         {

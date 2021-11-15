@@ -3,7 +3,8 @@ package entidad;
 import java.util.Date;
 import java.util.List;
 
-public class Curso {
+public class Curso 
+{
 	protected Materia materia;
 	protected String semestre;	
     protected Date anio;

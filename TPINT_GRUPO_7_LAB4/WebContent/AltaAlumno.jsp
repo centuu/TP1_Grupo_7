@@ -24,7 +24,7 @@
 		     	<br>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">DNI</label>
-		           	<input type="text" name="txtndi" class="form-control" >
+		           	<input type="text" name="txtdni" class="form-control" >
 		        </div>
 		        <div class="row mb-3 text-center">
 		         	<label  class="from-group">Nombre</label>
@@ -48,21 +48,20 @@
 		        </div>
 		        
 		        <div class="row mb-3 text-center"> 
-		        <label  class="from-group">Nacionalidad</label>
-		        <select name="nacionalidad">
-		                  <%  NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
-		                       ArrayList<Nacionalidad> lista=nacionDao.listaNacion();
-         
-                          if (lista!=null)
-                          {
-                            for(Nacionalidad na:lista) 
-                            {
-                          	%>
-                          	  <option value="<%=na.getId() %>"><%=na.getNombre() %></option>
-                            	
-                          <%}
-                          }%>
-                         </select>
+		        	<label  class="from-group">Nacionalidad</label>
+			        <select name="nacionalidad">
+						<%  
+							NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
+							ArrayList<Nacionalidad> lista=nacionDao.listaNacion();
+							
+							if (lista!=null)
+							{
+								for(Nacionalidad na:lista) 
+								{%>
+									<option value="<%=na.getId() %>"><%=na.getNombre() %></option> 	
+								<%}
+							}%>
+					</select>
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Email</label>
