@@ -16,10 +16,11 @@ public class Usuario {
 	}
 
 
-	public Usuario(String usuario, String pass, int rol, int legajo) {
+	public Usuario(String usuario, String pass, int legajo,int rol) {
 		
 		this.usuario = usuario;
 		this.pass = pass;
+		this.rol = rol;
 		
 		if (rol == 1)
 			this.isdmin = true;

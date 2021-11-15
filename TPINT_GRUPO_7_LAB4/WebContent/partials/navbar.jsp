@@ -12,7 +12,7 @@
 							<a class="nav-link mx-4" aria-current="page" href="login.jsp">Login</a>
 		        		</li>
 			        <%}
-			        else
+					else if(session.getAttribute("rol").toString().equals("1"))
 			        {%>
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
@@ -32,14 +32,23 @@
 					<li class="nav-item">
 	          			<a class="nav-link" href="Alumnos.jsp">Listar Alumnos</a>
 					</li>
-					<%} %>
+					<%}
+					else
+					{%>
+					<li class="nav-item">
+	          			<a class="nav-link" href="Alumnos.jsp">Listar Alumnos</a>
+					</li>
+					<li class="nav-item">
+	          			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>
+					</li>
+					<%}%>
 				</ul>
 				<ul class="navbar-nav justify-content-end">
 			 	    <li class="nav-item">
 			 	    	<% if(session.getAttribute("user") != null)
 			 	    	{%>
 			          		<label class="nav-link" style="display: inline;"><%= session.getAttribute("name") %></label>
-			          		<a class="nav-link" href="ServletLogin" style="display: inline;">logout</a>
+			          		<a class="nav-link" href="ServletLogin" style="display: inline;">Logout</a>
 			          	<%}
 			 	    	else 
 			 	    	{ %> 
