@@ -6,10 +6,12 @@ public class Alumno
 	protected int dni ;
 	protected String Nombre ;
 	protected String Apellido;
+	protected String Provincia;
 	protected String direccion ;	
     protected Nacionalidad nacionalidad;
     protected String mail;
     protected int telefono ;
+    protected boolean estado;
     
     
 	public String getLegajo() {
@@ -42,11 +44,19 @@ public class Alumno
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	public String getProvincia() {
+		return Provincia;
+	}
+	public void setProvincia(String prov) {
+		this.Provincia = prov;
+	}
 	public Nacionalidad getNacionalidad() {
 		return nacionalidad;
 	}
-	public void setNacionalidad(Nacionalidad nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setNacionalidad(int nacionalidad) {
+		 this.nacionalidad=new Nacionalidad();
+		 
+		this.nacionalidad.id = nacionalidad;
 	}
 	public String getMail() {
 		return mail;
@@ -60,5 +70,12 @@ public class Alumno
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-    
+	public boolean getestado() {
+		return estado;
+	}
+	
+	public void setestado(boolean estado)
+	{
+		this.estado=estado;
+	}
 }
