@@ -1,3 +1,7 @@
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "entidad.Nacionalidad" %>
+<%@ page import = "daoImpl.NacionalidadDaoImpl" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,55 +15,65 @@
 	<jsp:include page="/partials/navbar.jsp" />
 	
 	<main>  
-		<form method="post">
+		<form action="ServletAlumno" method="post">
 		 <div class="container text-center my-5 "> 
 		  <div class="row ">
 		     <div class="col-lg-4"></div> 
 		     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
 		     	<h1>Registro Alumnos </h1>           
 		     	<br>
-		       	<div class="row mb-3">
-		         	<label class="from-group">Legajo</label>
-		           	<input type="text" class="form-control" >
-		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">DNI</label>
-		           	<input type="text" class="form-control" >
+		           	<input type="text" name="txtndi" class="form-control" >
 		        </div>
 		        <div class="row mb-3 text-center">
 		         	<label  class="from-group">Nombre</label>
-		           	<input type="text" class="form-control">
+		           	<input type="text" name="txtnombre" class="form-control">
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">Apellido</label>
-		           	<input type="text" class="form-control" >
+		           	<input type="text" name="txtapellido" class="form-control" >
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">Fecha Nacimiento</label>
-		           	<input type="text" class="form-control" >
+		           	<input type="text" name="txtfechanac" class="form-control" >
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label class="from-group">Direccion</label>
-		           	<input type="text" class="form-control" >
+		           	<input type="text" name="txtdireccion" class="form-control" >
 		        </div>
 		          <div class="row mb-3 text-center">
 		          	<label  class="from-group">Provincia</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
+		           	<input type="text" name="txtprovincia" class="form-control" id="inputPassword3">
 		        </div>
-		         <div class="row mb-3 text-center">
-		          	<label  class="from-group">Nacionalidad</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
+		        
+		        <div class="row mb-3 text-center"> 
+		        <label  class="from-group">Nacionalidad</label>
+		        <select name="nacionalidad">
+		                  <%  NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
+		                       ArrayList<Nacionalidad> lista=nacionDao.listaNacion();
+         
+                          if (lista!=null)
+                          {
+                            for(Nacionalidad na:lista) 
+                            {
+                          	%>
+                          	  <option value="<%=na.getId() %>"><%=na.getNombre() %></option>
+                            	
+                          <%}
+                          }%>
+                         </select>
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Email</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
+		           	<input type="text" name="txtmail" class="form-control" id="inputPassword3">
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Telefono</label>
-		           	<input type="text" class="form-control" id="inputPassword3">
+		           	<input type="text" name="txttelefono" class="form-control" id="inputPassword3">
 		        </div>
 		      	<div class="row mb-3 text-center">
-		       		<button type="submit" class="btn btn-primary">Registrar</button>
+		       		<button name="btnregistrar" type="submit" class="btn btn-primary">Registrar</button>
 		     	</div>
 				<div class="col-lg-4"></div>
 			</div>  
