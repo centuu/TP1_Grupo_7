@@ -20,22 +20,21 @@ public class ServletAlumno extends HttpServlet
     public ServletAlumno() 
     {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
+		
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		if(request.getParameter("btnregistrar") != null)
-		{  
+		{
 			Alumno alu=new Alumno();
-			alu.setLegajo(request.getParameter("txtlegajo"));
-    		alu.setDni(Integer.parseInt(request.getParameter("txtndi")));
+    		alu.setDni(Integer.parseInt(request.getParameter("txtdni")));
     		alu.setNombre(request.getParameter("txtnombre"));
     		alu.setApellido(request.getParameter("txtapellido"));
     		alu.setDireccion(request.getParameter("txtdireccion"));

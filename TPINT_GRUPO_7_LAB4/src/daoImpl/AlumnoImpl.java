@@ -93,6 +93,27 @@ public class AlumnoImpl implements AlumnoDao
 		return null;
 	}
 
+	public String GetNextLegajo()
+	{
+		try 
+		{
+			String id= "";
+			Connection conexion = Conexion.getConexion().getSQLConexion();
+			ResultSet rs;
+			rs = conexion.createStatement().executeQuery("SELECT COUNT(*) + 1 AS ID FROM cursada");
+			while(rs.next())
+			{
+				id= rs.getString("ID");
+			}
+			return id;
+		} 
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
 	@Override
 	public boolean update(int legajo) 
 	{

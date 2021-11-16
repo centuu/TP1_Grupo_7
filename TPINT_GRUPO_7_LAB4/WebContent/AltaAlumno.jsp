@@ -1,6 +1,7 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "entidad.Nacionalidad" %>
 <%@ page import = "daoImpl.NacionalidadDaoImpl" %>
+<%@ page import = "daoImpl.AlumnoImpl" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,6 +23,13 @@
 		     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
 		     	<h1>Registro Alumnos </h1>           
 		     	<br>
+		        <div class="row mb-3 text-center">
+		          	<label  class="from-group">Legajo</label>
+		          	<% 
+		          		AlumnoImpl alumno= new AlumnoImpl();
+					%>
+		           	<input type="text" readonly name="txtLegajo" class="form-control" value=<%= alumno.GetNextLegajo() %>>
+		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">DNI</label>
 		           	<input type="text" name="txtdni" class="form-control" >
@@ -50,6 +58,7 @@
 		        <div class="row mb-3 text-center"> 
 		        	<label  class="from-group">Nacionalidad</label>
 			        <select name="nacionalidad">
+						<!--//Hacer una llamada al servlet (servletNacionalidad)--> 
 						<%  
 							NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
 							ArrayList<Nacionalidad> lista=nacionDao.listaNacion();
