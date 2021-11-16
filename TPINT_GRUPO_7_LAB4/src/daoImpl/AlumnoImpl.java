@@ -26,8 +26,7 @@ public class AlumnoImpl implements AlumnoDao {
 			state.setString(4, alum.getFechaNac());
 			state.setString(5, alum.getDireccion());
 			state.setString(6, alum.getProvincia());
-			//state.setString(7, alum.getNacionalidad()); Falta obtener string de nacionalidad (Analizar)
-			state.setString(7, "Argentina");
+			state.setString(7, alum.getNacionalidad());
 			state.setString(8, alum.getMail());
 			state.setString(9, alum.getTelefono());
 			

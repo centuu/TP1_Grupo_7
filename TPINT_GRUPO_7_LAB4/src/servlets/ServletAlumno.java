@@ -37,10 +37,10 @@ public class ServletAlumno extends HttpServlet
 			alumno.setDni(request.getParameter("txtdni"));
 			alumno.setNombre(request.getParameter("txtnombre"));
 			alumno.setApellido(request.getParameter("txtapellido"));
+			alumno.setFechaNac(request.getParameter("txtfechanac"));
 			alumno.setDireccion(request.getParameter("txtdireccion"));
-			alumno.setProvincia(request.getParameter("txtprovincia"));
-			//System.out.print(request.getParameter("nacionalidad"));
-			//alumno.setNacionalidad(request.getParameter("nacionalidad"));
+			alumno.setProvincia(request.getParameter("provincia").toString());
+			alumno.setNacionalidad(request.getParameter("nacionalidad").toString());
 			alumno.setMail(request.getParameter("txtmail"));
 			alumno.setTelefono(request.getParameter("txttelefono"));
 			alumno.setestado(true);

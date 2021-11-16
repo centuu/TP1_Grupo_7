@@ -2,6 +2,8 @@
 <%@ page import = "entidad.Nacionalidad" %>
 <%@ page import = "daoImpl.NacionalidadDaoImpl" %>
 <%@ page import = "daoImpl.AlumnoImpl" %>
+<%@ page import = "entidad.Provincia" %>
+<%@ page import = "daoImpl.ProvinciaDaoImpl" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -52,22 +54,32 @@
 		        </div>
 		          <div class="row mb-3 text-center">
 		          	<label  class="from-group">Provincia</label>
-		           	<input type="text" name="txtprovincia" class="form-control" id="inputPassword3">
+		           	<select name="provincia">
+						<%
+							ProvinciaDaoImpl provinciaDao = new  ProvinciaDaoImpl ();
+							ArrayList<Provincia> listaProv=provinciaDao.listaProvincia();
+							
+							if (listaProv!=null)
+							{
+								for(Provincia pr:listaProv) 
+								{%>
+									<option value="<%=pr.getNombre() %>"><%=pr.getNombre() %></option> 	
+								<%}
+							}%>
+					</select>
 		        </div>
-		        
 		        <div class="row mb-3 text-center"> 
 		        	<label  class="from-group">Nacionalidad</label>
 			        <select name="nacionalidad">
-						<!--//Hacer una llamada al servlet (servletNacionalidad)--> 
 						<%
 							NacionalidadDaoImpl nacionDao = new  NacionalidadDaoImpl ();
-							ArrayList<Nacionalidad> lista=nacionDao.listaNacion();
+							ArrayList<Nacionalidad> listaNac=nacionDao.listaNacion();
 							
-							if (lista!=null)
+							if (listaNac!=null)
 							{
-								for(Nacionalidad na:lista) 
+								for(Nacionalidad na:listaNac) 
 								{%>
-									<option value="<%=na.getId() %>"><%=na.getNombre() %></option> 	
+									<option value="<%=na.getNombre() %>"><%=na.getNombre() %></option> 	
 								<%}
 							}%>
 					</select>
