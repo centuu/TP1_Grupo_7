@@ -33,18 +33,20 @@ public class ServletAlumno extends HttpServlet
 	{
 		if(request.getParameter("btnregistrar") != null)
 		{
-			Alumno alu=new Alumno();
-    		alu.setDni(Integer.parseInt(request.getParameter("txtdni")));
-    		alu.setNombre(request.getParameter("txtnombre"));
-    		alu.setApellido(request.getParameter("txtapellido"));
-    		alu.setDireccion(request.getParameter("txtdireccion"));
-    		alu.setProvincia(request.getParameter("txtprovincia"));
-    		alu.setNacionalidad(Integer.parseInt(request.getParameter("nacionalidad")));
-    		alu.setMail(request.getParameter("txtmail"));
-    		alu.setTelefono(Integer.parseInt(request.getParameter("txttelefono")));
+			Alumno alumno = new Alumno();
+			alumno.setDni(request.getParameter("txtdni"));
+			alumno.setNombre(request.getParameter("txtnombre"));
+			alumno.setApellido(request.getParameter("txtapellido"));
+			alumno.setDireccion(request.getParameter("txtdireccion"));
+			alumno.setProvincia(request.getParameter("txtprovincia"));
+			//System.out.print(request.getParameter("nacionalidad"));
+			//alumno.setNacionalidad(request.getParameter("nacionalidad"));
+			alumno.setMail(request.getParameter("txtmail"));
+			alumno.setTelefono(request.getParameter("txttelefono"));
+			alumno.setestado(true);
 
     		AlumnoImpl dao=new AlumnoImpl();
-    		dao.insert(alu);
+    		dao.insert(alumno);
     		
     		 RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
              dispatcher.forward(request, response);

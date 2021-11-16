@@ -2,34 +2,59 @@ package entidad;
 
 public class Alumno 
 {
-	protected String legajo;
-	protected int dni ;
+	protected int legajo;
+	protected String dni;
 	protected String Nombre ;
 	protected String Apellido;
+	protected String FechaNac;
 	protected String Provincia;
 	protected String direccion ;	
-    protected Nacionalidad nacionalidad;
+    protected String nacionalidad;
     protected String mail;
-    protected int telefono ;
+    protected String telefono ;
     protected boolean estado;
     
+    public Alumno() 
+    {
+		super();
+		
+	}
     
-	public String getLegajo() 
+	public Alumno(String dni,String nombre, String apellido,String fechaNac, String provincia, String direccion, String nacionalidad, String mail, String telefono) 
+	{
+		this.dni = dni;
+		this.Nombre = nombre;
+		this.Apellido = apellido;
+		this.FechaNac = fechaNac;
+		this.Provincia = provincia;
+		this.direccion = direccion;
+		this.nacionalidad = nacionalidad;
+		this.mail = mail;
+		this.telefono = telefono;
+		this.estado = true;
+	}
+	
+	public String getFechaNac()
+	{
+		return FechaNac;
+	}
+	
+	public void setFechaNac(String fechaNac)
+	{
+		FechaNac = fechaNac;
+	}
+    
+	public int getLegajo() 
 	{
 		return legajo;
 	}
 	
-	public void setLegajo(String legajo) 
-	{
-		this.legajo = legajo;
-	}
-	
-	public int getDni() 
+	public String getDni() 
 	{
 		return dni;
 	}
 	
-	public void setDni(int dni) 
+	public void setDni(String dni) 
 	{
 		this.dni = dni;
 	}
@@ -74,15 +99,15 @@ public class Alumno
 		this.Provincia = prov;
 	}
 	
-	public Nacionalidad getNacionalidad() 
+	public String getNacionalidad() 
 	{
 		return nacionalidad;
 	}
 	
-	public void setNacionalidad(int nacionalidad) 
+	public void setNacionalidad(String nacionalidad) 
 	{
-		this.nacionalidad = new Nacionalidad();
-		this.nacionalidad.id = nacionalidad;
+		this.nacionalidad = nacionalidad;
+		
 	}
 	
 	public String getMail() 
@@ -95,12 +120,12 @@ public class Alumno
 		this.mail = mail;
 	}
 	
-	public int getTelefono() 
+	public String getTelefono() 
 	{
 		return telefono;
 	}
 	
-	public void setTelefono(int telefono) 
+	public void setTelefono(String telefono) 
 	{
 		this.telefono = telefono;
 	}

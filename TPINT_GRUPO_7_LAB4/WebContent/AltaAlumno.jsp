@@ -59,8 +59,8 @@
 		        	<label  class="from-group">Nacionalidad</label>
 			        <select name="nacionalidad">
 						<!--//Hacer una llamada al servlet (servletNacionalidad)--> 
-						<%  
-							NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
+						<%
+							NacionalidadDaoImpl nacionDao = new  NacionalidadDaoImpl ();
 							ArrayList<Nacionalidad> lista=nacionDao.listaNacion();
 							
 							if (lista!=null)
