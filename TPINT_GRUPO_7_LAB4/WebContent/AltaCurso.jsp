@@ -1,3 +1,5 @@
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "entidad.Alumno" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,7 +10,7 @@
 	<link rel="stylesheet" href="./resources/css/AltaCurso.css">
 </head>
 <body>
-	<jsp:include page="/partials/navbar.jsp" />
+	<jsp:include page="/partials/navbar.jsp" />}
 	<div class="row">
 		<div class="col-2"></div>
 		<div class="col-8">
@@ -46,9 +48,16 @@
 							<label>Alumnos a seleccionar</label>
 							<select class="form-select" size="10" aria-label="size 3 select example">
 							  <option selected>Open this select menu</option>
-							  <option value="1">One</option>
-							  <option value="2">Two</option>
-							  <option value="3">Three</option>
+							  	<%
+							  		ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
+									
+									for(Alumno alumno : alumnos)
+									{
+								%>
+										<option value="3"><%= alumno.getNombre() %></option>
+								<%
+									}
+								%>
 							</select>
 						</div>
 						<div class="col-2 align-items-center pt-5">

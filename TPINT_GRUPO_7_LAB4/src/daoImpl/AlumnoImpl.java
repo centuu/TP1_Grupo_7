@@ -9,12 +9,14 @@ import java.sql.ResultSet;
 import dao.AlumnoDao;
 import entidad.Alumno;
 
-public class AlumnoImpl implements AlumnoDao {
+public class AlumnoImpl implements AlumnoDao 
+{
 	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,fechaNac,domicilio,provincia,nacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
 	private static final String delete = "DELETE FROM Alumnos WHERE legajo = ?";
 	private static final String list = "SELECT * FROM Alumnos";
 
-	public boolean insert(Alumno alum) {
+	public boolean insert(Alumno alum) 
+	{
 		int res = -1;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		PreparedStatement state;
@@ -32,77 +34,84 @@ public class AlumnoImpl implements AlumnoDao {
 			
 			res = state.executeUpdate();
 
-			if (res > 0) {
+			if (res > 0) 
+			{
 				conexion.commit();
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
-			try {
-				conexion.rollback();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-				return false;
-			}
-			return false;
 		}
 
 		return res > 0;
 	}
 
 	@Override
-	public ArrayList<Alumno> list() {
+	public ArrayList<Alumno> list()
+	{
 		PreparedStatement state;
 		ArrayList<Alumno> listaAlum = new ArrayList<Alumno>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		ResultSet rs = null;
-
-		try {
-			state = conexion.prepareStatement(list);
-			rs = state.executeQuery();
-			while (rs.next()) {
-				Alumno alu = new Alumno();
-				alu.setDni(rs.getString("dni"));
-				alu.setNombre(rs.getString("nombre"));
-				alu.setApellido(rs.getString("apellido"));
-				alu.setDireccion(rs.getString("domicilio"));
-				alu.setProvincia(rs.getString("provincia"));
-				alu.setNacionalidad(rs.getString("nacionalidad"));
-				alu.setMail(rs.getString("email"));
-				alu.setTelefono(rs.getString("telefono"));
-				alu.setestado(rs.getBoolean("estado"));
-				listaAlum.add(alu);
-			}
-		} catch (Exception e) {
-			return listaAlum;
-		}
-
-		return null;
+		 
+        try
+        {
+        	state = conexion.prepareStatement(list);
+            ResultSet rs = state.executeQuery();
+        	while(rs.next())
+        	{
+        		Alumno alu = new Alumno();
+        		alu.setDni(rs.getString("dni"));
+        		alu.setNombre(rs.getString("nombre"));
+        		alu.setApellido(rs.getString("apellido"));
+        		alu.setDireccion(rs.getString("domicilio"));
+        		alu.setProvincia(rs.getString("provincia"));
+        		alu.setNacionalidad(rs.getString("idnacionalidad"));
+        		alu.setMail(rs.getString("email"));
+        		alu.setTelefono(rs.getString("telefono"));
+        		alu.setestado(rs.getBoolean("estado"));
+        		listaAlum.add(alu);
+        	}	
+        }
+        catch(Exception  e)
+        {
+        	return listaAlum;
+        }
+        
+		return listaAlum;
 	}
 
-	public String GetNextLegajo() {
-		try {
+	public String GetNextLegajo() 
+	{
+		try 
+		{
 			String id = "";
 			Connection conexion = Conexion.getConexion().getSQLConexion();
 			ResultSet rs;
 			rs = conexion.createStatement().executeQuery("SELECT COUNT(*) + 1 AS ID FROM cursada.alumnos");
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				id = rs.getString("ID");
 			}
 			return id;
-		} catch (SQLException ex) {
+		} 
+		catch (SQLException ex) 
+		{
 			ex.printStackTrace();
 			return null;
 		}
 	}
 
 	@Override
-	public boolean update(int legajo) {
+	public boolean update(int legajo) 
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(int legajo) {
+	public boolean delete(int legajo) 
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}

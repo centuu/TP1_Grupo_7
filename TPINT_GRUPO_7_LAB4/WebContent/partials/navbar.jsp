@@ -21,7 +21,7 @@
           			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
 				</li>	
 				<li class="nav-item">
-          			<a class="nav-link" href="AltaCurso.jsp">Alta Curso</a>
+          			<a class="nav-link" href="ServletAltaCurso">Alta Curso</a>
 				</li>
         		<li class="nav-item">
           			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>
