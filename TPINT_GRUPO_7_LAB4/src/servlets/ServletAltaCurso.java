@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daoImpl.AlumnoImpl;
+import daoImpl.DocenteImpl;
 import entidad.Alumno;
+import entidad.Docente;
 
 @WebServlet("/ServletAltaCurso")
 public class ServletAltaCurso extends HttpServlet 
@@ -25,10 +27,11 @@ public class ServletAltaCurso extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		AlumnoImpl alumnoDAO = new AlumnoImpl();
-		ArrayList<Alumno> list = alumnoDAO.list();
-		request.setAttribute("alumnos", list);
-		System.out.print(list);
+		ArrayList<Alumno> listaAlumnos = new AlumnoImpl().list();
+		ArrayList<Docente> listaDocentes = new DocenteImpl().list();
+		
+		request.setAttribute("docentes", listaDocentes);
+		request.setAttribute("alumnos", listaAlumnos);
 		request.getRequestDispatcher("/AltaCurso.jsp").forward(request, response);
 	}
 

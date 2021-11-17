@@ -1,5 +1,6 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "entidad.Alumno" %>
+<%@ page import = "entidad.Docente" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,16 +19,20 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Alta Curso</h1>
 					<br>
-					<div class="row mb-3">
+					<div class="row mb-3 justify-content-center">
 						<label for="btn-Profesor">Seleccione un profesor</label>
-						<div class="btn-group" id="btn-Profesor">
-						  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    Profesor
-						  </button>
-						  <div class="dropdown-menu">
-						    ...
-						  </div>
-						</div>
+						<select class="btn btn-secondary form-control form-control-sm" style="width: auto;">
+							<%
+						  		ArrayList<Docente> docentes = (ArrayList<Docente>)request.getAttribute("docentes");	
+								
+								for(Docente docente : docentes)
+								{
+							%>
+									<option value=<%= docente.getDni() %>><%= docente.getNombre() + " " + docente.getApellido() %></option>
+							<%
+								}
+							%>
+						</select>
 					</div>
 					<div class="row mb-3 text-center">
 						<label for="btn-Materia">Seleccione una materia</label>
@@ -47,14 +52,13 @@
 						<div class="col-5">
 							<label>Alumnos a seleccionar</label>
 							<select class="form-select" size="10" aria-label="size 3 select example">
-							  <option selected>Open this select menu</option>
 							  	<%
 							  		ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
 									
 									for(Alumno alumno : alumnos)
 									{
 								%>
-										<option value="3"><%= alumno.getNombre() %></option>
+										<option value=<%= alumno.getDni() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
 								<%
 									}
 								%>
