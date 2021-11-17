@@ -66,7 +66,7 @@ public class AlumnoImpl implements AlumnoDao
         		alu.setApellido(rs.getString("apellido"));
         		alu.setDireccion(rs.getString("domicilio"));
         		alu.setProvincia(rs.getString("provincia"));
-        		alu.setNacionalidad(rs.getString("idnacionalidad"));
+        		alu.setNacionalidad(rs.getString("nacionalidad"));
         		alu.setMail(rs.getString("email"));
         		alu.setTelefono(rs.getString("telefono"));
         		alu.setestado(rs.getBoolean("estado"));
