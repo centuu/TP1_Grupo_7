@@ -49,6 +49,11 @@ public class Alumno
 		return legajo;
 	}
 	
+	public void setNroLegajo(int legajo) 
+	{
+		this.legajo = legajo;
+	}
+	
 	public String getDni() 
 	{
 		return dni;

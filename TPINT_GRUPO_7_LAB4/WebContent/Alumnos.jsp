@@ -1,3 +1,5 @@
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "entidad.Alumno" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,29 +37,54 @@
 							  </div>
 							</div>
 						</div>
-						<button class="btn btn-primary col-1">Listar</button>
+						<button name="btnlistar" type="submit" class="btn btn-primary col-1">Listar</button>
 					</div>
 					<div class="col-12 modal-content">
 		                <table class="table table-hover table-striped">
 		                    <tr class="alert-primary">
 		                        <th scope="col">Legajo</th>
-		                        <th scope="col"> Nombre</th>
+		                        <th scope="col">Nombre</th>
 		                        <th scope="col">Apellido</th>
+		                        <th scope="col">Fecha Nac.</th>
+		                        <th scope="col">Domicilio</th>
+		                        <th scope="col">Provincia</th>
+		                        <th scope="col">Nacionalidad</th>
+		                        <th scope="col">Email</th>
+		                        <th scope="col">Telefono</th>
 		                        <th scope="col"> </th>           
 		                    </tr>
-		                    <tr>
-		                         <td>1234</td>
-		                         <td>Tamara </td>
-		                         <td>Herrera</td>
-		                         <td class="row justify-content-end">
-		                         	<div class="col-6"></div>	
-		                         	<div class="col-6">
-			                         	<button type="submit" class="btn btn-info mx-0">Info</button>
-			                            <button type="submit" class="btn btn-success">Editar</button>                         
-			                            <button type="submit" class="btn btn-danger">Eliminar</button>
-		                         	</div>
-		                         </td>
-							</tr>
+		                    
+		                    	<%
+							  	ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
+									
+								for(Alumno alumno : alumnos)
+								{
+								%>
+								<tr>
+									<td><input type="hidden" value=<%= alumno.getLegajo() %> id="id"/></td>
+									<td><%= alumno.getLegajo()  %></td>
+			                         <td><%= alumno.getNombre() %></td>
+			                         <td><%= alumno.getApellido() %></td>
+			                         <td><%= alumno.getFechaNac() %></td>
+			                         <td><%= alumno.getDireccion() %></td>
+			                         <td><%= alumno.getProvincia() %></td>
+			                         <td><%= alumno.getNacionalidad() %></td>
+			                         <td><%= alumno.getMail() %></td>
+			                         <td><%= alumno.getTelefono() %></td>
+			                         <td class="row justify-content-end">
+			                         	<div class="col-6"></div>	
+			                         	<div class="col-6">
+				                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Info</button>
+				                            <button name="btneditar" type="submit" class="btn btn-success">Editar</button>                         
+				                            <button name="btneliminar" type="submit" class="btn btn-danger">Eliminar</button>
+			                         	</div>
+			                         </td>
+			                      </tr>
+								<%
+								}
+								%>
+		                         
+							
 						</table>
 					</div>
 				</div>

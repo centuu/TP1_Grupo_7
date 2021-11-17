@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="./resources/css/AltaCurso.css">
 </head>
 <body>
-	<jsp:include page="/partials/navbar.jsp" />}
+	<jsp:include page="/partials/navbar.jsp" />
 	<div class="row">
 		<div class="col-2"></div>
 		<div class="col-8">

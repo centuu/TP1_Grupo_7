@@ -33,13 +33,13 @@
           			<a class="nav-link" href="Docentes.jsp">Listar Docentes</a>
 				</li>
 				<li class="nav-item">
-          			<a class="nav-link" href="Alumnos.jsp">Listar Alumnos</a>
+          			<a class="nav-link" href="ServletListarAlumnos">Listar Alumnos</a>
 				</li>
 				<%}
 				else
 				{%>
 				<li class="nav-item">
-          			<a class="nav-link" href="Alumnos.jsp">Listar Alumnos</a>
+          			<a class="nav-link" href="ServletListarAlumnos">Listar Alumnos</a>
 				</li>
 				<li class="nav-item">
           			<a class="nav-link" href="CargarNotas.jsp">Cargar notas</a>

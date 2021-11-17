@@ -12,8 +12,8 @@ import entidad.Alumno;
 public class AlumnoImpl implements AlumnoDao 
 {
 	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,fechaNac,domicilio,provincia,nacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
-	private static final String delete = "DELETE FROM Alumnos WHERE legajo = ?";
-	private static final String list = "SELECT * FROM Alumnos";
+	private static final String delete = "UPDATE Alumnos SET estado = 0 WHERE legajo = ?";
+	private static final String list = "SELECT * FROM Alumnos WHERE estado = 1";
 
 	public boolean insert(Alumno alum) 
 	{
@@ -46,6 +46,32 @@ public class AlumnoImpl implements AlumnoDao
 
 		return res > 0;
 	}
+	
+	public boolean delete(int id) 
+	{
+		int res = -1;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		PreparedStatement state;
+		try {
+			
+			state = conexion.prepareStatement(delete);
+			state.setInt(1, id);
+			
+			res = state.executeUpdate();
+
+			if (res > 0) 
+			{
+				conexion.commit();
+				return true;
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+
+		return false;
+	}
 
 	@Override
 	public ArrayList<Alumno> list()
@@ -62,6 +88,8 @@ public class AlumnoImpl implements AlumnoDao
         	{
         		Alumno alu = new Alumno();
         		alu.setDni(rs.getString("dni"));
+        		alu.setNroLegajo(rs.getInt("nroLegajo"));
+        		alu.setFechaNac(rs.getString("fechaNac"));
         		alu.setNombre(rs.getString("nombre"));
         		alu.setApellido(rs.getString("apellido"));
         		alu.setDireccion(rs.getString("domicilio"));
@@ -109,10 +137,5 @@ public class AlumnoImpl implements AlumnoDao
 		return false;
 	}
 
-	@Override
-	public boolean delete(int legajo) 
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 }
