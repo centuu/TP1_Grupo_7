@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daoImpl.AlumnoImpl;
+import daoImpl.NacionalidadDaoImpl;
+import daoImpl.ProvinciaDaoImpl;
 import entidad.Alumno;
+import entidad.Nacionalidad;
+import entidad.Provincia;
 
 @WebServlet("/ServletAlumno")
 public class ServletAlumno extends HttpServlet 
@@ -24,9 +29,13 @@ public class ServletAlumno extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		AlumnoImpl alumno= new AlumnoImpl();
+		request.setAttribute("nextLegajo", alumno.GetNextLegajo());
+		ArrayList<Provincia> listaProvincias = new ProvinciaDaoImpl().list();
+		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadDaoImpl().list();
+		request.setAttribute("provincias", listaProvincias);
+		request.setAttribute("nacionalidades", listaNacionalidad);
+		request.getRequestDispatcher("/AltaAlumno.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -47,9 +56,6 @@ public class ServletAlumno extends HttpServlet
 
     		AlumnoImpl dao=new AlumnoImpl();
     		dao.insert(alumno);
-    		
-    		 RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
-             dispatcher.forward(request, response);
 		}
 		
 		doGet(request, response);

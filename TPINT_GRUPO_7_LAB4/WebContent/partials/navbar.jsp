@@ -18,7 +18,7 @@
 				else if(session.getAttribute("rol").toString().equals("1"))
 		        {%>
         		<li class="nav-item">
-          			<a class="nav-link" href="AltaAlumno.jsp">Alta Alumnos</a>
+          			<a class="nav-link" href="ServletAlumno">Alta Alumnos</a>
 				</li>	
 				<li class="nav-item">
           			<a class="nav-link" href="ServletAltaCurso">Alta Curso</a>

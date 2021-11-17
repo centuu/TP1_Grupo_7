@@ -7,7 +7,7 @@ public class Nacionalidad
 	
 	public Nacionalidad() 
     {
-		
+		super();
     }
 
 	public int getId() 

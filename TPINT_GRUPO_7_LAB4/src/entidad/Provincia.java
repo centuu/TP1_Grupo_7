@@ -7,7 +7,7 @@ public class Provincia {
 	
 	public Provincia() 
     {
-		
+		super();
     }
 
 	public int getId() 

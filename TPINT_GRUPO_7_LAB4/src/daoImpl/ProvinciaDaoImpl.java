@@ -10,33 +10,33 @@ import entidad.Provincia;
 
 public class ProvinciaDaoImpl implements ProvinciaDao  
 {
-	private static final String list =   "SELECT * FROM provincias";
+	private static final String list ="SELECT * FROM provincias";
 
 	@Override
-	public ArrayList<Provincia> listaProvincia() 
+	public ArrayList <Provincia> list() 
 	{
 		PreparedStatement state;
-		ArrayList<Provincia> lista = new ArrayList<Provincia>();
+		ArrayList<Provincia> listaProvincia = new ArrayList<Provincia>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-        ResultSet rs=null;
+        
         try
         {
         	state = conexion.prepareStatement(list);
-        	rs = state.executeQuery();
+            ResultSet rs = state.executeQuery();
         	while(rs.next())
         	{
         		Provincia prov = new Provincia();
         		prov.setId(rs.getInt("idProvincia"));
         		prov.setNombre(rs.getString("descripcion"));
-        		lista.add(prov);
+        		listaProvincia.add(prov);
         	}
         }
         catch(Exception  e)
         {
-        	return lista;
+        	return listaProvincia;
         }
 
-        return lista;
+        return listaProvincia;
 	}
 
 }

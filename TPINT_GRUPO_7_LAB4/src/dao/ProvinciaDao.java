@@ -6,5 +6,5 @@ import entidad.Provincia;
 
 public interface ProvinciaDao 
 {
-	public ArrayList<Provincia> listaProvincia();
+	public ArrayList <Provincia> list();
 }

@@ -13,30 +13,30 @@ public class NacionalidadDaoImpl implements NacionalidadDao
 	private static final String list =   "SELECT * FROM Nacionalidad";
 
 	@Override
-	public ArrayList<Nacionalidad> listaNacion() 
+	public ArrayList <Nacionalidad> list() 
 	{
 		PreparedStatement state;
-		ArrayList<Nacionalidad> lista = new ArrayList<Nacionalidad>();
+		ArrayList<Nacionalidad> listaNacionalidad = new ArrayList<Nacionalidad>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-        ResultSet rs=null;
+        
         try
         {
         	state = conexion.prepareStatement(list);
-        	rs = state.executeQuery();
+            ResultSet rs = state.executeQuery();
         	while(rs.next())
         	{
-        		Nacionalidad nacion = new Nacionalidad();
-        		nacion.setId(rs.getInt("idNacionalidad"));
-        		nacion.setNombre(rs.getString("descripcion"));
-        		lista.add(nacion);
+        		Nacionalidad nac = new Nacionalidad();
+        		nac.setId(rs.getInt("idNacionalidad"));
+        		nac.setNombre(rs.getString("descripcion"));
+        		listaNacionalidad.add(nac);
         	}
         }
         catch(Exception  e)
         {
-        	return lista;
+        	return listaNacionalidad;
         }
 
-        return lista;
+        return listaNacionalidad;
 	}
 
 }

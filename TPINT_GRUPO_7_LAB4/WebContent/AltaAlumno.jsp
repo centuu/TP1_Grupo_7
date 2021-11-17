@@ -27,10 +27,10 @@
 		     	<br>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">Legajo</label>
-		          	<% 
-		          		AlumnoImpl alumno= new AlumnoImpl();
-					%>
-		           	<input type="text" readonly name="txtLegajo" class="form-control" value=<%= alumno.GetNextLegajo() %>>
+					<% 
+						String legajo = (String)request.getAttribute("nextLegajo");
+		          	%>
+		           	<input type="text" readonly name="txtLegajo" class="form-control" value=<%= legajo %>>
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">DNI</label>
@@ -55,33 +55,31 @@
 		          <div class="row mb-3 text-center">
 		          	<label  class="from-group">Provincia</label>
 		           	<select name="provincia">
-						<%
-							ProvinciaDaoImpl provinciaDao = new  ProvinciaDaoImpl ();
-							ArrayList<Provincia> listaProv=provinciaDao.listaProvincia();
-							
-							if (listaProv!=null)
-							{
-								for(Provincia pr:listaProv) 
-								{%>
-									<option value="<%=pr.getNombre() %>"><%=pr.getNombre() %></option> 	
-								<%}
-							}%>
+							<%
+						  		ArrayList<Provincia> provincias = (ArrayList<Provincia>)request.getAttribute("provincias");	
+								
+								for(Provincia provincia : provincias)
+								{
+							%>
+									<option value=<%= provincia.getNombre() %>><%= provincia.getNombre() %></option>
+							<%
+								}
+							%>
 					</select>
 		        </div>
 		        <div class="row mb-3 text-center"> 
 		        	<label  class="from-group">Nacionalidad</label>
 			        <select name="nacionalidad">
-						<%
-							NacionalidadDaoImpl nacionDao = new  NacionalidadDaoImpl ();
-							ArrayList<Nacionalidad> listaNac=nacionDao.listaNacion();
-							
-							if (listaNac!=null)
-							{
-								for(Nacionalidad na:listaNac) 
-								{%>
-									<option value="<%=na.getNombre() %>"><%=na.getNombre() %></option> 	
-								<%}
-							}%>
+							<%
+						  		ArrayList<Nacionalidad> nacionalidades = (ArrayList<Nacionalidad>)request.getAttribute("nacionalidades");	
+								
+								for(Nacionalidad nacionalidad : nacionalidades)
+								{
+							%>
+									<option value=<%= nacionalidad.getNombre() %>><%= nacionalidad.getNombre() %></option>
+							<%
+								}
+							%>
 					</select>
 		        </div>
 		         <div class="row mb-3 text-center">

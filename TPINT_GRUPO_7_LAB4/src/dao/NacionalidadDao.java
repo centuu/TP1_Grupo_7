@@ -5,5 +5,5 @@ import entidad.Nacionalidad;
 
 public interface NacionalidadDao 
 {
-	public ArrayList<Nacionalidad> listaNacion();
+	public ArrayList<Nacionalidad> list();
 }
