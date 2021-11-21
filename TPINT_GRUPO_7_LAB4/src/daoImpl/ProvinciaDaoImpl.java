@@ -10,7 +10,7 @@ import entidad.Provincia;
 
 public class ProvinciaDaoImpl implements ProvinciaDao  
 {
-	private static final String list ="SELECT * FROM provincias";
+	private static final String list ="SELECT * FROM provincia";
 
 	@Override
 	public ArrayList <Provincia> list() 
@@ -26,8 +26,8 @@ public class ProvinciaDaoImpl implements ProvinciaDao
         	while(rs.next())
         	{
         		Provincia prov = new Provincia();
-        		prov.setId(rs.getInt("idProvincia"));
-        		prov.setNombre(rs.getString("descripcion"));
+        		prov.setId(rs.getInt("id"));
+        		prov.setNombre(rs.getString("nombreProvincia"));
         		listaProvincia.add(prov);
         	}
         }

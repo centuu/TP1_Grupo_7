@@ -7,9 +7,9 @@ public class Alumno
 	protected String Nombre ;
 	protected String Apellido;
 	protected String FechaNac;
-	protected String Provincia;
+	protected Provincia Provincia;
 	protected String direccion ;	
-    protected String nacionalidad;
+    protected Nacionalidad nacionalidad;
     protected String mail;
     protected String telefono ;
     protected boolean estado;
@@ -20,7 +20,7 @@ public class Alumno
 		
 	}
     
-	public Alumno(String dni,String nombre, String apellido,String fechaNac, String provincia, String direccion, String nacionalidad, String mail, String telefono) 
+	public Alumno(String dni,String nombre, String apellido,String fechaNac, Provincia provincia, String direccion, Nacionalidad nacionalidad, String mail, String telefono) 
 	{
 		this.dni = dni;
 		this.Nombre = nombre;
@@ -94,22 +94,22 @@ public class Alumno
 		this.direccion = direccion;
 	}
 	
-	public String getProvincia() 
+	public Provincia getProvincia() 
 	{
 		return Provincia;
 	}
 	
-	public void setProvincia(String prov) 
+	public void setProvincia(Provincia prov) 
 	{
 		this.Provincia = prov;
 	}
 	
-	public String getNacionalidad() 
+	public Nacionalidad getNacionalidad() 
 	{
 		return nacionalidad;
 	}
 	
-	public void setNacionalidad(String nacionalidad) 
+	public void setNacionalidad(Nacionalidad nacionalidad) 
 	{
 		this.nacionalidad = nacionalidad;
 		

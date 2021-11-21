@@ -48,8 +48,15 @@ public class ServletAlumno extends HttpServlet
 			alumno.setApellido(request.getParameter("txtapellido"));
 			alumno.setFechaNac(request.getParameter("txtfechanac"));
 			alumno.setDireccion(request.getParameter("txtdireccion"));
-			alumno.setProvincia(request.getParameter("provincia").toString());
-			alumno.setNacionalidad(request.getParameter("nacionalidad").toString());
+			
+			Provincia provi= new Provincia();
+			provi.setId(Integer.parseInt(request.getParameter("provincia")));	
+			alumno.setProvincia(provi);
+			
+			Nacionalidad nacion= new Nacionalidad();
+			nacion.setId(Integer.parseInt(request.getParameter("nacionalidad")));
+			alumno.setNacionalidad(nacion);
+			
 			alumno.setMail(request.getParameter("txtmail"));
 			alumno.setTelefono(request.getParameter("txttelefono"));
 			alumno.setestado(true);

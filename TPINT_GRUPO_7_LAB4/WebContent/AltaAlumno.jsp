@@ -56,31 +56,37 @@
 		          	<label  class="from-group">Provincia</label>
 		           	<select name="provincia">
 							<%
-						  		ArrayList<Provincia> provincias = (ArrayList<Provincia>)request.getAttribute("provincias");	
+							     ProvinciaDaoImpl proviDao= new ProvinciaDaoImpl(); 
+						  		ArrayList<Provincia> provincias =proviDao.list();	
 								
-								for(Provincia provincia : provincias)
-								{
-							%>
-									<option value=<%= provincia.getNombre() %>><%= provincia.getNombre() %></option>
-							<%
-								}
+						  		if (provincias!=null)
+						  		{
+								  for(Provincia provincia : provincias)
+								  {
+							  %>
+									<option value="<%= provincia.getId() %>"><%= provincia.getNombre() %></option>
+							  <%
+								  }
+						  		}
 							%>
 					</select>
 		        </div>
 		        <div class="row mb-3 text-center"> 
 		        	<label  class="from-group">Nacionalidad</label>
-			        <select name="nacionalidad">
-							<%
-						  		ArrayList<Nacionalidad> nacionalidades = (ArrayList<Nacionalidad>)request.getAttribute("nacionalidades");	
-								
-								for(Nacionalidad nacionalidad : nacionalidades)
-								{
-							%>
-									<option value=<%= nacionalidad.getNombre() %>><%= nacionalidad.getNombre() %></option>
-							<%
-								}
-							%>
-					</select>
+			       <select name="nacionalidad">
+		                  <%  NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
+		                       ArrayList<Nacionalidad> lista=nacionDao.list();
+         
+                          if (lista!=null)
+                          {
+                            for(Nacionalidad na:lista) 
+                            {
+                          	%>
+                          	  <option value="<%=na.getId() %>"><%=na.getNombre() %></option>
+
+                          <%}
+                          }%>
+                         </select>
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Email</label>

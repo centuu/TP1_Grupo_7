@@ -8,12 +8,15 @@ import java.sql.ResultSet;
 
 import dao.AlumnoDao;
 import entidad.Alumno;
+import entidad.Nacionalidad;
+import entidad.Provincia;
 
 public class AlumnoImpl implements AlumnoDao 
 {
-	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,fechaNac,domicilio,provincia,nacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
+	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,fechaNac,domicilio,idprovincia,idnacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
 	private static final String delete = "UPDATE Alumnos SET estado = 0 WHERE legajo = ?";
-	private static final String list = "SELECT * FROM Alumnos WHERE estado = 1";
+	private static final String list = "SELECT * FROM Alumnos left join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id`\r\n" + 
+			"inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where estado=1";
 
 	public boolean insert(Alumno alum) 
 	{
@@ -27,8 +30,10 @@ public class AlumnoImpl implements AlumnoDao
 			state.setString(3, alum.getApellido());
 			state.setString(4, alum.getFechaNac());
 			state.setString(5, alum.getDireccion());
-			state.setString(6, alum.getProvincia());
-			state.setString(7, alum.getNacionalidad());
+			
+			state.setInt(6, alum.getProvincia().getId());
+			state.setInt(7, alum.getNacionalidad().getId());
+			
 			state.setString(8, alum.getMail());
 			state.setString(9, alum.getTelefono());
 			
@@ -93,8 +98,17 @@ public class AlumnoImpl implements AlumnoDao
         		alu.setNombre(rs.getString("nombre"));
         		alu.setApellido(rs.getString("apellido"));
         		alu.setDireccion(rs.getString("domicilio"));
-        		alu.setProvincia(rs.getString("provincia"));
-        		alu.setNacionalidad(rs.getString("nacionalidad"));
+        		
+        		Provincia provi= new Provincia();
+        		provi.setId(rs.getInt("idprovincia"));
+        		provi.setNombre(rs.getString("nombreProvincia"));       		
+        		alu.setProvincia(provi);
+        		
+        		Nacionalidad nacion= new Nacionalidad();
+        		nacion.setId(rs.getInt("idnacionalidad"));
+        		nacion.setNombre(rs.getString("nombreNacionalidad"));       		
+        		alu.setNacionalidad(nacion);
+        		
         		alu.setMail(rs.getString("email"));
         		alu.setTelefono(rs.getString("telefono"));
         		alu.setestado(rs.getBoolean("estado"));

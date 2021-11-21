@@ -46,12 +46,9 @@
 		                        <th scope="col">Nombre</th>
 		                        <th scope="col">Apellido</th>
 		                        <th scope="col">Fecha Nac.</th>
-		                        <th scope="col">Domicilio</th>
-		                        <th scope="col">Provincia</th>
-		                        <th scope="col">Nacionalidad</th>
-		                        <th scope="col">Email</th>
-		                        <th scope="col">Telefono</th>
-		                        <th scope="col"> </th>           
+		             
+		                        <th scope="col"> </th>   
+		                        <th scope="col"> </th>                   
 		                    </tr>
 		                    
 		                    	<%
@@ -61,23 +58,18 @@
 								{
 								%>
 								<tr>
-									<td><input type="hidden" value=<%= alumno.getLegajo() %> id="id"/></td>
+
 									<td><%= alumno.getLegajo()  %></td>
 			                         <td><%= alumno.getNombre() %></td>
 			                         <td><%= alumno.getApellido() %></td>
 			                         <td><%= alumno.getFechaNac() %></td>
-			                         <td><%= alumno.getDireccion() %></td>
-			                         <td><%= alumno.getProvincia() %></td>
-			                         <td><%= alumno.getNacionalidad() %></td>
-			                         <td><%= alumno.getMail() %></td>
-			                         <td><%= alumno.getTelefono() %></td>
-			                         <td class="row justify-content-end">
-			                         	<div class="col-6"></div>	
-			                         	<div class="col-6">
-				                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Info</button>
-				                            <button name="btneditar" type="submit" class="btn btn-success">Editar</button>                         
+			                   
+			                         <td>
+			                        
+				                         	<button name="btninfo" type="submit" class="btn btn-info mx-0"> Mas Info</button>
+				                                           
 				                            <button name="btneliminar" type="submit" class="btn btn-danger">Eliminar</button>
-			                         	</div>
+
 			                         </td>
 			                      </tr>
 								<%
