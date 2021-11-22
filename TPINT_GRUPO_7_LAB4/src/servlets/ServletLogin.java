@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.UsuarioDao;
 import daoImpl.UsuarioDaoImpl;
 import entidad.Usuario;
+import negocio.UsuarioNegocio;
 
 
 @WebServlet("/ServletLogin")
@@ -36,12 +37,10 @@ public class ServletLogin extends HttpServlet
 	{
 		String usuario = request.getParameter("usuario");
 		String clave = request.getParameter("password");
-		
-		UsuarioDaoImpl userDao = new UsuarioDaoImpl();
         
         try 
         {
-            Usuario user = userDao.checkLogin(usuario, clave);
+            Usuario user = new UsuarioNegocio().checkLogin(usuario, clave);
             String destPage = "login.jsp";
              
             if (user != null)
@@ -66,5 +65,4 @@ public class ServletLogin extends HttpServlet
             throw new ServletException(ex);
         }
 	}
-
 }

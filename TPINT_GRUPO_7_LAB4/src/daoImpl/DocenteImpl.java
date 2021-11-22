@@ -65,8 +65,8 @@ public class DocenteImpl implements DocenteDao
         		docente.setNombre(rs.getString("nombre"));
         		docente.setApellido(rs.getString("apellido"));
         		docente.setDireccion(rs.getString("domicilio"));
-        		docente.setLocalidad(rs.getString("localidad"));
-        		docente.setNacionalidad(rs.getString("nacionalidad"));
+        		docente.setLocalidad(rs.getString("idlocalidad"));
+        		docente.setNacionalidad(rs.getString("idnacionalidad"));
         		docente.setMail(rs.getString("email"));
         		docente.setTelefono(rs.getString("telefono"));
         		docente.setestado(rs.getBoolean("estado"));

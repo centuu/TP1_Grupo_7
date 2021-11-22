@@ -3,19 +3,18 @@ package servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import daoImpl.AlumnoImpl;
-import daoImpl.NacionalidadDaoImpl;
-import daoImpl.ProvinciaDaoImpl;
 import entidad.Alumno;
 import entidad.Nacionalidad;
 import entidad.Provincia;
+import negocio.AlumnoNegocio;
+import negocio.NacionalidadNegocio;
+import negocio.ProvinciaNegocio;
 
 @WebServlet("/ServletAlumno")
 public class ServletAlumno extends HttpServlet 
@@ -29,10 +28,11 @@ public class ServletAlumno extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		AlumnoImpl alumno= new AlumnoImpl();
-		request.setAttribute("nextLegajo", alumno.GetNextLegajo());
-		ArrayList<Provincia> listaProvincias = new ProvinciaDaoImpl().list();
-		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadDaoImpl().list();
+		request.setAttribute("nextLegajo", new AlumnoNegocio().GetNextLegajo());
+		
+		ArrayList<Provincia> listaProvincias = new ProvinciaNegocio().list();		
+		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
+		
 		request.setAttribute("provincias", listaProvincias);
 		request.setAttribute("nacionalidades", listaNacionalidad);
 		request.getRequestDispatcher("/AltaAlumno.jsp").forward(request, response);
@@ -60,9 +60,8 @@ public class ServletAlumno extends HttpServlet
 			alumno.setMail(request.getParameter("txtmail"));
 			alumno.setTelefono(request.getParameter("txttelefono"));
 			alumno.setestado(true);
-
-    		AlumnoImpl dao=new AlumnoImpl();
-    		dao.insert(alumno);
+    		
+    		new AlumnoNegocio().insert(alumno);
 		}
 		
 		doGet(request, response);

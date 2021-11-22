@@ -15,6 +15,9 @@ import daoImpl.NacionalidadDaoImpl;
 import entidad.Docente;
 import entidad.Localidad;
 import entidad.Nacionalidad;
+import negocio.DocenteNegocio;
+import negocio.LocalidadNegocio;
+import negocio.NacionalidadNegocio;
 
 @WebServlet("/ServletAltaDocente")
 public class ServletAltaDocente extends HttpServlet 
@@ -28,12 +31,11 @@ public class ServletAltaDocente extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		DocenteImpl docente= new DocenteImpl();
-		ArrayList<Localidad> listaLocalidades = new LocalidadDaoImpl().list();
-		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadDaoImpl().list();
+		ArrayList<Localidad> listaLocalidades = new LocalidadNegocio().list();
+		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
 		request.setAttribute("localidades", listaLocalidades);
 		request.setAttribute("nacionalidades", listaNacionalidad);
-		request.setAttribute("nextLegajo", docente.GetNextLegajo());
+		request.setAttribute("nextLegajo", new DocenteNegocio().GetNextLegajo());
 		
 		request.getRequestDispatcher("/AltaDocente.jsp").forward(request, response);
 	}
@@ -53,9 +55,8 @@ public class ServletAltaDocente extends HttpServlet
 			docente.setMail(request.getParameter("txtmail"));
 			docente.setTelefono(request.getParameter("txttelefono"));
 			docente.setestado(true);
-
-			DocenteImpl dao=new DocenteImpl();
-    		dao.insert(docente);
+			
+    		new DocenteNegocio().insert(docente);
 		}
 		
 		doGet(request, response);

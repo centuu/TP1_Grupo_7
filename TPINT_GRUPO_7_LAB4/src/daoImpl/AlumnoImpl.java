@@ -15,8 +15,7 @@ public class AlumnoImpl implements AlumnoDao
 {
 	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,fechaNac,domicilio,idprovincia,idnacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
 	private static final String delete = "UPDATE Alumnos SET estado = 0 WHERE legajo = ?";
-	private static final String list = "SELECT * FROM Alumnos left join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id`\r\n" + 
-			"inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where estado=1";
+	private static final String list = "SELECT * FROM Alumnos";
 
 	public boolean insert(Alumno alum) 
 	{
@@ -99,6 +98,8 @@ public class AlumnoImpl implements AlumnoDao
         		alu.setApellido(rs.getString("apellido"));
         		alu.setDireccion(rs.getString("domicilio"));
         		
+        		listaAlum.add(alu);
+        		
         		Provincia provi= new Provincia();
         		provi.setId(rs.getInt("idprovincia"));
         		provi.setNombre(rs.getString("nombreProvincia"));       		
@@ -112,7 +113,6 @@ public class AlumnoImpl implements AlumnoDao
         		alu.setMail(rs.getString("email"));
         		alu.setTelefono(rs.getString("telefono"));
         		alu.setestado(rs.getBoolean("estado"));
-        		listaAlum.add(alu);
         	}	
         }
         catch(Exception  e)
@@ -150,6 +150,4 @@ public class AlumnoImpl implements AlumnoDao
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
 }
