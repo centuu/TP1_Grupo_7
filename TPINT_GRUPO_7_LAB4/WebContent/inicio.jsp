@@ -12,6 +12,15 @@
  	<div class="row">
  		<div class="col-12 center-block text-center">
 		 	<h1>Bienvenido</h1>
+		 	
+		 	<%if (request.getAttribute("hola")!=null)
+		 		{
+		 		   String in=request.getAttribute("hola").toString();
+		 		   %>
+		 		   
+		 		   <label><%=in %></label>
+		 		   <% 
+		 		}%>
  		</div>
  	</div>
  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnS4QtQKxpl30pzpoJaOe6MCVSXQDhdwH7yA&usqp=CAU">

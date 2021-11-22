@@ -45,7 +45,7 @@
 		                        <th scope="col">Legajo</th>
 		                        <th scope="col">Nombre</th>
 		                        <th scope="col">Apellido</th>
-		                        <th scope="col">Fecha Nac.</th>
+		                        <th scope="col">DNI</th>
 		             
 		                        <th scope="col"> </th>   
 		                        <th scope="col"> </th>                   
@@ -58,25 +58,26 @@
 								{
 								%>
 								<tr>
-
-									<td><%= alumno.getLegajo()  %></td>
+                                <form action="ServletAlumno" method="get">
+                                
+									<td><%= alumno.getLegajo()  %></td> <input name="legajo" type="hidden" value="<%=alumno.getLegajo()%>" >
 			                         <td><%= alumno.getNombre() %></td>
 			                         <td><%= alumno.getApellido() %></td>
-			                         <td><%= alumno.getFechaNac() %></td>
+			                         <td><%= alumno.getDni() %></td>
 			                   
-			                         <td>
-			                        
-				                         	<button name="btninfo" type="submit" class="btn btn-info mx-0"> Mas Info</button>
-				                                           
+			                         <td>            
+				                         	<button name="btninfo"type="submit" class="btn btn-info mx-0"> Mas Info</button>           
+			                                <button name="btneditar"type="submit" class="btn btn-success mx-0"> editar</button>
 				                            <button name="btneliminar" type="submit" class="btn btn-danger">Eliminar</button>
 
 			                         </td>
+			                        
 			                      </tr>
+			                      </form>
 								<%
 								}
 								%>
-		                         
-							
+		                         						
 						</table>
 					</div>
 				</div>

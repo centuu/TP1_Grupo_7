@@ -55,12 +55,10 @@
 		          <div class="row mb-3 text-center">
 		          	<label  class="from-group">Provincia</label>
 		           	<select name="provincia">
-							<%
-							     ProvinciaDaoImpl proviDao= new ProvinciaDaoImpl(); 
-						  		ArrayList<Provincia> provincias =proviDao.list();	
-								
-						  		if (provincias!=null)
+							<%									
+						  		if (request.getAttribute("provincias")!=null)
 						  		{
+						  			ArrayList<Provincia> provincias =(ArrayList<Provincia>)request.getAttribute("provincias");
 								  for(Provincia provincia : provincias)
 								  {
 							  %>
@@ -74,11 +72,10 @@
 		        <div class="row mb-3 text-center"> 
 		        	<label  class="from-group">Nacionalidad</label>
 			       <select name="nacionalidad">
-		                  <%  NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
-		                       ArrayList<Nacionalidad> lista=nacionDao.list();
-         
-                          if (lista!=null)
+		                  <%  
+                          if (request.getAttribute("nacionalidades")!=null)
                           {
+                        	  ArrayList<Nacionalidad> lista=(ArrayList<Nacionalidad>)request.getAttribute("nacionalidades");
                             for(Nacionalidad na:lista) 
                             {
                           	%>

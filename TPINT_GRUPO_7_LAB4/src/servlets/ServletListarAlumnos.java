@@ -18,12 +18,13 @@ import entidad.Alumno;
 import entidad.Docente;
 import entidad.Nacionalidad;
 import entidad.Provincia;
+import negosioImpl.AlumnoNegosioImpl;
 
 @WebServlet("/ServletListarAlumnos")
 public class ServletListarAlumnos extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
-       
+	AlumnoNegosioImpl aluNeg=new AlumnoNegosioImpl();
     public ServletListarAlumnos() 
     {
         super();
@@ -31,8 +32,8 @@ public class ServletListarAlumnos extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		ArrayList<Alumno> listaAlumnos = new AlumnoImpl().list();
-		
+		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+		listaAlumnos=aluNeg.listar();
 		request.setAttribute("alumnos", listaAlumnos);
 		request.getRequestDispatcher("/Alumnos.jsp").forward(request, response);
 	}
@@ -42,9 +43,7 @@ public class ServletListarAlumnos extends HttpServlet
 		if (request.getParameter("btneliminar") != null)
 		{
 			int id = Integer.parseInt(request.getParameter("id"));
-	        
-			AlumnoImpl dao = new AlumnoImpl();
-    		dao.delete(id);
+	        aluNeg.eliminar(id);
 		}
 		
 		doGet(request, response);
