@@ -23,9 +23,9 @@ public class AlumnoNegocio implements AlumnoDao
 	}
 
 	@Override
-	public boolean update(int legajo) 
+	public int update(Alumno alumno) 
 	{
-		return dao.update(legajo);
+		return dao.update(alumno);
 	}
 
 	@Override
@@ -38,5 +38,11 @@ public class AlumnoNegocio implements AlumnoDao
 	public String GetNextLegajo() 
 	{
 		return dao.GetNextLegajo();
+	}
+
+	@Override
+	public Alumno buscarAlumno(int legajo) 
+	{
+		return dao.buscarAlumno(legajo);
 	}
 }

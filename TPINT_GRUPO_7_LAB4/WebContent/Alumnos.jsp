@@ -57,26 +57,23 @@
 								for(Alumno alumno : alumnos)
 								{
 								%>
-								<tr>
-
-									<td><%= alumno.getLegajo()  %></td>
-			                         <td><%= alumno.getNombre() %></td>
-			                         <td><%= alumno.getApellido() %></td>
-			                         <td><%= alumno.getFechaNac() %></td>
-			                   
-			                         <td>
-			                        
-				                         	<button name="btninfo" type="submit" class="btn btn-info mx-0"> Mas Info</button>
-				                                           
-				                            <button name="btneliminar" type="submit" class="btn btn-danger">Eliminar</button>
-
-			                         </td>
-			                      </tr>
+									<tr>
+										<form action="ServletAlumno" method="get">
+										<td><%= alumno.getLegajo()  %></td> 
+										<input name="legajo" type="hidden" value="<%=alumno.getLegajo()%>" >
+					                       	<td><%= alumno.getNombre() %></td>
+					                       	<td><%= alumno.getApellido() %></td>
+					                       	<td><%= alumno.getFechaNac() %></td>			                   
+					                        <td>			                        
+					                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Detalle</button>
+					                            <button name="btneditar"type="submit" class="btn btn-success mx-0">Editar</button>              
+					                            <button name="btneliminar" type="submit" class="btn btn-danger">Eliminar</button>
+					                        </td>
+			                     		</form>
+					               	</tr>
 								<%
 								}
 								%>
-		                         
-							
 						</table>
 					</div>
 				</div>
