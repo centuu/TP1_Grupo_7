@@ -28,7 +28,7 @@ public class ServletAlumno extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{				
-		if(request.getParameter("legajo").toString() != null)
+		if(request.getParameter("legajo") != null)
 		{
 			int legajo= Integer.parseInt(request.getParameter("legajo").toString());
 			Alumno alumno = new AlumnoNegocio().buscarAlumno(legajo);			
