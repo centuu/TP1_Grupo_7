@@ -2,8 +2,10 @@ package entidad;
 
 public class Materia 
 {
-	protected int id;
-	protected String nombre;	
+	private int id;
+	private String descripcion;	
+	private int anio;
+	private int idCarrera;
 	
 	public Materia()
 	{
@@ -19,15 +21,34 @@ public class Materia
 	{
 		this.id = id;
 	}
-	
-	public String getNombre() 
+
+	public String getDescripcion() 
 	{
-		return nombre;
+		return descripcion;
 	}
-	
-	public void setNombre(String nombre) 
+
+	public void setDescripcion(String descripcion) 
 	{
-		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+
+	public int getIdCarrera() {
+		return idCarrera;
+	}
+
+	public void setIdCarrera(int idCarrera) 
+	{
+		this.idCarrera = idCarrera;
+	}
+
+	public int getAnio() 
+	{
+		return anio;
+	}
+
+	public void setAnio(int anio) 
+	{
+		this.anio = anio;
 	}
 	
 }

@@ -1,6 +1,7 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "entidad.Alumno" %>
 <%@ page import = "entidad.Docente" %>
+<%@ page import = "entidad.Materia" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -34,24 +35,25 @@
 							%>
 						</select>
 					</div>
-					<div class="row mb-3 text-center">
-						<label for="btn-Materia">Seleccione una materia</label>
-						<div class="btn-group" id="btn-Materia">
-						  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    Materia
-						  </button>
-						  <div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
-						  </div>
-						</div>
-					</div>
-					
+					<div class="row mb-3 justify-content-center">
+						<label for="btn-Profesor">Seleccione una materia</label>
+						<select class="btn btn-secondary form-control form-control-sm" style="width: auto;">
+							<%
+						  		ArrayList<Materia> materias = (ArrayList<Materia>)request.getAttribute("materias");	
+								
+								for(Materia materia : materias)
+								{
+							%>
+									<option value=<%= materia.getId() %>><%= materia.getDescripcion() %></option>
+							<%
+								}
+							%>
+						</select>
+					</div>					
 					<div class="row">
 						<div class="col-5">
 							<label>Alumnos a seleccionar</label>
-							<select class="form-select" size="10" aria-label="size 3 select example">
+							<select class="form-select" id="alumnosASeleccionar" size="10" aria-label="size 3 select example">
 							  	<%
 							  		ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
 									
@@ -65,18 +67,13 @@
 							</select>
 						</div>
 						<div class="col-2 align-items-center pt-5">
-							<button class="btn btn-warning mb-2">></button>
+							<button id="btnRight" class="btn btn-warning mb-2">></button>
 							<br>
-							<button class="btn btn-warning"><</button>
+							<button id="btnLeft" class="btn btn-warning"><</button>
 						</div>
 						<div class="col-5">
 							<label>Alumnos a seleccionados</label>
-							<select class="form-select" size="10" aria-label="size 3 select example">
-							  <option selected>Open this select menu</option>
-							  <option value="1">One</option>
-							  <option value="2">Two</option>
-							  <option value="3">Three</option>
-							</select>
+							<select class="form-select" id="alumnosSeleccionados" size="10" aria-label="size 3 select example"></select>
 						</div>
 					</div>					
 					<button type="submit" class="btn btn-primary">Confirmar</button>
@@ -85,5 +82,6 @@
 		</div>
 		<div class="col-2"></div>
 	</div>
+	<script src="./resources/js/AltaCurso.js"></script>
 </body>
 </html>

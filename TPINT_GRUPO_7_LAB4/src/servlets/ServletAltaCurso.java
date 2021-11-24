@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidad.Alumno;
 import entidad.Docente;
+import entidad.Materia;
 import negocio.AlumnoNegocio;
 import negocio.DocenteNegocio;
+import negocio.MateriaNegocio;
 
 @WebServlet("/ServletAltaCurso")
 public class ServletAltaCurso extends HttpServlet 
@@ -29,9 +31,11 @@ public class ServletAltaCurso extends HttpServlet
 	{
 		ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list();
 		ArrayList<Docente> listaDocentes = new DocenteNegocio().list();
+		ArrayList<Materia> listaMateria = new MateriaNegocio().list();
 		
 		request.setAttribute("docentes", listaDocentes);
 		request.setAttribute("alumnos", listaAlumnos);
+		request.setAttribute("materias", listaMateria);
 		request.getRequestDispatcher("/AltaCurso.jsp").forward(request, response);
 	}
 
