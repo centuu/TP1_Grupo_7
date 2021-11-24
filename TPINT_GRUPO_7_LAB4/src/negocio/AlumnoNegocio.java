@@ -16,10 +16,14 @@ public class AlumnoNegocio implements AlumnoDao
 		return dao.insert(alum);
 	}
 	
-	@Override
-	public ArrayList<Alumno> list() 
+	public int cantRegistros()
 	{
-		return dao.list();
+		return dao.cantRegistros();
+	}
+	
+	public ArrayList<Alumno> list(int start, int total) 
+	{
+		return dao.list(start, total);
 	}
 
 	@Override
@@ -44,5 +48,11 @@ public class AlumnoNegocio implements AlumnoDao
 	public Alumno buscarAlumno(int legajo) 
 	{
 		return dao.buscarAlumno(legajo);
+	}
+
+	@Override
+	public ArrayList<Alumno> list() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

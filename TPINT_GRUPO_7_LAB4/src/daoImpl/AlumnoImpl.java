@@ -20,7 +20,11 @@ public class AlumnoImpl implements AlumnoDao
 	private static final String list = "SELECT * FROM Alumnos left join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id`inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where estado=1";
     private static final String edit = "UPDATE Alumnos SET Dni = ?, nombre = ? , apellido = ?, fechaNac = ?, domicilio = ?, idprovincia = ?,idNacionalidad =?,email = ? , telefono = ? WHERE nrolegajo =?"; 
     private static final String buscar="SELECT * FROM Alumnos inner join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id` inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where nroLegajo=";
-	public boolean insert(Alumno alum) 
+	
+    private static final String count = "SELECT COUNT(*) FROM Alumnos left join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id`inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where estado=1";
+    
+    
+    public boolean insert(Alumno alum) 
 	{
 		int res = -1;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -52,6 +56,27 @@ public class AlumnoImpl implements AlumnoDao
 		}
 
 		return res > 0;
+	}
+	
+	public int cantRegistros() 
+	{
+		
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		PreparedStatement state;
+		try {
+			state = conexion.prepareStatement(count);
+			ResultSet rs = state.executeQuery();
+			
+			while(rs.next()){
+				return rs.getInt(1);
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+
+		return -1;
 	}
 	
 	public boolean delete(int id) 
@@ -88,8 +113,7 @@ public class AlumnoImpl implements AlumnoDao
 		return false;
 	}
 
-	@Override
-	public ArrayList<Alumno> list()
+	public ArrayList<Alumno> list(int start, int total)
 	{
 		PreparedStatement state;
 		ArrayList<Alumno> listaAlum = new ArrayList<Alumno>();
@@ -97,7 +121,12 @@ public class AlumnoImpl implements AlumnoDao
 		 
         try
         {
-        	state = conexion.prepareStatement(list);
+        	if (start > 1) {
+        		state = conexion.prepareStatement(list + " LIMIT " + ((start-1)*total) + ", " + total);
+        	}
+        	else {
+        		state = conexion.prepareStatement(list + " LIMIT " + (start-1) + ", " + total);
+        	}
             ResultSet rs = state.executeQuery();
         	while(rs.next())
         	{
@@ -244,5 +273,11 @@ public class AlumnoImpl implements AlumnoDao
 			e.printStackTrace();
 			return alumno;
 		}
+	}
+
+	@Override
+	public ArrayList<Alumno> list() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

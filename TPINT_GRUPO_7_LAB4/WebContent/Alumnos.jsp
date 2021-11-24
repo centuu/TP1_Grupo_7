@@ -8,6 +8,16 @@
 	<title>TP Integrador - Grupo N° 7</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="./resources/css/ListarAlumnos.css">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+ 	<script type="text/javascript">
+ 		$(document).ready( function () {
+ 			$('table_id').DataTable();
+ 		} );
+ 	</script>
+ 
 </head>
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
@@ -40,7 +50,8 @@
 						<button name="btnlistar" type="submit" class="btn btn-primary col-1">Listar</button>
 					</div>
 					<div class="col-12 modal-content">
-		                <table class="table table-hover table-striped">
+						
+		                <table id="table_id" class="w3-table w3-striped" border="1" cellpadding="5" cellspacing="5">
 		                    <tr class="alert-primary">
 		                        <th scope="col">Legajo</th>
 		                        <th scope="col">Nombre</th>
@@ -67,7 +78,7 @@
 					                        <td>			                        
 					                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Detalle</button>
 					                            <button name="btneditar"type="submit" class="btn btn-success mx-0">Editar</button>              
-					                            <button name="btneliminar" type="submit" class="btn btn-danger">Eliminar</button>
+					                            <button name="btneliminar" type="submit" class="btn btn-danger" onclick="return confirm('Desea eliminar este alumno?')" >Eliminar</button>
 					                        </td>
 			                     		</form>
 					               	</tr>
@@ -75,6 +86,16 @@
 								}
 								%>
 						</table>
+						<%--For displaying Previous link except for the 1st page --%>
+					    <c:if test="${currentPage > 1}">
+					        <td><a href="ServletListarAlumnos?page=${currentPage - 1}">Anterior</a></td>
+					    </c:if>
+					    
+					    <%--For displaying Next link --%>
+					    <c:if test="${currentPage lt noOfPages}">
+					        <td><a href="ServletListarAlumnos?page=${currentPage + 1}">Siguiente</a></td>
+					    </c:if>
+					    <td>Página ${currentPage} de ${noOfPages}</td>
 					</div>
 				</div>
 			</div>
