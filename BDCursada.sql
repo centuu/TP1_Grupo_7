@@ -104,7 +104,7 @@ INSERT INTO provincia (nombreProvincia) VALUES ( 'Santa Fe' );
 INSERT INTO provincia (nombreProvincia) VALUES ( 'Catamarca' );
 INSERT INTO provincia (nombreProvincia) VALUES ( 'Chubut' );
 INSERT INTO provincia (nombreProvincia) VALUES ( 'Jujuy' );
-INSERT INTO provincia (nombreProvincia) VALUES ( 'Otros' );
+INSERT INTO provincia (nombreProvincia) VALUES ( 'Otra' );
 
 INSERT INTO localidad (nombreLocalidad) VALUES ( 'Pacheco' );
 INSERT INTO localidad (nombreLocalidad) VALUES ( 'Talar' );

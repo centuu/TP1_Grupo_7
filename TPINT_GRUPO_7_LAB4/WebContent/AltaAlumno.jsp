@@ -16,9 +16,9 @@
 </head>
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
-	
+	<jsp:include page="/partials/Confirmation.jsp" />
 	<main>  
-		<form action="ServletAlumno" method="post">
+		<form action="ServletAlumno" method="post" class="needs-validation" novalidate id="form">
 		 <div class="container text-center my-5 "> 
 		  <div class="row ">
 		     <div class="col-lg-4"></div> 
@@ -34,23 +34,33 @@
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">DNI</label>
-		           	<input type="text" name="txtdni" class="form-control" >
+		           	<input type="text" minlength="7" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="txtdni" class="form-control" required>
+		           	<div class="valid-feedback"></div>
+		           	<div class="invalid-feedback">Campo Obligatorio</div>
 		        </div>
 		        <div class="row mb-3 text-center">
 		         	<label  class="from-group">Nombre</label>
-		           	<input type="text" name="txtnombre" class="form-control">
+		           	<input type="text" name="txtnombre" class="form-control" required>
+		           	<div class="valid-feedback"></div>
+		           	<div class="invalid-feedback">Campo Obligatorio</div>
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">Apellido</label>
-		           	<input type="text" name="txtapellido" class="form-control" >
+		           	<input type="text" name="txtapellido" class="form-control" required>
+		         	<div class="valid-feedback"></div>
+		           	<div class="invalid-feedback">Campo Obligatorio</div>
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">Fecha Nacimiento</label>
-		           	<input type="text" name="txtfechanac" class="form-control" >
+		           	<input type="text" name="txtfechanac" class="form-control" required>
+		         	<div class="valid-feedback"></div>
+		           	<div class="invalid-feedback">Campo Obligatorio</div>		       
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label class="from-group">Direccion</label>
-		           	<input type="text" name="txtdireccion" class="form-control" >
+		           	<input type="text" name="txtdireccion" class="form-control" required>
+		         	<div class="valid-feedback"></div>
+		           	<div class="invalid-feedback">Campo Obligatorio</div>		           	
 		        </div>
 		          <div class="row mb-3 text-center">
 		          	<label  class="from-group">Provincia</label>
@@ -90,19 +100,42 @@
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Email</label>
-		           	<input type="text" name="txtmail" class="form-control" id="inputPassword3">
+		           	<input type="email" name="txtmail" class="form-control" id="inputPassword3" required>
+		         	<div class="valid-feedback"></div>
+		           	<div class="invalid-feedback">Campo Obligatorio</div>   	
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Telefono</label>
-		           	<input type="text" name="txttelefono" class="form-control" id="inputPassword3">
+		           	<input type="text" name="txttelefono" class="form-control" id="inputPassword3" required>
+		         	<div class="valid-feedback"></div>
+		           	<div class="invalid-feedback">Campo Obligatorio</div>           	
 		        </div>
 		      	<div class="row mb-3 text-center">
-		       		<button name="btnregistrar" type="submit" class="btn btn-primary">Registrar</button>
+		       		<button name="btnregistrar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalpopup">Registrar</button>
 		     	</div>
 				<div class="col-lg-4"></div>
 			</div>  
 		</form>
 	</main> 
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ 	<script>
+ 	(function () {
+ 	  'use strict'
+ 	  var forms = document.querySelectorAll('.needs-validation')
+
+ 	  // Previene el submit
+ 	  Array.prototype.slice.call(forms)
+ 	    .forEach(function (form) {
+ 	      form.addEventListener('click', function (event) {
+ 	        if (!form.checkValidity()) {
+ 	          event.preventDefault()
+ 	          event.stopPropagation()
+ 	        }
+
+ 	        form.classList.add('was-validated')
+ 	      }, false)
+ 	    })
+ 	})()
+ 	</script>
 </body>
 </html>
