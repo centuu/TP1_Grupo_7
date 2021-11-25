@@ -19,7 +19,7 @@ import negocio.DocenteNegocio;
 import negocio.LocalidadNegocio;
 import negocio.NacionalidadNegocio;
 
-@WebServlet("/ServletAltaDocente")
+@WebServlet(name = "ServletAltaDocente", urlPatterns = { "/altadocente" })
 public class ServletAltaDocente extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;

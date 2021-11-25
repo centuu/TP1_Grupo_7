@@ -17,7 +17,7 @@ import entidad.Usuario;
 import negocio.UsuarioNegocio;
 
 
-@WebServlet("/ServletLogin")
+@WebServlet(name = "ServletLogin", urlPatterns = { "/login" })
 public class ServletLogin extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
@@ -30,7 +30,7 @@ public class ServletLogin extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		request.getSession().invalidate();
-		response.sendRedirect("inicio.jsp");
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

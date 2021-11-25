@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
 	
-	<form action="ServletLogin" method="POST">
+	<form action="login" method="POST">
 		<div class="container text-center my-5 "> 
 			<div class="row ">
 				<div class="col-lg-4"></div>

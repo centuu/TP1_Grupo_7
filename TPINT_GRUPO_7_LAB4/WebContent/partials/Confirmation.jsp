@@ -25,7 +25,8 @@
 	</div>
 </div>
  	 <script type="text/javascript">
- 	  function form_submit() {
+ 	  function form_submit() 
+ 	  {
  	    document.getElementById("form").submit();
  	   }    
  	 </script>
