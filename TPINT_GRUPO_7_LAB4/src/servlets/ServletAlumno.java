@@ -50,13 +50,13 @@ public class ServletAlumno extends HttpServlet
 				new AlumnoNegocio().delete(legajo);			
 				request.getRequestDispatcher("/ServletListarAlumnos").forward(request, response);			
 			}
-		}		
+		}
 		else
 		{
 			request.setAttribute("nextLegajo", new AlumnoNegocio().GetNextLegajo());
 			ArrayList<Provincia> listaProvincias = new ProvinciaNegocio().list();		
 			ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
-			
+
 			request.setAttribute("provincias", listaProvincias);
 			request.setAttribute("nacionalidades", listaNacionalidad);
 			request.getRequestDispatcher("/AltaAlumno.jsp").forward(request, response);

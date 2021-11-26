@@ -51,7 +51,7 @@
 		 	    	<% if(session.getAttribute("user") != null)
 		 	    	{%>
 		          		<label class="nav-link" style="display: inline;"><%= session.getAttribute("name") %></label>
-		          		<a class="nav-link" href="ServletLogin" style="display: inline;">Logout</a>
+		          		<a class="nav-link" href="login" style="display: inline;">Logout</a>
 		          	<%}
 		 	    	else 
 		 	    	{ %> 

@@ -1,9 +1,7 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "entidad.Nacionalidad" %>
-<%@ page import = "daoImpl.NacionalidadDaoImpl" %>
 <%@ page import = "daoImpl.AlumnoImpl" %>
 <%@ page import = "entidad.Provincia" %>
-<%@ page import = "daoImpl.ProvinciaDaoImpl" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,19 +32,19 @@
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">DNI</label>
-		           	<input type="text" minlength="7" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="txtdni" class="form-control" required>
+		           	<input type="text" pattern="[0-9]{7,8}" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="txtdni" class="form-control" required>
 		           	<div class="valid-feedback"></div>
 		           	<div class="invalid-feedback">Campo Obligatorio</div>
 		        </div>
 		        <div class="row mb-3 text-center">
 		         	<label  class="from-group">Nombre</label>
-		           	<input type="text" name="txtnombre" class="form-control" required>
+		           	<input type="text" name="txtnombre" class="form-control" pattern="[a-zA-Z]+" required>
 		           	<div class="valid-feedback"></div>
 		           	<div class="invalid-feedback">Campo Obligatorio</div>
 		        </div>
 		        <div class="row mb-3 text-center">
 		          	<label  class="from-group">Apellido</label>
-		           	<input type="text" name="txtapellido" class="form-control" required>
+		           	<input type="text" name="txtapellido" pattern="[a-zA-Z]+" class="form-control" required>
 		         	<div class="valid-feedback"></div>
 		           	<div class="invalid-feedback">Campo Obligatorio</div>
 		        </div>
@@ -64,39 +62,32 @@
 		        </div>
 		          <div class="row mb-3 text-center">
 		          	<label  class="from-group">Provincia</label>
-		           	<select name="provincia">
-							<%
-							     ProvinciaDaoImpl proviDao= new ProvinciaDaoImpl(); 
-						  		ArrayList<Provincia> provincias =proviDao.list();	
-								
-						  		if (provincias!=null)
-						  		{
-								  for(Provincia provincia : provincias)
-								  {
-							  %>
-									<option value="<%= provincia.getId() %>"><%= provincia.getNombre() %></option>
-							  <%
-								  }
-						  		}
-							%>
+					<select name="provincia">
+						<%
+							ArrayList<Provincia> provincias = (ArrayList<Provincia>)request.getAttribute("provincias");
+							for(Provincia provincia : provincias)
+							{
+						%>
+							<option value=<%= provincia.getNombre() %>><%= provincia.getNombre() %></option>
+						<%
+							}
+						%>
 					</select>
-		        </div>
-		        <div class="row mb-3 text-center"> 
-		        	<label  class="from-group">Nacionalidad</label>
-			       <select name="nacionalidad">
-		                  <%  NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
-		                       ArrayList<Nacionalidad> lista=nacionDao.list();
-         
-                          if (lista!=null)
-                          {
-                            for(Nacionalidad na:lista) 
-                            {
-                          	%>
-                          	  <option value="<%=na.getId() %>"><%=na.getNombre() %></option>
-
-                          <%}
-                          }%>
-                         </select>
+				</div>
+				<div class="row mb-3 text-center"> 
+					<label  class="from-group">Nacionalidad</label>
+					<select name="nacionalidad">
+						<%
+					  		ArrayList<Nacionalidad> nacionalidades = (ArrayList<Nacionalidad>)request.getAttribute("nacionalidades");	
+							
+							for(Nacionalidad nacionalidad : nacionalidades)
+							{
+						%>
+								<option value=<%= nacionalidad.getNombre() %>><%= nacionalidad.getNombre() %></option>
+						<%
+							}
+						%>
+					</select>
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Email</label>
@@ -106,7 +97,7 @@
 		        </div>
 		         <div class="row mb-3 text-center">
 		          	<label  class="from-group">Telefono</label>
-		           	<input type="text" name="txttelefono" class="form-control" id="inputPassword3" required>
+		           	<input type="text" name="txttelefono" class="form-control" id="inputPassword3" pattern="[0-9]+" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required>
 		         	<div class="valid-feedback"></div>
 		           	<div class="invalid-feedback">Campo Obligatorio</div>           	
 		        </div>
@@ -118,7 +109,7 @@
 		</form>
 	</main> 
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
- 	<script>+
+ 	<script>
  	(function () {
  	  'use strict'
  	  var forms = document.querySelectorAll('.needs-validation')
