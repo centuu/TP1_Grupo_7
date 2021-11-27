@@ -96,7 +96,7 @@
 				        </div>
 				      	<div class="row mb-3 text-center">
 				       		<button name="btnguardar" id="btnguardar" type="submit" class="btn btn-primary mb-1" <%= request.getAttribute("readOnly") != "" ? "hidden=true" : "" %>>Guardar cambios</button>
-				       		<button name="btnVolver" type="button" onclick="window.location.href='ServletListarAlumnos'" class="btn btn-danger">Volver</button>
+				       		<button name="btnVolver" type="button" onclick="window.location.href='listaralumnos'" class="btn btn-danger">Volver</button>
 				     	</div>
 						<div class="col-lg-4"></div>
 					</div>  

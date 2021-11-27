@@ -1,9 +1,14 @@
 package daoImpl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.CallableStatement;
+
 import java.sql.ResultSet;
 
 import dao.AlumnoDao;
@@ -13,37 +18,30 @@ import entidad.Provincia;
 
 public class AlumnoImpl implements AlumnoDao 
 {
-	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,fechaNac,domicilio,idprovincia,idnacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
-	//private static final String delete = "UPDATE Alumnos SET estado = 0 WHERE legajo = ?";
-	//private static final String list = "SELECT * FROM Alumnos";
-	private static final String delete = "UPDATE Alumnos SET estado = 0 WHERE nroLegajo = ?";
-	private static final String list = "SELECT * FROM Alumnos left join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id`inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where estado=1";
     private static final String edit = "UPDATE Alumnos SET Dni = ?, nombre = ? , apellido = ?, fechaNac = ?, domicilio = ?, idprovincia = ?,idNacionalidad =?,email = ? , telefono = ? WHERE nrolegajo =?"; 
-    private static final String buscar="SELECT * FROM Alumnos inner join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id` inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where nroLegajo=";
-	public boolean insert(Alumno alum) 
+	
+    public boolean insert(Alumno alum) 
 	{
-		int res = -1;
+    	boolean res = false;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		PreparedStatement state;
-		try {
-			state = conexion.prepareStatement(insert);
+		
+		try 
+		{
+			CallableStatement state = conexion.prepareCall("{CALL insert_Alumno(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
 			state.setString(1, alum.getDni());
 			state.setString(2, alum.getNombre());
-			state.setString(3, alum.getApellido());
+			state.setString(3, alum.getApellido());			
 			state.setString(4, alum.getFechaNac());
-			state.setString(5, alum.getDireccion());
-			
+			state.setString(5, alum.getDireccion());			
 			state.setInt(6, alum.getProvincia().getId());
-			state.setInt(7, alum.getNacionalidad().getId());
-			
+			state.setInt(7, alum.getNacionalidad().getId());			
 			state.setString(8, alum.getMail());
 			state.setString(9, alum.getTelefono());
-			
-			res = state.executeUpdate();
 
-			if (res > 0) 
+			if (state.executeUpdate() > 0) 
 			{
 				conexion.commit();
+				res = true;
 			}
 		}
 		catch (SQLException e) 
@@ -51,25 +49,23 @@ public class AlumnoImpl implements AlumnoDao
 			e.printStackTrace();
 		}
 
-		return res > 0;
+		return res;
 	}
 	
-	public boolean delete(int id) 
+	public boolean delete(int legajo) 
 	{
-		int res = -1;
+    	boolean res = false;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		PreparedStatement state;
-		try {
-			
-			state = conexion.prepareStatement(delete);
-			state.setInt(1, id);
-			
-			res = state.executeUpdate();
+		
+		try 
+		{
+			CallableStatement state = conexion.prepareCall("{CALL delete_Alumno(?)}");
+			state.setInt(1, legajo);
 
-			if (res > 0) 
+			if (state.executeUpdate() > 0) 
 			{
 				conexion.commit();
-				return true;
+				res = true;
 			}
 		}
 		catch (SQLException e) 
@@ -85,49 +81,46 @@ public class AlumnoImpl implements AlumnoDao
 			}
 		}
 
-		return false;
+		return res;
 	}
 
 	@Override
 	public ArrayList<Alumno> list()
 	{
-		PreparedStatement state;
 		ArrayList<Alumno> listaAlum = new ArrayList<Alumno>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		 
         try
         {
-        	state = conexion.prepareStatement(list);
+			CallableStatement state = conexion.prepareCall("{CALL list_Alumnos()}");
             ResultSet rs = state.executeQuery();
         	while(rs.next())
         	{
         		Alumno alu = new Alumno();
         		alu.setDni(rs.getString("dni"));
-        		alu.setNroLegajo(rs.getInt("nroLegajo"));
-        		alu.setFechaNac(rs.getString("fechaNac"));
+        		alu.setNroLegajo(rs.getInt("legajo"));
+        		alu.setFechaNac(rs.getString("fechaNacimiento"));
         		alu.setNombre(rs.getString("nombre"));
         		alu.setApellido(rs.getString("apellido"));
-        		alu.setDireccion(rs.getString("domicilio"));
-        		
-        		listaAlum.add(alu);
-        		
+        		alu.setDireccion(rs.getString("domicilio"));        		
         		Provincia provi= new Provincia();
         		provi.setId(rs.getInt("idprovincia"));
-        		provi.setNombre(rs.getString("nombreProvincia"));       		
-        		alu.setProvincia(provi);
-        		
+        		provi.setNombre(rs.getString("provincia"));       		
+        		alu.setProvincia(provi);        		
         		Nacionalidad nacion= new Nacionalidad();
         		nacion.setId(rs.getInt("idnacionalidad"));
-        		nacion.setNombre(rs.getString("nombreNacionalidad"));       		
-        		alu.setNacionalidad(nacion);
-        		
+        		nacion.setNombre(rs.getString("nacionalidad"));       		
+        		alu.setNacionalidad(nacion);        		
         		alu.setMail(rs.getString("email"));
         		alu.setTelefono(rs.getString("telefono"));
         		alu.setestado(rs.getBoolean("estado"));
+        		
+        		listaAlum.add(alu);
         	}	
         }
         catch(Exception  e)
         {
+        	e.printStackTrace();
         	return listaAlum;
         }
         
@@ -203,39 +196,37 @@ public class AlumnoImpl implements AlumnoDao
 	
 	public Alumno buscarAlumno(int legajo)
 	{
-		PreparedStatement state;
 		Alumno alumno=new Alumno();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		ResultSet rs = null;
 		try
 		{
-			state = conexion.prepareStatement(buscar + legajo);
-			rs = state.executeQuery();
+			CallableStatement state = conexion.prepareCall("{CALL find_Alumno(?)}");
+			state.setInt(1, legajo);
+            ResultSet rs = state.executeQuery();
 			while(rs.next()) 
 			{
 				 Alumno alu = new Alumno();
 					alu.setDni(rs.getString("dni"));
-					alu.setNroLegajo(rs.getInt("nroLegajo"));
-					alu.setFechaNac(rs.getString("fechaNac"));
+					alu.setNroLegajo(rs.getInt("legajo"));
+					alu.setFechaNac(rs.getString("fechaNacimiento"));
 					alu.setNombre(rs.getString("nombre"));
 					alu.setApellido(rs.getString("apellido"));
 					alu.setDireccion(rs.getString("domicilio"));
 
 					Provincia provi= new Provincia();
 					provi.setId(rs.getInt("idprovincia"));
-					provi.setNombre(rs.getString("nombreProvincia"));       		
+					provi.setNombre(rs.getString("provincia"));       		
 					alu.setProvincia(provi);
 
 					Nacionalidad nacion= new Nacionalidad();
 					nacion.setId(rs.getInt("idnacionalidad"));
-					nacion.setNombre(rs.getString("nombreNacionalidad"));       		
+					nacion.setNombre(rs.getString("nacionalidad"));       		
 					alu.setNacionalidad(nacion);
 
 					alu.setMail(rs.getString("email"));
 					alu.setTelefono(rs.getString("telefono"));
 					alu.setestado(rs.getBoolean("estado"));
 					alumno=alu;
-
 		    }
 	        return alumno;
 		}

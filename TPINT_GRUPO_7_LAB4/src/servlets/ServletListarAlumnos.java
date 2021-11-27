@@ -37,13 +37,6 @@ public class ServletListarAlumnos extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		if (request.getParameter("btneliminar") != null)
-		{
-			int id = Integer.parseInt(request.getParameter("id"));
-	        
-			new AlumnoNegocio().delete(id);
-		}
-		
 		doGet(request, response);
 	}
 }

@@ -62,9 +62,9 @@
 								{
 								%>
 									<tr>
-										<form action="ServletAlumno" method="get">
-										<td><%= alumno.getLegajo()  %></td> 
-										<input name="legajo" type="hidden" value="<%=alumno.getLegajo()%>" >
+										<form action="alumno" method="GET">
+											<td><%= alumno.getLegajo()  %></td> 
+											<input name="legajo" type="hidden" value="<%=alumno.getLegajo()%>" >
 					                       	<td><%= alumno.getNombre() %></td>
 					                       	<td><%= alumno.getApellido() %></td>
 					                       	<td><%= alumno.getFechaNac() %></td>			                   

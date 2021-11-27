@@ -47,8 +47,9 @@ public class ServletAlumno extends HttpServlet
 			}
 			else if (request.getParameter("btneliminar")!=null)
 			{		
-				new AlumnoNegocio().delete(legajo);			
-				request.getRequestDispatcher("/ServletListarAlumnos").forward(request, response);			
+				int id = Integer.parseInt(request.getParameter("legajo"));	        
+				new AlumnoNegocio().delete(id);		
+				request.getRequestDispatcher("/Alumnos.jsp").forward(request, response);
 			}
 		}
 		else
@@ -59,7 +60,7 @@ public class ServletAlumno extends HttpServlet
 
 			request.setAttribute("provincias", listaProvincias);
 			request.setAttribute("nacionalidades", listaNacionalidad);
-			request.getRequestDispatcher("/AltaAlumno.jsp").forward(request, response);
+			request.getRequestDispatcher("/alumno.jsp").forward(request, response);
 		}
 	}
 
