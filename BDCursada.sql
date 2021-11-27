@@ -99,10 +99,10 @@ CREATE TABLE carreras
 );
 
 DELIMITER //
-CREATE PROCEDURE insert_Alumno (dni INT,nombre VARCHAR(10),apellido VARCHAR(25),fechaNacimiento DATE,domicilio VARCHAR(50),idprovincia INT,idnacionalidad INT,email VARCHAR(50),telefono VARCHAR(25),estado BOOLEAN)
+CREATE PROCEDURE insert_Alumno (dni INT,nombre VARCHAR(10),apellido VARCHAR(25),fechaNacimiento DATE,domicilio VARCHAR(50),idprovincia INT,idnacionalidad INT,email VARCHAR(50),telefono VARCHAR(25))
 BEGIN 
 	INSERT INTO Alumnos (dni,nombre,apellido,fechaNacimiento,domicilio,idprovincia,idnacionalidad,email,telefono,estado) 
-	VALUES (dni,nombre,apellido,fechaNacimiento,domicilio,idprovincia,idnacionalidad,email,telefono,estado);
+	VALUES (dni,nombre,apellido,fechaNacimiento,domicilio,idprovincia,idnacionalidad,email,telefono,true);
 END //
 DELIMITER ;
 

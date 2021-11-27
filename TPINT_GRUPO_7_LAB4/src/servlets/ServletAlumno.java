@@ -73,26 +73,35 @@ public class ServletAlumno extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		Alumno alumno = new Alumno();
-		alumno.setDni(request.getParameter("txtdni"));
-		alumno.setNombre(request.getParameter("txtnombre"));
-		alumno.setApellido(request.getParameter("txtapellido"));
-		alumno.setFechaNac(request.getParameter("txtfechanac"));
-		alumno.setDireccion(request.getParameter("txtdireccion"));
-		
-		Provincia provi= new Provincia();
-		provi.setId(Integer.parseInt(request.getParameter("provincia")));	
-		alumno.setProvincia(provi);
-		
-		Nacionalidad nacion= new Nacionalidad();
-		nacion.setId(Integer.parseInt(request.getParameter("nacionalidad")));
-		alumno.setNacionalidad(nacion);
-		
-		alumno.setMail(request.getParameter("txtmail"));
-		alumno.setTelefono(request.getParameter("txttelefono"));
-		alumno.setestado(true);
-
-		new AlumnoNegocio().insert(alumno);
+		try
+		{
+			Alumno alumno = new Alumno();
+			alumno.setDni(request.getParameter("txtdni"));
+			alumno.setNombre(request.getParameter("txtnombre"));
+			alumno.setApellido(request.getParameter("txtapellido"));
+			alumno.setFechaNac(request.getParameter("txtfechanac"));
+			alumno.setDireccion(request.getParameter("txtdireccion"));
+			
+			Provincia provi= new Provincia();
+			provi.setId(Integer.parseInt(request.getParameter("provincia")));	
+			alumno.setProvincia(provi);
+			
+			Nacionalidad nacion= new Nacionalidad();
+			nacion.setId(Integer.parseInt(request.getParameter("nacionalidad")));
+			alumno.setNacionalidad(nacion);
+			
+			alumno.setMail(request.getParameter("txtmail"));
+			alumno.setTelefono(request.getParameter("txttelefono"));
+			alumno.setestado(true);
+			
+			new AlumnoNegocio().insert(alumno);
+			
+			request.setAttribute("message", "Se cargo con maldito exito");
+		}
+		catch(Exception e)
+		{
+			
+		}
 	
 		doGet(request, response);
 	}
