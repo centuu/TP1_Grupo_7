@@ -26,8 +26,8 @@ public class LocalidadDaoImpl implements LocalidadDao
         	while(rs.next())
         	{
         		Localidad loc = new Localidad();
-        		loc.setId(rs.getInt("idLocalidad"));
-        		loc.setNombre(rs.getString("descripcion"));
+        		loc.setId(rs.getInt("id"));
+        		loc.setNombre(rs.getString("localidad"));
         		listaLocalidad.add(loc);
         	}
         }

@@ -31,6 +31,12 @@ public class ServletAltaDocente extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		if(request.getSession().getAttribute("user") == null || !request.getSession().getAttribute("rol").toString().equals("1"))
+		{
+			request.getRequestDispatcher("inicio").forward(request, response);
+			return;
+		}
+		
 		ArrayList<Localidad> listaLocalidades = new LocalidadNegocio().list();
 		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
 		request.setAttribute("localidades", listaLocalidades);

@@ -28,6 +28,13 @@ public class ServletAlumno extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{				
+		if(request.getSession().getAttribute("user") == null || !request.getSession().getAttribute("rol").toString().equals("1"))
+		{
+			request.getRequestDispatcher("inicio").forward(request, response);
+			return;
+		}
+		
+		
 		if(request.getParameter("legajo") != null)
 		{
 			int legajo= Integer.parseInt(request.getParameter("legajo").toString());
@@ -60,14 +67,12 @@ public class ServletAlumno extends HttpServlet
 
 			request.setAttribute("provincias", listaProvincias);
 			request.setAttribute("nacionalidades", listaNacionalidad);
-			request.getRequestDispatcher("/alumno.jsp").forward(request, response);
+			request.getRequestDispatcher("/AltaAlumno.jsp").forward(request, response);
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//No creo necesaria la siguiente validacion, el formulario ya entra como invalido
-		//if(request.getParameter("txtdni") != "" && request.getParameter("txtnombre") != "" && request.getParameter("txtapellido") != "" && request.getParameter("txtfechanac") != "" && request.getParameter("txtdireccion") != "" && request.getParameter("txtmail") != "" && request.getParameter("txttelefono") != "") 
 		Alumno alumno = new Alumno();
 		alumno.setDni(request.getParameter("txtdni"));
 		alumno.setNombre(request.getParameter("txtnombre"));

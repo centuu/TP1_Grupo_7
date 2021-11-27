@@ -27,6 +27,12 @@ public class ServletListarAlumnos extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		if(request.getSession().getAttribute("user") == null)
+		{
+			request.getRequestDispatcher("inicio").forward(request, response);
+			return;
+		}
+		
 		ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list();
 		ArrayList<Curso> listaCursos = new CursoNegocio().list();
 		

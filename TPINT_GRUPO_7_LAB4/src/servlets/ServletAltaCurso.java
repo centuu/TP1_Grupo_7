@@ -29,6 +29,12 @@ public class ServletAltaCurso extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		if(request.getSession().getAttribute("user") == null || !request.getSession().getAttribute("rol").toString().equals("1"))
+		{
+			request.getRequestDispatcher("inicio").forward(request, response);
+			return;
+		}
+		
 		ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list();
 		ArrayList<Docente> listaDocentes = new DocenteNegocio().list();
 		ArrayList<Materia> listaMateria = new MateriaNegocio().list();

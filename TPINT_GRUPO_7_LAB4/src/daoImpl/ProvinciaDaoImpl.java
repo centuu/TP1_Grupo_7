@@ -27,7 +27,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao
         	{
         		Provincia prov = new Provincia();
         		prov.setId(rs.getInt("id"));
-        		prov.setNombre(rs.getString("nombreProvincia"));
+        		prov.setNombre(rs.getString("provincia"));
         		listaProvincia.add(prov);
         	}
         }

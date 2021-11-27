@@ -68,7 +68,7 @@
 							for(Provincia provincia : provincias)
 							{
 						%>
-							<option value=<%= provincia.getNombre() %>><%= provincia.getNombre() %></option>
+							<option value=<%= provincia.getId() %>><%= provincia.getNombre() %></option>
 						<%
 							}
 						%>
@@ -83,7 +83,7 @@
 							for(Nacionalidad nacionalidad : nacionalidades)
 							{
 						%>
-								<option value=<%= nacionalidad.getNombre() %>><%= nacionalidad.getNombre() %></option>
+								<option value=<%= nacionalidad.getId() %>><%= nacionalidad.getNombre() %></option>
 						<%
 							}
 						%>
