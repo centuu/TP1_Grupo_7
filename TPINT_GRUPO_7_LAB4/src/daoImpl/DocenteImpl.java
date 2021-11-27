@@ -11,7 +11,7 @@ import entidad.Docente;
 
 public class DocenteImpl implements DocenteDao
 {
-	private static final String insert = "INSERT INTO Docentes (dni,nombre,apellido,fechaNac,domicilio,localidad,nacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
+	private static final String insert = "INSERT INTO Docentes (dni,nombre,apellido,fechaNacimiento,domicilio,idlocalidad,idnacionalidad,email,telefono,clave,estado) VALUES (?,?,?,?,?,?,?,?,?,?,true)";
 	private static final String delete = "DELETE FROM Docentes WHERE legajo = ?";
 	private static final String list = "SELECT * FROM Docentes";
 
@@ -31,6 +31,7 @@ public class DocenteImpl implements DocenteDao
 			state.setString(7, docente.getNacionalidad());
 			state.setString(8, docente.getMail());
 			state.setString(9, docente.getTelefono());
+			state.setString(10, docente.getClave());
 			
 			res = state.executeUpdate();
 

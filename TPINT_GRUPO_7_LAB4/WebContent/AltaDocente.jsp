@@ -32,23 +32,27 @@
 	        		</div>
 			       <div class="row mb-3 text-center">
 			         	<label  class="from-group">DNI</label>
-			          	<input name="txtdni" type="text" class="form-control" >
+			          	<input type="text" pattern="[0-9]{7,8}" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="txtdni" class="form-control" required>
+		           		<div class="valid-feedback"></div>
+		           		<div class="invalid-feedback">Campo Obligatorio</div>
 			       </div>
 			       <div class="row mb-3 text-center">
 			        	<label  class="from-group">Nombre</label>
-			          	<input name="txtnombre" type="text" class="form-control">
+			          	<input type="text" name="txtnombre" class="form-control" pattern="[a-zA-Z]+" required>
+		           		<div class="valid-feedback"></div>
+		           		<div class="invalid-feedback">Campo Obligatorio</div>
 			       </div>
 			       <div class="row mb-3 text-center">
 			         	<label  class="from-group">Apellido</label>
-			          	<input name="txtapellido" type="text" class="form-control" >
+			          	<input name="txtapellido" type="text" class="form-control" required>
 			       </div>
 			       <div class="row mb-3 text-center">
 			         	<label  class="from-group">Fecha Nacimiento</label>
-			          	<input name="txtfechanac" type="text" class="form-control" >
+			          	<input name="txtfechanac" type="text" class="form-control" required>
 			       </div>
 			       <div class="row mb-3 text-center">
 			         	<label class="from-group">Direccion</label>
-			          	<input name="txtdireccion" type="text" class="form-control" >
+			          	<input name="txtdireccion" type="text" class="form-control" required>
 			       </div>
     		          <div class="row mb-3 text-center">
 		          	<label  class="from-group">Localidad</label>
@@ -59,7 +63,7 @@
 								for(Localidad localidad : localidades)
 								{
 							%>
-									<option value=<%= localidad.getNombre() %>><%= localidad.getNombre() %></option>
+									<option value=<%= localidad.getId() %>><%= localidad.getNombre() %></option>
 							<%
 								}
 							%>
@@ -74,7 +78,7 @@
 									for(Nacionalidad nacionalidad : nacionalidades)
 									{
 								%>
-										<option value=<%= nacionalidad.getNombre() %>><%= nacionalidad.getNombre() %></option>
+										<option value=<%= nacionalidad.getId() %>><%= nacionalidad.getNombre() %></option>
 								<%
 									}
 								%>
@@ -82,15 +86,19 @@
 			        </div>
 			        <div class="row mb-3 text-center">
 			         	<label  class="from-group">Email</label>
-			          	<input name="txtmail" type="text" class="form-control" id="inputPassword3">
+			          	<input name="txtmail" type="text" class="form-control" id="inputPassword3" required>
 			       </div>
 			        <div class="row mb-3 text-center">
 			         	<label  class="from-group">Telefono</label>
-			          	<input name="txttelefono" type="text" class="form-control" id="inputPassword3">
+			          	<input name="txttelefono" type="text" class="form-control" id="inputPassword3" required>
 			       </div>
 			 		     <div class="row mb-3 text-center">
 			         	<label  class="from-group">Contraseña</label>
-			          	<input type="password" class="form-control" id="inputPassword3">
+			          	<input type="password" class="form-control" id="inputPassword4" name="txtclave" required>
+			       </div>
+			 		     <div class="row mb-3 text-center">
+			         	<label  class="from-group">Repetir contraseña</label>
+			          	<input type="password" class="form-control" id="inputPassword5" name="txtconfclave" required>
 			       </div>
 			     	<div class="row mb-3 text-center">
 			      		<button name="btnregistrar" type="submit" class="btn btn-primary">Registrar</button>
@@ -102,5 +110,20 @@
 		</form>
 	</main> 
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ 	<script>
+ 	var password, password2;
+
+ 	password = document.getElementById('inputPassword4');
+ 	password2 = document.getElementById('inputPassword5');
+
+ 	password.onchange = inputPassword5.onkeyup = passwordMatch;
+
+ 	function passwordMatch() {
+ 	    if(inputPassword4.value !== inputPassword5.value)
+ 	    	inputPassword5.setCustomValidity('Las contraseñas no coinciden.');
+ 	    else
+ 	    	inputPassword5.setCustomValidity('');
+ 	}
+ 	</script>
 </body>
 </html>

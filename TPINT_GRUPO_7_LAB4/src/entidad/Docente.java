@@ -12,6 +12,7 @@ public class Docente
     protected String nacionalidad;
     protected String mail;
     protected String telefono ;
+    protected String clave;
     protected boolean estado;
     
     public Docente() 
@@ -20,7 +21,7 @@ public class Docente
 		
 	}
     
-	public Docente(String dni,String nombre, String apellido,String fechaNac, String localidad, String direccion, String nacionalidad, String mail, String telefono) 
+	public Docente(String dni,String nombre, String apellido,String fechaNac, String localidad, String direccion, String nacionalidad, String mail, String telefono, String clave) 
 	{
 		this.dni = dni;
 		this.Nombre = nombre;
@@ -31,6 +32,7 @@ public class Docente
 		this.nacionalidad = nacionalidad;
 		this.mail = mail;
 		this.telefono = telefono;
+		this.clave = clave;
 		this.estado = true;
 	}
 	
@@ -138,5 +140,15 @@ public class Docente
 	public void setestado(boolean estado)
 	{
 		this.estado=estado;
+	}
+	
+	public void setClave(String clave)
+	{
+		this.clave = clave;
+	}
+	
+	public String getClave()
+	{
+		return clave;
 	}
 }

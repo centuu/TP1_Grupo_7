@@ -57,6 +57,7 @@ CREATE TABLE docentes
     idNacionalidad INT, 
     email VARCHAR(50),
     telefono VARCHAR(25),
+    clave VARCHAR(50),
     estado BOOLEAN,
     FOREIGN KEY(idNacionalidad) REFERENCES Nacionalidad(id),
     FOREIGN KEY(idLocalidad) REFERENCES localidad(id)
@@ -128,6 +129,18 @@ BEGIN
 END //
 DELIMITER ;
 
+
+/*TRIGGERS*/
+
+DELIMITER $$
+CREATE TRIGGER insert_Usuario
+AFTER INSERT ON docentes
+FOR EACH ROW
+BEGIN
+    INSERT INTO usuarios(usuario, clave, legajo, rol) VALUES (NEW.dni, NEW.clave, NEW.legajo, 2);
+END$$
+DELIMITER ;
+
 INSERT INTO provincia (provincia) VALUES ( 'Buenos Aires' );
 INSERT INTO provincia (provincia) VALUES ( 'Entre Rios' );
 INSERT INTO provincia (provincia) VALUES ( 'Santa Fe' );
@@ -158,13 +171,11 @@ INSERT INTO alumnos (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, 
 INSERT INTO alumnos (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('2', '39168909', 'Marcos', 'Ledesma', '1995/05/06', 'Palosanto 456', 1, 1, 'mledesma@utn.com', '47411451', true);
 INSERT INTO alumnos (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('3', '12345678', 'Fernando', 'Gordillo', '1995/10/08', 'Oscar 1234', 1, 1, 'fgordillo@utn.com', '47896512', true);
 
-INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, estado) VALUES ('0001', '44555888', 'Tomas', 'Scutti', '2000/08/12', 'Caracas 1234', 3, 1, 'tscutti@utn.com', '47478989', true);
-INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, estado) VALUES ('0002', '46888999', 'Jose', 'Fabiani', '2002/06/03', 'Florida 486', 2, 1, 'jfabiani@utn.com', '12123636', true);
+INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('0001', '44555888', 'Tomas', 'Scutti', '2000/08/12', 'Caracas 1234', 3, 1, 'tscutti@utn.com', '47478989','123465', true);
+INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('0002', '46888999', 'Jose', 'Fabiani', '2002/06/03', 'Florida 486', 2, 1, 'jfabiani@utn.com', '12123636','ASD123', true);
+INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('0003', '32456789', 'Pablo', 'Laciobu', '2000/09/12', 'Caracas 1224', 1, 1, 'tscutti@utn.com', '47478989','123465', true);
 
 INSERT INTO usuarios (usuario, clave, legajo, rol) VALUES ('admin', 'admin', 0, 1);
-INSERT INTO usuarios (usuario, clave, legajo, rol) VALUES ('0001', '1234', 0, 2);
-INSERT INTO usuarios (usuario, clave, legajo, rol) VALUES ('0002', 'lab4', 0, 2);
-
 
 INSERT INTO carreras (descripcion) VALUES ('Tecnico Universitario en Programacion');
 

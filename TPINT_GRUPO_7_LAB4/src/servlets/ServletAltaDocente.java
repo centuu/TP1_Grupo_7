@@ -60,6 +60,7 @@ public class ServletAltaDocente extends HttpServlet
 			docente.setNacionalidad(request.getParameter("nacionalidad").toString());
 			docente.setMail(request.getParameter("txtmail"));
 			docente.setTelefono(request.getParameter("txttelefono"));
+			docente.setClave(request.getParameter("txtclave"));
 			docente.setestado(true);
 			
     		new DocenteNegocio().insert(docente);
