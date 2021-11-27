@@ -29,7 +29,7 @@ public class UsuarioDaoImpl  implements UsuarioDao
 	 
 	        if (result.next()) 
 	        {
-	            user = new Usuario(usuario, clave, result.getInt("nroLegajo"), result.getInt("rol"));
+	            user = new Usuario(usuario, clave, result.getInt("legajo"), result.getInt("rol"));
 	        }
 	 
 	        return user;

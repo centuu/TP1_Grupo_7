@@ -1,9 +1,14 @@
 package daoImpl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.CallableStatement;
+
 import java.sql.ResultSet;
 
 import dao.AlumnoDao;
@@ -13,37 +18,35 @@ import entidad.Provincia;
 
 public class AlumnoImpl implements AlumnoDao 
 {
-	private static final String insert = "INSERT INTO Alumnos (dni,nombre,apellido,fechaNac,domicilio,idprovincia,idnacionalidad,email,telefono,estado) VALUES (?,?,?,?,?,?,?,?,?,true)";
 	//private static final String delete = "UPDATE Alumnos SET estado = 0 WHERE legajo = ?";
 	//private static final String list = "SELECT * FROM Alumnos";
 	private static final String delete = "UPDATE Alumnos SET estado = 0 WHERE nroLegajo = ?";
 	private static final String list = "SELECT * FROM Alumnos left join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id`inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where estado=1";
     private static final String edit = "UPDATE Alumnos SET Dni = ?, nombre = ? , apellido = ?, fechaNac = ?, domicilio = ?, idprovincia = ?,idNacionalidad =?,email = ? , telefono = ? WHERE nrolegajo =?"; 
     private static final String buscar="SELECT * FROM Alumnos inner join nacionalidad on `Alumnos`.`idNacionalidad`=`nacionalidad`.`id` inner join provincia on `Alumnos`.`idProvincia`=`provincia`.`id` where nroLegajo=";
-	public boolean insert(Alumno alum) 
+	
+    public boolean insert(Alumno alum) 
 	{
-		int res = -1;
+    	boolean res = false;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		PreparedStatement state;
-		try {
-			state = conexion.prepareStatement(insert);
+		
+		try 
+		{
+			CallableStatement state = conexion.prepareCall("{insert_Alumno(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
 			state.setString(1, alum.getDni());
 			state.setString(2, alum.getNombre());
-			state.setString(3, alum.getApellido());
+			state.setString(3, alum.getApellido());			
 			state.setString(4, alum.getFechaNac());
-			state.setString(5, alum.getDireccion());
-			
+			state.setString(5, alum.getDireccion());			
 			state.setInt(6, alum.getProvincia().getId());
-			state.setInt(7, alum.getNacionalidad().getId());
-			
+			state.setInt(7, alum.getNacionalidad().getId());			
 			state.setString(8, alum.getMail());
 			state.setString(9, alum.getTelefono());
-			
-			res = state.executeUpdate();
 
-			if (res > 0) 
+			if (state.executeUpdate() > 0) 
 			{
 				conexion.commit();
+				res = true;
 			}
 		}
 		catch (SQLException e) 
@@ -51,7 +54,7 @@ public class AlumnoImpl implements AlumnoDao
 			e.printStackTrace();
 		}
 
-		return res > 0;
+		return res;
 	}
 	
 	public boolean delete(int id) 

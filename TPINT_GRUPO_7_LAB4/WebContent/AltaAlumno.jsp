@@ -16,7 +16,7 @@
 	<jsp:include page="/partials/navbar.jsp" />
 	<jsp:include page="/partials/Confirmation.jsp" />
 	<main>  
-		<form action="ServletAlumno" method="post" class="needs-validation" novalidate id="form">
+		<form action="alumno" method="post" class="needs-validation" novalidate id="form">
 		 <div class="container text-center my-5 "> 
 		  <div class="row ">
 		     <div class="col-lg-4"></div> 
@@ -68,7 +68,7 @@
 							for(Provincia provincia : provincias)
 							{
 						%>
-							<option value=<%= provincia.getNombre() %>><%= provincia.getNombre() %></option>
+							<option value=<%= provincia.getId() %>><%= provincia.getNombre() %></option>
 						<%
 							}
 						%>
@@ -83,7 +83,7 @@
 							for(Nacionalidad nacionalidad : nacionalidades)
 							{
 						%>
-								<option value=<%= nacionalidad.getNombre() %>><%= nacionalidad.getNombre() %></option>
+								<option value=<%= nacionalidad.getId() %>><%= nacionalidad.getNombre() %></option>
 						<%
 							}
 						%>
@@ -106,6 +106,8 @@
 		     	</div>
 				<div class="col-lg-4"></div>
 			</div>  
+			</div>
+			</div>
 		</form>
 	</main> 
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

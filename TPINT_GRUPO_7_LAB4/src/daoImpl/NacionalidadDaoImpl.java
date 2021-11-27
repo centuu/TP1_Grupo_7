@@ -27,7 +27,7 @@ public class NacionalidadDaoImpl implements NacionalidadDao
         	{
         		Nacionalidad nac = new Nacionalidad();
         		nac.setId(rs.getInt("id"));
-        		nac.setNombre(rs.getString("nombreNacionalidad"));
+        		nac.setNombre(rs.getString("nacionalidad"));
         		listaNacionalidad.add(nac);
         	}
         }
