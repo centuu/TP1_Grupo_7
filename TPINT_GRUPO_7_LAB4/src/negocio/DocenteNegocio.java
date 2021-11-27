@@ -1,5 +1,6 @@
 package negocio;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.DocenteDao;
@@ -11,7 +12,7 @@ public class DocenteNegocio implements DocenteDao
 	DocenteImpl dao = new DocenteImpl();
 
 	@Override
-	public boolean insert(Docente docente) 
+	public boolean insert(Docente docente) throws SQLException 
 	{
 		return dao.insert(docente);
 	}

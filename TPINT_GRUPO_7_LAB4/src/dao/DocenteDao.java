@@ -1,12 +1,13 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import entidad.Docente;
 
 public interface DocenteDao 
 {
-	public boolean insert(Docente docente);
+	public boolean insert(Docente docente)throws SQLException;
 	public ArrayList<Docente> list();
 	public boolean update(int legajo);
 	public boolean delete(int legajo);

@@ -50,20 +50,33 @@ public class ServletAltaDocente extends HttpServlet
 	{
 		if(request.getParameter("btnregistrar") != null)
 		{
-			Docente docente= new Docente();
-			docente.setDni(request.getParameter("txtdni"));
-			docente.setNombre(request.getParameter("txtnombre"));
-			docente.setApellido(request.getParameter("txtapellido"));
-			docente.setFechaNac(request.getParameter("txtfechanac"));
-			docente.setDireccion(request.getParameter("txtdireccion"));
-			docente.setLocalidad(request.getParameter("Localidad").toString());
-			docente.setNacionalidad(request.getParameter("nacionalidad").toString());
-			docente.setMail(request.getParameter("txtmail"));
-			docente.setTelefono(request.getParameter("txttelefono"));
-			docente.setClave(request.getParameter("txtclave"));
-			docente.setestado(true);
-			
-    		new DocenteNegocio().insert(docente);
+			try
+			{
+				Docente docente= new Docente();
+				docente.setDni(request.getParameter("txtdni"));
+				docente.setNombre(request.getParameter("txtnombre"));
+				docente.setApellido(request.getParameter("txtapellido"));
+				docente.setFechaNac(request.getParameter("txtfechanac"));
+				docente.setDireccion(request.getParameter("txtdireccion"));
+				docente.setLocalidad(request.getParameter("Localidad").toString());
+				docente.setNacionalidad(request.getParameter("nacionalidad").toString());
+				docente.setMail(request.getParameter("txtmail"));
+				docente.setTelefono(request.getParameter("txttelefono"));
+				docente.setClave(request.getParameter("txtclave"));
+				docente.setestado(true);
+				
+				new DocenteNegocio().insert(docente);
+				
+				request.setAttribute("messageSuccess", "Se cargo el docente con exito.");
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				if (e.getMessage().contains("unq_docenteDNI"))
+				{
+					request.setAttribute("messageError", "El DNI ya existe en la base de datos.");
+				}
+			}
 		}
 		
 		doGet(request, response);

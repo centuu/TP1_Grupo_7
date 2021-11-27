@@ -65,6 +65,8 @@ CREATE TABLE docentes
     FOREIGN KEY(idLocalidad) REFERENCES localidad(id)
 );
 
+ALTER TABLE docentes ADD CONSTRAINT unq_docenteDNI UNIQUE(dni);
+
 CREATE TABLE cursos
 (
 	idCurso INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

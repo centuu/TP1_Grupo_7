@@ -15,7 +15,7 @@ public class DocenteImpl implements DocenteDao
 	private static final String delete = "DELETE FROM Docentes WHERE legajo = ?";
 	private static final String list = "SELECT * FROM Docentes";
 
-	public boolean insert(Docente docente) 
+	public boolean insert(Docente docente) throws SQLException
 	{
 		int res = -1;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -43,6 +43,7 @@ public class DocenteImpl implements DocenteDao
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
+			throw e;
 		}
 
 		return res > 0;

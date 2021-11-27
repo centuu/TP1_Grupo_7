@@ -23,6 +23,32 @@
 			    <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
 			    	<h1>Registro Docentes</h1>           
 			    	<br>
+					   	<%
+							if(request.getAttribute("messageSuccess") != null)
+							{
+				     	%>
+				     			<div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+								  <div class="row justify-content-end mb-1">
+								  <div class="col-11"></div>
+								  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+								  </div>
+								  <%= request.getAttribute("messageSuccess") %>
+								</div>
+						<%
+							}
+				   			if(request.getAttribute("messageError") != null)
+				   			{
+				   		%>
+				   				<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+								  <div class="row justify-content-end mb-1">
+								  <div class="col-11"></div>
+								  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+								  </div>
+								  <%= request.getAttribute("messageError") %>
+								</div>
+				   		<%
+				   			}
+						%>
    			        <div class="row mb-3 text-center">
 		          	<label  class="from-group">Legajo</label>
 		          	<% 
@@ -124,6 +150,11 @@
  	    else
  	    	inputPassword5.setCustomValidity('');
  	}
+ 	
+ 	document.getElementById("alert").addEventListener('click', function (event)
+ 	{
+ 		$(".alert").alert('close');
+ 	})
  	</script>
 </body>
 </html>
