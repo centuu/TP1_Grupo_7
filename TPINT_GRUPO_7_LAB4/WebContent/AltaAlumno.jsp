@@ -23,6 +23,20 @@
 			     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
 			     	<h1>Registro Alumnos </h1>           
 			     	<br>
+			   		<%
+						if(request.getAttribute("message") != null)
+						{
+			     	%>
+			     			<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("message") %>
+							</div>
+					<%
+						}
+					%>
 			        <div class="row mb-3 text-center">
 			          	<label  class="from-group">Legajo</label>
 						<% 
@@ -104,14 +118,6 @@
 			      	<div class="row mb-3 text-center">
 			       		<button name="btnregistrar" id="btnregistrar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalpopup">Registrar</button>
 			     	</div>
-			     	<%
-						if(request.getAttribute("message") != null)
-						{
-			     	%>
-			     			<label><%= request.getAttribute("message") %></label>
-					<%
-						}
-					%>
 					<div class="col-lg-4"></div>
 				</div> 
 				</div>
@@ -138,6 +144,10 @@
 		})
  	})()
 
+ 	document.getElementById("alert").addEventListener('click', function (event)
+ 	{
+ 		$(".alert").alert('close');
+ 	})
  	</script>
 </body>
 </html>

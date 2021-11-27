@@ -20,7 +20,7 @@ public class AlumnoImpl implements AlumnoDao
 {
     private static final String edit = "UPDATE Alumnos SET Dni = ?, nombre = ? , apellido = ?, fechaNac = ?, domicilio = ?, idprovincia = ?,idNacionalidad =?,email = ? , telefono = ? WHERE nrolegajo =?"; 
 	
-    public boolean insert(Alumno alum) 
+    public boolean insert(Alumno alum) throws SQLException
 	{
     	boolean res = false;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -47,6 +47,7 @@ public class AlumnoImpl implements AlumnoDao
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
+			throw e;
 		}
 
 		return res;

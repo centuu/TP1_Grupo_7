@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -71,7 +72,7 @@ public class ServletAlumno extends HttpServlet
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		try
 		{
@@ -100,7 +101,11 @@ public class ServletAlumno extends HttpServlet
 		}
 		catch(Exception e)
 		{
-			
+			e.printStackTrace();
+			if (e.getMessage().contains("unq_DNI"))
+			{
+				request.setAttribute("message", "El DNI ya existe en la base de datos");
+			}
 		}
 	
 		doGet(request, response);
