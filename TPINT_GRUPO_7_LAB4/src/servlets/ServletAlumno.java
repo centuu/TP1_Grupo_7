@@ -97,14 +97,14 @@ public class ServletAlumno extends HttpServlet
 			
 			new AlumnoNegocio().insert(alumno);
 			
-			request.setAttribute("message", "Se cargo con maldito exito");
+			request.setAttribute("messageSuccess", "Se cargo el alumno con exito.");
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 			if (e.getMessage().contains("unq_DNI"))
 			{
-				request.setAttribute("message", "El DNI ya existe en la base de datos");
+				request.setAttribute("messageError", "El DNI ya existe en la base de datos.");
 			}
 		}
 	
