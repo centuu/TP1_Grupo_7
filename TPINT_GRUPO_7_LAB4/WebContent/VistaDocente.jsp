@@ -39,9 +39,8 @@
 		                        <th scope="col">materia</th>
 		                        <th scope="col">semestre</th>
 		                        <th scope="col">año</th>
-		             
 		                        <th scope="col"> </th>   
-		                        <th scope="col"> </th>                   
+		                                     
 		                  </tr>
 		                  
             <%  if((ArrayList<Curso>)request.getAttribute("listaCurso")!=null)
@@ -67,7 +66,7 @@
 					               	</tr>
 								<%
 								}
-                  
+                   
                   }		%>
                  
             </div>
