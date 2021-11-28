@@ -10,50 +10,59 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import daoImpl.AlumnoImpl;
+import daoImpl.DocenteImpl;
+import daoImpl.NacionalidadDaoImpl;
+import daoImpl.ProvinciaDaoImpl;
 import entidad.Alumno;
-import entidad.Curso;
+import entidad.Docente;
+import entidad.Nacionalidad;
+import entidad.Provincia;
 import negocio.AlumnoNegocio;
-import negocio.CursoNegocio;
+import negocio.DocenteNegocio;
 
-@WebServlet(name = "ServletListarAlumnos", urlPatterns = { "/listaralumnos" })
-public class ServletListarAlumnos extends HttpServlet 
+@WebServlet(name = "ServletListarDocentes", urlPatterns = { "/listardocentes" })
+public class ServletListarDocentes extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
-    public ServletListarAlumnos() 
+    public ServletListarDocentes() 
     {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		if(request.getSession().getAttribute("user") == null)
-		{
-			request.getRequestDispatcher("inicio").forward(request, response);
-			return;
-		}
-		
 		int pageid = Integer.parseInt(request.getParameter("page"));  
-		int total = 5;
+		int total = 5;  
+		/*if (pageid == 1) {
+		}  
+		else {  
+		    pageid = pageid-1;  
+		    pageid = pageid*total+1;  
+		}*/ 
 		
-		//ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list();
-		ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list(pageid, total);
+		ArrayList<Docente> listaDocentes = new DocenteNegocio().list(pageid, total);
 		
-		ArrayList<Curso> listaCursos = new CursoNegocio().list();
-		
-		int noOfRecords =  new AlumnoNegocio().cantRegistros();
+		int noOfRecords =  new DocenteNegocio().cantRegistros();
         int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / total);
         
         request.setAttribute("noOfPages", noOfPages);
         request.setAttribute("currentPage", pageid);
-        
-		request.setAttribute("cursos", listaCursos);		
-		request.setAttribute("alumnos", listaAlumnos);
-		request.getRequestDispatcher("/Alumnos.jsp").forward(request, response);
+		
+		request.setAttribute("docentes", listaDocentes);
+		request.getRequestDispatcher("/Docentes.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		if (request.getParameter("btneliminar") != null)
+		{
+			int id = Integer.parseInt(request.getParameter("id"));
+	        
+			new DocenteNegocio().delete(id);
+		}
+		
 		doGet(request, response);
 	}
 }

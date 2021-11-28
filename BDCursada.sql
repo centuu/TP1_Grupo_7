@@ -1,3 +1,5 @@
+drop schema Cursada;
+
 create schema Cursada;
 
 use Cursada;
@@ -103,6 +105,20 @@ CREATE TABLE carreras
 );
 
 DELIMITER //
+CREATE PROCEDURE count_Alumnos()
+BEGIN 
+	SELECT COUNT(*) FROM Alumnos INNER JOIN nacionalidad ON Alumnos.idNacionalidad = nacionalidad.id INNER JOIN provincia ON Alumnos.idProvincia = provincia.id WHERE alumnos.estado = 1;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE count_Docentes()
+BEGIN 
+	SELECT COUNT(*) FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1;
+END //
+DELIMITER ;
+
+DELIMITER //
 CREATE PROCEDURE insert_Alumno (dni INT,nombre VARCHAR(10),apellido VARCHAR(25),fechaNacimiento DATE,domicilio VARCHAR(50),idprovincia INT,idnacionalidad INT,email VARCHAR(50),telefono VARCHAR(25))
 BEGIN 
 	INSERT INTO Alumnos (dni,nombre,apellido,fechaNacimiento,domicilio,idprovincia,idnacionalidad,email,telefono,estado) 
@@ -172,13 +188,13 @@ INSERT INTO nacionalidad (nacionalidad) VALUES ('Venezolana' );
 INSERT INTO nacionalidad (nacionalidad) VALUES ('Otra' );
 
 
-INSERT INTO alumnos (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('1', '38914202', 'Pedro', 'Torres', '1995/05/04', 'Azucena 1234', 1, 1, 'ptorres@utn.com', '03327485986', true);
-INSERT INTO alumnos (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('2', '39168909', 'Marcos', 'Ledesma', '1995/05/06', 'Palosanto 456', 1, 1, 'mledesma@utn.com', '47411451', true);
-INSERT INTO alumnos (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('3', '12345678', 'Fernando', 'Gordillo', '1995/10/08', 'Oscar 1234', 1, 1, 'fgordillo@utn.com', '47896512', true);
+INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('38914202', 'Pedro', 'Torres', '1995/05/04', 'Azucena 1234', 1, 1, 'ptorres@utn.com', '03327485986', true);
+INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('39168909', 'Marcos', 'Ledesma', '1995/05/06', 'Palosanto 456', 1, 1, 'mledesma@utn.com', '47411451', true);
+INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('12345678', 'Fernando', 'Gordillo', '1995/10/08', 'Oscar 1234', 1, 1, 'fgordillo@utn.com', '47896512', true);
 
-INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('1', '44555888', 'Tomas', 'Scutti', '2000/08/12', 'Caracas 1234', 3, 1, 'tscutti@utn.com', '47478989','123465', true);
-INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('2', '46888999', 'Jose', 'Fabiani', '2002/06/03', 'Florida 486', 2, 1, 'jfabiani@utn.com', '12123636','ASD123', true);
-INSERT INTO docentes (legajo, dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('3', '32456789', 'Pablo', 'Laciobu', '2000/09/12', 'Caracas 1224', 1, 1, 'tscutti@utn.com', '47478989','123465', true);
+INSERT INTO docentes (dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('44555888', 'Tomas', 'Scutti', '2000/08/12', 'Caracas 1234', 3, 1, 'tscutti@utn.com', '47478989','123465', true);
+INSERT INTO docentes (dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('46888999', 'Jose', 'Fabiani', '2002/06/03', 'Florida 486', 2, 1, 'jfabiani@utn.com', '12123636','ASD123', true);
+INSERT INTO docentes (dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('32456789', 'Pablo', 'Laciobu', '2000/09/12', 'Caracas 1224', 1, 1, 'tscutti@utn.com', '47478989','123465', true);
 
 INSERT INTO usuarios (usuario, clave, legajo, rol) VALUES ('admin', 'admin', 0, 1);
 

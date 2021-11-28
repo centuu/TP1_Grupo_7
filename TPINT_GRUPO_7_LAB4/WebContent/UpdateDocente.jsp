@@ -1,10 +1,10 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "entidad.Nacionalidad" %>
-<%@ page import = "entidad.Alumno" %>
+<%@ page import = "entidad.Docente" %>
 <%@ page import = "daoImpl.NacionalidadDaoImpl" %>
 <%@ page import = "daoImpl.AlumnoImpl" %>
-<%@ page import = "entidad.Provincia" %>
-<%@ page import = "daoImpl.ProvinciaDaoImpl" %>
+<%@ page import = "entidad.Localidad" %>
+<%@ page import = "daoImpl.LocalidadDaoImpl" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,51 +18,51 @@
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
 	<main>     
-		<% Alumno alumno = (Alumno)request.getAttribute("alumno"); %>
-       	<form action="ServletAlumno" method="post">
+		<% Docente docente = (Docente)request.getAttribute("docente"); %>
+       	<form action="ServletAltaDocente" method="post">
 		 <div class="container text-center my-5 "> 
 		  <div class="row ">
 		     <div class="col-lg-4"></div> 
 			     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
-			     	<h1>Registro Alumnos </h1>           
+			     	<h1>Registro Docentes </h1>           
 			     	<br>
 			        <div class="row mb-3 text-center">
 			          	<label  class="from-group">Legajo</label>
-			           	<input type="text" readonly name="txtLegajo" class="form-control" value=<%= alumno.getLegajo() %>>
+			           	<input type="text" readonly name="txtLegajo" class="form-control" value=<%= docente.getLegajo() %>>
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label  class="from-group">DNI</label>
-				           	<input type="text" value="<%=alumno.getDni() %>" name="txtdni" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text" value="<%=docente.getDni() %>" name="txtdni" class="form-control" <%= request.getAttribute("readOnly")  %> >
 				        </div>
 				        <div class="row mb-3 text-center">
 				         	<label  class="from-group">Nombre</label>
-				           	<input type="text" value="<%=alumno.getNombre() %>" name="txtnombre" class="form-control" <%= request.getAttribute("readOnly")  %>>
+				           	<input type="text" value="<%=docente.getNombre() %>" name="txtnombre" class="form-control" <%= request.getAttribute("readOnly")  %>>
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label  class="from-group">Apellido</label>
-				           	<input type="text" value="<%=alumno.getApellido() %>" name="txtapellido" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text" value="<%=docente.getApellido() %>" name="txtapellido" class="form-control" <%= request.getAttribute("readOnly")  %> >
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label  class="from-group">Fecha Nacimiento</label>
-				           	<input type="text"value="<%=alumno.getFechaNac() %>" name="txtfechanac" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text"value="<%=docente.getFechaNac() %>" name="txtfechanac" class="form-control" <%= request.getAttribute("readOnly")  %> >
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label class="from-group">Direccion</label>
-				           	<input type="text"value="<%=alumno.getDireccion() %>" name="txtdireccion" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text"value="<%=docente.getDireccion() %>" name="txtdireccion" class="form-control" <%= request.getAttribute("readOnly")  %> >
 				        </div>
 				          <div class="row mb-3 text-center">
 				          	<label  class="from-group">Provincia</label>
 				           	<select name="provincia" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
 									<%
-									     ProvinciaDaoImpl proviDao= new ProvinciaDaoImpl(); 
-								  		ArrayList<Provincia> provincias =proviDao.list();	
+									     LocalidadDaoImpl locDao= new LocalidadDaoImpl(); 
+								  		ArrayList<Localidad> localidades =locDao.list();	
 										
-								  		if (provincias!=null)
+								  		if (localidades!=null)
 								  		{
-										  for(Provincia provincia : provincias)
+										  for(Localidad localidad : localidades)
 										  {
 									  %>
-											<option value="<%= provincia.getId() %>"><%= provincia.getNombre() %></option>
+											<option value="<%= localidad.getId() %>"><%= localidad.getNombre() %></option>
 									  <%
 										  }
 								  		}
@@ -88,15 +88,15 @@
 				        </div>
 				         <div class="row mb-3 text-center">
 				          	<label  class="from-group">Email</label>
-				           	<input type="text" value="<%=alumno.getMail() %>" name="txtmail" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %>>
+				           	<input type="text" value="<%=docente.getMail() %>" name="txtmail" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %>>
 				        </div>
 				         <div class="row mb-3 text-center">
 				          	<label  class="from-group">Telefono</label>
-				           	<input type="text" value="<%=alumno.getTelefono() %>" name="txttelefono" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %>>
+				           	<input type="text" value="<%=docente.getTelefono() %>" name="txttelefono" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %>>
 				        </div>
 				      	<div class="row mb-3 text-center">
 				       		<button name="btnguardar" id="btnguardar" type="submit" class="btn btn-primary mb-1" <%= request.getAttribute("readOnly") != "" ? "hidden=true" : "" %>>Guardar cambios</button>
-				       		<button name="btnVolver" type="button" onclick="window.location.href='listaralumnos?page=1'" class="btn btn-danger">Volver</button>
+				       		<button name="btnVolver" type="button" onclick="window.location.href='listardocentes?page=1'" class="btn btn-danger">Volver</button>
 				     	</div>
 						<div class="col-lg-4"></div>
 					</div>  

@@ -44,7 +44,7 @@
 						<button name="btnlistar" type="submit" class="btn btn-primary col-1">Listar</button>
 					</div>
 					<div class="col-12 modal-content">
-		                <table class="table table-hover table-striped">
+		                <table id="table_id" class="w3-table w3-striped" border="1" cellpadding="5" cellspacing="5">
 		                    <tr class="alert-primary">
 		                        <th scope="col">Legajo</th>
 		                        <th scope="col">Nombre</th>
@@ -71,7 +71,7 @@
 					                        <td>			                        
 					                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Detalle</button>
 					                            <button name="btneditar"type="submit" class="btn btn-success mx-0">Editar</button>              
-					                            <button name="btneliminar" type="submit" class="btn btn-danger">Eliminar</button>
+					                            <button name="btneliminar" type="submit" class="btn btn-danger" onclick="return confirm('Desea eliminar este alumno?')">Eliminar</button>
 					                        </td>
 			                     		</form>
 					               	</tr>
@@ -79,6 +79,8 @@
 								}
 								%>
 						</table>
+						
+					    <td><a href="listaralumnos?page=${currentPage - 1}"><</a> Página ${currentPage} de ${noOfPages} <a href="listaralumnos?page=${currentPage + 1}">></a></td>
 					</div>
 				</div>
 			</div>

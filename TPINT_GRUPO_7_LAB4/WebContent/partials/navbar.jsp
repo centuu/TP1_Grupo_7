@@ -31,10 +31,10 @@
           			<a class="nav-link" href="altadocente">Alta Docentes</a>
 				</li>
 				<li class="nav-item">
-          			<a class="nav-link" href="Docentes.jsp">Listar Docentes</a>
+          			<a class="nav-link" href="listardocentes?page=1">Listar Docentes</a>
 				</li>
 				<li class="nav-item">
-          			<a class="nav-link" href="listaralumnos">Listar Alumnos</a>
+          			<a class="nav-link" href="listaralumnos?page=1">Listar Alumnos</a>
 				</li>
 				<%}
 				    else if(session.getAttribute("rol").toString().equals("2"))
@@ -55,7 +55,7 @@
 				else
 				{%>
 			<li class="nav-item">
-          			<a class="nav-link" href="inicio.jsp">Prueva</a>
+          			<a class="nav-link" href="inicio.jsp">Prueba</a>
 				</li>
 	
 				<%}%>

@@ -7,9 +7,9 @@ public class Docente
 	protected String Nombre ;
 	protected String Apellido;
 	protected String FechaNac;
-	protected String Localidad;
+	protected Localidad Localidad;
 	protected String direccion ;	
-    protected String nacionalidad;
+    protected Nacionalidad nacionalidad;
     protected String mail;
     protected String telefono ;
     protected String clave;
@@ -27,9 +27,9 @@ public class Docente
 		this.Nombre = nombre;
 		this.Apellido = apellido;
 		this.FechaNac = fechaNac;
-		this.Localidad = localidad;
+		//this.Localidad = localidad;
 		this.direccion = direccion;
-		this.nacionalidad = nacionalidad;
+		//this.nacionalidad = nacionalidad;
 		this.mail = mail;
 		this.telefono = telefono;
 		this.clave = clave;
@@ -49,6 +49,11 @@ public class Docente
 	public int getLegajo() 
 	{
 		return legajo;
+	}
+	
+	public void setNroLegajo(int legajo)
+	{
+		this.legajo = legajo;
 	}
 	
 	public String getDni() 
@@ -91,22 +96,22 @@ public class Docente
 		this.direccion = direccion;
 	}
 	
-	public String getLocalidad() 
+	public Localidad getLocalidad() 
 	{
 		return Localidad;
 	}
 	
-	public void setLocalidad(String localidad) 
+	public void setLocalidad(Localidad loc) 
 	{
-		this.Localidad = localidad;
+		this.Localidad = loc;
 	}
 	
-	public String getNacionalidad() 
+	public Nacionalidad getNacionalidad() 
 	{
 		return nacionalidad;
 	}
 	
-	public void setNacionalidad(String nacionalidad) 
+	public void setNacionalidad(Nacionalidad nacionalidad) 
 	{
 		this.nacionalidad = nacionalidad;
 		

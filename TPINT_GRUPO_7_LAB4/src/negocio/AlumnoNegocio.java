@@ -17,6 +17,16 @@ public class AlumnoNegocio implements AlumnoDao
 		return dao.insert(alum);
 	}
 	
+	public int cantRegistros()
+	{
+		return dao.cantRegistros();
+	}
+	
+	public ArrayList<Alumno> list(int start, int total) 
+	{
+		return dao.list(start, total);
+	}
+	
 	@Override
 	public ArrayList<Alumno> list() 
 	{

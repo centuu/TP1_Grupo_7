@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dao.DocenteDao;
 import daoImpl.DocenteImpl;
+import entidad.Alumno;
 import entidad.Docente;
 
 public class DocenteNegocio implements DocenteDao 
@@ -21,6 +22,16 @@ public class DocenteNegocio implements DocenteDao
 	public ArrayList<Docente> list() 
 	{
 		return dao.list();
+	}
+	
+	public int cantRegistros()
+	{
+		return dao.cantRegistros();
+	}
+	
+	public ArrayList<Docente> list(int start, int total) 
+	{
+		return dao.list(start, total);
 	}
 
 	@Override
@@ -39,5 +50,11 @@ public class DocenteNegocio implements DocenteDao
 	public String GetNextLegajo() 
 	{
 		return dao.GetNextLegajo();
+	}
+	
+	
+	public Docente buscarDocente(int legajo) 
+	{
+		return dao.buscarDocente(legajo);
 	}
 }

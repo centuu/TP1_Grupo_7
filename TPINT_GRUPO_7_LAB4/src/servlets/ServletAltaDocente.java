@@ -12,12 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import daoImpl.DocenteImpl;
 import daoImpl.LocalidadDaoImpl;
 import daoImpl.NacionalidadDaoImpl;
+import entidad.Alumno;
 import entidad.Docente;
 import entidad.Localidad;
 import entidad.Nacionalidad;
+import entidad.Provincia;
+import negocio.AlumnoNegocio;
 import negocio.DocenteNegocio;
 import negocio.LocalidadNegocio;
 import negocio.NacionalidadNegocio;
+import negocio.ProvinciaNegocio;
 
 @WebServlet(name = "ServletAltaDocente", urlPatterns = { "/altadocente" })
 public class ServletAltaDocente extends HttpServlet 
@@ -37,13 +41,40 @@ public class ServletAltaDocente extends HttpServlet
 			return;
 		}
 		
-		ArrayList<Localidad> listaLocalidades = new LocalidadNegocio().list();
-		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
-		request.setAttribute("localidades", listaLocalidades);
-		request.setAttribute("nacionalidades", listaNacionalidad);
-		request.setAttribute("nextLegajo", new DocenteNegocio().GetNextLegajo());
-		
-		request.getRequestDispatcher("/AltaDocente.jsp").forward(request, response);
+		if(request.getParameter("legajo") != null)
+		{
+			int legajo= Integer.parseInt(request.getParameter("legajo").toString());
+			Docente docente = new DocenteNegocio().buscarDocente(legajo);			
+			
+			if (request.getParameter("btninfo")!=null)
+			{
+				request.setAttribute("readOnly" , "readOnly");
+				request.setAttribute("docente", docente);
+				request.getRequestDispatcher("/UpdateDocente.jsp").forward(request, response);			
+			}
+			else if (request.getParameter("btneditar")!=null)
+			{		
+				request.setAttribute("readOnly" , "");
+				request.setAttribute("docente", docente);
+				request.getRequestDispatcher("/UpdateDocente.jsp").forward(request, response);			
+			}
+			else if (request.getParameter("btneliminar")!=null)
+			{		
+				int id = Integer.parseInt(request.getParameter("legajo"));	        
+				new DocenteNegocio().delete(id);		
+				request.getRequestDispatcher("/Docentes.jsp").forward(request, response);
+			}
+		}
+		else
+		{
+			ArrayList<Localidad> listaLocalidades = new LocalidadNegocio().list();
+			ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
+			request.setAttribute("localidades", listaLocalidades);
+			request.setAttribute("nacionalidades", listaNacionalidad);
+			request.setAttribute("nextLegajo", new DocenteNegocio().GetNextLegajo());
+			
+			request.getRequestDispatcher("/AltaDocente.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -58,8 +89,15 @@ public class ServletAltaDocente extends HttpServlet
 				docente.setApellido(request.getParameter("txtapellido"));
 				docente.setFechaNac(request.getParameter("txtfechanac"));
 				docente.setDireccion(request.getParameter("txtdireccion"));
-				docente.setLocalidad(request.getParameter("Localidad").toString());
-				docente.setNacionalidad(request.getParameter("nacionalidad").toString());
+				
+				Localidad local = new Localidad();
+				local.setId(Integer.parseInt(request.getParameter("Localidad")));	
+				docente.setLocalidad(local);
+				
+				Nacionalidad nacion= new Nacionalidad();
+				nacion.setId(Integer.parseInt(request.getParameter("nacionalidad")));
+				docente.setNacionalidad(nacion);
+				
 				docente.setMail(request.getParameter("txtmail"));
 				docente.setTelefono(request.getParameter("txttelefono"));
 				docente.setClave(request.getParameter("txtclave"));
