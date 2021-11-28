@@ -16,6 +16,7 @@ public class CursoImpl implements CursoDao
 {
 	private static final String insert = "INSERT INTO Cursos (idCurso, idMateria, semestre, ciclo, idDocente) VALUES (?,?,?,?,?)";
 	private static final String list = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente";
+	private static final String listar = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente where docentes.legajo =";
 
 	public boolean insert(Curso curso) 
 	{
@@ -82,4 +83,41 @@ public class CursoImpl implements CursoDao
         
 		return listaCursos;
 	}
+
+	@Override
+	public ArrayList<Curso> listar_X_Docente(int legajo) {
+		PreparedStatement state;
+		ArrayList<Curso> listaCursos = new ArrayList<Curso>();
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		 
+        try
+        {
+        	state = conexion.prepareStatement(listar + legajo);
+            ResultSet rs = state.executeQuery();
+        	while(rs.next())
+        	{
+        		Curso curso = new Curso();
+        		curso.setIdCurso(rs.getString("idCurso"));
+        		Materia materia = new Materia();
+        		materia.setId(rs.getInt("idMateria"));
+        		materia.setDescripcion(rs.getString("descripcion"));
+        		curso.setIdMateria(materia);
+        		curso.setSemestre(rs.getString("semestre"));
+        		curso.setAnio(rs.getString("ciclo"));
+        		Profesor profesor = new Profesor();
+        		profesor.setLegajo(rs.getString("legajo"));
+        		profesor.setNombre(rs.getString("nombre"));
+        		curso.setProfesor(profesor);
+        		
+        		listaCursos.add(curso);
+        	}	
+        }
+        catch(Exception  e)
+        {
+        	return listaCursos;
+        }
+        
+		return listaCursos;
+	}
+	
 }

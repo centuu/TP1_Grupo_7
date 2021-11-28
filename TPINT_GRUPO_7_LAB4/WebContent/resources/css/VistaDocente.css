@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Permanent+Marker&display=swap");
+
+html, body{
+  height:100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+  background-image:url(../img/back.jpg);
+  background-position:center;
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  background-attachment: fixed;
+  
+}
+
+.caja >a{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  background-color:#70eaf3;
+}
+.caja >a:hover{
+  color: rgb(76, 181, 252);
+  text-decoration: none;
+  font-size: 1.8rem;
+}
+
+
+.colum{
+
+  margin-top: 2rem;
+  height: 500px;
+  border-radius: 10%;
+}
+
+
+

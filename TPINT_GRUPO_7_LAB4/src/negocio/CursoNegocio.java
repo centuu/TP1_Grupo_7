@@ -22,4 +22,10 @@ public class CursoNegocio implements CursoDao
 		return dao.list();
 	}
 
+	@Override
+	public ArrayList<Curso> listar_X_Docente(int legajo) {
+		// TODO Auto-generated method stub
+		return dao.listar_X_Docente(legajo);
+	}
+
 }

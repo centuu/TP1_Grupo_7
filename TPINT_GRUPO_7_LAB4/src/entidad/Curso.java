@@ -36,6 +36,11 @@ public class Curso
 	public int getIdMateria() {
 		return materia.getId();
 	}
+	
+	public String getdesMateria()
+	{
+		return materia.getDescripcion();
+	}
 	public void setIdMateria(Materia materia) {
 		this.materia = materia;
 	}

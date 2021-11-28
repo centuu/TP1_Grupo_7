@@ -1,6 +1,13 @@
+@charset "ISO-8859-1";
 body
 {
-	background-color: Lavender;
+	 font-family: "Montserrat", sans-serif;
+  background-image:url(../img/ciudad-Img.webp);
+  background-position:center;
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 #card

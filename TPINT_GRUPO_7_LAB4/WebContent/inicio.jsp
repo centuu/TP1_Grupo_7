@@ -5,16 +5,25 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>TP Integrador - Grupo N° 7</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="stylesheet" href="./resources/css/inicio.css">
-</head>
-<body>
-	<jsp:include page="/partials/navbar.jsp" />
- 	<div class="row">
- 		<div class="col-12 center-block text-center">
-		 	<h1>Bienvenido</h1>
- 		</div>
- 	</div>
- 	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnS4QtQKxpl30pzpoJaOe6MCVSXQDhdwH7yA&usqp=CAU">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+
+    <link rel="stylesheet" type="text/css" href="resources/css/inicio.css?1.0" media="all"/>
+
+   
+  </head>
+ <body>
+
+     <jsp:include page="/partials/navbar.jsp" />
+      <div class="text-center">
+        <h1 class="fa1">bienvenido</h1>
+        <h1 class="fa2">a la pagina</h1>
+        <h1 class="fa3 mb-3">de inicio </h1>
+      </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
+  </body>
 </html>
+
+
+
