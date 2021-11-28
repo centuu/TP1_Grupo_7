@@ -14,9 +14,11 @@
 
      <jsp:include page="/partials/navbar.jsp" />
       <div class="text-center">
-        <h1 class="fa1">bienvenido</h1>
-        <h1 class="fa2">a la pagina</h1>
-        <h1 class="fa3 mb-3">de inicio </h1>
+        <h1 class="fa1">Bienvenido!</h1>
+        <p class="fa3">SIAE
+        <br>
+        Sistema Integral de Administracion de Escuelas
+        </p>
       </div>
    
 
