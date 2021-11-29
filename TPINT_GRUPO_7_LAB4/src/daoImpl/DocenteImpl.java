@@ -26,7 +26,8 @@ public class DocenteImpl implements DocenteDao
 		int res = -1;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		PreparedStatement state;
-		try {
+		try 
+		{
 			state = conexion.prepareStatement(insert);
 			state.setString(1, docente.getDni());
 			state.setString(2, docente.getNombre());

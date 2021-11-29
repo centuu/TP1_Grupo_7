@@ -20,63 +20,65 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Alta Curso</h1>
 					<br>
-					<div class="row mb-3 justify-content-center">
-						<label for="btn-Profesor">Seleccione un profesor</label>
-						<select class="btn btn-secondary form-control form-control-sm" style="width: auto;">
-							<%
-						  		ArrayList<Docente> docentes = (ArrayList<Docente>)request.getAttribute("docentes");	
-								
-								for(Docente docente : docentes)
-								{
-							%>
-									<option value=<%= docente.getDni() %>><%= docente.getNombre() + " " + docente.getApellido() %></option>
-							<%
-								}
-							%>
-						</select>
-					</div>
-					<div class="row mb-3 justify-content-center">
-						<label for="btn-Profesor">Seleccione una materia</label>
-						<select class="btn btn-secondary form-control form-control-sm" style="width: auto;">
-							<%
-						  		ArrayList<Materia> materias = (ArrayList<Materia>)request.getAttribute("materias");	
-								
-								for(Materia materia : materias)
-								{
-							%>
-									<option value=<%= materia.getId() %>><%= materia.getDescripcion() %></option>
-							<%
-								}
-							%>
-						</select>
-					</div>					
-					<div class="row">
-						<div class="col-5">
-							<label>Alumnos a seleccionar</label>
-							<select class="form-select" id="alumnosASeleccionar" size="10" aria-label="size 3 select example">
-							  	<%
-							  		ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
+					<form action="altacurso" method="POST">
+						<div class="row mb-3 justify-content-center">
+							<label for="btn-Profesor">Seleccione un profesor</label>
+							<select name="docente" class="btn btn-secondary form-control form-control-sm" style="width: auto;">
+								<%
+							  		ArrayList<Docente> docentes = (ArrayList<Docente>)request.getAttribute("docentes");	
 									
-									for(Alumno alumno : alumnos)
+									for(Docente docente : docentes)
 									{
 								%>
-										<option value=<%= alumno.getDni() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
+										<option value=<%= docente.getLegajo() %>><%= docente.getNombre() + " " + docente.getApellido() %></option>
 								<%
 									}
 								%>
 							</select>
 						</div>
-						<div class="col-2 align-items-center pt-5">
-							<button id="btnRight" class="btn btn-warning mb-2">></button>
-							<br>
-							<button id="btnLeft" class="btn btn-warning"><</button>
-						</div>
-						<div class="col-5">
-							<label>Alumnos a seleccionados</label>
-							<select class="form-select" id="alumnosSeleccionados" size="10" aria-label="size 3 select example"></select>
-						</div>
-					</div>					
-					<button type="submit" class="btn btn-primary">Confirmar</button>
+						<div class="row mb-3 justify-content-center">
+							<label for="btn-Profesor">Seleccione una materia</label>
+							<select name="materia" class="btn btn-secondary form-control form-control-sm" style="width: auto;">
+								<%
+							  		ArrayList<Materia> materias = (ArrayList<Materia>)request.getAttribute("materias");	
+									
+									for(Materia materia : materias)
+									{
+								%>
+										<option value=<%= materia.getId() %>><%= materia.getDescripcion() %></option>
+								<%
+									}
+								%>
+							</select>
+						</div>					
+						<div class="row">
+							<div class="col-5">
+								<label>Alumnos a seleccionar</label>
+								<select class="form-select" id="alumnosASeleccionar" size="10" aria-label="size 3 select example">
+								  	<%
+								  		ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
+										
+										for(Alumno alumno : alumnos)
+										{
+									%>
+											<option value=<%= alumno.getDni() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
+									<%
+										}
+									%>
+								</select>
+							</div>
+							<div class="col-2 align-items-center pt-5">
+								<button id="btnRight" type="button" class="btn btn-warning mb-2">></button>
+								<br>
+								<button id="btnLeft" type="button" class="btn btn-warning"><</button>
+							</div>
+							<div class="col-5">
+								<label>Alumnos a seleccionados</label>
+								<select name="alumnos" class="form-select" id="alumnosSeleccionados" size="10" aria-label="size 3 select example"></select>
+							</div>
+						</div>					
+						<button type="submit" class="btn btn-primary">Confirmar</button>
+					</form>
 				</div>
 			</div>
 		</div>

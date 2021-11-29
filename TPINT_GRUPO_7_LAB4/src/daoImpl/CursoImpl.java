@@ -1,11 +1,14 @@
 package daoImpl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import dao.CursoDao;
+import entidad.Alumno;
 import entidad.Curso;
 import entidad.Materia;
 import entidad.Profesor;
@@ -14,37 +17,47 @@ import java.sql.ResultSet;
 
 public class CursoImpl implements CursoDao
 {
-	private static final String insert = "INSERT INTO Cursos (idCurso, idMateria, semestre, ciclo, idDocente) VALUES (?,?,?,?,?)";
 	private static final String list = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente";
 	private static final String listar = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente where docentes.legajo =";
 
 	public boolean insert(Curso curso) 
 	{
-		int res = -1;
+		boolean res = false;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		PreparedStatement state;
+		
 		try 
 		{
-			state = conexion.prepareStatement(insert);
-			state.setString(1, curso.getIdCurso());
-			state.setInt(2, curso.getIdMateria());
-			state.setString(3, curso.getSemestre());
-			state.setString(4, curso.getAnio());
-			state.setInt(5, Integer.parseInt(curso.getIdProfesor()));
-			
-			res = state.executeUpdate();
+			PreparedStatement state = conexion.prepareStatement("INSERT INTO alumnosPorCurso (idCurso,legajoAlumno) VALUES (idCurso,legajoAlumno)", Statement.RETURN_GENERATED_KEYS);
+			state.setInt(1, curso.getIdMateria());
+			state.setString(2, curso.getIdProfesor());
 
-			if (res > 0) 
+			if (state.executeUpdate() > 0) 
 			{
 				conexion.commit();
 			}
+			
+			ResultSet rs = state.getGeneratedKeys();
+			int id = rs.getInt(1);
+			
+			for(Alumno alumno : curso.getListAlu())
+			{
+				CallableStatement st = conexion.prepareCall("{CALL insert_AlumnoPorCurso(?, ?)}");
+				st.setInt(1, id);
+				st.setInt(2,alumno.getLegajo());
+				
+				if (st.executeUpdate() > 0) 
+				{
+					conexion.commit();
+				}				
+			}
+			res = true;
 		}
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
 
-		return res > 0;
+		return res;
 	}
 
 	@Override
@@ -66,8 +79,6 @@ public class CursoImpl implements CursoDao
         		materia.setId(rs.getInt("idMateria"));
         		materia.setDescripcion(rs.getString("descripcion"));
         		curso.setIdMateria(materia);
-        		curso.setSemestre(rs.getString("semestre"));
-        		curso.setAnio(rs.getString("ciclo"));
         		Profesor profesor = new Profesor();
         		profesor.setLegajo(rs.getString("legajo"));
         		profesor.setNombre(rs.getString("nombre"));
@@ -103,8 +114,6 @@ public class CursoImpl implements CursoDao
         		materia.setId(rs.getInt("idMateria"));
         		materia.setDescripcion(rs.getString("descripcion"));
         		curso.setIdMateria(materia);
-        		curso.setSemestre(rs.getString("semestre"));
-        		curso.setAnio(rs.getString("ciclo"));
         		Profesor profesor = new Profesor();
         		profesor.setLegajo(rs.getString("legajo"));
         		profesor.setNombre(rs.getString("nombre"));

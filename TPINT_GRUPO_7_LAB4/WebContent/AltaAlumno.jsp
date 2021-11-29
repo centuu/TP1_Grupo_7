@@ -16,7 +16,7 @@
 	<jsp:include page="/partials/navbar.jsp" />
 	<jsp:include page="/partials/Confirmation.jsp" />
 	<main>  
-		<form action="alumno" method="post" class="needs-validation" novalidate id="form">
+		<form action="alumno" method="POST" class="needs-validation" novalidate id="form">
 		 <div class="container text-center my-5 "> 
 		 	<div class="row ">
 			     <div class="col-lg-4"></div> 

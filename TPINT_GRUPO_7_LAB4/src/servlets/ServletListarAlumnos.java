@@ -36,9 +36,7 @@ public class ServletListarAlumnos extends HttpServlet
 		int pageid = Integer.parseInt(request.getParameter("page"));  
 		int total = 5;
 		
-		//ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list();
-		ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list(pageid, total);
-		
+		ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list(pageid, total);		
 		ArrayList<Curso> listaCursos = new CursoNegocio().list();
 		
 		int noOfRecords =  new AlumnoNegocio().cantRegistros();
