@@ -75,10 +75,10 @@ CREATE TABLE cursos
 );
 
 CREATE TABLE alumnosPorCurso
-{
+(
 	idCurso INT,
 	legajoAlumno INT
-};
+);
 
 /* TABLE cursada
 (

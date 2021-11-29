@@ -17,6 +17,11 @@ public class DocenteNegocio implements DocenteDao
 	{
 		return dao.insert(docente);
 	}
+	
+	public int update(Docente doc) 
+	{
+		return dao.update(doc);
+	}
 
 	@Override
 	public ArrayList<Docente> list() 

@@ -19,13 +19,39 @@
 	<jsp:include page="/partials/navbar.jsp" />
 	<main>     
 		<% Alumno alumno = (Alumno)request.getAttribute("alumno"); %>
-       	<form action="ServletAlumno" method="post">
+       	<form action="alumno" method="post" class="needs-validation" novalidate id="form">
 		 <div class="container text-center my-5 "> 
 		  <div class="row ">
 		     <div class="col-lg-4"></div> 
 			     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
 			     	<h1>Registro Alumnos </h1>           
 			     	<br>
+			     	<%
+						if(request.getAttribute("messageSuccess") != null)
+						{
+			     	%>
+			     			<div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageSuccess") %>
+							</div>
+					<%
+						}
+			   			if(request.getAttribute("messageError") != null)
+			   			{
+			   		%>
+			   				<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageError") %>
+							</div>
+			   		<%
+			   			}
+					%>
 			        <div class="row mb-3 text-center">
 			          	<label  class="from-group">Legajo</label>
 			           	<input type="text" readonly name="txtLegajo" class="form-control" value=<%= alumno.getLegajo() %>>
@@ -98,7 +124,8 @@
 				           	<input type="text" value="<%=alumno.getTelefono() %>" name="txttelefono" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %>>
 				        </div>
 				      	<div class="row mb-3 text-center">
-				       		<button name="btnguardar" id="btnguardar" type="submit" class="btn btn-primary mb-1" <%= request.getAttribute("readOnly") != "" ? "hidden=true" : "" %>>Guardar cambios</button>
+				       		<button name="btnguardar" id="btnguardar" type="submit" class="btn btn-primary mb-1" data-toggle="modal" data-target="#modalpopup" <%= request.getAttribute("readOnly") != "" ? "hidden=true" : "" %>>Guardar cambios</button>
+				       		
 				       		<button name="btnVolver" type="button" onclick="window.location.href='listaralumnos?page=1'" class="btn btn-danger">Volver</button>
 				     	</div>
 						<div class="col-lg-4"></div>
@@ -121,5 +148,29 @@
 		}
 	</script>
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script> 		
+ 	(function()
+ 	{
+ 		var forms = $(".needs-validation");
+ 		
+		Array.prototype.slice.call(forms).forEach(function (form) 
+		{
+		    form.addEventListener('click', function (event) 
+		    {
+		      if (!form.checkValidity()) 
+		      {
+		        event.preventDefault()
+		        event.stopPropagation()
+		      }
+		      form.classList.add('was-validated')
+		    }, false)
+		})
+ 	})()
+
+ 	document.getElementById("alert").addEventListener('click', function (event)
+ 	{
+ 		$(".alert").alert('close');
+ 	})
+ 	</script>
 </body>
 </html>

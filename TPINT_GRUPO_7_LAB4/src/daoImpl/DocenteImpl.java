@@ -19,7 +19,7 @@ public class DocenteImpl implements DocenteDao
 	private static final String insert = "INSERT INTO Docentes (dni,nombre,apellido,fechaNacimiento,domicilio,idlocalidad,idnacionalidad,email,telefono,clave,estado) VALUES (?,?,?,?,?,?,?,?,?,?,true)";
 	private static final String delete = "DELETE FROM Docentes WHERE legajo = ?";
 	private static final String list = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1;";
-	private static final String edit = "UPDATE Docentes SET Dni = ?, nombre = ? , apellido = ?, fechaNac = ?, domicilio = ?, idLocalidad = ?,idNacionalidad =?,email = ? , telefono = ? WHERE legajo =?"; 
+	private static final String edit = "UPDATE Docentes SET Dni = ?, nombre = ? , apellido = ?, fechaNacimiento = ?, domicilio = ?, idLocalidad = ?,idNacionalidad =?,email = ? , telefono = ? WHERE legajo =?"; 
 	
 	public boolean insert(Docente docente) throws SQLException
 	{

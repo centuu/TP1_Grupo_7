@@ -18,7 +18,7 @@ import entidad.Provincia;
 
 public class AlumnoImpl implements AlumnoDao 
 {
-    private static final String edit = "UPDATE Alumnos SET Dni = ?, nombre = ? , apellido = ?, fechaNac = ?, domicilio = ?, idprovincia = ?,idNacionalidad =?,email = ? , telefono = ? WHERE legajo =?"; 
+    private static final String edit = "UPDATE Alumnos SET Dni = ?, nombre = ? , apellido = ?, fechaNacimiento = ?, domicilio = ?, idprovincia = ?,idNacionalidad =?,email = ? , telefono = ? WHERE legajo =?"; 
 	
     public boolean insert(Alumno alum) throws SQLException
 	{

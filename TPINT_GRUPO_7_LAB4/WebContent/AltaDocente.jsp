@@ -16,7 +16,7 @@
 	<jsp:include page="/partials/navbar.jsp" />
 	
 	<main>  
-		<form method="post">
+		<form action="altadocente" method="post" class="needs-validation" novalidate id="form">
 		 <div class="container text-center my-5 "> 
 			<div class="row ">
 			    <div class="col-lg-4"></div> 

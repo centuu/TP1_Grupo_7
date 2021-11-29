@@ -21,6 +21,7 @@ import negocio.ProvinciaNegocio;
 public class ServletAlumno extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
+	private boolean editar;
        
     public ServletAlumno() 
     {
@@ -35,9 +36,9 @@ public class ServletAlumno extends HttpServlet
 			return;
 		}
 		
-		
 		if(request.getParameter("legajo") != null)
 		{
+			editar = true;
 			int legajo= Integer.parseInt(request.getParameter("legajo").toString());
 			Alumno alumno = new AlumnoNegocio().buscarAlumno(legajo);			
 			
@@ -47,7 +48,8 @@ public class ServletAlumno extends HttpServlet
 				request.setAttribute("alumno", alumno);
 				request.setAttribute("nacionalidad", alumno.getNacionalidad().getId());
 				request.setAttribute("provincia", alumno.getProvincia().getId());
-				request.getRequestDispatcher("/UpdateAlumno.jsp").forward(request, response);			
+				request.getRequestDispatcher("/UpdateAlumno.jsp").forward(request, response);
+				
 			}
 			else if (request.getParameter("btneditar")!=null)
 			{		
@@ -55,17 +57,20 @@ public class ServletAlumno extends HttpServlet
 				request.setAttribute("alumno", alumno);
 				request.setAttribute("nacionalidad", alumno.getNacionalidad().getId());
 				request.setAttribute("provincia", alumno.getProvincia().getId());
-				request.getRequestDispatcher("/UpdateAlumno.jsp").forward(request, response);			
+				request.getRequestDispatcher("/UpdateAlumno.jsp").forward(request, response);
+				
 			}
 			else if (request.getParameter("btneliminar")!=null)
 			{		
 				int id = Integer.parseInt(request.getParameter("legajo"));	        
 				new AlumnoNegocio().delete(id);		
 				request.getRequestDispatcher("/Alumnos.jsp").forward(request, response);
+				
 			}
 		}
 		else
 		{
+			editar = false;
 			request.setAttribute("nextLegajo", new AlumnoNegocio().GetNextLegajo());
 			ArrayList<Provincia> listaProvincias = new ProvinciaNegocio().list();		
 			ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
@@ -73,14 +78,18 @@ public class ServletAlumno extends HttpServlet
 			request.setAttribute("provincias", listaProvincias);
 			request.setAttribute("nacionalidades", listaNacionalidad);
 			request.getRequestDispatcher("/AltaAlumno.jsp").forward(request, response);
+			
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		try
+		if (editar)
 		{
-			Alumno alumno = new Alumno();
+			//Alumno alumno = new Alumno();
+			int legajo= Integer.parseInt(request.getParameter("txtLegajo").toString());
+			Alumno alumno = new AlumnoNegocio().buscarAlumno(legajo);
 			alumno.setDni(request.getParameter("txtdni"));
 			alumno.setNombre(request.getParameter("txtnombre"));
 			alumno.setApellido(request.getParameter("txtapellido"));
@@ -97,21 +106,51 @@ public class ServletAlumno extends HttpServlet
 			
 			alumno.setMail(request.getParameter("txtmail"));
 			alumno.setTelefono(request.getParameter("txttelefono"));
-			alumno.setestado(true);
+			//alumno.setestado(true);
 			
-			new AlumnoNegocio().insert(alumno);
+			new AlumnoNegocio().update(alumno);
 			
-			request.setAttribute("messageSuccess", "Se cargo el alumno con exito.");
+			request.setAttribute("messageSuccess", "Se modifico el alumno con exito.");
+			request.getRequestDispatcher("/listaralumnos?page=1").forward(request, response);
+			
 		}
-		catch(Exception e)
+		else
 		{
-			e.printStackTrace();
-			if (e.getMessage().contains("unq_DNI"))
+			try
 			{
-				request.setAttribute("messageError", "El DNI ya existe en la base de datos.");
+				Alumno alumno = new Alumno();
+				alumno.setDni(request.getParameter("txtdni"));
+				alumno.setNombre(request.getParameter("txtnombre"));
+				alumno.setApellido(request.getParameter("txtapellido"));
+				alumno.setFechaNac(request.getParameter("txtfechanac"));
+				alumno.setDireccion(request.getParameter("txtdireccion"));
+				
+				Provincia provi= new Provincia();
+				provi.setId(Integer.parseInt(request.getParameter("provincia")));	
+				alumno.setProvincia(provi);
+				
+				Nacionalidad nacion= new Nacionalidad();
+				nacion.setId(Integer.parseInt(request.getParameter("nacionalidad")));
+				alumno.setNacionalidad(nacion);
+				
+				alumno.setMail(request.getParameter("txtmail"));
+				alumno.setTelefono(request.getParameter("txttelefono"));
+				alumno.setestado(true);
+				
+				new AlumnoNegocio().insert(alumno);
+				
+				request.setAttribute("messageSuccess", "Se cargo el alumno con exito.");
 			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				if (e.getMessage().contains("unq_DNI"))
+				{
+					request.setAttribute("messageError", "El DNI ya existe en la base de datos.");
+				}
+			}
+			//doGet(request, response);
+			request.getRequestDispatcher("/inicio.jsp").forward(request, response);
 		}
-	
-		doGet(request, response);
 	}
 }
