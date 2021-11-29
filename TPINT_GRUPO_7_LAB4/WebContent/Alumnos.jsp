@@ -26,8 +26,9 @@
 							<input type="text" class="form-control" id="inputFilter">
 						</div>
 						<label class="col-1 col-form-label">Curso</label>
-						<div class="col-1">
+						<div class="col-2">
 							<select class="btn btn-secondary form-control form-control-sm">
+								<option value="" selected disabled hidden>Seleccione</option>
 								<%
 									ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
 							

@@ -1,5 +1,3 @@
-drop schema Cursada;
-
 create schema Cursada;
 
 use Cursada;
@@ -104,6 +102,8 @@ CREATE TABLE carreras
     descripcion VARCHAR(100)
 );
 
+/*PROCEDIMIENTOS ALMACENADOS*/
+
 DELIMITER //
 CREATE PROCEDURE count_Alumnos()
 BEGIN 
@@ -189,8 +189,8 @@ INSERT INTO nacionalidad (nacionalidad) VALUES ('Otra' );
 
 
 INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('38914202', 'Pedro', 'Torres', '1995/05/04', 'Azucena 1234', 1, 1, 'ptorres@utn.com', '03327485986', true);
-INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('39168909', 'Marcos', 'Ledesma', '1995/05/06', 'Palosanto 456', 1, 1, 'mledesma@utn.com', '47411451', true);
-INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('12345678', 'Fernando', 'Gordillo', '1995/10/08', 'Oscar 1234', 1, 1, 'fgordillo@utn.com', '47896512', true);
+INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('39168909', 'Marcos', 'Ledesma', '1995/05/06', 'Palosanto 456', 2, 3, 'mledesma@utn.com', '47411451', true);
+INSERT INTO alumnos (dni, nombre, apellido, fechaNacimiento, domicilio, idprovincia, idnacionalidad, email, telefono, estado) VALUES ('12345678', 'Fernando', 'Gordillo', '1995/10/08', 'Oscar 1234', 4, 5, 'fgordillo@utn.com', '47896512', true);
 
 INSERT INTO docentes (dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('44555888', 'Tomas', 'Scutti', '2000/08/12', 'Caracas 1234', 3, 1, 'tscutti@utn.com', '47478989','123465', true);
 INSERT INTO docentes (dni, nombre, apellido, fechaNacimiento, domicilio, idlocalidad, idnacionalidad, email, telefono, clave, estado) VALUES ('46888999', 'Jose', 'Fabiani', '2002/06/03', 'Florida 486', 2, 1, 'jfabiani@utn.com', '12123636','ASD123', true);

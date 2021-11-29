@@ -64,13 +64,13 @@
 			        </div>
 			        <div class="row mb-3 text-center">
 			         	<label  class="from-group">Nombre</label>
-			           	<input type="text" name="txtnombre" class="form-control" pattern="[a-zA-Z]+" required>
+			           	<input type="text" name="txtnombre" class="form-control" pattern="^(?=.{3,30}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" required>
 			           	<div class="valid-feedback"></div>
 			           	<div class="invalid-feedback">Campo Obligatorio</div>
 			        </div>
 			        <div class="row mb-3 text-center">
 			          	<label  class="from-group">Apellido</label>
-			           	<input type="text" name="txtapellido" pattern="[a-zA-Z]+" class="form-control" required>
+			           	<input type="text" name="txtapellido" pattern="^(?=.{3,30}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" class="form-control" required>
 			         	<div class="valid-feedback"></div>
 			           	<div class="invalid-feedback">Campo Obligatorio</div>
 			        </div>
