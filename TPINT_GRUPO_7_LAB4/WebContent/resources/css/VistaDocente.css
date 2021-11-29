@@ -12,13 +12,7 @@ html, body{
 
 body{
   font-family: "Montserrat", sans-serif;
-  background-image:url(../img/back.jpg);
-  background-position:center;
-  background-repeat: no-repeat;
-
-  background-size: cover;
-  background-attachment: fixed;
-  
+  background-color: Lavender; 
 }
 
 .caja >a{
