@@ -34,7 +34,6 @@
 		                        <th scope="col">Nombre</th>
 		                        <th scope="col">Apellido</th>
 		                        <th scope="col">Fecha Nac.</th>
-		             
 		                        <th scope="col"> </th>   
 		                        <th scope="col"> </th>                   
 		                    </tr>

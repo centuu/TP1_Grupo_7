@@ -44,7 +44,7 @@
 						<button name="btnlistar" type="submit" class="btn btn-primary col-1">Listar</button>
 					</div>
 					<div class="col-12 modal-content">
-		                <table id="table_id" class="w3-table w3-striped" border="1" cellpadding="5" cellspacing="5">
+		                <table id="table_id" class="w3-table w3-striped" cellpadding="5" cellspacing="5">
 		                    <tr class="alert-primary">
 		                        <th scope="col">Legajo</th>
 		                        <th scope="col">Nombre</th>
@@ -56,31 +56,30 @@
 		                    </tr>
 		                    
 		                    	<%
-							  	ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
-									
-								for(Alumno alumno : alumnos)
-								{
+								  	ArrayList<Alumno> alumnos = (ArrayList<Alumno>)request.getAttribute("alumnos");	
+										
+									for(Alumno alumno : alumnos)
+									{
 								%>
-									<tr>
-										<form action="alumno" method="GET">
-											<td><%= alumno.getLegajo()  %></td> 
-											<input name="legajo" type="hidden" value="<%=alumno.getLegajo()%>" >
-					                       	<td><%= alumno.getNombre() %></td>
-					                       	<td><%= alumno.getApellido() %></td>
-					                       	<td><%= alumno.getFechaNac() %></td>			                   
-					                        <td>			                        
-					                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Detalle</button>
-					                            <button name="btneditar"type="submit" class="btn btn-success mx-0">Editar</button>              
-					                            <button name="btneliminar" type="submit" class="btn btn-danger" onclick="return confirm('Desea eliminar este alumno?')">Eliminar</button>
-					                        </td>
-			                     		</form>
-					               	</tr>
+										<tr>
+											<form action="alumno" method="GET">
+												<td><%= alumno.getLegajo()  %></td> 
+												<input name="legajo" type="hidden" value="<%=alumno.getLegajo()%>" >
+						                       	<td><%= alumno.getNombre() %></td>
+						                       	<td><%= alumno.getApellido() %></td>
+						                       	<td><%= alumno.getFechaNac() %></td>			                   
+						                        <td>			                        
+						                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Detalle</button>
+						                            <button name="btneditar"type="submit" class="btn btn-success mx-0">Editar</button>              
+						                            <button name="btneliminar" type="submit" class="btn btn-danger" onclick="return confirm('Desea eliminar este alumno?')">Eliminar</button>
+						                        </td>
+				                     		</form>
+						               	</tr>
 								<%
-								}
+									}
 								%>
-						</table>
-						
-					    <td><a href="listaralumnos?page=${currentPage - 1}"><</a> Página ${currentPage} de ${noOfPages} <a href="listaralumnos?page=${currentPage + 1}">></a></td>
+						</table>						
+					    <a href="listaralumnos?page=${currentPage - 1}"><</a> Página ${currentPage} de ${noOfPages} <a href="listaralumnos?page=${currentPage + 1}">></a>
 					</div>
 				</div>
 			</div>

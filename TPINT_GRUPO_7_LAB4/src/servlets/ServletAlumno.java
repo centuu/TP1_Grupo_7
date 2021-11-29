@@ -45,12 +45,16 @@ public class ServletAlumno extends HttpServlet
 			{
 				request.setAttribute("readOnly" , "readOnly");
 				request.setAttribute("alumno", alumno);
+				request.setAttribute("nacionalidad", alumno.getNacionalidad().getId());
+				request.setAttribute("provincia", alumno.getProvincia().getId());
 				request.getRequestDispatcher("/UpdateAlumno.jsp").forward(request, response);			
 			}
 			else if (request.getParameter("btneditar")!=null)
 			{		
 				request.setAttribute("readOnly" , "");
 				request.setAttribute("alumno", alumno);
+				request.setAttribute("nacionalidad", alumno.getNacionalidad().getId());
+				request.setAttribute("provincia", alumno.getProvincia().getId());
 				request.getRequestDispatcher("/UpdateAlumno.jsp").forward(request, response);			
 			}
 			else if (request.getParameter("btneliminar")!=null)

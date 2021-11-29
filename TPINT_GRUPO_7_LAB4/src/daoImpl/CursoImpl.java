@@ -85,7 +85,8 @@ public class CursoImpl implements CursoDao
 	}
 
 	@Override
-	public ArrayList<Curso> listar_X_Docente(int legajo) {
+	public ArrayList<Curso> listar_X_Docente(int legajo) 
+	{
 		PreparedStatement state;
 		ArrayList<Curso> listaCursos = new ArrayList<Curso>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();

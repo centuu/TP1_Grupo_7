@@ -51,10 +51,11 @@
 				           	<input type="text"value="<%=alumno.getDireccion() %>" name="txtdireccion" class="form-control" <%= request.getAttribute("readOnly")  %> >
 				        </div>
 				          <div class="row mb-3 text-center">
+				          	<label hidden id="alumnoProvincia" value=<%= request.getAttribute("provincia") %>></label>		
 				          	<label  class="from-group">Provincia</label>
-				           	<select name="provincia" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
+				           	<select name="provincia" id="provincias" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
 									<%
-									     ProvinciaDaoImpl proviDao= new ProvinciaDaoImpl(); 
+									    ProvinciaDaoImpl proviDao= new ProvinciaDaoImpl(); 
 								  		ArrayList<Provincia> provincias =proviDao.list();	
 										
 								  		if (provincias!=null)
@@ -70,10 +71,12 @@
 							</select>
 				        </div>
 				        <div class="row mb-3 text-center"> 
+				        	<label hidden id="alumnoNacionalidad" value=<%= request.getAttribute("nacionalidad") %>></label>				        	
 				        	<label  class="from-group">Nacionalidad</label>
-					       <select name="nacionalidad" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
-				                  <%  NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
-				                       ArrayList<Nacionalidad> lista=nacionDao.list();
+					       <select name="nacionalidad" id="nacionalidades" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
+				                  <%  
+				                  		NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
+				                       	ArrayList<Nacionalidad> lista=nacionDao.list();
 		         
 		                          if (lista!=null)
 		                          {
@@ -104,6 +107,19 @@
 			</div>
 		</form>	    
 	</main> 
+	<script>
+		for(var i = 0; i < document.getElementById("nacionalidades").length ; i++) 
+		{
+		    if(document.getElementById("nacionalidades")[i].getAttribute("value") == document.getElementById("alumnoNacionalidad").getAttribute("value"))
+		       document.getElementById("nacionalidades").selectedIndex = i;
+		}
+	
+		for(var i = 0; i < document.getElementById("provincias").length ; i++) 
+		{
+		    if(document.getElementById("provincias")[i].getAttribute("value") == document.getElementById("alumnoProvincia").getAttribute("value"))
+		       document.getElementById("provincias").selectedIndex = i;
+		}
+	</script>
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
