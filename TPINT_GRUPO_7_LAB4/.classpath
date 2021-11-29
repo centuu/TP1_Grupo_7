@@ -13,11 +13,10 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/SOL/eclipse-workspace/TPINT_GRUPO_7_LAB4/mysql-connector-java-8.0.26.jar">
+	<classpathentry kind="lib" path="C:/Users/ptorr/Desktop/UTN/Laboratorio 4/workspace/TP1_Grupo_7/TPINT_GRUPO_7_LAB4/mysql-connector-java-8.0.26.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/SOL/eclipse-workspace/TPINT_GRUPO_7_LAB4/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

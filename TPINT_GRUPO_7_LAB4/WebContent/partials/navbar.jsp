@@ -48,7 +48,7 @@
 		          			<a class="nav-link" href="vistaDocente">Mis cursos</a>
 						</li>
 						<li class="nav-item">
-		          			<a class="nav-link" href="CargarNotas.jsp">Cargar Notas</a>
+		          			<a class="nav-link" href="CargarNotas">Cargar Notas</a>
 						</li>
 						<li class="nav-item">
 		          			<a class="nav-link" href="listaralumnos?page=1">Alumnos</a>

@@ -1,3 +1,5 @@
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "entidad.Curso" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,17 +19,23 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Cargar notas</h1>
 					<br>
-					<div class="col-md-12 school-options-dropdown text-center">
-						<div class="dropdown">
-						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    Seleccionar curso
-						  </button>
-						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						    <a class="dropdown-item" href="#">Action</a>
-						    <a class="dropdown-item" href="#">Another action</a>
-						    <a class="dropdown-item" href="#">Something else here</a>
-						  </div>
-						</div>
+					<div class="form-group row">	
+					<label class="col-1 col-form-label">Curso</label>
+					<div class="col-2">
+						<select class="btn btn-secondary form-control form-control-sm">
+							<option value="" selected disabled hidden>Seleccione</option>
+							<%
+								ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
+						
+								for(Curso curso : cursos)
+								{
+							%>
+								<option value=<%= curso.getIdCurso() %>><%= curso.getIdCurso() %></option>
+									
+							<%
+								}
+							%>
+						</select>
 					</div>
 					<div class="row">
 						<div class="col-12">
