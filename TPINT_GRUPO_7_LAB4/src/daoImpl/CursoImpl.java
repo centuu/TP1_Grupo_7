@@ -27,9 +27,9 @@ public class CursoImpl implements CursoDao
 		
 		try 
 		{
-			PreparedStatement state = conexion.prepareStatement("INSERT INTO alumnosPorCurso (idCurso,legajoAlumno) VALUES (idCurso,legajoAlumno)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement state = conexion.prepareStatement("INSERT INTO cursos (idMateria, idDocente) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
 			state.setInt(1, curso.getIdMateria());
-			state.setString(2, curso.getIdProfesor());
+			state.setInt(2, curso.getIdProfesor());
 
 			if (state.executeUpdate() > 0) 
 			{
@@ -37,18 +37,19 @@ public class CursoImpl implements CursoDao
 			}
 			
 			ResultSet rs = state.getGeneratedKeys();
+			rs.next();
 			int id = rs.getInt(1);
 			
 			for(Alumno alumno : curso.getListAlu())
 			{
-				CallableStatement st = conexion.prepareCall("{CALL insert_AlumnoPorCurso(?, ?)}");
+				CallableStatement st = conexion.prepareCall("{CALL insert_Cursada(?, ?)}");
 				st.setInt(1, id);
-				st.setInt(2,alumno.getLegajo());
+				st.setInt(2, alumno.getLegajo());
 				
 				if (st.executeUpdate() > 0) 
 				{
 					conexion.commit();
-				}				
+				}
 			}
 			res = true;
 		}
@@ -74,15 +75,15 @@ public class CursoImpl implements CursoDao
         	while(rs.next())
         	{
         		Curso curso = new Curso();
-        		curso.setIdCurso(rs.getString("idCurso"));
+        		curso.setIdCurso(rs.getInt("idCurso"));
         		Materia materia = new Materia();
         		materia.setId(rs.getInt("idMateria"));
         		materia.setDescripcion(rs.getString("descripcion"));
-        		curso.setIdMateria(materia);
+        		curso.setIdMateria(materia.getId());
         		Profesor profesor = new Profesor();
         		profesor.setLegajo(rs.getString("legajo"));
         		profesor.setNombre(rs.getString("nombre"));
-        		curso.setProfesor(profesor);
+        		curso.setProfesor(profesor.getDni());
         		
         		listaCursos.add(curso);
         	}	
@@ -109,15 +110,15 @@ public class CursoImpl implements CursoDao
         	while(rs.next())
         	{
         		Curso curso = new Curso();
-        		curso.setIdCurso(rs.getString("idCurso"));
+        		curso.setIdCurso(rs.getInt("idCurso"));
         		Materia materia = new Materia();
         		materia.setId(rs.getInt("idMateria"));
         		materia.setDescripcion(rs.getString("descripcion"));
-        		curso.setIdMateria(materia);
+        		curso.setIdMateria(materia.getId());
         		Profesor profesor = new Profesor();
         		profesor.setLegajo(rs.getString("legajo"));
         		profesor.setNombre(rs.getString("nombre"));
-        		curso.setProfesor(profesor);
+        		curso.setProfesor(profesor.getDni());
         		
         		listaCursos.add(curso);
         	}	

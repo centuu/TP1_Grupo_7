@@ -20,6 +20,32 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Alta Curso</h1>
 					<br>
+					<%
+						if(request.getAttribute("messageSuccess") != null)
+						{
+			     	%>
+			     			<div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageSuccess") %>
+							</div>
+					<%
+						}
+			   			if(request.getAttribute("messageError") != null)
+			   			{
+			   		%>
+			   				<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageError") %>
+							</div>
+			   		<%
+			   			}
+					%>
 					<form action="altacurso" method="POST">
 						<div class="row mb-3 justify-content-center">
 							<label for="btn-Profesor">Seleccione un profesor</label>

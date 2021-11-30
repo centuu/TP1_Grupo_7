@@ -33,7 +33,7 @@ public class Curso
 
 	public int getIdMateria() 
 	{
-		return this.getIdMateria();
+		return this.materia;
 	}
 	
 	/*public String getdesMateria()
@@ -49,7 +49,7 @@ public class Curso
 	
 	public int getIdProfesor() 
 	{
-		return this.getIdProfesor();
+		return this.idProfesor;
 	}
 	
 	public void setProfesor(int profesor) 
