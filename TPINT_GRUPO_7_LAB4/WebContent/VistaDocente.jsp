@@ -45,7 +45,7 @@
 										<tr>
 											<form action="alumno" method="GET">
 												<td><%= curso.getIdCurso()  %></td> 
-						                       	<td><%= curso.getdesMateria() %></td>		                   
+														                   
 						                        <td>			                        
 						                        <button name="btninfo" type="submit" class="btn btn-info mx-0">Alumnos</button>						                      
 						             	     </form>

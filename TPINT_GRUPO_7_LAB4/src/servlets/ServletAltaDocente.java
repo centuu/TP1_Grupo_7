@@ -22,6 +22,7 @@ import negocio.DocenteNegocio;
 import negocio.LocalidadNegocio;
 import negocio.NacionalidadNegocio;
 import negocio.ProvinciaNegocio;
+import negocio.UsuarioNegocio;
 
 @WebServlet(name = "ServletAltaDocente", urlPatterns = { "/altadocente" })
 public class ServletAltaDocente extends HttpServlet 
@@ -107,6 +108,7 @@ public class ServletAltaDocente extends HttpServlet
 				docente.setestado(true);
 				
 				new DocenteNegocio().insert(docente);
+				//new UsuarioNegocio().insert(docente);
 				
 				request.setAttribute("messageSuccess", "Se cargo el docente con exito.");
 			}

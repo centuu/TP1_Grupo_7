@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import entidad.Curso;
 import negocio.CursoNegocio;
 
-@WebServlet(name = "ServletCargarNotas", urlPatterns = { "/CargarNotas" })
+@WebServlet(name = "ServletCargarNotas", urlPatterns = { "/notas" })
 public class ServletCargarNotas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +32,7 @@ public class ServletCargarNotas extends HttpServlet {
 		ArrayList<Curso> listaCursos = new CursoNegocio().list();
 
 		request.setAttribute("cursos", listaCursos);
-
+		
 		request.getRequestDispatcher("/CargarNotas.jsp").forward(request, response);
 	}
 

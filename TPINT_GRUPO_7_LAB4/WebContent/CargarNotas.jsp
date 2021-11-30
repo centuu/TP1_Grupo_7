@@ -11,7 +11,7 @@
 </head>
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
-	
+	<form action="notas" method="GET">
 	<div class="row">
 		<div class="col-2"></div>
 		<div class="col-8 w-100">
@@ -23,31 +23,33 @@
 					<label class="col-1 col-form-label">Curso</label>
 					<div class="col-2">
 						<select class="btn btn-secondary form-control form-control-sm">
-							<option value="" selected disabled hidden>Seleccione</option>
-							<%
-								ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
-						
-								for(Curso curso : cursos)
-								{
-							%>
-								<option value=<%= curso.getIdCurso() %>><%= curso.getIdCurso() %></option>
+								<option value="" selected disabled hidden>Seleccione</option>
+								<%
+									ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
+							
+									for(Curso curso : cursos)
+									{
+								%>
+									<option value=<%= curso.getIdCurso() %>><%= curso.getIdCurso() %></option>
 									
-							<%
-								}
-							%>
-						</select>
+								<%
+									}
+								%>
+							</select>
 					</div>
 					<div class="row">
 						<div class="col-12">
 							<table class="table">
 							  <thead>
 							    <tr>
-							      <th scope="col">#</th>
-							      <th scope="col">First</th>
-							      <th scope="col">Last</th>
-							      <th scope="col">Handle</th>
-							      <th scope="col">Nota</th>
-							      <th scope="col">Estado</th>
+							      <th scope="col">Legajo</th>
+							      <th scope="col">Nombre</th>
+							      <th scope="col">Apellido</th>
+							      <th scope="col">Nota 1</th>
+							      <th scope="col">Nota 2</th>
+							      <th scope="col">Rec. 1</th>
+							      <th scope="col">Rec. 2</th>
+							      <th scope="col">Condición</th>
 							    </tr>
 							  </thead>
 							  <tbody>
@@ -55,62 +57,31 @@
 							      <th scope="row">1</th>
 							      <td>Mark</td>
 							      <td>Otto</td>
-							      <td>@mdo</td>
+							      <td>
+									<input type="text" class="form-control" >
+								 </td>
 				    			  <td>
 						           	<input type="text" class="form-control" ><!-- Achicar!!! -->
 							      </td>
 							      <td>
+									<input type="text" class="form-control" >
+								 </td>
+								 <td>
+									<input type="text" class="form-control" >
+								 </td>
+							      <td>
 									<div class="dropdown">
 									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									    Estado
+									    Condición
 									  </button>
 									  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									    <a class="dropdown-item" href="#">ejemplo 1</a>
-									    <a class="dropdown-item" href="#">ejemplo 2</a>
+									    <a class="dropdown-item" href="#">Regular</a>
+									    <a class="dropdown-item" href="#">Libre</a>
 									  </div>
 									</div>
 							      </td>
 							    </tr>
-							    <tr>
-							      <th scope="row">2</th>
-							      <td>Jacob</td>
-							      <td>Thornton</td>
-							      <td>@fat</td>
-				   			      <td>
-						           	<input type="text" class="form-control" ><!-- Achicar!!! -->
-							      </td>
-							      <td>
-									<div class="dropdown">
-									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									    Estado
-									  </button>
-									  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									    <a class="dropdown-item" href="#">ejemplo 1</a>
-									    <a class="dropdown-item" href="#">ejemplo 2</a>
-									  </div>
-									</div>
-							      </td>
-							    </tr>
-							    <tr>
-							      <th scope="row">3</th>
-							      <td>Larry</td>
-							      <td>the Bird</td>
-							      <td>@twitter</td>
-							      <td>
-						           	<input type="text" class="form-control" ><!-- Achicar!!! -->
-							      </td>
-							      <td>
-									<div class="dropdown">
-									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									    Estado
-									  </button>
-									  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									    <a class="dropdown-item" href="#">ejemplo 1</a>
-									    <a class="dropdown-item" href="#">ejemplo 2</a>
-									  </div>
-									</div>
-							      </td>
-							    </tr>
+							    
 							  </tbody>
 							</table>
 						</div>
@@ -125,7 +96,8 @@
 		</div>
 		<div class="col-2"></div>
 	</div>
-	
+	</div>
+	</form>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

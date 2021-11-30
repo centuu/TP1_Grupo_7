@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import dao.UsuarioDao;
 import daoImpl.UsuarioDaoImpl;
+import entidad.Docente;
 import entidad.Usuario;
+import negocio.DocenteNegocio;
 import negocio.UsuarioNegocio;
 
 
@@ -41,13 +43,24 @@ public class ServletLogin extends HttpServlet
         try 
         {
             Usuario user = new UsuarioNegocio().checkLogin(usuario, clave);
+            
             String destPage = "login.jsp";
              
             if (user != null)
             {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                session.setAttribute("name", user.getUsuario());
+                int legajo = user.getLegajo();
+                if (legajo == 0)
+                {
+                	session.setAttribute("name", user.getUsuario());
+                }
+                else 
+                {
+                	Docente doc = new DocenteNegocio().buscarDocente(legajo);
+                	session.setAttribute("name", doc.getNombre() + " " + doc.getApellido());
+                }
+                
                 session.setAttribute("rol", user.getRol());
                 destPage = "inicio.jsp";
             } 

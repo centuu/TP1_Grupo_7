@@ -25,7 +25,8 @@ CREATE TABLE usuarios
 	usuario VARCHAR(25) NOT NULL PRIMARY KEY,
 	clave VARCHAR(25),
     legajo INT,
-	rol INT
+	rol INT,
+	FOREIGN KEY(legajo) REFERENCES docentes(legajo)
 );
 
 CREATE TABLE alumnos
@@ -59,7 +60,6 @@ CREATE TABLE docentes
     idNacionalidad INT, 
     email VARCHAR(50),
     telefono VARCHAR(25),
-    clave VARCHAR(50),
     estado BOOLEAN,
     FOREIGN KEY(idNacionalidad) REFERENCES Nacionalidad(id),
     FOREIGN KEY(idLocalidad) REFERENCES localidad(id)
@@ -85,7 +85,7 @@ CREATE TABLE cursada
     nota_seg DECIMAL,
     rec_pri decimal,
     rec_seg decimal,
-    estado BOOLEAN
+    condicion VARCHAR(20)
 );
 
 CREATE TABLE materias

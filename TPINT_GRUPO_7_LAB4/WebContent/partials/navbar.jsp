@@ -39,6 +39,9 @@
 						<li class="nav-item">
 		          			<a class="nav-link" href="listaralumnos?page=1">Listar Alumnos</a>
 						</li>
+						<li class="nav-item">
+		          			<a class="nav-link" href="notas">Cargar Notas</a>
+						</li>
 				<%
 					}
 				    else if(session.getAttribute("rol").toString().equals("2"))
@@ -48,7 +51,7 @@
 		          			<a class="nav-link" href="vistaDocente">Mis cursos</a>
 						</li>
 						<li class="nav-item">
-		          			<a class="nav-link" href="CargarNotas">Cargar Notas</a>
+		          			<a class="nav-link" href="notas">Cargar Notas</a>
 						</li>
 						<li class="nav-item">
 		          			<a class="nav-link" href="listaralumnos?page=1">Alumnos</a>

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import dao.UsuarioDao;
 import daoImpl.UsuarioDaoImpl;
+import entidad.Docente;
 import entidad.Usuario;
 
 public class UsuarioNegocio implements UsuarioDao
@@ -15,5 +16,8 @@ public class UsuarioNegocio implements UsuarioDao
 	{
 		return dao.checkLogin(usuario, clave);
 	}
-
+	public boolean insert(Docente docente) throws SQLException 
+	{
+		return dao.insert(docente);
+	}
 }
