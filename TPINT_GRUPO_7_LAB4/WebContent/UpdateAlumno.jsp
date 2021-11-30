@@ -17,6 +17,7 @@
 </head>
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
+	<jsp:include page="/partials/Confirmation.jsp" />	
 	<main>     
 		<% Alumno alumno = (Alumno)request.getAttribute("alumno"); %>
        	<form action="alumno" method="post" class="needs-validation" novalidate id="form">
@@ -24,7 +25,7 @@
 		  <div class="row ">
 		     <div class="col-lg-4"></div> 
 			     <div class="col-lg-4 border border-primary rounded p-4 bg-light">  
-			     	<h1>Registro Alumnos </h1>           
+			     	<h1>Detalle Alumno</h1>           
 			     	<br>
 			     	<%
 						if(request.getAttribute("messageSuccess") != null)
@@ -58,23 +59,33 @@
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label  class="from-group">DNI</label>
-				           	<input type="text" value="<%=alumno.getDni() %>" name="txtdni" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text" value="<%=alumno.getDni() %>" name="txtdni" class="form-control" <%= request.getAttribute("readOnly")  %> pattern="[0-9]{7,8}" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required >
+			           		<div class="valid-feedback"></div>
+			           		<div class="invalid-feedback">Campo Obligatorio</div>				           	
 				        </div>
 				        <div class="row mb-3 text-center">
 				         	<label  class="from-group">Nombre</label>
-				           	<input type="text" value="<%=alumno.getNombre() %>" name="txtnombre" class="form-control" <%= request.getAttribute("readOnly")  %>>
+				           	<input type="text" value="<%=alumno.getNombre() %>" name="txtnombre" class="form-control" <%= request.getAttribute("readOnly")  %> pattern="^(?=.{3,30}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" required>
+			           		<div class="valid-feedback"></div>
+			           		<div class="invalid-feedback">Campo Obligatorio</div>				           	
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label  class="from-group">Apellido</label>
-				           	<input type="text" value="<%=alumno.getApellido() %>" name="txtapellido" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text" value="<%=alumno.getApellido() %>" name="txtapellido" class="form-control" <%= request.getAttribute("readOnly")  %> pattern="^(?=.{3,30}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" required>
+			           		<div class="valid-feedback"></div>
+			           		<div class="invalid-feedback">Campo Obligatorio</div>				           	
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label  class="from-group">Fecha Nacimiento</label>
-				           	<input type="text"value="<%=alumno.getFechaNac() %>" name="txtfechanac" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text"value="<%=alumno.getFechaNac() %>" name="txtfechanac" class="form-control" <%= request.getAttribute("readOnly")  %> placeholder="yyyy/mm/dd" pattern="[0-9]{4}[\/|-](0[1-9]|1[0-2])[\/|-]([0-2][0-9]|3[0-1])" required >
+			           		<div class="valid-feedback"></div>
+			           		<div class="invalid-feedback">Campo Obligatorio</div>				           	
 				        </div>
 				        <div class="row mb-3 text-center">
 				          	<label class="from-group">Direccion</label>
-				           	<input type="text"value="<%=alumno.getDireccion() %>" name="txtdireccion" class="form-control" <%= request.getAttribute("readOnly")  %> >
+				           	<input type="text"value="<%=alumno.getDireccion() %>" name="txtdireccion" class="form-control" <%= request.getAttribute("readOnly")  %> required>
+			           		<div class="valid-feedback"></div>
+			           		<div class="invalid-feedback">Campo Obligatorio</div>				           	
 				        </div>
 				          <div class="row mb-3 text-center">
 				          	<label hidden id="alumnoProvincia" value=<%= request.getAttribute("provincia") %>></label>		
@@ -117,14 +128,18 @@
 				        </div>
 				         <div class="row mb-3 text-center">
 				          	<label  class="from-group">Email</label>
-				           	<input type="text" value="<%=alumno.getMail() %>" name="txtmail" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %>>
+				           	<input type="email" value="<%=alumno.getMail() %>" name="txtmail" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %> required>
+			           		<div class="valid-feedback"></div>
+			           		<div class="invalid-feedback">Campo Obligatorio</div>				           	
 				        </div>
 				         <div class="row mb-3 text-center">
 				          	<label  class="from-group">Telefono</label>
-				           	<input type="text" value="<%=alumno.getTelefono() %>" name="txttelefono" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %>>
+				           	<input type="text" value="<%=alumno.getTelefono() %>" name="txttelefono" class="form-control" id="inputPassword3" <%= request.getAttribute("readOnly")  %> pattern="[0-9]+" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required>
+			           		<div class="valid-feedback"></div>
+			           		<div class="invalid-feedback">Campo Obligatorio</div>				           	
 				        </div>
 				      	<div class="row mb-3 text-center">
-				       		<button name="btnguardar" id="btnguardar" type="submit" class="btn btn-primary mb-1" data-toggle="modal" data-target="#modalpopup" <%= request.getAttribute("readOnly") != "" ? "hidden=true" : "" %>>Guardar cambios</button>
+				       		<button name="btnregistrar" id="btnregistrar" type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#modalpopup" <%= request.getAttribute("readOnly") != "" ? "hidden=true" : "" %>>Guardar cambios</button>
 				       		
 				       		<button name="btnVolver" type="button" onclick="window.location.href='listaralumnos?page=1'" class="btn btn-danger">Volver</button>
 				     	</div>

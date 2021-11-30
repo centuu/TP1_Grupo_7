@@ -63,7 +63,7 @@ public class ServletAlumno extends HttpServlet
 			else if (request.getParameter("btneliminar")!=null)
 			{		
 				int id = Integer.parseInt(request.getParameter("legajo"));	        
-				new AlumnoNegocio().delete(id);		
+				new AlumnoNegocio().delete(id);
 				request.getRequestDispatcher("/Alumnos.jsp").forward(request, response);
 				
 			}

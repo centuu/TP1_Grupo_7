@@ -76,7 +76,7 @@
 			        </div>
 			        <div class="row mb-3 text-center">
 			          	<label  class="from-group">Fecha Nacimiento</label>
-			           	<input type="text" name="txtfechanac" class="form-control" placeholder="yyyy/mm/dd" pattern="[0-9]{4}[\/](0[1-9]|1[0-2])[\/]([0-2][0-9]|3[0-1])" required>
+			           	<input type="text" name="txtfechanac" class="form-control" placeholder="yyyy/mm/dd" pattern="[0-9]{4}[\/|-](0[1-9]|1[0-2])[\/|-]([0-2][0-9]|3[0-1])" required>
 			         	<div class="valid-feedback"></div>
 			           	<div class="invalid-feedback">Campo Obligatorio</div>		       
 			        </div>
