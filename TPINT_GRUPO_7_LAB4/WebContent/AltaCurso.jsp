@@ -61,7 +61,7 @@
 										for(Alumno alumno : alumnos)
 										{
 									%>
-											<option value=<%= alumno.getDni() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
+											<option value=<%= alumno.getLegajo() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
 									<%
 										}
 									%>
@@ -73,8 +73,9 @@
 								<button id="btnLeft" type="button" class="btn btn-warning"><</button>
 							</div>
 							<div class="col-5">
+								<input type="text" class="form-control" name="alumnos" hidden id="alumnos" value="">
 								<label>Alumnos a seleccionados</label>
-								<select name="alumnos" class="form-select" id="alumnosSeleccionados" size="10" aria-label="size 3 select example"></select>
+								<select class="form-select" id="alumnosSeleccionados" size="10" aria-label="size 3 select example"></select>
 							</div>
 						</div>					
 						<button type="submit" class="btn btn-primary">Confirmar</button>

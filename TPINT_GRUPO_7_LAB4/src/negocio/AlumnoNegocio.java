@@ -50,7 +50,7 @@ public class AlumnoNegocio implements AlumnoDao
 	{
 		return dao.GetNextLegajo();
 	}
-
+	
 	@Override
 	public Alumno buscarAlumno(int legajo) 
 	{

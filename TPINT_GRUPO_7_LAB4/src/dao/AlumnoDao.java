@@ -1,6 +1,8 @@
 package dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import daoImpl.AlumnoImpl;
 import entidad.Alumno;
 
 public interface AlumnoDao 
