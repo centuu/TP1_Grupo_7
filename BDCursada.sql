@@ -71,16 +71,12 @@ CREATE TABLE cursos
 (
 	idCurso INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idMateria INT,
-    idDocente INT
+    idDocente INT,
+    semestre VARCHAR(20),
+    anio INT
 );
 
-CREATE TABLE alumnosPorCurso
-(
-	idCurso INT,
-	legajoAlumno INT
-);
-
-/* TABLE cursada
+CREATE TABLE cursada
 (
 	idCursada INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idCurso INT,
@@ -90,7 +86,7 @@ CREATE TABLE alumnosPorCurso
     rec_pri decimal,
     rec_seg decimal,
     estado BOOLEAN
-);*/
+);
 
 CREATE TABLE materias
 (
@@ -117,13 +113,12 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE insert_Curso(idMateria INT, idDocente INT)
+CREATE PROCEDURE insert_Cursada(idCurso INT, legajoAlumno INT)
 BEGIN 
-	INSERT INTO cursos (idMateria,idDocente) 
-	VALUES (idMateria,idDocente);
+	INSERT INTO cursada (idCurso, legajoAlumno) 
+	VALUES (idCurso, legajoAlumno);
 END //
 DELIMITER ;
-
 
 DELIMITER //
 CREATE PROCEDURE count_Alumnos()
