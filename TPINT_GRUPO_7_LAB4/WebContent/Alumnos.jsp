@@ -45,7 +45,7 @@
 						<button name="btnlistar" type="submit" class="btn btn-primary col-1">Listar</button>
 					</div>
 					<div class="col-12 modal-content">
-		                <table id="table_id" class="w3-table w3-striped" cellpadding="5" cellspacing="5">
+		                <table id="table_id" class="tablecontent">
 		                    <tr class="alert-primary">
 		                        <th scope="col">Legajo</th>
 		                        <th scope="col">Nombre</th>
