@@ -20,6 +20,32 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Alta Curso</h1>
 					<br>
+					<%
+						if(request.getAttribute("messageSuccess") != null)
+						{
+			     	%>
+			     			<div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageSuccess") %>
+							</div>
+					<%
+						}
+			   			if(request.getAttribute("messageError") != null)
+			   			{
+			   		%>
+			   				<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageError") %>
+							</div>
+			   		<%
+			   			}
+					%>
 					<form action="altacurso" method="POST">
 						<div class="row mb-3 justify-content-center">
 							<label for="btn-Profesor">Seleccione un profesor</label>
@@ -61,7 +87,7 @@
 										for(Alumno alumno : alumnos)
 										{
 									%>
-											<option value=<%= alumno.getDni() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
+											<option value=<%= alumno.getLegajo() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
 									<%
 										}
 									%>
@@ -73,8 +99,9 @@
 								<button id="btnLeft" type="button" class="btn btn-warning"><</button>
 							</div>
 							<div class="col-5">
+								<input type="text" class="form-control" name="alumnos" hidden id="alumnos" value="">
 								<label>Alumnos a seleccionados</label>
-								<select name="alumnos" class="form-select" id="alumnosSeleccionados" size="10" aria-label="size 3 select example"></select>
+								<select class="form-select" id="alumnosSeleccionados" size="10" aria-label="size 3 select example"></select>
 							</div>
 						</div>					
 						<button type="submit" class="btn btn-primary">Confirmar</button>

@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Curso 
 {
-	private String idCurso;
-	private Materia materia;
-	private Profesor profesor;
+	private int idCurso;
+	private int materia;
+	private int idProfesor;
 	private List<Alumno> listAlu;
 	
 	public Curso()
@@ -14,53 +14,54 @@ public class Curso
 		super();
 	}
 	
-	public Curso(Materia materia, String semestre, String anio, Profesor profesor, List<Alumno> listAlu) 
+	public Curso(int materia, String semestre, String anio, int idProfesor, List<Alumno> listAlu) 
 	{
 		this.materia = materia;
-		this.profesor = profesor;
+		this.idProfesor = idProfesor;
 		this.listAlu = listAlu;
 	}
 
-	public String getIdCurso() 
+	public int getIdCurso() 
 	{
 		return idCurso;
 	}
 
-	public void setIdCurso(String curso) 
+	public void setIdCurso(int curso) 
 	{
 		this.idCurso = curso;
 	}
 
 	public int getIdMateria() 
 	{
-		return materia.getId();
+		return this.materia;
 	}
 	
-	public String getdesMateria()
+	/*public String getdesMateria()
 	{
 		return materia.getDescripcion();
-	}
+	}*/
 	
-	public void setIdMateria(Materia materia) 
+	public void setIdMateria(int materia) 
 	{
 		
 		this.materia = materia;
 	}
 	
-	public String getIdProfesor() 
+	public int getIdProfesor() 
 	{
-		return profesor.getLegajo();
+		return this.idProfesor;
 	}
 	
-	public void setProfesor(Profesor profesor) 
+	public void setProfesor(int profesor) 
 	{
-		this.profesor = profesor;
+		this.idProfesor = profesor;
 	}
 	
 	public List<Alumno> getListAlu() 
 	{
 		return listAlu;
 	}
+	
 	public void setListAlu(List<Alumno> listAlu) 
 	{
 		this.listAlu = listAlu;
