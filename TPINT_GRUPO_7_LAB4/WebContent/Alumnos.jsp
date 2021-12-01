@@ -20,29 +20,17 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Listado Alumnos</h1>
 					<br>
+					<form action="alumno" method="GET">	
+						<button name="btnnuevo" type="submit" class="btn btn-primary col-1" style="width: 158px; ">+ Nuevo Alumno</button>
+					</form>
+						
+					<br>
 					<div class="form-group row">	
 						<label for="inputFilter" class="col-2 col-form-label">Filtro</label>
-						<div class="col-4"> 
+						<div class="col-9"> 
 							<input type="text" class="form-control" id="inputFilter">
 						</div>
-						<label class="col-1 col-form-label">Curso</label>
-						<div class="col-2">
-							<select class="btn btn-secondary form-control form-control-sm">
-								<option value="" selected disabled hidden>Seleccione</option>
-								<%
-									ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
-							
-									for(Curso curso : cursos)
-									{
-								%>
-									<option value=<%= curso.getIdCurso() %>><%= curso.getIdCurso() %></option>
-									
-								<%
-									}
-								%>
-							</select>
-						</div>
-						<button name="btnlistar" type="submit" class="btn btn-primary col-1">Listar</button>
+						<button class="btn btn-primary col-1">Listar</button>
 					</div>
 					<div class="col-12 modal-content">
 		                <table id="table_id" class="tablecontent">

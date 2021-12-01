@@ -20,6 +20,11 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Listado Docentes</h1>
 					<br>
+					<form action="altadocente" method="GET">	
+						<button name="btnnuevo" type="submit" class="btn btn-primary col-1" style="width: 158px; ">+ Nuevo Docente</button>
+					</form>
+						
+					<br>
 					<div class="form-group row">	
 						<label for="inputFilter" class="col-2 col-form-label">Filtro</label>
 						<div class="col-9"> 

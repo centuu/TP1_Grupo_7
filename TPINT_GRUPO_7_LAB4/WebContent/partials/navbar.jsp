@@ -24,23 +24,14 @@
 					else if(session.getAttribute("rol").toString().equals("1"))
 		        	{
 		        %>
-		        		<li class="nav-item">
-		          			<a class="nav-link" href="alumno">Alta Alumnos</a>
-						</li>	
 						<li class="nav-item">
-		          			<a class="nav-link" href="altacurso">Alta Curso</a>
+		          			<a class="nav-link" href="vistaDocente?page=1">Cursos</a>
 						</li>
 						<li class="nav-item">
-		          			<a class="nav-link" href="altadocente">Alta Docentes</a>
+		          			<a class="nav-link" href="listardocentes?page=1">Docentes</a>
 						</li>
 						<li class="nav-item">
-		          			<a class="nav-link" href="listardocentes?page=1">Listar Docentes</a>
-						</li>
-						<li class="nav-item">
-		          			<a class="nav-link" href="listaralumnos?page=1">Listar Alumnos</a>
-						</li>
-						<li class="nav-item">
-		          			<a class="nav-link" href="notas">Cargar Notas</a>
+		          			<a class="nav-link" href="listaralumnos?page=1">Alumnos</a>
 						</li>
 				<%
 					}
@@ -48,10 +39,7 @@
 				    {
 				%>
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="vistaDocente">Mis cursos</a>
-						</li>
-						<li class="nav-item">
-		          			<a class="nav-link" href="notas">Cargar Notas</a>
+		          			<a class="nav-link" href="vistaDocente?page=1">Mis Cursos</a>
 						</li>
 						<li class="nav-item">
 		          			<a class="nav-link" href="listaralumnos?page=1">Alumnos</a>

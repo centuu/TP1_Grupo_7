@@ -14,7 +14,58 @@ public class Alumno
     protected String telefono ;
     protected boolean estado;
     
-    public Alumno() 
+    protected int idCurso, nota_pri, nota_seg, rec_pri, rec_seg;
+    protected String condicion;
+    
+    public String getCondicion() {
+		return condicion;
+	}
+
+	public void setCondicion(String condicion) {
+		this.condicion = condicion;
+	}
+
+	public int getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
+	}
+
+	public int getNota_pri() {
+		return nota_pri;
+	}
+
+	public void setNota_pri(int nota_pri) {
+		this.nota_pri = nota_pri;
+	}
+
+	public int getNota_seg() {
+		return nota_seg;
+	}
+
+	public void setNota_seg(int nota_seg) {
+		this.nota_seg = nota_seg;
+	}
+
+	public int getRec_pri() {
+		return rec_pri;
+	}
+
+	public void setRec_pri(int rec_pri) {
+		this.rec_pri = rec_pri;
+	}
+
+	public int getRec_seg() {
+		return rec_seg;
+	}
+
+	public void setRec_seg(int rec_seg) {
+		this.rec_seg = rec_seg;
+	}
+
+	public Alumno() 
     {
 		super();
 		

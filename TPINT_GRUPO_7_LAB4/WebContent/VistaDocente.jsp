@@ -25,14 +25,14 @@
            </div>
            <div class="col col-lg-8 col-md-9 col-sm  ">
 	           <div class="mb-3 ">
-					<h1>Mis Cursos</h1>             
+					<h1>Cursos</h1>             
 	                <div class="col-12 modal-content">
 			        	<table class="table table-hover table-striped">
 			            	<tr class="alert-primary">
-			                	<th scope="col">curso</th>
-			                	<th scope="col">materia</th>
-			              		<th scope="col">semestre</th>
-			                	<th scope="col">año</th>
+			                	<th scope="col">Curso</th>
+			                	<th scope="col">Materia</th>
+			              		<th scope="col">Semestre</th>
+			                	<th scope="col">Año</th>
 			                 	<th scope="col"> </th>   
 			               	</tr>		                  
             				<% 
@@ -61,6 +61,11 @@
                   			%>                 
             			</table>
             		</div>
+            		<br>
+					<form action="vistaDocente" method="GET">	
+						<button name="btnnuevo" type="submit" class="btn btn-primary col-1" style="width: 158px; ">+ Nuevo Curso</button>
+					</form>
+					
             	</div>
             </div>
 		</div>

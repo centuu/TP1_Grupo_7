@@ -67,6 +67,11 @@ public class ServletAlumno extends HttpServlet
 				request.getRequestDispatcher("/Alumnos.jsp").forward(request, response);
 				
 			}
+			else if (request.getParameter("btnnuevo")!=null)
+			{		
+				request.getRequestDispatcher("/alumno").forward(request, response);
+				
+			}
 		}
 		else
 		{

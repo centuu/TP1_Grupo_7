@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 
 public class CursoImpl implements CursoDao
 {
-	private static final String list = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente";
+	private static final String list =   "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente";
 	private static final String listar = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente where docentes.legajo =";
 
 	public boolean insert(Curso curso) 
@@ -78,11 +78,16 @@ public class CursoImpl implements CursoDao
         	{
         		Curso curso = new Curso();
         		curso.setIdCurso(rs.getInt("idCurso"));
+        		
         		Materia materia = new Materia();
         		materia.setId(rs.getInt("idMateria"));
         		materia.setDescripcion(rs.getString("descripcion"));
+        		
         		curso.setIdMateria(materia.getId());
         		curso.setDescripcion(materia.getDescripcion());
+        		curso.setSemestre(rs.getString("semestre"));
+        		curso.setAnio(rs.getInt("anio"));
+        		
         		Profesor profesor = new Profesor();
         		profesor.setLegajo(rs.getString("legajo"));
         		profesor.setNombre(rs.getString("nombre"));

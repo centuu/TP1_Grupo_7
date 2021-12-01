@@ -67,6 +67,11 @@ public class ServletAltaDocente extends HttpServlet
 				new DocenteNegocio().delete(id);		
 				request.getRequestDispatcher("/Docentes.jsp").forward(request, response);
 			}
+			else if (request.getParameter("btnnuevo")!=null)
+			{		
+				request.getRequestDispatcher("/altadocente").forward(request, response);
+				
+			}
 		}
 		else
 		{

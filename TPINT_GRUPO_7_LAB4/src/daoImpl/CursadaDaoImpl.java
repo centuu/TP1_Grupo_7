@@ -34,6 +34,13 @@ public class CursadaDaoImpl implements CursadaDao{
 				alu.setMail(rs.getString("email"));
 				alu.setTelefono(rs.getString("telefono"));
    		
+				alu.setIdCurso(rs.getInt("idCurso"));
+				alu.setNota_pri(rs.getInt("nota_pri"));
+				alu.setNota_seg(rs.getInt("nota_seg"));
+				alu.setRec_pri(rs.getInt("rec_pri"));
+				alu.setRec_seg(rs.getInt("rec_seg"));
+				alu.setCondicion(rs.getString("condicion"));
+				
         		listaAlumno.add(alu);
         	}	
         }

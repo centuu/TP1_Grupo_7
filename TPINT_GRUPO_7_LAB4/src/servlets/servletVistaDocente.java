@@ -35,13 +35,26 @@ public class servletVistaDocente extends HttpServlet
 			request.getRequestDispatcher("inicio").forward(request, response);
 			return;
 		}
-		if(request.getSession().getAttribute("user") != null && rol==2)
-		{
-			Usuario user= (Usuario)request.getSession().getAttribute("user");
-			
-			ArrayList<Curso> listaCursos = new CursoNegocio().listar_X_Docente(user.getLegajo());
-			request.setAttribute("listaCurso", listaCursos);		
-			request.getRequestDispatcher("/VistaDocente.jsp").forward(request, response);
+		if (request.getParameter("btnnuevo")!=null)
+		{		
+			request.getRequestDispatcher("/altacurso").forward(request, response);
+			return;
+		}
+		if(request.getSession().getAttribute("user") != null) { 
+			if (rol==2)
+			{
+				Usuario user= (Usuario)request.getSession().getAttribute("user");
+				
+				ArrayList<Curso> listaCursos = new CursoNegocio().listar_X_Docente(user.getLegajo());
+				request.setAttribute("listaCurso", listaCursos);		
+				request.getRequestDispatcher("/VistaDocente.jsp").forward(request, response);
+				
+			}
+			else {
+				ArrayList<Curso> listaCursos = new CursoNegocio().list();
+				request.setAttribute("listaCurso", listaCursos);		
+				request.getRequestDispatcher("/VistaDocente.jsp").forward(request, response);
+			}
 		}
 	}
 

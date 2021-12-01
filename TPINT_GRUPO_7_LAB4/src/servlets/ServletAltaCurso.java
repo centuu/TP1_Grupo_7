@@ -38,6 +38,8 @@ public class ServletAltaCurso extends HttpServlet
 			return;
 		}
 		
+		
+		
 		ArrayList<Alumno> listaAlumnos = new AlumnoNegocio().list();
 		ArrayList<Docente> listaDocentes = new DocenteNegocio().list();
 		ArrayList<Materia> listaMateria = new MateriaNegocio().list();

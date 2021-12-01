@@ -21,32 +21,9 @@
 					<h1>Cargar notas</h1>
 					<br>
 					<div class="form-group row">	
-					<label class="col-1 col-form-label">Curso</label>
+					<label class="col-1 col-form-label">Curso: </label>
 					<div class="col-2">
-					
-					<select class="btn btn-secondary form-control form-control-sm">
-								<%
-								if (request.getAttribute("cursos")!=null){
-									ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
-									%>
-							     	<option value="" selected disabled hidden>Seleccione</option>
-							    <% 
-									for(Curso curso : cursos)
-									{
-								%>
-									<option value=<%= curso.getIdCurso() %>><%= curso.getDescripcion() %></option>
-									
-								<%
-									}
-								   if (request.getAttribute("curso")!=null) // si viene por el boton alumnos
-								   {
-									  %>
-									   <option ><%= request.getAttribute("curso").toString() %></option>
-									  <% 
-								   }
-								}%>
-							</select>
-							
+					<label class="col-2 col-form-label" style="width: 358px; "><b><%= request.getAttribute("curso").toString() %></b></label>		
 					</div>
 					<div class="row">
 						<div class="col-12">
@@ -76,27 +53,19 @@
 					              	<td><%= alumno.getNombre() %></td>
 					               	<td><%= alumno.getApellido() %></td>
 					               	<td>
-									<input type="text" class="form-control" >
+									<input type="text" class="form-control" value="<%= alumno.getNota_pri() %>">
 								    </td>
 				    			  <td>
-						           	<input type="text" class="form-control" ><!-- Achicar!!! -->
+						           	<input type="text" class="form-control" value="<%= alumno.getNota_seg() %>">
 							      </td>
 							      <td>
-									<input type="text" class="form-control" >
+									<input type="text" class="form-control" value="<%= alumno.getRec_pri() %>">
 								 </td>
 								 <td>
-									<input type="text" class="form-control" >
+									<input type="text" class="form-control" value="<%= alumno.getRec_seg() %>">
 								 </td>
 							      <td>
-									<div class="dropdown">
-									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									    Condición
-									  </button>
-									  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									    <a class="dropdown-item" href="#">Regular</a>
-									    <a class="dropdown-item" href="#">Libre</a>
-									  </div>
-									</div>
+									<%= alumno.getCondicion()  %>
 							      </td>
 							    </tr>
 							    
@@ -109,7 +78,7 @@
 						</div>
 					</div>
 					<div class="col-md-12 school-options-dropdown text-center">
-						<button class="btn btn-primary text-center">
+						<button name="btnconfirmar" class="btn btn-primary text-center">
 							Confirmar
 						</button>
 					</div>
