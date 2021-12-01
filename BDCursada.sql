@@ -1,3 +1,4 @@
+drop schema cursada;
 create schema Cursada;
 
 use Cursada;
@@ -18,15 +19,6 @@ CREATE TABLE localidad
 (
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     localidad VARCHAR(50)
-);
-
-CREATE TABLE usuarios
-(
-	usuario VARCHAR(25) NOT NULL PRIMARY KEY,
-	clave VARCHAR(25),
-    legajo INT,
-	rol INT,
-	FOREIGN KEY(legajo) REFERENCES docentes(legajo)
 );
 
 CREATE TABLE alumnos
@@ -60,6 +52,7 @@ CREATE TABLE docentes
     idNacionalidad INT, 
     email VARCHAR(50),
     telefono VARCHAR(25),
+    clave varchar(50),    
     estado BOOLEAN,
     FOREIGN KEY(idNacionalidad) REFERENCES Nacionalidad(id),
     FOREIGN KEY(idLocalidad) REFERENCES localidad(id)
@@ -67,13 +60,24 @@ CREATE TABLE docentes
 
 ALTER TABLE docentes ADD CONSTRAINT unq_docenteDNI UNIQUE(dni);
 
+CREATE TABLE usuarios
+(
+	usuario VARCHAR(25) NOT NULL PRIMARY KEY,
+	clave VARCHAR(25),
+    legajo INT,
+	rol INT
+);
+
+ALTER TABLE usuarios ADD CONSTRAINT unq_usuariolegajo UNIQUE(legajo);
+
 CREATE TABLE cursos
 (
 	idCurso INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idMateria INT,
     idDocente INT,
     semestre VARCHAR(20),
-    anio INT
+    anio INT,
+    descripcion varchar(100)
 );
 
 CREATE TABLE cursada
@@ -173,6 +177,16 @@ AFTER INSERT ON docentes
 FOR EACH ROW
 BEGIN
     INSERT INTO usuarios(usuario, clave, legajo, rol) VALUES (NEW.dni, NEW.clave, NEW.legajo, 2);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS `update_cursos`$$
+CREATE TRIGGER `update_cursos` BEFORE INSERT ON `cursos` 
+FOR EACH ROW BEGIN
+    DECLARE descMateria varchar(100);
+    SELECT descripcion INTO descMateria FROM materias WHERE idMateria = NEW.idMateria;
+    SET NEW.descripcion = CONCAT(descMateria,' ', NEW.anio,' ', NEW.semestre);
 END$$
 DELIMITER ;
 

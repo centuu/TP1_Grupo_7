@@ -8,6 +8,9 @@ public class Curso
 	private int materia;
 	private int idProfesor;
 	private List<Alumno> listAlu;
+	private String semestre;
+	private int anio;
+	private String descripcion;
 	
 	public Curso()
 	{
@@ -67,5 +70,34 @@ public class Curso
 		this.listAlu = listAlu;
 	}
 	
+	public void setDescripcion(String desc)
+	{
+		this.descripcion = desc;
+	}
+	
+	public String getDescripcion()
+	{
+		return this.descripcion;
+	}
+	
+	public String getSemestre()
+	{
+		return this.semestre;
+	}
+	
+	public void setSemestre(String semestre)
+	{
+		this.semestre = semestre;
+	}
+	
+	public int getAnio()
+	{
+		return this.anio;
+	}
+	
+	public void setAnio(int anio)
+	{
+		this.anio = anio;
+	}
 	
 }

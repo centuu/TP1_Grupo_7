@@ -76,7 +76,17 @@
 									}
 								%>
 							</select>
-						</div>					
+						</div>
+						<div class="row mb-3 justify-content-center">
+							<label for="btn-Año">Seleccione Turno</label>
+								<select name="turno" id="turno-dropdown" class="btn btn-secondary form-control form-control-sm" style="width: auto;">
+								</select>
+						</div>
+						<div class="row mb-3 justify-content-center">
+							<label for="btn-Año">Seleccione Año</label>
+								<select name="año" id="date-dropdown" class="btn btn-secondary form-control form-control-sm" style="width: auto;">
+								</select>
+						</div>								
 						<div class="row">
 							<div class="col-5">
 								<label>Alumnos a seleccionar</label>
@@ -87,7 +97,7 @@
 										for(Alumno alumno : alumnos)
 										{
 									%>
-											<option value=<%= alumno.getLegajo() %>><%= alumno.getNombre() + " " + alumno.getApellido() %></option>
+											<option value=<%= alumno.getLegajo() %>> <%= alumno.getNombre() + " " + alumno.getApellido() %> </option>
 									<%
 										}
 									%>
@@ -112,5 +122,37 @@
 		<div class="col-2"></div>
 	</div>
 	<script src="./resources/js/AltaCurso.js"></script>
+	<script>
+		  let dateDropdown = document.getElementById('date-dropdown');    
+		  let currentYear = new Date().getFullYear();    
+		  let nextYear = currentYear + 1;         
+		    let dateOption = document.createElement('option');          
+		    dateOption.text = currentYear;      
+		    dateOption.value = currentYear;        
+		    dateDropdown.add(dateOption);
+		    dateOption = document.createElement('option');          
+		    dateOption.text = nextYear;      
+		    dateOption.value = nextYear;        
+		    dateDropdown.add(dateOption); 
+	</script>
+	<script>
+	let turnoDropdown = document.getElementById('turno-dropdown');
+	let turnoOption = document.createElement('option');
+	turnoOption.text="1C-TM";
+	turnoOption.value="1C-TM";
+	turnoDropdown.add(turnoOption);
+	turnoOption = document.createElement('option');
+	turnoOption.text="2C-TM";
+	turnoOption.value="2C-TM";
+	turnoDropdown.add(turnoOption);
+	turnoOption = document.createElement('option');
+	turnoOption.text="1C-TT";
+	turnoOption.value="1C-TT";
+	turnoDropdown.add(turnoOption);
+	turnoOption = document.createElement('option');
+	turnoOption.text="2C-TT";
+	turnoOption.value="2C-TT";
+	turnoDropdown.add(turnoOption);
+	</script>
 </body>
 </html>

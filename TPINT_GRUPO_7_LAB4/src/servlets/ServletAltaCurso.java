@@ -69,6 +69,8 @@ public class ServletAltaCurso extends HttpServlet
 			Curso curso = new Curso();
 			curso.setIdMateria(Integer.parseInt(request.getParameter("materia").toString()));
 			curso.setProfesor(Integer.parseInt(request.getParameter("docente").toString()));
+			curso.setSemestre(request.getParameter("turno").toString());
+			curso.setAnio(Integer.parseInt(request.getParameter("año").toString()));
 			curso.setListAlu(alumnos);
 			CursoNegocio cursonegocio = new CursoNegocio();
 			

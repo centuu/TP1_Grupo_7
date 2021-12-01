@@ -27,9 +27,11 @@ public class CursoImpl implements CursoDao
 		
 		try 
 		{
-			PreparedStatement state = conexion.prepareStatement("INSERT INTO cursos (idMateria, idDocente) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement state = conexion.prepareStatement("INSERT INTO cursos (idMateria, idDocente, semestre, anio) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			state.setInt(1, curso.getIdMateria());
 			state.setInt(2, curso.getIdProfesor());
+			state.setString(3, curso.getSemestre());
+			state.setInt(4, curso.getAnio());
 
 			if (state.executeUpdate() > 0) 
 			{
