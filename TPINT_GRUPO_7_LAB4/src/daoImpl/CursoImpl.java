@@ -82,6 +82,7 @@ public class CursoImpl implements CursoDao
         		materia.setId(rs.getInt("idMateria"));
         		materia.setDescripcion(rs.getString("descripcion"));
         		curso.setIdMateria(materia.getId());
+        		curso.setDescripcion(materia.getDescripcion());
         		Profesor profesor = new Profesor();
         		profesor.setLegajo(rs.getString("legajo"));
         		profesor.setNombre(rs.getString("nombre"));
@@ -113,10 +114,16 @@ public class CursoImpl implements CursoDao
         	{
         		Curso curso = new Curso();
         		curso.setIdCurso(rs.getInt("idCurso"));
+        		
         		Materia materia = new Materia();
         		materia.setId(rs.getInt("idMateria"));
         		materia.setDescripcion(rs.getString("descripcion"));
+        		
         		curso.setIdMateria(materia.getId());
+        		curso.setDescripcion(materia.getDescripcion());
+        		curso.setSemestre(rs.getString("semestre"));
+        		curso.setAnio(rs.getInt("anio"));
+        		
         		Profesor profesor = new Profesor();
         		profesor.setLegajo(rs.getString("legajo"));
         		profesor.setNombre(rs.getString("nombre"));

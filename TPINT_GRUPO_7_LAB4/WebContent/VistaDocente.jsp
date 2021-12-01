@@ -43,11 +43,16 @@
 									{
 							%>
 										<tr>
-											<form action="alumno" method="GET">
+											<form action="vistaDocente" method="post">
 												<td><%= curso.getIdCurso()  %></td> 
+												<input name="IdCurso" type="hidden" value="<%=curso.getIdCurso()%>" >
+												<input name="cursodes" type="hidden" value="<%=curso.getDescripcion()%>" >
+												<td><%=curso.getDescripcion() %></td>
+												<td><%=curso.getSemestre() %></td>
+												<td><%=curso.getAnio() %></td>
 														                   
 						                        <td>			                        
-						                        <button name="btninfo" type="submit" class="btn btn-info mx-0">Alumnos</button>						                      
+						                         <td> <button name="alumnos" type="submit" class="btn btn-info mx-0">Alumnos</button></td>					                      
 						             	     </form>
 						             	</tr>
 							<%

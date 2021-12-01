@@ -1,5 +1,6 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "entidad.Curso" %>
+<%@ page import = "entidad.Alumno" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,20 +23,30 @@
 					<div class="form-group row">	
 					<label class="col-1 col-form-label">Curso</label>
 					<div class="col-2">
-						<select class="btn btn-secondary form-control form-control-sm">
-								<option value="" selected disabled hidden>Seleccione</option>
+					
+					<select class="btn btn-secondary form-control form-control-sm">
 								<%
+								if (request.getAttribute("cursos")!=null){
 									ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
-							
+									%>
+							     	<option value="" selected disabled hidden>Seleccione</option>
+							    <% 
 									for(Curso curso : cursos)
 									{
 								%>
-									<option value=<%= curso.getIdCurso() %>><%= curso.getIdCurso() %></option>
+									<option value=<%= curso.getIdCurso() %>><%= curso.getDescripcion() %></option>
 									
 								<%
 									}
-								%>
+								   if (request.getAttribute("curso")!=null) // si viene por el boton alumnos
+								   {
+									  %>
+									   <option ><%= request.getAttribute("curso").toString() %></option>
+									  <% 
+								   }
+								}%>
 							</select>
+							
 					</div>
 					<div class="row">
 						<div class="col-12">
@@ -54,12 +65,19 @@
 							  </thead>
 							  <tbody>
 							    <tr>
-							      <th scope="row">1</th>
-							      <td>Mark</td>
-							      <td>Otto</td>
-							      <td>
+							<%  if(request.getAttribute("listaCursada")!=null)
+                               {
+					              ArrayList<Alumno> listcursada = (ArrayList<Alumno>)request.getAttribute("listaCursada");
+				
+								for(Alumno alumno :  listcursada)
+								{
+								%>
+								    <td><%= alumno.getLegajo()  %></td> 
+					              	<td><%= alumno.getNombre() %></td>
+					               	<td><%= alumno.getApellido() %></td>
+					               	<td>
 									<input type="text" class="form-control" >
-								 </td>
+								    </td>
 				    			  <td>
 						           	<input type="text" class="form-control" ><!-- Achicar!!! -->
 							      </td>
@@ -81,6 +99,10 @@
 									</div>
 							      </td>
 							    </tr>
+							    
+							    <%}
+							    } %>
+							    
 							    
 							  </tbody>
 							</table>
