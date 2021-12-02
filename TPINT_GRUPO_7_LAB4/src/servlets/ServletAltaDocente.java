@@ -43,6 +43,24 @@ public class ServletAltaDocente extends HttpServlet
 			return;
 		}
 		
+		int pageid = Integer.parseInt(request.getParameter("page"));  
+		int total = 5;
+		
+		if (request.getParameter("btnfiltrar")!=null)
+		{
+			String filtro = request.getParameter("filter").toString();
+			ArrayList<Docente> listaDocentes = new DocenteNegocio().listaFiltro(pageid, total, filtro);
+			int noOfRecords =  new DocenteNegocio().cantRegistros();
+	        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / total);
+	        
+	        request.setAttribute("noOfPages", noOfPages);
+	        request.setAttribute("currentPage", pageid);
+			
+			request.setAttribute("docentes", listaDocentes);
+			request.getRequestDispatcher("/Docentes.jsp").forward(request, response);
+			return;
+		}
+		
 		if(request.getParameter("legajo") != null)
 		{
 			editar = true;
@@ -87,7 +105,7 @@ public class ServletAltaDocente extends HttpServlet
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	{		
 		if (!editar)
 		{
 			try
@@ -157,8 +175,7 @@ public class ServletAltaDocente extends HttpServlet
 			
 			request.setAttribute("messageSuccess", "Se modifico el docente con exito.");
 			request.getRequestDispatcher("/listardocentes?page=1").forward(request, response);
-		}
-		
+		}		
 		//doGet(request, response);
 	}
 

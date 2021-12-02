@@ -41,7 +41,7 @@ public class ServletListarDocentes extends HttpServlet
 		}
 		
 		int pageid = Integer.parseInt(request.getParameter("page"));  
-		int total = 5;  
+		int total = 5;
 		/*if (pageid == 1) {
 		}  
 		else {  
@@ -59,6 +59,7 @@ public class ServletListarDocentes extends HttpServlet
 		
 		request.setAttribute("docentes", listaDocentes);
 		request.getRequestDispatcher("/Docentes.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -69,7 +70,7 @@ public class ServletListarDocentes extends HttpServlet
 	        
 			new DocenteNegocio().delete(id);
 		}
-		
+				
 		doGet(request, response);
 	}
 }

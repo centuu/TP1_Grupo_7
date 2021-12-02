@@ -122,7 +122,6 @@
 			</div>
 		</form>	    
 	</main> 
- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script>
 		for(var i = 0; i < document.getElementById("nacionalidades").length ; i++) 
 		{
@@ -132,7 +131,7 @@
 	
 		for(var i = 0; i < document.getElementById("localidades").length ; i++) 
 		{
-		    if(document.getElementById("localidades")[i].getAttribute("value") == document.getElementById("docenteProvincia").getAttribute("value"))
+		    if(document.getElementById("localidades")[i].getAttribute("value") == document.getElementById("docenteLocalidad").getAttribute("value"))
 		       document.getElementById("localidades").selectedIndex = i;
 		}
 	</script>

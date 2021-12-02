@@ -20,7 +20,7 @@ public class DocenteImpl implements DocenteDao
 	private static final String delete = "DELETE FROM Docentes WHERE legajo = ?";
 	private static final String list = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1;";
 	private static final String edit = "UPDATE Docentes SET Dni = ?, nombre = ? , apellido = ?, fechaNacimiento = ?, domicilio = ?, idLocalidad = ?,idNacionalidad =?,email = ? , telefono = ? WHERE legajo =?"; 
-	
+	private static final String listWithFilter = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1 AND dni LIKE '%?%' OR nombre LIKE '%?%' OR apellido LIKE '%?%'";
 	public boolean insert(Docente docente) throws SQLException
 	{
 		int res = -1;
@@ -307,6 +307,57 @@ public class DocenteImpl implements DocenteDao
 		}
 
 		return res;
+	}
+	
+	public ArrayList<Docente> listaFiltro(int start, int total,String filtro)
+	{
+		PreparedStatement state;
+		ArrayList<Docente> listaDocente = new ArrayList<Docente>();
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+
+        try
+        {
+        	if (start > 1) {
+        		state = conexion.prepareStatement(listWithFilter + " LIMIT " + ((start-1)*total) + ", " + total);
+        	}
+        	else {
+        		state = conexion.prepareStatement(listWithFilter + " LIMIT " + (start-1) + ", " + total);
+        	}
+        	//state = conexion.prepareStatement(listWithFilter);
+        	state.setString(1, filtro);
+        	state.setString(2, filtro);
+        	state.setString(3, filtro);
+            ResultSet rs = state.executeQuery();
+        	while(rs.next())
+        	{
+        		Docente doc = new Docente();
+        		doc.setDni(rs.getString("dni"));
+        		doc.setNroLegajo(rs.getInt("legajo"));
+        		doc.setFechaNac(rs.getString("fechaNacimiento"));
+        		doc.setNombre(rs.getString("nombre"));
+        		doc.setApellido(rs.getString("apellido"));
+        		doc.setDireccion(rs.getString("domicilio"));        		
+        		Localidad loc = new Localidad();
+        		loc.setId(rs.getInt("idLocalidad"));
+        		loc.setNombre(rs.getString("localidad"));       		
+        		doc.setLocalidad(loc);        		
+        		Nacionalidad nacion= new Nacionalidad();
+        		nacion.setId(rs.getInt("idnacionalidad"));
+        		nacion.setNombre(rs.getString("nacionalidad"));       		
+        		doc.setNacionalidad(nacion);        		
+        		doc.setMail(rs.getString("email"));
+        		doc.setTelefono(rs.getString("telefono"));
+        		doc.setestado(rs.getBoolean("estado"));
+        		
+        		listaDocente.add(doc);
+        	}	
+        }
+        catch(Exception  e)
+        {
+        	return listaDocente;
+        }
+        
+		return listaDocente;
 	}
 
 	@Override

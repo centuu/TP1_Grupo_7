@@ -62,4 +62,9 @@ public class DocenteNegocio implements DocenteDao
 	{
 		return dao.buscarDocente(legajo);
 	}
+	
+	public ArrayList<Docente> listaFiltro(int start, int total, String filtro)
+	{
+		return dao.listaFiltro(start, total, filtro);
+	}
 }
