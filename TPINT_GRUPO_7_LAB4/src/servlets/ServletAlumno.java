@@ -70,7 +70,7 @@ public class ServletAlumno extends HttpServlet
 			{		
 				int id = Integer.parseInt(request.getParameter("legajo"));	        
 				new AlumnoNegocio().delete(id);
-				request.getRequestDispatcher("/Alumnos.jsp").forward(request, response);
+				request.getRequestDispatcher("/listaralumnos?page=1").forward(request, response);
 				
 			}
 			else if (request.getParameter("btnnuevo")!=null)

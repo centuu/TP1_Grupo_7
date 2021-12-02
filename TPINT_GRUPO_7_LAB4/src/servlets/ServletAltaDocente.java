@@ -74,7 +74,7 @@ public class ServletAltaDocente extends HttpServlet
 			{		
 				int id = Integer.parseInt(request.getParameter("legajo"));	        
 				new DocenteNegocio().delete(id);		
-				request.getRequestDispatcher("/Docentes.jsp").forward(request, response);
+				request.getRequestDispatcher("/listardocentes?page=1").forward(request, response);
 			}
 			else if (request.getParameter("btnnuevo")!=null)
 			{		

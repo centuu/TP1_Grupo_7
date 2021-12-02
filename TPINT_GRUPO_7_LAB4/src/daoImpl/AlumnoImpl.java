@@ -60,7 +60,7 @@ public class AlumnoImpl implements AlumnoDao
 		
 		try 
 		{
-			CallableStatement state = conexion.prepareCall("{CALL delete_Alumno(?)}");
+			PreparedStatement state = conexion.prepareStatement("UPDATE Alumnos SET estado = 0 WHERE legajo = ?");
 			state.setInt(1, legajo);
 
 			if (state.executeUpdate() > 0) 

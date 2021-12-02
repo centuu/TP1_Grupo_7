@@ -40,15 +40,11 @@ public class ServletListarDocentes extends HttpServlet
 		}
 		int pageid = Integer.parseInt(request.getParameter("page"));  
 		int total = 5;  
-		ArrayList<Docente> listaDocentes = new ArrayList<Docente>();
+		ArrayList<Docente> listaDocentes = new DocenteNegocio().list(pageid, total, null);
 		
 		if (request.getParameter("btnListar")!=null)
 		{
 			listaDocentes = new DocenteNegocio().list(pageid, total, request.getParameter("filter").toString());
-		}
-		else
-		{			
-			listaDocentes = new DocenteNegocio().list(pageid, total, null);
 		}
 		
 		int noOfRecords =  new DocenteNegocio().cantRegistros();
