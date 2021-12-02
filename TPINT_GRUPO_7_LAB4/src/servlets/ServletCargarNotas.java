@@ -30,10 +30,6 @@ public class ServletCargarNotas extends HttpServlet {
 			request.getRequestDispatcher("inicio").forward(request, response);
 			return;
 		}
-
-		ArrayList<Curso> listaCursos = new CursoNegocio().list();
-
-		request.setAttribute("cursos", listaCursos);
 		
 		request.getRequestDispatcher("/CargarNotas.jsp").forward(request, response);
 	}
@@ -50,9 +46,15 @@ public class ServletCargarNotas extends HttpServlet {
 			listacursada.get(i).setRec_seg(Float.parseFloat(request.getParameter("rec2_"+i).toString()));
 			listacursada.get(i).setCondicion((request.getParameter("condicion_"+i).toString()));
 		}
-		new CursadaNegocio().update(Integer.parseInt(request.getParameter("idCurso").toString()), listacursada);
-		
-		request.getRequestDispatcher("/inicio.jsp").forward(request, response);
-		//doGet(request, response);
+		CursadaNegocio cursadanegocio = new CursadaNegocio();
+		if(cursadanegocio.update(Integer.parseInt(request.getParameter("idCurso").toString()), listacursada))
+		{
+			request.setAttribute("messageSuccess", "Se modificaron las notas del curso con exito.");
+		}
+		else
+		{
+			request.setAttribute("messageError", "Hubo un problema al actualizar el curso.");
+		}
+		request.getRequestDispatcher("/vistaDocente").forward(request, response);
 	}
 }

@@ -92,7 +92,6 @@ public class ServletAlumno extends HttpServlet
 	{
 		if (editar)
 		{
-			//Alumno alumno = new Alumno();
 			int legajo= Integer.parseInt(request.getParameter("txtLegajo").toString());
 			Alumno alumno = new AlumnoNegocio().buscarAlumno(legajo);
 			alumno.setDni(request.getParameter("txtdni"));
@@ -111,7 +110,6 @@ public class ServletAlumno extends HttpServlet
 			
 			alumno.setMail(request.getParameter("txtmail"));
 			alumno.setTelefono(request.getParameter("txttelefono"));
-			//alumno.setestado(true);
 			
 			new AlumnoNegocio().update(alumno);
 			
@@ -154,7 +152,6 @@ public class ServletAlumno extends HttpServlet
 					request.setAttribute("messageError", "El DNI ya existe en la base de datos.");
 				}
 			}
-			//doGet(request, response);
 			request.getRequestDispatcher("/inicio.jsp").forward(request, response);
 		}
 	}

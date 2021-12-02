@@ -78,8 +78,6 @@ public class CursadaDaoImpl implements CursadaDao{
 				{
 					conexion.commit();
 				}
-				
-				
 			}
 		}
 		catch(Exception e)

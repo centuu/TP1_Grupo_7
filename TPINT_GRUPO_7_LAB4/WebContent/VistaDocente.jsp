@@ -25,7 +25,33 @@
            </div>
            <div class="col col-lg-8 col-md-9 col-sm  ">
 	           <div class="mb-3 ">
-					<h1>Cursos</h1>             
+					<h1>Cursos</h1> 
+			   		<%
+						if(request.getAttribute("messageSuccess") != null)
+						{
+			     	%>
+			     			<div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageSuccess") %>
+							</div>
+					<%
+						}
+			   			if(request.getAttribute("messageError") != null)
+			   			{
+			   		%>
+			   				<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
+							  <div class="row justify-content-end mb-1">
+							  <div class="col-11"></div>
+							  	<div type="button" class="close col-1" data-dismiss="alert" aria-label="Close"></div>
+							  </div>
+							  <%= request.getAttribute("messageError") %>
+							</div>
+			   		<%
+			   			}
+					%>            
 	                <div class="col-12 modal-content">
 			        	<table class="table table-hover table-striped">
 			            	<tr class="alert-primary">
@@ -43,7 +69,7 @@
 									{
 							%>
 										<tr>
-											<form action="vistaDocente" method="post">
+											<form action="vistaDocente" method="get">
 												<td><%= curso.getIdCurso()  %></td> 
 												<input name="IdCurso" type="hidden" value="<%=curso.getIdCurso()%>" >
 												<input name="cursodes" type="hidden" value="<%=curso.getDescripcion()%>" >

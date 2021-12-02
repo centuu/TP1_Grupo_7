@@ -40,7 +40,18 @@ public class servletVistaDocente extends HttpServlet
 			request.getRequestDispatcher("/altacurso").forward(request, response);
 			return;
 		}
-		if(request.getSession().getAttribute("user") != null) { 
+		
+		if(request.getParameter("alumnos") != null)
+		{
+			int idcurso= Integer.parseInt(request.getParameter("IdCurso").toString());
+			ArrayList <Alumno> listacursada = new CursadaNegocio().Alumnos_X_Docente(idcurso);
+			request.setAttribute("listaCursada",listacursada);
+			request.getRequestDispatcher("/notas").forward(request, response);
+			return;
+		}
+		
+		if(request.getSession().getAttribute("user") != null) 
+		{ 
 			if (rol==2)
 			{
 				Usuario user= (Usuario)request.getSession().getAttribute("user");
@@ -48,7 +59,6 @@ public class servletVistaDocente extends HttpServlet
 				ArrayList<Curso> listaCursos = new CursoNegocio().listar_X_Docente(user.getLegajo());
 				request.setAttribute("listaCurso", listaCursos);		
 				request.getRequestDispatcher("/VistaDocente.jsp").forward(request, response);
-				
 			}
 			else {
 				ArrayList<Curso> listaCursos = new CursoNegocio().list();
@@ -60,17 +70,6 @@ public class servletVistaDocente extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		if(request.getParameter("alumnos") != null)
-		{
-			int idcurso= Integer.parseInt(request.getParameter("IdCurso").toString());
-			//String cursodescripcion=request.getParameter("cursodes").toString();
-			ArrayList <Alumno> listacursada = new CursadaNegocio().Alumnos_X_Docente(idcurso);
-			// Curso  curso= new CursoNegocio().BuscarCurso(idcurso);
-			//request.setAttribute("curso",curso);
-			//request.setAttribute("curso",cursodescripcion);
-			request.setAttribute("listaCursada",listacursada);
-			request.getRequestDispatcher("/CargarNotas.jsp").forward(request, response);	
-		}
 		doGet(request, response);
 	}
 
