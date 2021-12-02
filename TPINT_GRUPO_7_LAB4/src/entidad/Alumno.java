@@ -14,7 +14,8 @@ public class Alumno
     protected String telefono ;
     protected boolean estado;
     
-    protected int idCurso, nota_pri, nota_seg, rec_pri, rec_seg;
+    protected Float nota_pri, nota_seg, rec_pri, rec_seg;
+    protected int idCurso;
     protected String condicion;
     
     public String getCondicion() {
@@ -33,35 +34,35 @@ public class Alumno
 		this.idCurso = idCurso;
 	}
 
-	public int getNota_pri() {
+	public Float getNota_pri() {
 		return nota_pri;
 	}
 
-	public void setNota_pri(int nota_pri) {
+	public void setNota_pri(Float nota_pri) {
 		this.nota_pri = nota_pri;
 	}
 
-	public int getNota_seg() {
+	public Float getNota_seg() {
 		return nota_seg;
 	}
 
-	public void setNota_seg(int nota_seg) {
+	public void setNota_seg(Float nota_seg) {
 		this.nota_seg = nota_seg;
 	}
 
-	public int getRec_pri() {
+	public Float getRec_pri() {
 		return rec_pri;
 	}
 
-	public void setRec_pri(int rec_pri) {
+	public void setRec_pri(Float rec_pri) {
 		this.rec_pri = rec_pri;
 	}
 
-	public int getRec_seg() {
+	public Float getRec_seg() {
 		return rec_seg;
 	}
 
-	public void setRec_seg(int rec_seg) {
+	public void setRec_seg(Float rec_seg) {
 		this.rec_seg = rec_seg;
 	}
 

@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidad.Alumno;
 import entidad.Curso;
+import negocio.CursadaNegocio;
 import negocio.CursoNegocio;
 
 @WebServlet(name = "ServletCargarNotas", urlPatterns = { "/notas" })
@@ -38,6 +40,18 @@ public class ServletCargarNotas extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		doGet(request, response);
+		ArrayList <Alumno> listacursada = new CursadaNegocio().Alumnos_X_Docente(Integer.parseInt(request.getParameter("idCurso").toString()));
+		for(Alumno alumno : listacursada)
+		{
+			alumno.setIdCurso(Integer.parseInt(request.getParameter("idCurso").toString()));
+			alumno.setNota_pri(Float.parseFloat(request.getParameter("nota1").toString()));
+			alumno.setNota_seg(Float.parseFloat(request.getParameter("nota2").toString()));
+			alumno.setRec_pri(Float.parseFloat(request.getParameter("rec1").toString()));
+			alumno.setRec_seg(Float.parseFloat(request.getParameter("rec2").toString()));
+			alumno.setCondicion((request.getParameter("condicion").toString()));
+			new CursadaNegocio().update(alumno.getIdCurso(), alumno.getLegajo(), listacursada);
+		}
+		request.getRequestDispatcher("/inicio.jsp").forward(request, response);
+		//doGet(request, response);
 	}
 }

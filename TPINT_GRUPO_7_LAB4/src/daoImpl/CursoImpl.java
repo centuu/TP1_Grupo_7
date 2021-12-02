@@ -11,13 +11,16 @@ import dao.CursoDao;
 import entidad.Alumno;
 import entidad.Curso;
 import entidad.Materia;
+import entidad.Nacionalidad;
 import entidad.Profesor;
+import entidad.Provincia;
 
 import java.sql.ResultSet;
 
 public class CursoImpl implements CursoDao
 {
 	private static final String list =   "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente";
+	private static final String buscar = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente WHERE cursos.idCurso = ";
 	private static final String listar = "SELECT * FROM Cursos INNER JOIN materias ON materias.idMateria = cursos.idMateria INNER JOIN docentes ON docentes.legajo = cursos.idDocente where docentes.legajo =";
 
 	public boolean insert(Curso curso) 
@@ -44,7 +47,7 @@ public class CursoImpl implements CursoDao
 			
 			for(Alumno alumno : curso.getListAlu())
 			{
-				CallableStatement st = conexion.prepareCall("{CALL insert_Cursada(?, ?)}");
+				CallableStatement st = conexion.prepareCall("{CALL insert_Cursada(?,?)}");
 				st.setInt(1, id);
 				st.setInt(2, alumno.getLegajo());
 				
@@ -62,7 +65,7 @@ public class CursoImpl implements CursoDao
 
 		return res;
 	}
-
+	
 	@Override
 	public ArrayList<Curso> list() 
 	{

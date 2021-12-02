@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="/partials/navbar.jsp" />
-	<form action="notas" method="GET">
+	<form action="notas" method="POST">
 	<div class="row">
 		<div class="col-2"></div>
 		<div class="col-8 w-100">
@@ -23,7 +23,8 @@
 					<div class="form-group row">	
 					<label class="col-1 col-form-label">Curso: </label>
 					<div class="col-2">
-					<label class="col-2 col-form-label" style="width: 358px; "><b><%= request.getAttribute("curso").toString() %></b></label>		
+					<label class="col-2 col-form-label" style="width: 358px; "><b><%= request.getParameter("cursodes").toString() %></b></label>
+					<input type="text" name="idCurso" value= "<%= request.getParameter("IdCurso").toString()%>" hidden ></input>
 					</div>
 					<div class="row">
 						<div class="col-12">
@@ -49,23 +50,23 @@
 								for(Alumno alumno :  listcursada)
 								{
 								%>
-								    <td><%= alumno.getLegajo()  %></td> 
-					              	<td><%= alumno.getNombre() %></td>
-					               	<td><%= alumno.getApellido() %></td>
+								    <td name="legajo"><%= alumno.getLegajo()  %></td> 
+					              	<td name="nombre"><%= alumno.getNombre() %></td>
+					               	<td name="apellido"><%= alumno.getApellido() %></td>
 					               	<td>
-									<input type="text" class="form-control" value="<%= alumno.getNota_pri() %>">
+									<input type="text" name="nota1" class="form-control" value="<%= alumno.getNota_pri() %>">
 								    </td>
 				    			  <td>
-						           	<input type="text" class="form-control" value="<%= alumno.getNota_seg() %>">
+						           	<input type="text" name="nota2" class="form-control" value="<%= alumno.getNota_seg() %>">
 							      </td>
 							      <td>
-									<input type="text" class="form-control" value="<%= alumno.getRec_pri() %>">
+									<input type="text" name="rec1" class="form-control" value="<%= alumno.getRec_pri() %>">
 								 </td>
 								 <td>
-									<input type="text" class="form-control" value="<%= alumno.getRec_seg() %>">
+									<input type="text" name="rec2" class="form-control" value="<%= alumno.getRec_seg() %>">
 								 </td>
 							      <td>
-									<%= alumno.getCondicion()  %>
+									<input type="text" name="condicion" class="form-control" value="<%= alumno.getCondicion() %>" placeholder="Regular/Libre">
 							      </td>
 							    </tr>
 							    
@@ -78,7 +79,7 @@
 						</div>
 					</div>
 					<div class="col-md-12 school-options-dropdown text-center">
-						<button name="btnconfirmar" class="btn btn-primary text-center">
+						<button name="btnconfirmar" class="btn btn-primary text-center" type="submit">
 							Confirmar
 						</button>
 					</div>

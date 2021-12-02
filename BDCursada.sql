@@ -119,8 +119,8 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE insert_Cursada(idCurso INT, legajoAlumno INT)
 BEGIN 
-	INSERT INTO cursada (idCurso, legajoAlumno) 
-	VALUES (idCurso, legajoAlumno);
+	INSERT INTO cursada (idCurso, legajoAlumno, condicion) 
+	VALUES (idCurso, legajoAlumno,'');
 END //
 DELIMITER ;
 

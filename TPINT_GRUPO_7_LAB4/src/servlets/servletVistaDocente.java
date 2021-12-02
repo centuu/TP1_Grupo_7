@@ -13,7 +13,7 @@ import entidad.Alumno;
 import entidad.Curso;
 import entidad.Docente;
 import entidad.Usuario;
-import negocio.CursadaNegosio;
+import negocio.CursadaNegocio;
 import negocio.CursoNegocio;
 
 @WebServlet(name = "servletVistaDocente", urlPatterns = { "/vistaDocente" })
@@ -63,11 +63,11 @@ public class servletVistaDocente extends HttpServlet
 		if(request.getParameter("alumnos") != null)
 		{
 			int idcurso= Integer.parseInt(request.getParameter("IdCurso").toString());
-			String cursodescripcion=request.getParameter("cursodes").toString();
-			ArrayList<Alumno> listacursada = new CursadaNegosio().Alumnos_X_Docente(idcurso);	
+			//String cursodescripcion=request.getParameter("cursodes").toString();
+			ArrayList <Alumno> listacursada = new CursadaNegocio().Alumnos_X_Docente(idcurso);
 			// Curso  curso= new CursoNegocio().BuscarCurso(idcurso);
 			//request.setAttribute("curso",curso);
-			request.setAttribute("curso",cursodescripcion);
+			//request.setAttribute("curso",cursodescripcion);
 			request.setAttribute("listaCursada",listacursada);
 			request.getRequestDispatcher("/CargarNotas.jsp").forward(request, response);	
 		}
