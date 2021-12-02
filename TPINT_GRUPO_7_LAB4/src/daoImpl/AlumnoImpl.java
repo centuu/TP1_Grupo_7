@@ -106,7 +106,7 @@ public class AlumnoImpl implements AlumnoDao
 		return -1;
 	}
 	
-	public ArrayList<Alumno> list(int start, int total)
+	public ArrayList<Alumno> list(int start, int total, String filter)
 	{
 		
 		ArrayList<Alumno> listaAlum = new ArrayList<Alumno>();
@@ -116,6 +116,11 @@ public class AlumnoImpl implements AlumnoDao
 		String qry = "SELECT * FROM Alumnos INNER JOIN nacionalidad ON Alumnos.idNacionalidad = nacionalidad.id INNER JOIN provincia ON Alumnos.idProvincia = provincia.id WHERE alumnos.estado = 1";
         try
         {
+    		if(filter != null && !filter.isEmpty())
+    		{
+    			qry += " AND alumnos.nombre LIKE \"%" + filter + "%\" OR alumnos.apellido LIKE \"%" + filter + "%\" OR alumnos.legajo LIKE \"%" + filter + "%\"";
+    		}
+    		
         	if (start > 1) {
         		state = conexion.prepareStatement(qry + " LIMIT " + ((start-1)*total) + ", " + total);
         	}

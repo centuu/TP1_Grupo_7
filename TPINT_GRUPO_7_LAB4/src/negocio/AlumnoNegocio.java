@@ -22,9 +22,9 @@ public class AlumnoNegocio implements AlumnoDao
 		return dao.cantRegistros();
 	}
 	
-	public ArrayList<Alumno> list(int start, int total) 
+	public ArrayList<Alumno> list(int start, int total, String filter) 
 	{
-		return dao.list(start, total);
+		return dao.list(start, total, filter);
 	}
 	
 	@Override

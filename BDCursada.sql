@@ -299,22 +299,21 @@ insert into cursos(idMateria,idDocente,semestre,anio)values(4,3,'2C-TN',2021);
 insert into cursos(idMateria,idDocente,semestre,anio)values(1,4,'2C-TM',2021);
 insert into cursos(idMateria,idDocente,semestre,anio)values(2,5,'1C-TN',2020);
 insert into cursos(idMateria,idDocente,semestre,anio)values(5,6,'2C-TM',2020);
-insert into cursos(idMateria,idDocente,semestre,anio)values(87,'2C-TN',2022);
+insert into cursos(idMateria,idDocente,semestre,anio)values(8,7,'2C-TN',2022);
 
 
 -- *****************************************************************************
 --                      insert  registros Cursada
-/*select*from cursada
 insert into cursada (idCurso,legajoAlumno)values(1,1);
 insert into cursada (idCurso,legajoAlumno)values(3,1);
 insert into cursada (idCurso,legajoAlumno)values(2,3);
 insert into cursada (idCurso,legajoAlumno)values(6,2);
 insert into cursada (idCurso,legajoAlumno)values(4,2);
-insert into cursada (idCurso,legajoAlumno)values(3,1);
+insert into cursada (idCurso,legajoAlumno)values(6,8);
 insert into cursada (idCurso,legajoAlumno)values(2,5);
 insert into cursada (idCurso,legajoAlumno)values(2,4);
 insert into cursada (idCurso,legajoAlumno)values(1,12);
 insert into cursada (idCurso,legajoAlumno)values(1,9);
-*/
+
 
 

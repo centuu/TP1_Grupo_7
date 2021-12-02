@@ -9,6 +9,7 @@ public interface AlumnoDao
 {
 	public boolean insert(Alumno alum) throws SQLException;
 	public ArrayList<Alumno> list();
+	public ArrayList<Alumno> list(int start, int total, String filter);
 	public int update(Alumno alumno);
 	public boolean delete(int legajo);
 	public String GetNextLegajo();

@@ -31,12 +31,14 @@
 					}
 					%>	
 					<br>
-					<div class="form-group row">	
-						<label for="inputFilter" class="col-2 col-form-label">Filtro</label>
-						<div class="col-9"> 
-							<input type="text" class="form-control" id="inputFilter">
-						</div>
-						<button class="btn btn-primary col-1">Listar</button>
+					<div class="form-group row">
+						<form type="GET" action="listaralumnos">
+							<input name="page" hidden value="${currentPage}">
+							<div class="col-9"> 
+								<input type="text" placeholder="Ingrese filtro de busqueda" class="form-control" name="filter" id="inputFilter">
+							</div>						
+							<button name="btnListar" class="btn btn-primary col-1">Listar</button>
+						</form>	
 					</div>
 					<div class="col-12 modal-content">
 		                <table id="table_id" class="tablecontent">

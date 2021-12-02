@@ -87,7 +87,7 @@ public class DocenteImpl implements DocenteDao
 		
 		if(filter != null && !filter.isEmpty())
 		{
-			list += " AND docentes.nombre LIKE \"%" + filter + "%\"";
+			list += " AND docentes.nombre LIKE \"%" + filter + "%\" OR docentes.apellido LIKE \"%" + filter + "%\" OR docentes.legajo LIKE \"%" + filter + "%\"";
 		}
 		
 		try
