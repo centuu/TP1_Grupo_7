@@ -24,7 +24,7 @@
 					<div class="form-group row">	
 					<label class="col-1 col-form-label">Curso: </label>
 					<div class="col-2">
-					<label class="col-2 col-form-label" style="width: 358px; "><b><%= request.getParameter("cursodes").toString() %></b></label>
+					<label class="col-2 col-form-label" style="width: 458px; "><b><%= request.getParameter("cursodes").toString() %></b></label>
 					<input type="text" name="idCurso" value= "<%= request.getParameter("IdCurso").toString()%>" hidden ></input>
 					</div>
 					<div class="row">
@@ -77,8 +77,10 @@
 							    
 							  </tbody>
 							</table>
+							
 						</div>
 					</div>
+					
 					<div class="col-md-12 school-options-dropdown text-center">
 						<button name="btnconfirmar" class="btn btn-primary text-center" type="button" data-toggle="modal" data-target="#modalpopup">
 							Confirmar

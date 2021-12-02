@@ -86,6 +86,7 @@
                   				}			
                   			%>                 
             			</table>
+            			<a href="vistaDocente?page=${currentPage - 1}"><</a> Página ${currentPage} de ${noOfPages} <a href="vistaDocente?page=${currentPage + 1}">></a>
             		</div>
             		<br>
             		<%
