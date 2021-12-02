@@ -36,6 +36,12 @@ public class ServletAlumno extends HttpServlet
 			return;
 		}
 		
+		ArrayList<Provincia> listaProvincias = new ProvinciaNegocio().list();		
+		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
+
+		request.setAttribute("provincias", listaProvincias);
+		request.setAttribute("nacionalidades", listaNacionalidad);
+		
 		if(request.getParameter("legajo") != null)
 		{
 			editar = true;
@@ -77,11 +83,7 @@ public class ServletAlumno extends HttpServlet
 		{
 			editar = false;
 			request.setAttribute("nextLegajo", new AlumnoNegocio().GetNextLegajo());
-			ArrayList<Provincia> listaProvincias = new ProvinciaNegocio().list();		
-			ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
-
-			request.setAttribute("provincias", listaProvincias);
-			request.setAttribute("nacionalidades", listaNacionalidad);
+			
 			request.getRequestDispatcher("/AltaAlumno.jsp").forward(request, response);
 			
 		}

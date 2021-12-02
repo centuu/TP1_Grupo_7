@@ -18,7 +18,7 @@ public class DocenteImpl implements DocenteDao
 {
 	private static final String insert = "INSERT INTO Docentes (dni,nombre,apellido,fechaNacimiento,domicilio,idlocalidad,idnacionalidad,email,telefono,clave,estado) VALUES (?,?,?,?,?,?,?,?,?,?,true)";
 	private static final String delete = "DELETE FROM Docentes WHERE legajo = ?";
-	private static final String list = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1;";
+	private static final String list = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1";
 	private static final String edit = "UPDATE Docentes SET Dni = ?, nombre = ? , apellido = ?, fechaNacimiento = ?, domicilio = ?, idLocalidad = ?,idNacionalidad =?,email = ? , telefono = ? WHERE legajo =?"; 
 	
 	public boolean insert(Docente docente) throws SQLException
@@ -84,14 +84,14 @@ public class DocenteImpl implements DocenteDao
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		
 		PreparedStatement state;
-		String qry = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1";
-        try
+		
+		try
         {
         	if (start > 1) {
-        		state = conexion.prepareStatement(qry + " LIMIT " + ((start-1)*total) + ", " + total);
+        		state = conexion.prepareStatement(list + " LIMIT " + ((start-1)*total) + ", " + total);
         	}
         	else {
-        		state = conexion.prepareStatement(qry + " LIMIT " + (start-1) + ", " + total);
+        		state = conexion.prepareStatement(list + " LIMIT " + (start-1) + ", " + total);
         	}
             ResultSet rs = state.executeQuery();
             while(rs.next())
@@ -108,7 +108,7 @@ public class DocenteImpl implements DocenteDao
         		loc.setNombre(rs.getString("localidad"));       		
         		doc.setLocalidad(loc);        		
         		Nacionalidad nacion= new Nacionalidad();
-        		nacion.setId(rs.getInt("idnacionalidad"));
+        		nacion.setId(rs.getInt("idNacionalidad"));
         		nacion.setNombre(rs.getString("nacionalidad"));       		
         		doc.setNacionalidad(nacion);        		
         		doc.setMail(rs.getString("email"));
@@ -132,7 +132,7 @@ public class DocenteImpl implements DocenteDao
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		try
 		{
-			PreparedStatement state = conexion.prepareStatement("SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.legajo = ?");
+			PreparedStatement state = conexion.prepareStatement(list + " AND docentes.legajo = ?");
 			state.setInt(1, legajo);
             ResultSet rs = state.executeQuery();
 			while(rs.next()) 
@@ -143,15 +143,18 @@ public class DocenteImpl implements DocenteDao
         		doc.setFechaNac(rs.getString("fechaNacimiento"));
         		doc.setNombre(rs.getString("nombre"));
         		doc.setApellido(rs.getString("apellido"));
-        		doc.setDireccion(rs.getString("domicilio"));        		
+        		doc.setDireccion(rs.getString("domicilio")); 
+        		
         		Localidad loc = new Localidad();
         		loc.setId(rs.getInt("idLocalidad"));
         		loc.setNombre(rs.getString("localidad"));       		
         		doc.setLocalidad(loc);        		
+        		
         		Nacionalidad nacion= new Nacionalidad();
-        		nacion.setId(rs.getInt("idnacionalidad"));
+        		nacion.setId(rs.getInt("idNacionalidad"));
         		nacion.setNombre(rs.getString("nacionalidad"));       		
-        		doc.setNacionalidad(nacion);        		
+        		doc.setNacionalidad(nacion);       
+        		
         		doc.setMail(rs.getString("email"));
         		doc.setTelefono(rs.getString("telefono"));
         		doc.setestado(rs.getBoolean("estado"));
@@ -191,7 +194,7 @@ public class DocenteImpl implements DocenteDao
         		loc.setNombre(rs.getString("localidad"));       		
         		doc.setLocalidad(loc);        		
         		Nacionalidad nacion= new Nacionalidad();
-        		nacion.setId(rs.getInt("idnacionalidad"));
+        		nacion.setId(rs.getInt("idNacionalidad"));
         		nacion.setNombre(rs.getString("nacionalidad"));       		
         		doc.setNacionalidad(nacion);        		
         		doc.setMail(rs.getString("email"));

@@ -55,19 +55,19 @@
 					              	<td name="nombre"><%= listcursada.get(i).getNombre() %></td>
 					               	<td name="apellido"><%= listcursada.get(i).getApellido() %></td>
 					               	<td>
-									<input type="text" name="nota1_<%=i %>" class="form-control" value="<%= listcursada.get(i).getNota_pri() %>">
+									<input type="text" name="nota1_<%=i %>" class="form-control" value="<%= listcursada.get(i).getNota_pri() %>" pattern="^10$|^[0-9]{1}$|^[0-9][.][0-9]{1,2}" maxlength="4" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
 								    </td>
 				    			  <td>
-						           	<input type="text" name="nota2_<%=i %>" class="form-control" value="<%= listcursada.get(i).getNota_seg() %>">
+						           	<input type="text" name="nota2_<%=i %>" class="form-control" value="<%= listcursada.get(i).getNota_seg() %>" pattern="^10$|^[0-9]{1}$|^[0-9][.][0-9]{1,2}" maxlength="4" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
 							      </td>
 							      <td>
-									<input type="text" name="rec1_<%=i %>" class="form-control" value="<%= listcursada.get(i).getRec_pri() %>">
+									<input type="text" name="rec1_<%=i %>" class="form-control" value="<%= listcursada.get(i).getRec_pri() %>" pattern="^10$|^[0-9]{1}$|^[0-9][.][0-9]{1,2}" maxlength="4" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
 								 </td>
 								 <td>
-									<input type="text" name="rec2_<%=i %>" class="form-control" value="<%= listcursada.get(i).getRec_seg() %>">
+									<input type="text" name="rec2_<%=i %>" class="form-control" value="<%= listcursada.get(i).getRec_seg() %>" pattern="^10$|^[0-9]{1}$|^[0-9][.][0-9]{1,2}" maxlength="4" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
 								 </td>
 							      <td>
-									<input type="text" name="condicion_<%=i %>" class="form-control" value="<%= listcursada.get(i).getCondicion() %>" placeholder="Regular/Libre">
+									<input type="text" name="condicion_<%=i %>" class="form-control" value="<%= listcursada.get(i).getCondicion() %>" placeholder="Regular/Libre" pattern="^regular$|^libre$">
 							      </td>
 							    </tr>
 							    

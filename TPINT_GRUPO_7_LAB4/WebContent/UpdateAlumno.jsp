@@ -92,38 +92,30 @@
 				          	<label  class="from-group">Provincia</label>
 				           	<select name="provincia" id="provincias" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
 									<%
-									    ProvinciaDaoImpl proviDao= new ProvinciaDaoImpl(); 
-								  		ArrayList<Provincia> provincias =proviDao.list();	
-										
-								  		if (provincias!=null)
-								  		{
-										  for(Provincia provincia : provincias)
-										  {
-									  %>
-											<option value="<%= provincia.getId() %>"><%= provincia.getNombre() %></option>
-									  <%
-										  }
-								  		}
-									%>
+								ArrayList<Provincia> provincias = (ArrayList<Provincia>)request.getAttribute("provincias");
+								for(Provincia provincia : provincias)
+								{
+							%>
+								<option value=<%= provincia.getId() %>><%= provincia.getNombre() %></option>
+							<%
+								}
+							%>
 							</select>
 				        </div>
 				        <div class="row mb-3 text-center"> 
 				        	<label hidden id="alumnoNacionalidad" value=<%= request.getAttribute("nacionalidad") %>></label>				        	
 				        	<label  class="from-group">Nacionalidad</label>
 					       <select name="nacionalidad" id="nacionalidades" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
-				                  <%  
-				                  		NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
-				                       	ArrayList<Nacionalidad> lista=nacionDao.list();
-		         
-		                          if (lista!=null)
-		                          {
-		                            for(Nacionalidad na:lista) 
-		                            {
-		                          	%>
-		                          	  <option value="<%=na.getId() %>"><%=na.getNombre() %></option>
-		
-		                          <%}
-		                          }%>
+				                  <%
+						  		ArrayList<Nacionalidad> nacionalidades = (ArrayList<Nacionalidad>)request.getAttribute("nacionalidades");	
+								
+								for(Nacionalidad nacionalidad : nacionalidades)
+								{
+							%>
+									<option value=<%= nacionalidad.getId() %>><%= nacionalidad.getNombre() %></option>
+							<%
+								}
+							%>
 		                         </select>
 				        </div>
 				         <div class="row mb-3 text-center">

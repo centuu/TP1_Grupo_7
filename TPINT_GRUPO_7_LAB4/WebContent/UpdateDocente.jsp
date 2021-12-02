@@ -67,37 +67,31 @@
 				           	<label  class="from-group">Localidad</label>
 				          	<select name="localidad" id="localidades" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
 									<%
-									     LocalidadDaoImpl locDao= new LocalidadDaoImpl(); 
-								  		ArrayList<Localidad> localidades =locDao.list();	
-										
-								  		if (localidades!=null)
-								  		{
-										  for(Localidad localidad : localidades)
-										  {
-									  %>
-											<option value="<%= localidad.getId() %>"><%= localidad.getNombre() %></option>
-									  <%
-										  }
-								  		}
-									%>
+						  		ArrayList<Localidad> localidades = (ArrayList<Localidad>)request.getAttribute("localidades");	
+								
+								for(Localidad localidad : localidades)
+								{
+							%>
+									<option value=<%= localidad.getId() %>><%= localidad.getNombre() %></option>
+							<%
+								}
+							%>
 							</select>
 				        </div>
 				        <div class="row mb-3 text-center"> 
 				        	<label hidden id="docenteNacionalidad" value=<%= request.getAttribute("nacionalidad") %>></label>				        	
 				        	<label  class="from-group">Nacionalidad</label>
 					       <select name="nacionalidad" id="nacionalidades" <%= request.getAttribute("readOnly") != "" ? "disabled=true" : "" %>>
-				                  <%  NacionalidadDaoImpl nacionDao =new  NacionalidadDaoImpl ();
-				                       ArrayList<Nacionalidad> lista=nacionDao.list();
-		         
-		                          if (lista!=null)
-		                          {
-		                            for(Nacionalidad na:lista) 
-		                            {
-		                          	%>
-		                          	  <option value="<%=na.getId() %>"><%=na.getNombre() %></option>
-		
-		                          <%}
-		                          }%>
+				                  <%
+							  		ArrayList<Nacionalidad> nacionalidades = (ArrayList<Nacionalidad>)request.getAttribute("nacionalidades");	
+									
+									for(Nacionalidad nacionalidad : nacionalidades)
+									{
+								%>
+										<option value=<%= nacionalidad.getId() %>><%= nacionalidad.getNombre() %></option>
+								<%
+									}
+								%>
 		                         </select>
 				        </div>
 				         <div class="row mb-3 text-center">
@@ -122,8 +116,7 @@
 			</div>
 		</form>	    
 	</main> 
- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script>
+ 	<script>
 		for(var i = 0; i < document.getElementById("nacionalidades").length ; i++) 
 		{
 		    if(document.getElementById("nacionalidades")[i].getAttribute("value") == document.getElementById("docenteNacionalidad").getAttribute("value"))
@@ -132,7 +125,7 @@
 	
 		for(var i = 0; i < document.getElementById("localidades").length ; i++) 
 		{
-		    if(document.getElementById("localidades")[i].getAttribute("value") == document.getElementById("docenteProvincia").getAttribute("value"))
+		    if(document.getElementById("localidades")[i].getAttribute("value") == document.getElementById("docenteLocalidad").getAttribute("value"))
 		       document.getElementById("localidades").selectedIndex = i;
 		}
 	</script>

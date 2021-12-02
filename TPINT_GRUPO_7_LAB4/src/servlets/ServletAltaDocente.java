@@ -43,6 +43,11 @@ public class ServletAltaDocente extends HttpServlet
 			return;
 		}
 		
+		ArrayList<Localidad> listaLocalidades = new LocalidadNegocio().list();
+		ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
+		request.setAttribute("localidades", listaLocalidades);
+		request.setAttribute("nacionalidades", listaNacionalidad);
+		
 		if(request.getParameter("legajo") != null)
 		{
 			editar = true;
@@ -53,12 +58,16 @@ public class ServletAltaDocente extends HttpServlet
 			{
 				request.setAttribute("readOnly" , "readOnly");
 				request.setAttribute("docente", docente);
+				request.setAttribute("nacionalidad", docente.getNacionalidad().getId());
+				request.setAttribute("localidad", docente.getLocalidad().getId());
 				request.getRequestDispatcher("/UpdateDocente.jsp").forward(request, response);			
 			}
 			else if (request.getParameter("btneditar")!=null)
 			{		
 				request.setAttribute("readOnly" , "");
 				request.setAttribute("docente", docente);
+				request.setAttribute("nacionalidad", docente.getNacionalidad().getId());
+				request.setAttribute("localidad", docente.getLocalidad().getId());
 				request.getRequestDispatcher("/UpdateDocente.jsp").forward(request, response);			
 			}
 			else if (request.getParameter("btneliminar")!=null)
@@ -76,10 +85,7 @@ public class ServletAltaDocente extends HttpServlet
 		else
 		{
 			editar = false;
-			ArrayList<Localidad> listaLocalidades = new LocalidadNegocio().list();
-			ArrayList<Nacionalidad> listaNacionalidad = new NacionalidadNegocio().list();
-			request.setAttribute("localidades", listaLocalidades);
-			request.setAttribute("nacionalidades", listaNacionalidad);
+			
 			request.setAttribute("nextLegajo", new DocenteNegocio().GetNextLegajo());
 			
 			request.getRequestDispatcher("/AltaDocente.jsp").forward(request, response);
@@ -140,7 +146,7 @@ public class ServletAltaDocente extends HttpServlet
 			docente.setDireccion(request.getParameter("txtdireccion"));
 			
 			Localidad local = new Localidad();
-			local.setId(Integer.parseInt(request.getParameter("localidad")));	
+			local.setId(Integer.parseInt(request.getParameter("Localidad")));	
 			docente.setLocalidad(local);
 			
 			Nacionalidad nacion= new Nacionalidad();
