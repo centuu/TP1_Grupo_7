@@ -34,9 +34,9 @@ public class DocenteNegocio implements DocenteDao
 		return dao.cantRegistros();
 	}
 	
-	public ArrayList<Docente> list(int start, int total) 
+	public ArrayList<Docente> list(int start, int total, String filter) 
 	{
-		return dao.list(start, total);
+		return dao.list(start, total, filter);
 	}
 
 	@Override

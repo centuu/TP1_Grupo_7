@@ -22,15 +22,17 @@
 					<br>
 					<form action="altadocente" method="GET">	
 						<button name="btnnuevo" type="submit" class="btn btn-primary col-1" style="width: 158px; ">+ Nuevo Docente</button>
-					</form>
-						
+					</form>						
 					<br>
 					<div class="form-group row">	
 						<label for="inputFilter" class="col-2 col-form-label">Filtro</label>
-						<div class="col-9"> 
-							<input type="text" class="form-control" id="inputFilter">
-						</div>
-						<button class="btn btn-primary col-1">Listar</button>
+						<form type="GET" action="listardocentes">
+							<input name="page" hidden value="${currentPage}">
+							<div class="col-9"> 
+								<input type="text" class="form-control" name="filter" id="inputFilter">
+							</div>						
+							<button name="btnListar" class="btn btn-primary col-1">Listar</button>
+						</form>
 					</div>
 					<div class="col-12 modal-content">
 		                <table id="table_id" class="tablecontent">

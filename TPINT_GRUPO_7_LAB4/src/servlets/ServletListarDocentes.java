@@ -32,24 +32,24 @@ public class ServletListarDocentes extends HttpServlet
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		
+	{		
 		if(request.getSession().getAttribute("user") == null || !request.getSession().getAttribute("rol").toString().equals("1"))
 		{
 			request.getRequestDispatcher("inicio").forward(request, response);
 			return;
 		}
-		
 		int pageid = Integer.parseInt(request.getParameter("page"));  
 		int total = 5;  
-		/*if (pageid == 1) {
-		}  
-		else {  
-		    pageid = pageid-1;  
-		    pageid = pageid*total+1;  
-		}*/ 
+		ArrayList<Docente> listaDocentes = new ArrayList<Docente>();
 		
-		ArrayList<Docente> listaDocentes = new DocenteNegocio().list(pageid, total);
+		if (request.getParameter("btnListar")!=null)
+		{
+			listaDocentes = new DocenteNegocio().list(pageid, total, request.getParameter("filter").toString());
+		}
+		else
+		{			
+			listaDocentes = new DocenteNegocio().list(pageid, total, null);
+		}
 		
 		int noOfRecords =  new DocenteNegocio().cantRegistros();
         int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / total);

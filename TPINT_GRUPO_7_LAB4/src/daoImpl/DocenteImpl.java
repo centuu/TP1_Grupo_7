@@ -18,7 +18,7 @@ public class DocenteImpl implements DocenteDao
 {
 	private static final String insert = "INSERT INTO Docentes (dni,nombre,apellido,fechaNacimiento,domicilio,idlocalidad,idnacionalidad,email,telefono,clave,estado) VALUES (?,?,?,?,?,?,?,?,?,?,true)";
 	private static final String delete = "DELETE FROM Docentes WHERE legajo = ?";
-	private static final String list = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1";
+	private static String list = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1";
 	private static final String edit = "UPDATE Docentes SET Dni = ?, nombre = ? , apellido = ?, fechaNacimiento = ?, domicilio = ?, idLocalidad = ?,idNacionalidad =?,email = ? , telefono = ? WHERE legajo =?"; 
 	
 	public boolean insert(Docente docente) throws SQLException
@@ -77,13 +77,18 @@ public class DocenteImpl implements DocenteDao
 		return -1;
 	}
 	
-	public ArrayList<Docente> list(int start, int total)
+	public ArrayList<Docente> list(int start, int total, String filter)
 	{
-		
 		ArrayList<Docente> listaDoc = new ArrayList<Docente>();
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		
+		list = "SELECT * FROM docentes INNER JOIN nacionalidad ON docentes.idNacionalidad = nacionalidad.id INNER JOIN localidad ON docentes.idLocalidad = localidad.id WHERE docentes.estado = 1";
+
 		PreparedStatement state;
+		
+		if(filter != null && !filter.isEmpty())
+		{
+			list += " AND docentes.nombre LIKE \"%" + filter + "%\"";
+		}
 		
 		try
         {
