@@ -12,7 +12,7 @@ import entidad.Curso;
 public class CursadaDaoImpl implements CursadaDao{
 
 	private static final String listar = "SELECT * FROM cursada INNER JOIN alumnos on Alumnos.legajo =cursada.legajoAlumno inner join cursos on cursada.idCurso= cursos.idCurso where cursos.idcurso=";
-	private static final String edit = "UPDATE cursada SET nota_pri = ?, nota_seg = ?, rec_pri = ?, rec_seg = ? WHERE legajoAlumno = ? AND idCurso = ? ";
+	private static final String edit = "UPDATE cursada SET nota_pri = ?, nota_seg = ?, rec_pri = ?, rec_seg = ?, condicion = ? WHERE legajoAlumno = ? AND idCurso = ?";
 
 	@Override
 	public ArrayList<Alumno> Alumnos_X_Docente(int id) {
@@ -55,7 +55,7 @@ public class CursadaDaoImpl implements CursadaDao{
 		return listaAlumno;
 	}
 	
-	public boolean update(int idCurso, int legajoAlumno, ArrayList <Alumno> listacursada)
+	public boolean update(int idCurso, ArrayList <Alumno> listacursada)
 	{
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		PreparedStatement st;
@@ -64,14 +64,15 @@ public class CursadaDaoImpl implements CursadaDao{
 		{
 			for(Alumno alumno : listacursada)
 			{
-				
 				st = conexion.prepareStatement(edit);
+				
 				st.setFloat(1, alumno.getNota_pri());
 				st.setFloat(2, alumno.getNota_seg());
 				st.setFloat(3, alumno.getRec_pri());
 				st.setFloat(4, alumno.getRec_seg());
-				st.setInt(5, legajoAlumno);
-				st.setInt(6, idCurso);				
+				st.setString(5, alumno.getCondicion());
+				st.setInt(6, alumno.getLegajo());
+				st.setInt(7, idCurso);				
 				
 				if (st.executeUpdate() > 0) 
 				{

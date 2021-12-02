@@ -15,9 +15,9 @@ public class CursadaNegocio implements CursadaDao {
 		return dao.Alumnos_X_Docente(id);
 	}
 	
-	public boolean update(int idCurso, int legajoAlumno, ArrayList <Alumno> listacursada)
+	public boolean update(int idCurso, ArrayList <Alumno> listacursada)
 	{
-		return dao.update(idCurso, legajoAlumno, listacursada);
+		return dao.update(idCurso, listacursada);
 	}
 
 }

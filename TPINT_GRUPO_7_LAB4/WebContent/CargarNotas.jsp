@@ -47,26 +47,27 @@
                                {
 					              ArrayList<Alumno> listcursada = (ArrayList<Alumno>)request.getAttribute("listaCursada");
 				
-								for(Alumno alumno :  listcursada)
+								//for(Alumno alumno :  listcursada)
+								for(int i = 0 ; i<listcursada.size(); i++ )
 								{
 								%>
-								    <td name="legajo"><%= alumno.getLegajo()  %></td> 
-					              	<td name="nombre"><%= alumno.getNombre() %></td>
-					               	<td name="apellido"><%= alumno.getApellido() %></td>
+								    <td name="legajo"><%= listcursada.get(i).getLegajo()  %></td> 
+					              	<td name="nombre"><%= listcursada.get(i).getNombre() %></td>
+					               	<td name="apellido"><%= listcursada.get(i).getApellido() %></td>
 					               	<td>
-									<input type="text" name="nota1" class="form-control" value="<%= alumno.getNota_pri() %>">
+									<input type="text" name="nota1_<%=i %>" class="form-control" value="<%= listcursada.get(i).getNota_pri() %>">
 								    </td>
 				    			  <td>
-						           	<input type="text" name="nota2" class="form-control" value="<%= alumno.getNota_seg() %>">
+						           	<input type="text" name="nota2_<%=i %>" class="form-control" value="<%= listcursada.get(i).getNota_seg() %>">
 							      </td>
 							      <td>
-									<input type="text" name="rec1" class="form-control" value="<%= alumno.getRec_pri() %>">
+									<input type="text" name="rec1_<%=i %>" class="form-control" value="<%= listcursada.get(i).getRec_pri() %>">
 								 </td>
 								 <td>
-									<input type="text" name="rec2" class="form-control" value="<%= alumno.getRec_seg() %>">
+									<input type="text" name="rec2_<%=i %>" class="form-control" value="<%= listcursada.get(i).getRec_seg() %>">
 								 </td>
 							      <td>
-									<input type="text" name="condicion" class="form-control" value="<%= alumno.getCondicion() %>" placeholder="Regular/Libre">
+									<input type="text" name="condicion_<%=i %>" class="form-control" value="<%= listcursada.get(i).getCondicion() %>" placeholder="Regular/Libre">
 							      </td>
 							    </tr>
 							    

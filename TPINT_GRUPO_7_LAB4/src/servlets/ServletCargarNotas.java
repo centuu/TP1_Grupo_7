@@ -41,16 +41,17 @@ public class ServletCargarNotas extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		ArrayList <Alumno> listacursada = new CursadaNegocio().Alumnos_X_Docente(Integer.parseInt(request.getParameter("idCurso").toString()));
-		for(Alumno alumno : listacursada)
+		for(int i = 0 ; i<listacursada.size(); i++ )
 		{
-			alumno.setIdCurso(Integer.parseInt(request.getParameter("idCurso").toString()));
-			alumno.setNota_pri(Float.parseFloat(request.getParameter("nota1").toString()));
-			alumno.setNota_seg(Float.parseFloat(request.getParameter("nota2").toString()));
-			alumno.setRec_pri(Float.parseFloat(request.getParameter("rec1").toString()));
-			alumno.setRec_seg(Float.parseFloat(request.getParameter("rec2").toString()));
-			alumno.setCondicion((request.getParameter("condicion").toString()));
-			new CursadaNegocio().update(alumno.getIdCurso(), alumno.getLegajo(), listacursada);
+			listacursada.get(i).setIdCurso(Integer.parseInt(request.getParameter("idCurso").toString()));
+			listacursada.get(i).setNota_pri(Float.parseFloat(request.getParameter("nota1_"+i).toString()));
+			listacursada.get(i).setNota_seg(Float.parseFloat(request.getParameter("nota2_"+i).toString()));
+			listacursada.get(i).setRec_pri(Float.parseFloat(request.getParameter("rec1_"+i).toString()));
+			listacursada.get(i).setRec_seg(Float.parseFloat(request.getParameter("rec2_"+i).toString()));
+			listacursada.get(i).setCondicion((request.getParameter("condicion_"+i).toString()));
 		}
+		new CursadaNegocio().update(Integer.parseInt(request.getParameter("idCurso").toString()), listacursada);
+		
 		request.getRequestDispatcher("/inicio.jsp").forward(request, response);
 		//doGet(request, response);
 	}
