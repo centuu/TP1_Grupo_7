@@ -20,10 +20,16 @@
 				<div id="card" class="col border border-secondary rounded p-4">
 					<h1>Listado Alumnos</h1>
 					<br>
-					<form action="alumno" method="GET">	
-						<button name="btnnuevo" type="submit" class="btn btn-primary col-1" style="width: 158px; ">+ Nuevo Alumno</button>
-					</form>
-						
+            		<%
+            		if(session.getAttribute("rol").toString().equals("1"))
+            		{
+            		%>
+						<form action="alumno" method="GET">	
+							<button name="btnnuevo" type="submit" class="btn btn-primary col-1" style="width: 158px; ">+ Nuevo Alumno</button>
+						</form>
+					<%
+					}
+					%>	
 					<br>
 					<div class="form-group row">	
 						<label for="inputFilter" class="col-2 col-form-label">Filtro</label>
@@ -59,8 +65,15 @@
 						                       	<td><%= alumno.getFechaNac() %></td>			                   
 						                        <td>			                        
 						                         	<button name="btninfo" type="submit" class="btn btn-info mx-0">Detalle</button>
-						                            <button name="btneditar"type="submit" class="btn btn-success mx-0">Editar</button>              
-						                            <button name="btneliminar" type="submit" class="btn btn-danger" onclick="return confirm('Desea eliminar este alumno?')">Eliminar</button>
+		                         	           		<%
+								            		if(session.getAttribute("rol").toString().equals("1"))
+								            		{
+								            		%>
+							                            <button name="btneditar"type="submit" class="btn btn-success mx-0">Editar</button>              
+							                            <button name="btneliminar" type="submit" class="btn btn-danger" onclick="return confirm('Desea eliminar este alumno?')">Eliminar</button>
+	                            					<%
+													}
+													%>
 						                        </td>
 				                     		</form>
 						               	</tr>

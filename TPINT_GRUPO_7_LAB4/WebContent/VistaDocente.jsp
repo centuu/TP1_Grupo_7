@@ -62,10 +62,16 @@
             			</table>
             		</div>
             		<br>
+            		<%
+            		if(session.getAttribute("rol").toString().equals("1"))
+            		{
+            		%>
 					<form action="vistaDocente" method="GET">	
 						<button name="btnnuevo" type="submit" class="btn btn-primary col-1" style="width: 158px; ">+ Nuevo Curso</button>
 					</form>
-					
+					<%
+					}
+					%>
             	</div>
             </div>
 		</div>
